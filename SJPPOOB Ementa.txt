@@ -1,0 +1,64 @@
+﻿CAMPUS 
+ SJP 
+
+ 1- IDENTIFICAÇÃO  
+ Curso:  Técnico em Informática Concomitante e Subsequente  ao Ensino Médio 
+ Componente curricular:  Programação Orientada a Objetos 
+
+ Tipo:  Obrigatório 
+
+ Semestre:   2º  Código:   SJPPOOB  Nº de aulas semanais:  6 
+
+ Total de aulas:   120  C.H. Presencial:   90 horas 
+
+ Quantidade de docentes:  2 (Integral)  Carga horária prevista em 
+ laboratório:  90 horas 
+
+ 2- CONHECIMENTOS ESSENCIAIS DO CURRÍCULO DE REFERÊNCIA 
+ Algoritmos e linguagens de programação. 
+
+ 3- EMENTA:  
+ O  Componente  Curricular  aborda  a  linguagem  de  programação  para 
+ construção  de  aplicativos  com  acesso  a  banco  de  dados.  Apresenta  noções  de 
+ programação  orientada  a  objetos.  Desenvolve  programas  com  geração  de 
+ relatórios. 
+ 4- OBJETIVOS: 
+ 1.  Capacitar  o  discente  a  desenvolver  aplicativos  contendo  interface  visual 
+
+ que realizam conexão com um banco de dados; 
+ 2.  Capacitar  o  discente  a  desenvolver  aplicativos  que  geram  relatórios  a  partir 
+
+ de uma base de dados; 
+ 3.  Despertar o conhecimento sobre linguagens orientadas a objetos. 
+ 5 – CONTEÚDO PROGRAMÁTICO: 
+ 1.  Introdução; 
+ 2.  Classes, atributos e métodos; 
+ 3.  Encapsulamento; 
+ 4.  Herança; 
+ 5.  Acesso a banco de dados; 
+ 6.  Criação e geração de relatórios; 
+ 7.  Distribuição e implantação de aplicativos. 
+ 6 - BIBLIOGRAFIA BÁSICA 
+ ENGHOLM  JR.,  H.  Análise  e  design  orientada  a  objetos .  São  Paulo:  Novatec, 
+ 2013. 
+ 7 - BIBLIOGRAFIA COMPLEMENTAR 
+ DEITEL, H. M. et al.  C# : como programar. São Paulo:  Pearson, 2003. 
+ GUNNERSON, E.  Introdução à programação em C# . Rio  de Janeiro: Ciência 
+ Moderna, 2001. 
+
+ 83 
+ Projeto Pedagógico do Curso Técnico em Informática Concomitante e Subsequente ao Ensino Médio 
+
+
+
+ MORONI, H.  Treinamento profissional em C#.NET . São  Paulo: Digerati 
+ Books, 2006. 
+ PRICE, M. J..  C# 10 and .NET 6 : modern cross-platform  development. 6. ed. 
+ Índia: Packt Publishing, 2021. 
+ CARLUCCI, A.; SANTOS, C. dos; ANDRADE, C. C.; ALMEIDA, R.; CARNEIRO, R.; 
+ HADDAD, R.  C# para iniciantes : desenvolvendo o seu  primeiro programa. [s. 
+ l.: s. n.], 2021. Disponível em:  https://livrocsharp.com.br/ .  Acesso em: 30 jun. 
+ 2022. 
+
+ 84 
+ Projeto Pedagógico do Curso Técnico em Informática Concomitante e Subsequente ao Ensino Médio

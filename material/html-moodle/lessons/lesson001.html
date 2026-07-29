@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula 01 - Transição de C para C#</title>
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Aula 01 - Transição de C para C#</h1>
+      <p>Objetivo: entender a mudança de linguagem, os comandos mais usados em C e a forma de escrever o mesmo conteúdo em C#.</p>
+    </header>
+
+    <section>
+      <h2>Conceitos desta aula</h2>
+      <ul>
+        <li>Transição de linguagem</li>
+        <li>Comandos de entrada e saída</li>
+        <li>Estruturas de decisão e repetição</li>
+        <li>Funções, vetores e estruturas</li>
+        <li>Diferença entre C e C#</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Definições</h2>
+      <p><strong>Transição de linguagem</strong> é o processo de levar a lógica que foi escrita em uma linguagem para outra linguagem.</p>
+      <p><strong>C</strong> é uma linguagem mais próxima do hardware e usa funções soltas no programa.</p>
+      <p><strong>C#</strong> é uma linguagem com suporte a orientação a objetos, classes e métodos organizados em tipos.</p>
+    </section>
+
+    <section>
+      <h2>Como pensar na transição</h2>
+      <p>A lógica dos exercícios continua a mesma. O que muda é a sintaxe e a forma de organizar o código.</p>
+      <p>Em C, a turma usou printf, scanf, if, for, while, switch, funções, vetores e struct. Em C#, esses recursos continuam existindo, mas com outros nomes e com mais apoio da linguagem.</p>
+    </section>
+
+    <section>
+      <h2>Tabela de conversão</h2>
+      <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Comando ou estrutura em C</th>
+            <th>Conversão em C#</th>
+            <th>Uso nos exercícios</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>#include &lt;stdio.h&gt;</code></td><td><code>using System;</code></td><td>Entrada e saída</td></tr>
+          <tr><td><code>#include &lt;stdlib.h&gt;</code></td><td><code>using System;</code> ou <code>using System.Diagnostics;</code></td><td>Limpeza de tela e apoio geral</td></tr>
+          <tr><td><code>#include &lt;ctype.h&gt;</code></td><td><code>using System;</code></td><td>Conversão de letras</td></tr>
+          <tr><td><code>printf()</code></td><td><code>Console.WriteLine()</code></td><td>Mostrar texto e valores</td></tr>
+          <tr><td><code>scanf()</code></td><td><code>Console.ReadLine()</code> + conversão</td><td>Ler dados do usuário</td></tr>
+          <tr><td><code>getchar()</code></td><td><code>Console.ReadKey()</code></td><td>Aguardar tecla</td></tr>
+          <tr><td><code>system("cls")</code></td><td><code>Console.Clear()</code></td><td>Limpar a tela</td></tr>
+          <tr><td><code>if / else</code></td><td><code>if / else</code></td><td>Decisão</td></tr>
+          <tr><td><code>switch / case / break</code></td><td><code>switch / case / break</code></td><td>Menu e escolha de opção</td></tr>
+          <tr><td><code>for</code></td><td><code>for</code></td><td>Repetição com contador</td></tr>
+          <tr><td><code>while</code></td><td><code>while</code></td><td>Repetição com teste no início</td></tr>
+          <tr><td><code>do while</code></td><td><code>do while</code></td><td>Menu repetido ao menos uma vez</td></tr>
+          <tr><td><code>break</code></td><td><code>break</code></td><td>Sair de laço ou escolha</td></tr>
+          <tr><td><code>continue</code></td><td><code>continue</code></td><td>Pular para a próxima volta</td></tr>
+          <tr><td><code>return</code></td><td><code>return</code></td><td>Encerrar função ou método</td></tr>
+          <tr><td><code>int</code></td><td><code>int</code></td><td>Número inteiro</td></tr>
+          <tr><td><code>float</code></td><td><code>float</code></td><td>Número com parte decimal simples</td></tr>
+          <tr><td><code>double</code></td><td><code>double</code></td><td>Número com mais precisão</td></tr>
+          <tr><td><code>char</code></td><td><code>char</code></td><td>Letra ou símbolo</td></tr>
+          <tr><td><code>string</code> em C com vetores de char</td><td><code>string</code></td><td>Texto</td></tr>
+          <tr><td><code>int v[10];</code></td><td><code>int[] v = new int[10];</code></td><td>Vetor</td></tr>
+          <tr><td><code>struct</code></td><td><code>struct</code> ou <code>class</code></td><td>Dados agrupados</td></tr>
+          <tr><td>Funções</td><td>Métodos dentro de classe</td><td>Organização do código</td></tr>
+          <tr><td><code>#define</code></td><td><code>const</code></td><td>Constante</td></tr>
+          <tr><td><code>&amp;</code> no <code>scanf</code></td><td>Conversão do texto lido com <code>Parse</code></td><td>Entrada de valor numérico</td></tr>
+          <tr><td><code>++</code> e <code>--</code></td><td><code>++</code> e <code>--</code></td><td>Contagem</td></tr>
+          <tr><td><code>%</code></td><td><code>%</code></td><td>Resto da divisão</td></tr>
+          <tr><td><code>&amp;&amp;</code>, <code>||</code>, <code>!</code></td><td><code>&amp;&amp;</code>, <code>||</code>, <code>!</code></td><td>Condições compostas</td></tr>
+          <tr><td><code>toupper()</code></td><td><code>char.ToUpper()</code></td><td>Trabalhar com letra maiúscula</td></tr>
+          <tr><td><code>tolower()</code></td><td><code>char.ToLower()</code></td><td>Trabalhar com letra minúscula</td></tr>
+          <tr><td>Funções matemáticas de biblioteca</td><td><code>Math</code></td><td>Cálculos matemáticos</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>10 exercícios em C e sua versão em C#</h2>
+      <table border="1" cellpadding="6" cellspacing="0">
+      <thead>
+        <tr>
+        <th>Nome padronizado</th>
+        <th>Arquivo C</th>
+        <th>Foco</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Exercício 01</td><td><code>exercicio1.c</code></td><td>Entrada, saída e cálculo simples</td></tr>
+        <tr><td>Exercício 02</td><td><code>exercicio2.c</code></td><td>Potência com inteiro</td></tr>
+        <tr><td>Exercício 03</td><td><code>exercicio3.c</code></td><td>Cálculo de folha</td></tr>
+        <tr><td>Exercício 04</td><td><code>exercicio4.c</code></td><td>Distância com velocidade e tempo</td></tr>
+        <tr><td>Exercício 05</td><td><code>exercicio5.c</code></td><td>Troca de valores</td></tr>
+        <tr><td>Exercício 06</td><td><code>exercicio6.c</code></td><td>Cálculo de litros por minuto</td></tr>
+        <tr><td>Exercício 07</td><td><code>exercicio7.c</code></td><td>Tarifa com parte fixa e variável</td></tr>
+        <tr><td>Exercício 08</td><td><code>exercicio8.c</code></td><td>Desconto percentual</td></tr>
+        <tr><td>Exercício 09</td><td><code>exercicio9.c</code></td><td>Acréscimo percentual</td></tr>
+        <tr><td>Exercício 10</td><td><code>exercicio10.c</code></td><td>Proporção entre meninas e meninos</td></tr>
+      </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Exercício 01 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    float total, preco;
+    int paes;
+
+    printf("Digite quantos paes vai levar: ");
+    scanf("%d",&amp;paes);
+
+    printf("Digite qual o preco: ");
+    scanf("%f",&amp;preco);
+
+    total = paes * preco;
+
+    printf("O total e: %f",total);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite quantos paes vai levar: ");
+      int paes = int.Parse(Console.ReadLine());
+
+      Console.Write("Digite qual o preco: ");
+      float preco = float.Parse(Console.ReadLine());
+
+      float total = paes * preco;
+      Console.WriteLine("O total e: " + total);
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Exercício 02 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    int n, potencia;
+
+    printf("Digite um numero n: ");
+    scanf("%d",&amp;n);
+
+    potencia = n*n*n;
+
+    printf("A potencia e: %d",potencia);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite um numero n: ");
+      int n = int.Parse(Console.ReadLine());
+
+      int potencia = n * n * n;
+      Console.WriteLine("A potencia e: " + potencia);
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Exercício 03 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    float HT, VH, PD, SB, TD, SL;
+
+    printf("Digite HT: ");
+    scanf("%f",&amp;HT);
+
+    printf("Digite VH: ");
+    scanf("%f",&amp;VH);
+
+    printf("Digite PD: ");
+    scanf("%f",&amp;PD);
+
+    SB = HT * VH;
+    TD = SB - (SB*(PD/100));
+    SL = SB - TD;
+
+    printf("\nO valor do SB: %.2f",SB);
+    printf("\nO valor do TD: %.2f",TD);
+    printf("\nO valor do SL: %.2f",SL);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite HT: ");
+      float HT = float.Parse(Console.ReadLine());
+
+      Console.Write("Digite VH: ");
+      float VH = float.Parse(Console.ReadLine());
+
+      Console.Write("Digite PD: ");
+      float PD = float.Parse(Console.ReadLine());
+
+      float SB = HT * VH;
+      float TD = SB - (SB * (PD / 100));
+      float SL = SB - TD;
+
+      Console.WriteLine("O valor do SB: " + SB.ToString("F2"));
+      Console.WriteLine("O valor do TD: " + TD.ToString("F2"));
+      Console.WriteLine("O valor do SL: " + SL.ToString("F2"));
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Exercício 04 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    float d, v, t;
+
+    printf("Digite o valor da velocidade: ");
+    scanf("%f",&amp;v);
+
+    printf("Digite o valor do tempo: ");
+    scanf("%f",&amp;t);
+
+    d = v * t;
+
+    printf("\nO valor da distancia e: %.2f",d);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite o valor da velocidade: ");
+      float v = float.Parse(Console.ReadLine());
+
+      Console.Write("Digite o valor do tempo: ");
+      float t = float.Parse(Console.ReadLine());
+
+      float d = v * t;
+      Console.WriteLine("O valor da distancia e: " + d.ToString("F2"));
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Exercício 05 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    int a, b, temp;
+
+    printf("Digite o valor de A: ");
+    scanf("%d",&amp;a);
+
+    printf("Digite o valor de B: ");
+    scanf("%d",&amp;b);
+
+    temp = a;
+    a = b;
+    b = temp;
+
+    printf("\nO valor de A: %d",a);
+    printf("\nO valor de B: %d",b);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite o valor de A: ");
+      int a = int.Parse(Console.ReadLine());
+
+      Console.Write("Digite o valor de B: ");
+      int b = int.Parse(Console.ReadLine());
+
+      int temp = a;
+      a = b;
+      b = temp;
+
+      Console.WriteLine("O valor de A: " + a);
+      Console.WriteLine("O valor de B: " + b);
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Exercício 06 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    int min;
+    float litros;
+
+    printf("Digite quantos minutos a torneira ficou aberta: ");
+    scanf("%d",&amp;min);
+
+    litros = min*30;
+
+    printf("\nO total de litros e: %.2f",litros);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite quantos minutos a torneira ficou aberta: ");
+      int min = int.Parse(Console.ReadLine());
+
+      float litros = min * 30;
+      Console.WriteLine("O total de litros e: " + litros.ToString("F2"));
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Exercício 07 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    float total, km;
+
+    printf("Digite quantos km rodou: ");
+    scanf("%f",&amp;km);
+
+    total = 5.0 + (km * 0.80);
+
+    printf("O total e: %.2f",total);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite quantos km rodou: ");
+      float km = float.Parse(Console.ReadLine());
+
+      float total = 5.0f + (km * 0.80f);
+      Console.WriteLine("O total e: " + total.ToString("F2"));
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Exercício 08 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    float precoOriginal, precoDesconto;
+
+    printf("Digite o preco da mercadoria: ");
+    scanf("%f",&amp;precoOriginal);
+
+    precoDesconto = precoOriginal-(precoOriginal*(0.18));
+
+    printf("O preco com desconto e: %.2f",precoDesconto);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite o preco da mercadoria: ");
+      float precoOriginal = float.Parse(Console.ReadLine());
+
+      float precoDesconto = precoOriginal - (precoOriginal * 0.18f);
+      Console.WriteLine("O preco com desconto e: " + precoDesconto.ToString("F2"));
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Exercício 09 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    float vD, acrescimo, vA;
+
+    printf("Digite o valor da divida: ");
+    scanf("%f",&amp;vD);
+
+    printf("Digite o valor do acrescimo: ");
+    scanf("%f",&amp;acrescimo);
+
+    vA = vD +(vD*(acrescimo/100));
+
+    printf("O valor da divida atual e: %.2f",vA);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite o valor da divida: ");
+      float vD = float.Parse(Console.ReadLine());
+
+      Console.Write("Digite o valor do acrescimo: ");
+      float acrescimo = float.Parse(Console.ReadLine());
+
+      float vA = vD + (vD * (acrescimo / 100));
+      Console.WriteLine("O valor da divida atual e: " + vA.ToString("F2"));
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Exercício 10 - C e C#</h2>
+      <p>C:</p>
+      <pre><code>#include &lt;stdio.h&gt;
+  int main(){
+    int meninas, meninos, total;
+
+    printf("Digite quantas meninas estao na sala: ");
+    scanf("%d",&amp;meninas);
+
+    meninos = meninas / (80/20);
+
+    total = meninas + meninos;
+
+    printf("\nMeninas: %d",meninas);
+    printf("\nMeninos: %d",meninos);
+    printf("\nTotal: %d",total);
+
+    return 0;
+  }</code></pre>
+      <p>Versão em C#:</p>
+      <pre><code>using System;
+
+  class Program
+  {
+    static void Main()
+    {
+      Console.Write("Digite quantas meninas estao na sala: ");
+      int meninas = int.Parse(Console.ReadLine());
+
+      int meninos = meninas / (80 / 20);
+      int total = meninas + meninos;
+
+      Console.WriteLine("Meninas: " + meninas);
+      Console.WriteLine("Meninos: " + meninos);
+      Console.WriteLine("Total: " + total);
+    }
+  }</code></pre>
+    </section>
+
+    <section>
+      <h2>Resumo</h2>
+      <p>A lógica dos exercícios em C continua útil em C#. A sintaxe muda em pontos de entrada e saída, conversão de tipos e organização do programa.</p>
+      <p>A partir da próxima aula, o conteúdo entra em orientação a objetos com classes, objetos, atributos e métodos.</p>
+    </section>
+
+    <section>
+      <h2>Atividade</h2>
+      <p>Escolha um exercício da lista e escreva, em palavras simples, como ele fica em C#.</p>
+    </section>
+  </article>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula 16 - Conexao com banco em C#</title>
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Aula 16 - Conexao com banco em C#</h1>
+      <p>Objetivo: abrir conexao, executar comando e fechar conexao.</p>
+    </header>
+
+    <section>
+      <h2>Conceitos desta aula</h2>
+      <ul><li>Connection string</li><li>SqlConnection</li><li>SqlCommand</li></ul>
+    </section>
+
+    <section>
+      <h2>Definicoes</h2>
+      <p>Connection string identifica o banco. SqlConnection abre conexao. SqlCommand executa comandos SQL.</p>
+    </section>
+
+    <section>
+      <h2>Explicacao curta</h2>
+      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    </section>
+
+    <section>
+      <h2>Exemplo curto</h2>
+      <pre><code>using var conexao = new SqlConnection(connectionString);
+conexao.Open();
+using var comando = new SqlCommand("SELECT 1", conexao);
+var resultado = comando.ExecuteScalar();</code></pre>
+    </section>
+
+    <section>
+      <h2>Resumo</h2>
+      <p>Conexao deve ser aberta e fechada com controle.</p>
+    </section>
+
+    <section>
+      <h2>Atividade</h2>
+      <p>Escreva o fluxo: abrir conexao, executar consulta, fechar conexao.</p>
+    </section>
+  </article>
+</body>
+</html>
+

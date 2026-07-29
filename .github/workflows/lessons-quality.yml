@@ -1,0 +1,47 @@
+name: Validate Lessons Structure
+
+on:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "material/html-moodle/lessons/**"
+      - ".github/workflows/lessons-quality.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "material/html-moodle/lessons/**"
+      - ".github/workflows/lessons-quality.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate lesson files and index links
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          lessons_dir="material/html-moodle/lessons"
+          test -d "$lessons_dir"
+          test -f "$lessons_dir/index.html"
+
+          for i in $(seq -w 1 20); do
+            file="$lessons_dir/lesson0${i}.html"
+            test -f "$file"
+            grep -qi "<title>" "$file"
+            grep -qi "<h1>" "$file"
+          done
+
+          for i in $(seq -w 1 20); do
+            link="lesson0${i}.html"
+            grep -q "$link" "$lessons_dir/index.html"
+          done
+
+          echo "Estrutura de lessons validada com sucesso."

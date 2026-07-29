@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula 11 - Polimorfismo</title>
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Aula 11 - Polimorfismo</h1>
+      <p>Objetivo: usar o mesmo metodo com comportamentos diferentes.</p>
+    </header>
+
+    <section>
+      <h2>Conceitos desta aula</h2>
+      <ul><li>Polimorfismo</li><li>Sobrescrita</li><li>virtual</li><li>override</li></ul>
+    </section>
+
+    <section>
+      <h2>Definicoes</h2>
+      <p>Polimorfismo permite tratar objetos diferentes por uma referencia comum.</p>
+    </section>
+
+    <section>
+      <h2>Explicacao curta</h2>
+      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    </section>
+
+    <section>
+      <h2>Exemplo curto</h2>
+      <pre><code>class Animal
+{
+    public virtual void Som() { Console.WriteLine("Som"); }
+}
+
+class Gato : Animal
+{
+    public override void Som() { Console.WriteLine("Miau"); }
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>Resumo</h2>
+      <p>Polimorfismo melhora extensao sem quebrar codigo existente.</p>
+    </section>
+
+    <section>
+      <h2>Atividade</h2>
+      <p>Crie duas classes derivadas sobrescrevendo o mesmo metodo.</p>
+    </section>
+  </article>
+</body>
+</html>
+

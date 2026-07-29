@@ -1,0 +1,52 @@
+name: Deploy Lessons to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "material/html-moodle/lessons/**"
+      - ".github/workflows/pages-deploy.yml"
+  workflow_dispatch:
+    inputs:
+      comando:
+        description: "Use 'publicacao completa' para disparo manual padrao"
+        required: false
+        default: "publicacao completa"
+  repository_dispatch:
+    types: ["publicacao-completa"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure lessons folder exists
+        run: |
+          test -d material/html-moodle/lessons
+          test -f material/html-moodle/lessons/index.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact (lessons)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: material/html-moodle/lessons
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

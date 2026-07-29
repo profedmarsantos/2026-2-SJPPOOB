@@ -1,0 +1,44 @@
+name: Publicacao Completa Command
+
+on:
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      comando:
+        description: "Comando para forcar publicacao (esperado: publicacao completa)"
+        required: true
+        default: "publicacao completa"
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  trigger-publicacao-completa:
+    if: >-
+      (github.event_name == 'issue_comment' &&
+      (contains(github.event.comment.body, 'publicacao completa') ||
+      contains(github.event.comment.body, 'publicação completa'))) ||
+      (github.event_name == 'workflow_dispatch' &&
+      (github.event.inputs.comando == 'publicacao completa' ||
+      github.event.inputs.comando == 'publicação completa'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Pages deploy workflow
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const defaultBranch = context.payload.repository.default_branch;
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'pages-deploy.yml',
+              ref: defaultBranch,
+              inputs: {
+                comando: 'publicacao completa'
+              }
+            });
+
+      - name: Done
+        run: echo "Publicacao completa solicitada. Workflow de deploy disparado."
