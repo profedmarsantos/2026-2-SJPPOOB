@@ -19,11 +19,9 @@ Write-Host "Configurando branch principal..."
 git checkout -B $Branch
 
 $hasOrigin = $false
-try {
-  git remote get-url origin | Out-Null
+git remote get-url origin *> $null
+if ($LASTEXITCODE -eq 0) {
   $hasOrigin = $true
-} catch {
-  $hasOrigin = $false
 }
 
 if ($hasOrigin) {
