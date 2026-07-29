@@ -4,52 +4,130 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aula 02 - Introducao a programacao orientada a objetos</title>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
 <body>
   <article>
     <header>
       <h1>Aula 02 - Introducao a programacao orientada a objetos</h1>
-      <p>Objetivo: iniciar orientacao a objetos em C# e definir os termos principais.</p>
+      <p>Objetivo: entender o que e POO e usar os conceitos de classe e objeto para modelar situacoes reais em C#.</p>
     </header>
 
     <section>
-      <h2>Conceitos desta aula</h2>
-      <ul><li>Programacao orientada a objetos</li><li>Classe</li><li>Objeto</li><li>Atributo</li><li>Metodo</li></ul>
+      <h2>O que muda quando entramos em POO</h2>
+      <p>Na programacao estruturada, voce pensa primeiro em funcoes e passos. Na <strong>programacao orientada a objetos</strong>, voce organiza o sistema em <strong>modelos de entidades</strong> e nas acoes dessas entidades.</p>
+      <p>Em outras palavras: em vez de pensar apenas no que o programa faz, voce tambem pensa em <strong>quem</strong> participa do problema (Aluno, Produto, Conta, Pedido) e <strong>quais dados e comportamentos</strong> cada participante possui.</p>
     </section>
 
     <section>
-      <h2>Definicoes</h2>
-      <p>Programacao orientada a objetos organiza o programa em classes. Classe define dados e acoes. Objeto e uma criacao da classe.</p>
+      <h2>Conceitos essenciais desta aula</h2>
+      <div class="keywords">
+        <span>Classe</span>
+        <span>Objeto</span>
+        <span>Atributo</span>
+        <span>Metodo</span>
+        <span>Instancia</span>
+      </div>
+      <p><strong>Classe</strong> e a definicao de um modelo de codigo que iremos reutilizar sempre que precisarmos representar algo da vida real mais de uma vez.</p>
+      <p><strong>Objeto</strong> e uma instancia concreta criada a partir da classe.</p>
+      <p><strong>Atributo</strong> representa uma informacao do objeto (exemplo: nome, preco, saldo).</p>
+      <p><strong>Metodo</strong> representa uma acao que o objeto sabe executar.</p>
     </section>
 
     <section>
-      <h2>Explicacao curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+      <h2>Classe como modelo reutilizavel</h2>
+      <p>Imagine que uma escola precisa guardar dados de varios alunos. Em vez de criar variaveis separadas para cada aluno, criamos uma <strong>classe Aluno</strong> como modelo. Depois, geramos quantos objetos forem necessarios.</p>
+      <div class="note">
+        Pense assim: a classe e como uma <strong>planta tecnica</strong>. O objeto e a construcao real feita com essa planta.
+      </div>
+      <p>Esse modelo facilita manutencao, leitura e crescimento do sistema.</p>
     </section>
 
     <section>
-      <h2>Exemplo curto</h2>
-      <pre><code>class Produto
+      <h2>Primeiro exemplo completo</h2>
+      <p>Neste exemplo, a classe define os dados e uma acao. Em seguida, criamos dois objetos diferentes do mesmo modelo.</p>
+      <pre><code data-lang="csharp">using System;
+
+class Aluno
 {
     public string Nome;
-    public decimal Preco;
+    public int Idade;
+
+    public void ExibirDados()
+    {
+        Console.WriteLine("Nome: " + Nome + " | Idade: " + Idade);
+    }
 }
 
-Produto p = new Produto();
-p.Nome = "Caderno";
-p.Preco = 12.50m;</code></pre>
+class Program
+{
+    static void Main()
+    {
+        Aluno a1 = new Aluno();
+        a1.Nome = "Ana";
+        a1.Idade = 15;
+
+        Aluno a2 = new Aluno();
+        a2.Nome = "Bruno";
+        a2.Idade = 16;
+
+        a1.ExibirDados();
+        a2.ExibirDados();
+    }
+}</code></pre>
+      <p>Observe o reaproveitamento: uma unica classe gerou dois objetos com valores diferentes.</p>
     </section>
 
     <section>
-      <h2>Resumo</h2>
-      <p>POO comeca com classe e objeto. Esta base sera usada em todo o curso.</p>
+      <h2>Passo a passo para leitura do codigo</h2>
+      <ol>
+        <li>Definimos a <strong>classe Aluno</strong> com atributos <strong>Nome</strong> e <strong>Idade</strong>.</li>
+        <li>Criamos o metodo <strong>ExibirDados</strong> para mostrar as informacoes.</li>
+        <li>No Main, criamos os objetos <strong>a1</strong> e <strong>a2</strong> usando <strong>new</strong>.</li>
+        <li>Preenchemos cada objeto com dados proprios.</li>
+        <li>Chamamos o mesmo metodo para cada objeto.</li>
+      </ol>
+      <p>Esse processo sera repetido ao longo da disciplina em modelos cada vez mais completos.</p>
     </section>
 
     <section>
-      <h2>Atividade</h2>
-      <p>Crie uma classe Aluno com Nome e Idade.</p>
+      <h2>Comparacao curta: variaveis soltas x classe</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Sem classe</th>
+            <th>Com classe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Muitas variaveis espalhadas</td>
+            <td>Dados agrupados por entidade</td>
+          </tr>
+          <tr>
+            <td>Repeticao de blocos parecidos</td>
+            <td>Reaproveitamento de modelo</td>
+          </tr>
+          <tr>
+            <td>Manutencao dificil quando cresce</td>
+            <td>Estrutura mais organizada e escalavel</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Resumo da aula</h2>
+      <p>POO organiza o codigo por modelos reutilizaveis. A <strong>classe</strong> define o formato e o comportamento; o <strong>objeto</strong> representa um caso real desse formato.</p>
+      <p>Com isso, o codigo fica mais facil de entender, manter e expandir.</p>
+    </section>
+
+    <section>
+      <h2>Atividade guiada</h2>
+      <p>Crie uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Preco</strong> e um metodo <strong>Exibir</strong> para mostrar os dados.</p>
+      <p>Depois crie dois objetos diferentes e apresente os resultados na tela.</p>
     </section>
   </article>
 </body>
 </html>
-
