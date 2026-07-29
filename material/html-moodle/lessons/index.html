@@ -6,15 +6,16 @@
   <title>Indice das Aulas - 2026-2-SJPPOOB</title>
   <style>
     :root {
-      --bg-1: #f8fbff;
-      --bg-2: #eef5ff;
-      --panel: #ffffff;
-      --text: #16324a;
-      --muted: #45627a;
-      --line: #d6e5f5;
-      --accent: #0a7ea4;
-      --accent-2: #0f9f71;
-      --shadow: 0 10px 30px rgba(10, 48, 74, 0.10);
+      --bg-1: #d3d3ff;
+      --bg-2: #e4e6ff;
+      --panel: #ececff;
+      --text: #1f2340;
+      --muted: #3f4468;
+      --line: #c5c8f6;
+      --accent: #2f7fdf;
+      --accent-2: #4a9f67;
+      --warm: #f2c14e;
+      --shadow: 0 10px 30px rgba(38, 47, 117, 0.16);
       --radius: 14px;
     }
 
@@ -25,7 +26,7 @@
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 10% 0%, #ffffff 0%, transparent 40%),
+        radial-gradient(circle at 10% 0%, #f3f4ff 0%, transparent 40%),
         linear-gradient(160deg, var(--bg-1), var(--bg-2));
       min-height: 100vh;
     }
@@ -37,8 +38,8 @@
     }
 
     .hero {
-      background: linear-gradient(120deg, #0f4365, #0a7ea4 50%, #0f9f71);
-      color: #fff;
+      background: linear-gradient(120deg, #2f3878, #3f57b8 52%, #4a9f67);
+      color: #f8f9ff;
       border-radius: var(--radius);
       padding: 24px;
       box-shadow: var(--shadow);
@@ -66,13 +67,14 @@
     .list-title {
       margin: 26px 0 12px;
       font-size: 1.25rem;
-      color: #0f4365;
+      color: #262d63;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+      counter-reset: lesson;
     }
 
     .card {
@@ -92,7 +94,14 @@
     .card h2 {
       margin: 0 0 8px;
       font-size: 1.02rem;
-      color: #12334b;
+      color: #1f2556;
+      counter-increment: lesson;
+    }
+
+    .card h2::before {
+      content: counter(lesson, decimal-leading-zero) ". ";
+      color: var(--accent);
+      font-weight: 700;
     }
 
     .card p {
@@ -105,7 +114,7 @@
     .card a {
       display: inline-block;
       text-decoration: none;
-      color: #fff;
+      color: #f8f9ff;
       background: linear-gradient(120deg, var(--accent), var(--accent-2));
       padding: 8px 12px;
       border-radius: 8px;
@@ -120,7 +129,7 @@
 
     footer {
       margin-top: 24px;
-      color: #3f5f78;
+      color: #3e4471;
       font-size: 0.9rem;
     }
 
