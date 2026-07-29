@@ -18,8 +18,10 @@
 - Garantir contraste alto entre texto e fundo (preferencia por texto escuro para conteudo longo).
 - Fonte padrao do projeto: Atkinson Hyperlegible.
 - Incluir painel vertical no canto inferior direito com botoes: +, -, A, B, C, D, E, F.
+- Botoes circulares de acessibilidade devem permanecer pequenos (referencia atual: cerca de 12px de diametro) para nao poluir a tela.
 - Botoes de fonte devem mapear para: A Atkinson Hyperlegible, B OpenDyslexic, C Calibri, D Verdana, E Helvetica, F Arial.
 - Cada botao de fonte deve exibir hint com o nome da fonte no hover e aplicar mudanca no clique.
+- Ao clicar em cada botao de fonte, a familia selecionada deve ser aplicada de forma deterministica ao texto da pagina.
 - Botoes + e - devem aumentar/reduzir o tamanho da fonte de forma progressiva por cliques sucessivos.
 - Todas as secoes das aulas devem ser numeradas ou hierarquizadas para facilitar referencia do aluno.
 

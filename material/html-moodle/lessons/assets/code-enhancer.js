@@ -8,6 +8,15 @@
   var STEP_SCALE = 0.05;
 
   var fontMap = {
+    A: '"Atkinson Hyperlegible", "Calibri", "Verdana", "Helvetica", "Arial", sans-serif',
+    B: '"OpenDyslexic", "Atkinson Hyperlegible", "Verdana", "Arial", sans-serif',
+    C: '"Calibri", "Atkinson Hyperlegible", "Verdana", "Helvetica", "Arial", sans-serif',
+    D: '"Verdana", "Calibri", "Helvetica", "Arial", sans-serif',
+    E: '"Helvetica", "Arial", "Verdana", sans-serif',
+    F: '"Arial", "Helvetica", "Verdana", sans-serif'
+  };
+
+  var fontHint = {
     A: "Atkinson Hyperlegible",
     B: "OpenDyslexic",
     C: "Calibri",
@@ -94,6 +103,7 @@
 
     var selected = fontMap[choice] ? choice : "A";
     body.classList.add("font-" + selected);
+    document.documentElement.style.setProperty("--chosen-font", fontMap[selected]);
     localStorage.setItem(STORAGE_KEY_FONT, selected);
 
     var buttons = document.querySelectorAll(".access-btn[data-font-key]");
@@ -139,7 +149,7 @@
     panel.appendChild(minus);
 
     Object.keys(fontMap).forEach(function (key) {
-      var fontName = fontMap[key];
+      var fontName = fontHint[key];
       var btn = createButton(key, fontName);
       btn.dataset.fontKey = key;
       btn.addEventListener("click", function () {

@@ -17,13 +17,31 @@
   --radius-sm: 8px;
   --shadow: 0 14px 30px rgba(11, 30, 45, 0.09);
   --font-scale: 1;
+  --chosen-font: "Atkinson Hyperlegible", "Calibri", "Verdana", "Helvetica", "Arial", sans-serif;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap");
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("https://cdn.jsdelivr.net/npm/@fontsource/atkinson-hyperlegible/files/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("https://cdn.jsdelivr.net/npm/@fontsource/atkinson-hyperlegible/files/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "OpenDyslexic";
-  src: local("OpenDyslexic"), local("OpenDyslexic-Regular");
+  src: url("https://cdn.jsdelivr.net/npm/@fontsource/open-dyslexic/files/open-dyslexic-latin-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
 
 * {
@@ -37,33 +55,9 @@ body {
     radial-gradient(circle at 90% 5%, #e6ecff 0%, transparent 36%),
     radial-gradient(circle at 10% 0%, #dde2ff 0%, transparent 40%),
     var(--bg);
-  font-family: "Atkinson Hyperlegible", "Calibri", "Verdana", "Helvetica", "Arial", sans-serif;
+  font-family: var(--chosen-font);
   font-size: calc(1rem * var(--font-scale));
   line-height: 1.62;
-}
-
-body.font-A {
-  font-family: "Atkinson Hyperlegible", "Calibri", "Verdana", "Helvetica", "Arial", sans-serif;
-}
-
-body.font-B {
-  font-family: "OpenDyslexic", "Atkinson Hyperlegible", "Verdana", "Arial", sans-serif;
-}
-
-body.font-C {
-  font-family: "Calibri", "Atkinson Hyperlegible", "Verdana", "Helvetica", "Arial", sans-serif;
-}
-
-body.font-D {
-  font-family: "Verdana", "Calibri", "Helvetica", "Arial", sans-serif;
-}
-
-body.font-E {
-  font-family: "Helvetica", "Arial", "Verdana", sans-serif;
-}
-
-body.font-F {
-  font-family: "Arial", "Helvetica", "Verdana", sans-serif;
 }
 
 article {
@@ -205,17 +199,18 @@ th {
 }
 
 .access-btn {
-  width: 34px;
-  height: 34px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   border: 1px solid #9ca5ec;
   background: #eef0ff;
   color: #222852;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.34rem;
   line-height: 1;
   cursor: pointer;
   box-shadow: 0 3px 9px rgba(33, 40, 98, 0.22);
+  padding: 0;
 }
 
 .access-btn:hover,
