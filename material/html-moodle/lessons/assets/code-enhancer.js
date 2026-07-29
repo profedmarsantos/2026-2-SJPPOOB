@@ -34,13 +34,30 @@
 
   function tokenize(line) {
     var escaped = escapeHtml(line);
+    var placeholders = [];
 
-    escaped = escaped.replace(/(\/\/.*)$/g, '<span class="token-comment">$1</span>');
-    escaped = escaped.replace(/("(?:[^"\\]|\\.)*")/g, '<span class="token-string">$1</span>');
+    function stash(match, className) {
+      var token = "__TOK" + placeholders.length + "__";
+      placeholders.push({ token: token, html: '<span class="' + className + '">' + match + "</span>" });
+      return token;
+    }
+
+    escaped = escaped.replace(/("(?:[^"\\]|\\.)*")/g, function (match) {
+      return stash(match, "token-string");
+    });
+
+    escaped = escaped.replace(/(\/\/.*)$/g, function (match) {
+      return stash(match, "token-comment");
+    });
+
     escaped = escaped.replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="token-number">$1</span>');
     escaped = escaped.replace(/\b(int|float|double|char|string|bool|void|class|struct|return|if|else|for|while|do|switch|case|break|continue|public|private|protected|static|new|using|namespace|const|virtual|override|abstract|interface|var|decimal)\b/g, '<span class="token-keyword">$1</span>');
     escaped = escaped.replace(/\b(Console|Math|List|SqlConnection|SqlCommand|Program|Main)\b/g, '<span class="token-type">$1</span>');
     escaped = escaped.replace(/\b([A-Za-z_][A-Za-z0-9_]*)\s*(?=\()/g, '<span class="token-func">$1</span>');
+
+    placeholders.forEach(function (item) {
+      escaped = escaped.replace(item.token, item.html);
+    });
 
     return escaped;
   }
