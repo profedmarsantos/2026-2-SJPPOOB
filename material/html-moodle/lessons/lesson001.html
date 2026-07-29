@@ -3,38 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aula 01 - Transicao de C para C#</title>
+  <title>Aula 01 - Transição de C para C#</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
 </head>
 <body>
   <article>
     <header>
-      <h1>Aula 01 - Transicao de C para C#</h1>
-      <p>Objetivo: compreender como reaproveitar a mesma logica aprendida em C, mudando a sintaxe e a organizacao do codigo para C#.</p>
+      <h1>Aula 01 - Transição de C para C#</h1>
+      <p>Objetivo: compreender como reaproveitar a mesma lógica aprendida em C, mudando a sintaxe e a organização do código para C#.</p>
     </header>
 
     <section>
-      <h2>Por que esta transicao e importante</h2>
-      <p>Voce nao esta recomecando do zero. O que ja aprendeu em <strong>C</strong> continua valendo: leitura de dados, calculos, estruturas de decisao, repeticao e organizacao em funcoes.</p>
-      <p>O que muda e a forma de escrever. Em C#, o codigo fica mais organizado em <strong>tipos</strong> e <strong>metodos</strong>, com bibliotecas padrao que facilitam tarefas comuns.</p>
+      <h2>Por que esta Transição e importante</h2>
+      <p>Você não está recomeçando do zero. O que já aprendeu em <strong>C</strong> continua valendo: leitura de dados, cálculos, estruturas de decisão, repetição e organização em funções.</p>
+      <p>O que muda é a forma de escrever. Em C#, o código fica mais organizado em <strong>tipos</strong> e <strong>métodos</strong>, com bibliotecas padrão que facilitam tarefas comuns.</p>
       <div class="note">
-        A regra principal desta aula e simples: <strong>a logica permanece</strong>, a <strong>sintaxe muda</strong>.
+        A regra principal desta aula e simples: <strong>a lógica permanece</strong>, a <strong>sintaxe muda</strong>.
       </div>
     </section>
 
     <section>
       <h2>Conceitos centrais</h2>
       <div class="keywords">
-        <span>Logica</span>
+        <span>lógica</span>
         <span>Sintaxe</span>
-        <span>Entrada e Saida</span>
-        <span>Conversao de tipos</span>
+        <span>Entrada e Saída</span>
+        <span>Conversão de tipos</span>
         <span>Estruturas de controle</span>
       </div>
-      <p><strong>Logica</strong> e a sequencia de passos para resolver um problema.</p>
-      <p><strong>Sintaxe</strong> e o jeito correto de escrever esses passos em cada linguagem.</p>
-      <p><strong>Conversao de tipos</strong> em C# aparece quando voce le texto com <strong>Console.ReadLine()</strong> e transforma em numero.</p>
+      <p><strong>lógica</strong> é a sequência de passos para resolver um problema.</p>
+      <p><strong>Sintaxe</strong> é o jeito correto de escrever esses passos em cada linguagem.</p>
+      <p><strong>Conversão de tipos</strong> em C# aparece quando você lê texto com <strong>Console.ReadLine()</strong> e transforma em número.</p>
     </section>
 
     <section>
@@ -49,11 +49,11 @@
         </thead>
         <tbody>
           <tr><td><code>#include &lt;stdio.h&gt;</code></td><td><code>using System;</code></td><td>Usar recursos da biblioteca</td></tr>
-          <tr><td><code>printf()</code></td><td><code>Console.WriteLine()</code></td><td>Exibir informacoes</td></tr>
-          <tr><td><code>scanf()</code></td><td><code>Console.ReadLine()</code> + parse</td><td>Ler entrada do usuario</td></tr>
-          <tr><td><code>int main()</code></td><td><code>static void Main()</code></td><td>Ponto inicial da execucao</td></tr>
-          <tr><td><code>if / else</code></td><td><code>if / else</code></td><td>Tomada de decisao</td></tr>
-          <tr><td><code>for, while, do while</code></td><td><code>for, while, do while</code></td><td>Repeticao</td></tr>
+          <tr><td><code>printf()</code></td><td><code>Console.WriteLine()</code></td><td>Exibir informações</td></tr>
+          <tr><td><code>scanf()</code></td><td><code>Console.ReadLine()</code> + parse</td><td>Ler entrada do usuário</td></tr>
+          <tr><td><code>int main()</code></td><td><code>static void Main()</code></td><td>Ponto inicial da execução</td></tr>
+          <tr><td><code>if / else</code></td><td><code>if / else</code></td><td>Tomada de decisão</td></tr>
+          <tr><td><code>for, while, do while</code></td><td><code>for, while, do while</code></td><td>repetição</td></tr>
         </tbody>
       </table>
     </section>
@@ -97,8 +97,8 @@ class Program
     </section>
 
     <section>
-      <h2>Decisao e repeticao: a logica continua igual</h2>
-      <p>Quando voce aprendeu <strong>if</strong>, <strong>for</strong> e <strong>while</strong> em C, ja aprendeu o raciocinio principal. Em C#, voce usa os mesmos blocos de decisao e repeticao.</p>
+      <h2>Decisão e repetição: a lógica continua igual</h2>
+      <p>Quando você aprendeu <strong>if</strong>, <strong>for</strong> e <strong>while</strong> em C, já aprendeu o raciocínio principal. Em C#, você usa os mesmos blocos de decisão e repetição.</p>
       <pre><code data-lang="csharp">using System;
 
 class Program
@@ -118,7 +118,7 @@ class Program
         }
     }
 }</code></pre>
-      <p>O codigo acima usa a mesma ideia que voce ja praticou: percorrer valores e classificar cada um por uma condicao.</p>
+      <p>O código acima usa a mesma ideia que voce ja praticou: percorrer valores e classificar cada um por uma condicao.</p>
     </section>
 
     <section>
@@ -127,14 +127,14 @@ class Program
         <li>Esquecer que <strong>ReadLine</strong> retorna texto.</li>
         <li>Tentar usar <strong>scanf</strong> em C#.</li>
         <li>Confundir <strong>Write</strong> com <strong>WriteLine</strong>.</li>
-        <li>Nao validar entrada quando o usuario pode digitar valor invalido.</li>
+        <li>não validar entrada quando o usuario pode digitar valor invalido.</li>
       </ol>
-      <p>Com pratica, esses pontos viram rotina. O mais importante e manter o foco na sequencia logica da solucao.</p>
+      <p>Com pratica, esses pontos viram rotina. O mais importante e manter o foco na sequencia lógica da solucao.</p>
     </section>
 
     <section>
       <h2>Resumo da aula</h2>
-      <p>A transicao de C para C# nao exige abandonar o que voce sabe. Voce aproveita a base de logica e aprende uma nova forma de expressar essa base.</p>
+      <p>A Transição de C para C# não exige abandonar o que voce sabe. Voce aproveita a base de lógica e aprende uma nova forma de expressar essa base.</p>
       <p>Ao final desta etapa, voce deve conseguir:</p>
       <ul>
         <li>Escrever entrada e saida em C#.</li>
@@ -145,7 +145,7 @@ class Program
 
     <section>
       <h2>Atividade</h2>
-      <p>Escolha um exercicio em C que voce ja resolveu e reescreva em C# mantendo a mesma logica. Depois, anote em duas colunas:</p>
+      <p>Escolha um exercicio em C que voce ja resolveu e reescreva em C# mantendo a mesma lógica. Depois, anote em duas colunas:</p>
       <ul>
         <li>Comandos usados em C.</li>
         <li>Comandos equivalentes em C#.</li>

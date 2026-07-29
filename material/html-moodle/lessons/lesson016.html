@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aula 16 - Conexao com banco em C#</title>
+  <title>Aula 16 - Conexão com banco em C#</title>
 <link rel="stylesheet" href="assets/theme.css">
 <script defer src="assets/code-enhancer.js"></script>
 </head>
 <body>
   <article>
     <header>
-      <h1>Aula 16 - Conexao com banco em C#</h1>
-      <p>Objetivo: abrir conexao, executar comando e fechar conexao.</p>
+      <h1>Aula 16 - Conexão com banco em C#</h1>
+      <p>Objetivo: abrir Conexão, executar comando e fechar Conexão.</p>
     </header>
 
     <section>
@@ -20,31 +20,31 @@
     </section>
 
     <section>
-      <h2>Definicoes</h2>
-      <p>Connection string identifica o banco. SqlConnection abre conexao. SqlCommand executa comandos SQL.</p>
+      <h2>Definições</h2>
+      <p>Connection string identifica o banco. SqlConnection abre Conexão. SqlCommand executa comandos SQL.</p>
     </section>
 
     <section>
-      <h2>Explicacao curta</h2>
+      <h2>Explicação curta</h2>
       <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
     </section>
 
     <section>
       <h2>Exemplo curto</h2>
-      <pre><code>using var conexao = new SqlConnection(connectionString);
-conexao.Open();
-using var comando = new SqlCommand("SELECT 1", conexao);
+      <pre><code>using var Conexão = new SqlConnection(connectionString);
+Conexão.Open();
+using var comando = new SqlCommand("SELECT 1", Conexão);
 var resultado = comando.ExecuteScalar();</code></pre>
     </section>
 
     <section>
       <h2>Resumo</h2>
-      <p>Conexao deve ser aberta e fechada com controle.</p>
+      <p>Conexão deve ser aberta e fechada com controle.</p>
     </section>
 
     <section>
       <h2>Atividade</h2>
-      <p>Escreva o fluxo: abrir conexao, executar consulta, fechar conexao.</p>
+      <p>Escreva o fluxo: abrir Conexão, executar consulta, fechar Conexão.</p>
     </section>
   </article>
 </body>

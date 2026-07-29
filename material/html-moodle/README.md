@@ -7,7 +7,7 @@ Este diretório guarda as 20 aulas em HTML simples, prontas para colar no TinyMC
 - `lesson001.html` até `lesson020.html`
 - `index.html` com índice navegável das aulas para publicação no GitHub Pages
 - `assets/theme.css` com tema visual do material
-- `assets/code-enhancer.js` para numeracao, destaque e copia de codigos
+- `assets/code-enhancer.js` para numeração, destaque e cópia de códigos
 - HTML simples, sem dependências externas
 - Um arquivo por aula
 
@@ -21,7 +21,7 @@ Workflows configurados:
 
 - `Validate Lessons Structure`: valida presença das 20 aulas e links no `index.html`.
 - `Deploy Lessons to GitHub Pages`: publica o conteúdo de `lessons` no Pages.
-- `Publicacao Completa Command`: aceita o comando de disparo e aciona o deploy.
+- `Publicação Completa Command`: aceita o comando de disparo e aciona o deploy.
 
 ## Regras editoriais do projeto
 
@@ -32,7 +32,7 @@ Workflows configurados:
 5. Todo conceito novo deve ser definido antes de aparecer no exemplo.
 6. Cada aula deve ter objetivo, definições, explicação curta, exemplo, resumo e atividade.
 7. Sempre padronizar os nomes dos exercícios em C no formato `Exercício NN`.
-8. Todo codigo deve ser exibido com numeracao de linhas, destaque de sintaxe e botao de copia.
+8. Todo código deve ser exibido com numeracao de linhas, destaque de sintaxe e botao de copia.
 9. O estilo visual deve seguir padrao de livro digital legivel e profissional.
 
 ## Ordem atual das aulas

@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aula 02 - Introducao a programacao orientada a objetos</title>
+  <title>Aula 02 - Introdução a programação orientada a objetos</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
 </head>
 <body>
   <article>
     <header>
-      <h1>Aula 02 - Introducao a programacao orientada a objetos</h1>
+      <h1>Aula 02 - Introdução a programação orientada a objetos</h1>
       <p>Objetivo: entender o que e POO e usar os conceitos de classe e objeto para modelar situacoes reais em C#.</p>
     </header>
 
     <section>
       <h2>O que muda quando entramos em POO</h2>
-      <p>Na programacao estruturada, voce pensa primeiro em funcoes e passos. Na <strong>programacao orientada a objetos</strong>, voce organiza o sistema em <strong>modelos de entidades</strong> e nas acoes dessas entidades.</p>
-      <p>Em outras palavras: em vez de pensar apenas no que o programa faz, voce tambem pensa em <strong>quem</strong> participa do problema (Aluno, Produto, Conta, Pedido) e <strong>quais dados e comportamentos</strong> cada participante possui.</p>
+      <p>Na programação estruturada, voce pensa primeiro em funcoes e passos. Na <strong>programação orientada a objetos</strong>, voce organiza o sistema em <strong>modelos de entidades</strong> e nas ações dessas entidades.</p>
+      <p>Em outras palavras: em vez de pensar apenas no que o programa faz, voce também pensa em <strong>quem</strong> participa do problema (Aluno, Produto, Conta, Pedido) e <strong>quais dados e comportamentos</strong> cada participante possui.</p>
     </section>
 
     <section>
@@ -26,13 +26,13 @@
         <span>Classe</span>
         <span>Objeto</span>
         <span>Atributo</span>
-        <span>Metodo</span>
+        <span>método</span>
         <span>Instancia</span>
       </div>
-      <p><strong>Classe</strong> e a definicao de um modelo de codigo que iremos reutilizar sempre que precisarmos representar algo da vida real mais de uma vez.</p>
+      <p><strong>Classe</strong> e a definicao de um modelo de código que iremos reutilizar sempre que precisarmos representar algo da vida real mais de uma vez.</p>
       <p><strong>Objeto</strong> e uma instancia concreta criada a partir da classe.</p>
       <p><strong>Atributo</strong> representa uma informacao do objeto (exemplo: nome, preco, saldo).</p>
-      <p><strong>Metodo</strong> representa uma acao que o objeto sabe executar.</p>
+      <p><strong>método</strong> representa uma ação que o objeto sabe executar.</p>
     </section>
 
     <section>
@@ -46,7 +46,7 @@
 
     <section>
       <h2>Primeiro exemplo completo</h2>
-      <p>Neste exemplo, a classe define os dados e uma acao. Em seguida, criamos dois objetos diferentes do mesmo modelo.</p>
+      <p>Neste exemplo, a classe define os dados e uma ação. Em seguida, criamos dois objetos diferentes do mesmo modelo.</p>
       <pre><code data-lang="csharp">using System;
 
 class Aluno
@@ -80,13 +80,13 @@ class Program
     </section>
 
     <section>
-      <h2>Passo a passo para leitura do codigo</h2>
+      <h2>Passo a passo para leitura do código</h2>
       <ol>
         <li>Definimos a <strong>classe Aluno</strong> com atributos <strong>Nome</strong> e <strong>Idade</strong>.</li>
-        <li>Criamos o metodo <strong>ExibirDados</strong> para mostrar as informacoes.</li>
+        <li>Criamos o método <strong>ExibirDados</strong> para mostrar as informações.</li>
         <li>No Main, criamos os objetos <strong>a1</strong> e <strong>a2</strong> usando <strong>new</strong>.</li>
         <li>Preenchemos cada objeto com dados proprios.</li>
-        <li>Chamamos o mesmo metodo para cada objeto.</li>
+        <li>Chamamos o mesmo método para cada objeto.</li>
       </ol>
       <p>Esse processo sera repetido ao longo da disciplina em modelos cada vez mais completos.</p>
     </section>
@@ -106,7 +106,7 @@ class Program
             <td>Dados agrupados por entidade</td>
           </tr>
           <tr>
-            <td>Repeticao de blocos parecidos</td>
+            <td>repetição de blocos parecidos</td>
             <td>Reaproveitamento de modelo</td>
           </tr>
           <tr>
@@ -119,13 +119,13 @@ class Program
 
     <section>
       <h2>Resumo da aula</h2>
-      <p>POO organiza o codigo por modelos reutilizaveis. A <strong>classe</strong> define o formato e o comportamento; o <strong>objeto</strong> representa um caso real desse formato.</p>
-      <p>Com isso, o codigo fica mais facil de entender, manter e expandir.</p>
+      <p>POO organiza o código por modelos reutilizaveis. A <strong>classe</strong> define o formato e o comportamento; o <strong>objeto</strong> representa um caso real desse formato.</p>
+      <p>Com isso, o código fica mais facil de entender, manter e expandir.</p>
     </section>
 
     <section>
       <h2>Atividade guiada</h2>
-      <p>Crie uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Preco</strong> e um metodo <strong>Exibir</strong> para mostrar os dados.</p>
+      <p>Crie uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Preco</strong> e um método <strong>Exibir</strong> para mostrar os dados.</p>
       <p>Depois crie dois objetos diferentes e apresente os resultados na tela.</p>
     </section>
   </article>

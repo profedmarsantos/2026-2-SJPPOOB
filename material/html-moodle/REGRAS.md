@@ -8,22 +8,23 @@
 - Cada aula precisa seguir a mesma estrutura editorial.
 - Os arquivos continuam com nome `lesson001.html` até `lesson020.html`.
 - Os exercícios em C devem ser nomeados no padrão `Exercício NN` dentro das aulas.
-- Todo bloco de codigo deve usar formatacao com destaque de sintaxe, numeracao de linhas e botao de copia.
-- O tema visual das paginas deve seguir o estilo livro digital: legivel, moderno e nao cansativo.
+- Todo bloco de código deve usar formatacao com destaque de sintaxe, numeracao de linhas e botao de copia.
+- O tema visual das paginas deve seguir o estilo livro digital: legivel, moderno e não cansativo.
 - Palavras importantes e conceitos-chave devem ser destacados no texto para facilitar estudo.
 - A linguagem deve ser natural, clara, direta e adequada para alunos do 1o ano do ensino medio.
+- Sempre que redigir, incluir ou editar qualquer texto, realizar verificacao ortografica e gramatical antes de finalizar.
 - Sempre que surgir nova determinacao pedagogica ou tecnica, este arquivo de regras deve ser atualizado.
 - Paleta base do projeto: lavanda `#D3D3FF`, com variacoes suaves para ambiente relaxante.
 - Para dinamismo visual, combinar lavanda com toques de amarelo/verde e azul claro, sem prejudicar leitura.
-- Garantir contraste alto entre texto e fundo (preferencia por texto escuro para conteudo longo).
+- Garantir contraste alto entre texto e fundo (preferencia por texto escuro para conteúdo longo).
 - Fonte padrao do projeto: Atkinson Hyperlegible.
 - Incluir painel vertical no canto inferior direito com botoes: +, -, A, B, C, D, E, F.
-- Botoes circulares de acessibilidade devem permanecer pequenos (referencia atual: cerca de 12px de diametro) para nao poluir a tela.
+- Botoes circulares de acessibilidade devem permanecer pequenos (referencia atual: cerca de 12px de diametro) para não poluir a tela.
 - Botoes de fonte devem mapear para: A Atkinson Hyperlegible, B OpenDyslexic, C Calibri, D Verdana, E Helvetica, F Arial.
 - Cada botao de fonte deve exibir hint com o nome da fonte no hover e aplicar mudanca no clique.
 - Ao clicar em cada botao de fonte, a familia selecionada deve ser aplicada de forma deterministica ao texto da pagina.
 - Botoes + e - devem aumentar/reduzir o tamanho da fonte de forma progressiva por cliques sucessivos.
-- Todas as secoes das aulas devem ser numeradas ou hierarquizadas para facilitar referencia do aluno.
+- Todas as seções das aulas devem ser numeradas ou hierarquizadas para facilitar referencia do aluno.
 
 ## Estrutura padrão da aula
 
@@ -36,7 +37,7 @@
 7. Resumo
 8. Atividade
 
-## Padrao tecnico de apresentacao
+## Padrao técnico de apresentacao
 
 1. Incluir `assets/theme.css` em todas as paginas de aulas.
 2. Incluir `assets/code-enhancer.js` em todas as paginas de aulas.
