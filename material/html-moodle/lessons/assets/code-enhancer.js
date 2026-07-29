@@ -1,6 +1,21 @@
 (function () {
   "use strict";
 
+  var STORAGE_KEY_SCALE = "lesson-font-scale";
+  var STORAGE_KEY_FONT = "lesson-font-choice";
+  var MIN_SCALE = 0.85;
+  var MAX_SCALE = 1.45;
+  var STEP_SCALE = 0.05;
+
+  var fontMap = {
+    A: "Atkinson Hyperlegible",
+    B: "OpenDyslexic",
+    C: "Calibri",
+    D: "Verdana",
+    E: "Helvetica",
+    F: "Arial"
+  };
+
   function escapeHtml(text) {
     return text
       .replace(/&/g, "&amp;")
@@ -50,6 +65,90 @@
         button.textContent = "Copiar";
       }, 1300);
     });
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function setScale(value) {
+    var next = clamp(value, MIN_SCALE, MAX_SCALE);
+    document.documentElement.style.setProperty("--font-scale", next.toFixed(2));
+    localStorage.setItem(STORAGE_KEY_SCALE, String(next));
+  }
+
+  function getStoredScale() {
+    var raw = parseFloat(localStorage.getItem(STORAGE_KEY_SCALE));
+    if (Number.isNaN(raw)) {
+      return 1;
+    }
+    return clamp(raw, MIN_SCALE, MAX_SCALE);
+  }
+
+  function applyFontChoice(choice) {
+    var body = document.body;
+    var keys = Object.keys(fontMap);
+    keys.forEach(function (key) {
+      body.classList.remove("font-" + key);
+    });
+
+    var selected = fontMap[choice] ? choice : "A";
+    body.classList.add("font-" + selected);
+    localStorage.setItem(STORAGE_KEY_FONT, selected);
+
+    var buttons = document.querySelectorAll(".access-btn[data-font-key]");
+    buttons.forEach(function (button) {
+      if (button.dataset.fontKey === selected) {
+        button.classList.add("active");
+      } else {
+        button.classList.remove("active");
+      }
+    });
+  }
+
+  function createButton(text, title) {
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "access-btn";
+    button.textContent = text;
+    button.title = title;
+    button.setAttribute("aria-label", title);
+    return button;
+  }
+
+  function createAccessibilityControls() {
+    if (document.querySelector(".access-controls")) {
+      return;
+    }
+
+    var panel = document.createElement("div");
+    panel.className = "access-controls";
+
+    var plus = createButton("+", "Aumentar fonte");
+    var minus = createButton("-", "Reduzir fonte");
+
+    plus.addEventListener("click", function () {
+      setScale(getStoredScale() + STEP_SCALE);
+    });
+
+    minus.addEventListener("click", function () {
+      setScale(getStoredScale() - STEP_SCALE);
+    });
+
+    panel.appendChild(plus);
+    panel.appendChild(minus);
+
+    Object.keys(fontMap).forEach(function (key) {
+      var fontName = fontMap[key];
+      var btn = createButton(key, fontName);
+      btn.dataset.fontKey = key;
+      btn.addEventListener("click", function () {
+        applyFontChoice(key);
+      });
+      panel.appendChild(btn);
+    });
+
+    document.body.appendChild(panel);
   }
 
   function enhancePre(pre) {
@@ -102,5 +201,11 @@
   document.addEventListener("DOMContentLoaded", function () {
     var blocks = document.querySelectorAll("pre");
     blocks.forEach(enhancePre);
+
+    setScale(getStoredScale());
+    createAccessibilityControls();
+
+    var savedFontChoice = localStorage.getItem(STORAGE_KEY_FONT) || "A";
+    applyFontChoice(savedFontChoice);
   });
 })();

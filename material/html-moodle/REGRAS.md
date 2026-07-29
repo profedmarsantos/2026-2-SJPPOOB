@@ -13,6 +13,12 @@
 - Palavras importantes e conceitos-chave devem ser destacados no texto para facilitar estudo.
 - A linguagem deve ser natural, clara, direta e adequada para alunos do 1o ano do ensino medio.
 - Sempre que surgir nova determinacao pedagogica ou tecnica, este arquivo de regras deve ser atualizado.
+- A cor do papel das licoes deve seguir tom de papel antigo suave, consistente em todo o material.
+- Fonte padrao do projeto: Atkinson Hyperlegible.
+- Incluir painel vertical no canto inferior direito com botoes: +, -, A, B, C, D, E, F.
+- Botoes de fonte devem mapear para: A Atkinson Hyperlegible, B OpenDyslexic, C Calibri, D Verdana, E Helvetica, F Arial.
+- Cada botao de fonte deve exibir hint com o nome da fonte no hover e aplicar mudanca no clique.
+- Botoes + e - devem aumentar/reduzir o tamanho da fonte de forma progressiva por cliques sucessivos.
 
 ## Estrutura padrão da aula
 

@@ -1,7 +1,7 @@
 :root {
-  --bg: #f4f6f8;
-  --paper: #ffffff;
-  --paper-soft: #f9fbfc;
+  --bg: #ebe5d8;
+  --paper: #f7f0de;
+  --paper-soft: #fbf5e8;
   --ink: #1e2b36;
   --muted: #526474;
   --line: #d9e0e6;
@@ -15,6 +15,14 @@
   --radius-md: 12px;
   --radius-sm: 8px;
   --shadow: 0 14px 30px rgba(11, 30, 45, 0.09);
+  --font-scale: 1;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: local("OpenDyslexic"), local("OpenDyslexic-Regular");
 }
 
 * {
@@ -25,11 +33,36 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at 90% 5%, #e8f4f1 0%, transparent 35%),
-    radial-gradient(circle at 10% 0%, #ecf4ff 0%, transparent 38%),
+    radial-gradient(circle at 90% 5%, #efe6d5 0%, transparent 34%),
+    radial-gradient(circle at 10% 0%, #f4ebdb 0%, transparent 40%),
     var(--bg);
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: "Atkinson Hyperlegible", "Calibri", "Verdana", "Helvetica", "Arial", sans-serif;
+  font-size: calc(1rem * var(--font-scale));
   line-height: 1.62;
+}
+
+body.font-A {
+  font-family: "Atkinson Hyperlegible", "Calibri", "Verdana", "Helvetica", "Arial", sans-serif;
+}
+
+body.font-B {
+  font-family: "OpenDyslexic", "Atkinson Hyperlegible", "Verdana", "Arial", sans-serif;
+}
+
+body.font-C {
+  font-family: "Calibri", "Atkinson Hyperlegible", "Verdana", "Helvetica", "Arial", sans-serif;
+}
+
+body.font-D {
+  font-family: "Verdana", "Calibri", "Helvetica", "Arial", sans-serif;
+}
+
+body.font-E {
+  font-family: "Helvetica", "Arial", "Verdana", sans-serif;
+}
+
+body.font-F {
+  font-family: "Arial", "Helvetica", "Verdana", sans-serif;
 }
 
 article {
@@ -45,7 +78,7 @@ article {
 header {
   padding: 28px 28px 22px;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(130deg, #f7fcfb, #f8fafe 55%, #f6fbf8);
+  background: linear-gradient(130deg, #f8f2e4, #f6efde 55%, #fbf5e7);
 }
 
 header h1 {
@@ -116,13 +149,13 @@ td {
 }
 
 th {
-  background: #f0f6fa;
+  background: #f2e9d4;
   color: #143e57;
 }
 
 .note {
   border-left: 4px solid var(--accent);
-  background: #eef8fa;
+  background: #f3ead7;
   padding: 12px 14px;
   border-radius: var(--radius-sm);
   margin: 10px 0;
@@ -135,13 +168,48 @@ th {
 }
 
 .keywords span {
-  background: #e8f5f2;
-  color: #155640;
-  border: 1px solid #c9e8de;
+  background: #efe5ce;
+  color: #6b4a16;
+  border: 1px solid #dbcba8;
   border-radius: 999px;
   padding: 4px 10px;
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+.access-controls {
+  position: fixed;
+  right: 12px;
+  bottom: 16px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.access-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #a99c80;
+  background: #f8f2e2;
+  color: #2d3b45;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 9px rgba(34, 32, 24, 0.2);
+}
+
+.access-btn:hover,
+.access-btn:focus {
+  background: #fefaf1;
+  transform: translateY(-1px);
+}
+
+.access-btn.active {
+  border-color: #0b7285;
+  box-shadow: 0 0 0 2px rgba(11, 114, 133, 0.18);
 }
 
 .code-block {
