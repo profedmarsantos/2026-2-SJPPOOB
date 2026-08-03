@@ -347,7 +347,7 @@
       return true;
     }
 
-    if (parent.closest("pre, code, script, style, textarea, .code-block")) {
+    if (parent.closest("pre, code, script, style, textarea, .code-block, .concept-board, .concept-note, .concept-summary, .update-log, .lesson-hero, .hero-kicker, .hero-title")) {
       return true;
     }
 
@@ -604,6 +604,19 @@
         summary.className = "concept-summary";
         summary.innerHTML = "<strong>Síntese:</strong> estes conceitos formam a base da aula e devem ser usados em conjunto durante os exercícios.";
         board.insertAdjacentElement("afterend", summary);
+      }
+    });
+  }
+
+  function normalizeUpdateLog() {
+    var logs = document.querySelectorAll("section.update-log");
+    if (logs.length === 0) {
+      return;
+    }
+
+    logs.forEach(function (log, index) {
+      if (index !== logs.length - 1) {
+        log.remove();
       }
     });
   }
@@ -958,6 +971,7 @@
     applyExerciseAlternatingBackgrounds();
     enhanceExerciseNavigationIcons();
     normalizeConceptSections();
+    normalizeUpdateLog();
 
     var blocks = document.querySelectorAll("pre");
     blocks.forEach(enhancePre);
