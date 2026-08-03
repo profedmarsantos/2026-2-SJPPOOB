@@ -2,7 +2,7 @@
 int main(){
     int meninas, meninos, total;
 
-    printf("Digite quantas meninas estão na sala: ");
+    printf("Digite quantas meninas estao na sala: ");
     scanf("%d",&meninas);
 
     meninos = meninas / (80/20);

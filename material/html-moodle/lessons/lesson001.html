@@ -1,44 +1,66 @@
-<!doctype html>
-<html lang="pt-BR">
+﻿<!doctype html>
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aula 01 - Transição de C para C#</title>
+  <title>MÃ³dulo 01 - TransiÃ§Ã£o de C para C#</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
+    <style>
+        .lesson-01 .exercise-links a,
+        .lesson-01 .nav-disabled {
+            min-width: 32px;
+            min-height: 32px;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+        }
+    </style>
 </head>
-<body>
-  <article>
-    <header>
-      <h1>Aula 01 - Transição de C para C#</h1>
-      <p>Objetivo: compreender como reaproveitar a mesma lógica aprendida em C, mudando a sintaxe e a organização do código para C#.</p>
+<body class="lesson-01">
+  <article class="lesson-page">
+    <header class="lesson-hero">
+    <p class="hero-kicker"><strong>MÃ³dulo 01</strong></p>
+      <h1 class="hero-title">TransiÃ§Ã£o de C para C#</h1>
+      <p class="hero-subtitle">Objetivo: Compreender Como Reaproveitar a Mesma LÃ³gica Aprendida em C, Mudando a Sintaxe e a OrganizaÃ§Ã£o do CÃ³digo para C#.</p>
     </header>
 
-    <section>
-      <h2>Por que esta Transição e importante</h2>
-      <p>Você não está recomeçando do zero. O que já aprendeu em <strong>C</strong> continua valendo: leitura de dados, cálculos, estruturas de decisão, repetição e organização em funções.</p>
-      <p>O que muda é a forma de escrever. Em C#, o código fica mais organizado em <strong>tipos</strong> e <strong>métodos</strong>, com bibliotecas padrão que facilitam tarefas comuns.</p>
-      <div class="note">
-        A regra principal desta aula e simples: <strong>a lógica permanece</strong>, a <strong>sintaxe muda</strong>.
-      </div>
+    <section class="lesson-section">
+      <h2>Por Que Esta TransiÃ§Ã£o e Importante</h2>
+      <p>VocÃª nÃ£o estÃ¡ recomeÃ§ando do zero. O que jÃ¡ aprendeu em <strong>C</strong> continua valendo: leitura de dados, cÃ¡lculos, estruturas de decisÃ£o, repetiÃ§Ã£o e organizaÃ§Ã£o em funÃ§Ãµes.</p>
+      <p>O que muda Ã© a forma de escrever. Em C#, o cÃ³digo fica mais organizado em <strong>tipos</strong> e <strong>mÃ©todos</strong>, com bibliotecas padrÃ£o que facilitam tarefas comuns.</p>
+      <div class="note">A regra principal desta aula Ã© simples: <strong>a lÃ³gica permanece</strong>, a <strong>sintaxe muda</strong>.</div>
     </section>
 
-    <section>
-      <h2>Conceitos centrais</h2>
-      <div class="keywords">
-        <span>lógica</span>
-        <span>Sintaxe</span>
-        <span>Entrada e Saída</span>
-        <span>Conversão de tipos</span>
-        <span>Estruturas de controle</span>
+    <section class="lesson-section">
+      <h2>Conceitos Centrais</h2>
+            <div class="concept-board" role="list" aria-label="Painel de conceitos centrais da aula">
+                <article class="concept-note" role="listitem">
+                    <h3>LÃ³gica</h3>
+                    <p>Ã‰ a ordem dos passos para resolver o problema do inÃ­cio ao fim sem pular etapas.</p>
+                </article>
+                <article class="concept-note" role="listitem">
+                    <h3>Sintaxe</h3>
+                    <p>Ã‰ a forma correta de escrever os comandos na linguagem, seguindo regras fixas.</p>
+                </article>
+                <article class="concept-note" role="listitem">
+                    <h3>Entrada e SaÃ­da</h3>
+                    <p>Entrada Ã© o dado digitado pelo usuÃ¡rio; saÃ­da Ã© o resultado exibido pelo programa na tela.</p>
+                </article>
+                <article class="concept-note" role="listitem">
+                    <h3>ConversÃ£o de Tipos</h3>
+                    <p>Em C#, transforma texto lido com <strong>Console.ReadLine()</strong> em nÃºmero para calcular.</p>
+                </article>
+                <article class="concept-note" role="listitem">
+                    <h3>Estruturas de Controle</h3>
+                    <p>Comandos como <strong>if</strong>, <strong>for</strong> e <strong>while</strong> controlam decisÃ£o e repetiÃ§Ã£o.</p>
+                </article>
       </div>
-      <p><strong>lógica</strong> é a sequência de passos para resolver um problema.</p>
-      <p><strong>Sintaxe</strong> é o jeito correto de escrever esses passos em cada linguagem.</p>
-      <p><strong>Conversão de tipos</strong> em C# aparece quando você lê texto com <strong>Console.ReadLine()</strong> e transforma em número.</p>
+            <p class="concept-summary"><strong>SÃ­ntese:</strong> a lÃ³gica que vocÃª jÃ¡ domina em C continua igual. Nesta transiÃ§Ã£o, vocÃª ajusta a sintaxe, lÃª e converte dados corretamente e escolhe estruturas de controle adequadas para cada situaÃ§Ã£o.</p>
     </section>
 
-    <section>
-      <h2>Comparacao rapida: C e C#</h2>
+        <section class="lesson-section">
+            <h2>ComparaÃ§Ã£o RÃ¡pida: C e C#</h2>
       <table>
         <thead>
           <tr>
@@ -49,108 +71,3363 @@
         </thead>
         <tbody>
           <tr><td><code>#include &lt;stdio.h&gt;</code></td><td><code>using System;</code></td><td>Usar recursos da biblioteca</td></tr>
-          <tr><td><code>printf()</code></td><td><code>Console.WriteLine()</code></td><td>Exibir informações</td></tr>
-          <tr><td><code>scanf()</code></td><td><code>Console.ReadLine()</code> + parse</td><td>Ler entrada do usuário</td></tr>
-          <tr><td><code>int main()</code></td><td><code>static void Main()</code></td><td>Ponto inicial da execução</td></tr>
-          <tr><td><code>if / else</code></td><td><code>if / else</code></td><td>Tomada de decisão</td></tr>
-          <tr><td><code>for, while, do while</code></td><td><code>for, while, do while</code></td><td>repetição</td></tr>
+          <tr><td><code>printf()</code></td><td><code>Console.WriteLine()</code></td><td>Exibir informaÃ§Ãµes</td></tr>
+          <tr><td><code>scanf()</code></td><td><code>Console.ReadLine()</code> + parse</td><td>Ler entrada do usuÃ¡rio</td></tr>
+                    <tr><td><code>scanf(" %c", &amp;opcao)</code></td><td><code>Console.ReadKey().KeyChar</code></td><td>Ler um caractere do menu</td></tr>
+          <tr><td><code>int main()</code></td><td><code>static void Main()</code></td><td>Ponto inicial da execuÃ§Ã£o</td></tr>
+                    <tr><td><code>void funcao()</code></td><td><code>static void Funcao()</code></td><td>Organizar o cÃ³digo em funÃ§Ãµes/mÃ©todos</td></tr>
+                    <tr><td><code>system("cls")</code></td><td><code>Console.Clear()</code></td><td>Limpar a tela</td></tr>
+                    <tr><td><code>system("pause")</code></td><td><code>Console.ReadKey()</code> ou <code>Console.ReadLine()</code></td><td>Pausar a execuÃ§Ã£o</td></tr>
+                    <tr><td><code>toupper(opcao)</code></td><td><code>char.ToUpper(opcao)</code></td><td>Padronizar letra para maiÃºscula</td></tr>
+                    <tr><td><code>%.2f</code></td><td><code>{valor:F2}</code></td><td>Exibir nÃºmero com 2 casas decimais</td></tr>
+                    <tr><td><code>%5d</code></td><td><code>{valor,5}</code></td><td>Alinhar valor em largura fixa</td></tr>
+                    <tr><td><code>#define PRECO 18.50</code></td><td><code>const float PRECO = 18.50f;</code></td><td>Criar constantes nomeadas</td></tr>
+                    <tr><td><code>int notas[3]</code></td><td><code>int[] notas = new int[3]</code></td><td>Declarar vetor</td></tr>
+                    <tr><td><code>struct dia { ... }</code></td><td><code>struct Dia { public int ... }</code></td><td>Agrupar campos em um tipo</td></tr>
+                    <tr><td><code>return 1 / 0</code> em validaÃ§Ã£o</td><td><code>return true / false</code></td><td>Tratar condiÃ§Ã£o booleana</td></tr>
+          <tr><td><code>if / else</code></td><td><code>if / else</code></td><td>Tomada de decisÃ£o</td></tr>
+          <tr><td><code>for, while, do while</code></td><td><code>for, while, do while</code></td><td>repetiÃ§Ã£o</td></tr>
         </tbody>
       </table>
     </section>
 
-    <section>
-      <h2>Entrada de dados: o que muda na pratica</h2>
-      <p>Em C, <code>scanf</code> ja coloca o valor no tipo certo quando a mascara esta correta. Em C#, <code>Console.ReadLine()</code> sempre devolve texto. Por isso, voce converte o valor manualmente.</p>
-      <h3>Exemplo em C</h3>
-      <pre><code data-lang="c">#include &lt;stdio.h&gt;
-
-int main() {
-    int idade;
-
-    printf("Digite sua idade: ");
-    scanf("%d", &amp;idade);
-
-    printf("Idade informada: %d\n", idade);
-    return 0;
-}</code></pre>
-
-      <h3>Exemplo equivalente em C#</h3>
-      <pre><code data-lang="csharp">using System;
-
-class Program
-{
-    static void Main()
-    {
-        Console.Write("Digite sua idade: ");
-        int idade = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Idade informada: " + idade);
-    }
-}</code></pre>
-
-      <p>Repare na equivalencia:</p>
-      <ul>
-        <li><strong>printf</strong> vira <strong>Console.Write/WriteLine</strong>.</li>
-        <li><strong>scanf</strong> vira <strong>Console.ReadLine</strong> + <strong>int.Parse</strong>.</li>
-        <li>A variavel continua sendo <strong>int</strong>, com o mesmo significado matematico.</li>
-      </ul>
+    <section class="lesson-section">
+      <h2>Entrada de Dados: O Que Muda na PrÃ¡tica</h2>
+      <p>Em C, <code>scanf</code> jÃ¡ coloca o valor no tipo certo quando a mascara esta correta. Em C#, <code>Console.ReadLine()</code> sempre devolve texto. Por isso, voce converte o valor manualmente.</p>
+      <p>O fluxo correto em C# Ã© direto: ler o texto, converter, validar quando necessÃ¡rio e sÃ³ depois usar o dado no cÃ¡lculo.</p>
     </section>
 
-    <section>
-      <h2>Decisão e repetição: a lógica continua igual</h2>
-      <p>Quando você aprendeu <strong>if</strong>, <strong>for</strong> e <strong>while</strong> em C, já aprendeu o raciocínio principal. Em C#, você usa os mesmos blocos de decisão e repetição.</p>
-      <pre><code data-lang="csharp">using System;
+    <section id="indice-exercicios" class="toc-panel">
+      <h2 class="toc-title">Ãndice dos 23 ExercÃ­cios</h2>
+      <p class="toc-intro">Cada exercÃ­cio aparece com a versÃ£o em C e a versÃ£o em C# lado a lado. Use os links para abrir a seÃ§Ã£o desejada e voltar ao Ã­ndice quando precisar.</p>
+      <div class="toc-grid">
+      <a class='toc-card' href='#exercicio-01'>
+        <span class='toc-number'>01</span>
+        <strong>ExercÃ­cio 01 - CÃ¡lculo de Total de PÃ£es</strong>
+        <span>Calcula o valor total com base na quantidade de pÃ£es e no preÃ§o informado.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-02'>
+        <span class='toc-number'>02</span>
+        <strong>ExercÃ­cio 02 - CÃ¡lculo de PotÃªncia</strong>
+        <span>Calcula a potÃªncia cÃºbica de um nÃºmero.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-03'>
+        <span class='toc-number'>03</span>
+        <strong>ExercÃ­cio 03 - CÃ¡lculo de Folha de Pagamento</strong>
+        <span>Calcula salÃ¡rio bruto, desconto e salÃ¡rio lÃ­quido com base em horas trabalhadas.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-04'>
+        <span class='toc-number'>04</span>
+        <strong>ExercÃ­cio 04 - CÃ¡lculo de DistÃ¢ncia</strong>
+        <span>Calcula a distÃ¢ncia a partir de velocidade e tempo.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-05'>
+        <span class='toc-number'>05</span>
+        <strong>ExercÃ­cio 05 - Troca de Valores</strong>
+        <span>Troca os valores de duas variÃ¡veis usando uma variÃ¡vel temporÃ¡ria.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-06'>
+        <span class='toc-number'>06</span>
+        <strong>ExercÃ­cio 06 - CÃ¡lculo de VazÃ£o de Ãgua</strong>
+        <span>Calcula litros totais com base no tempo de uso da torneira.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-07'>
+        <span class='toc-number'>07</span>
+        <strong>ExercÃ­cio 07 - CÃ¡lculo de Tarifa de TÃ¡xi</strong>
+        <span>Calcula o valor da corrida com taxa fixa e valor por quilÃ´metro.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-08'>
+        <span class='toc-number'>08</span>
+        <strong>ExercÃ­cio 08 - CÃ¡lculo de Desconto</strong>
+        <span>Aplica desconto percentual sobre o valor de uma mercadoria.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-09'>
+        <span class='toc-number'>09</span>
+        <strong>ExercÃ­cio 09 - CÃ¡lculo de AcrÃ©scimo</strong>
+        <span>Aplica acrÃ©scimo percentual sobre o valor de uma dÃ­vida.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-10'>
+        <span class='toc-number'>10</span>
+        <strong>ExercÃ­cio 10 - ProporÃ§Ã£o de Alunos</strong>
+        <span>Resolve uma proporÃ§Ã£o simples entre meninas e meninos.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-11'>
+        <span class='toc-number'>11</span>
+        <strong>ExercÃ­cio 11 - CÃ¡lculo de Juros Simples</strong>
+        <span>Calcula juros simples e montante final.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-12'>
+        <span class='toc-number'>12</span>
+        <strong>ExercÃ­cio 12 - Tabuada</strong>
+        <span>Exibe a tabuada de um nÃºmero de 0 a 10.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-13'>
+        <span class='toc-number'>13</span>
+        <strong>ExercÃ­cio 13 - Menu com Switch</strong>
+        <span>Mostra um menu com saudaÃ§Ã£o e saÃ­da usando switch.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-14'>
+        <span class='toc-number'>14</span>
+        <strong>ExercÃ­cio 14 - CÃ¡lculo do Baile</strong>
+        <span>Calcula o total de pessoas no baile conforme o dia informado.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-15'>
+        <span class='toc-number'>15</span>
+        <strong>ExercÃ­cio 15 - CÃ¡lculo de MÃ©dia com Vetor</strong>
+        <span>Calcula a mÃ©dia de um vetor de notas e mostra a situaÃ§Ã£o.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-16'>
+        <span class='toc-number'>16</span>
+        <strong>ExercÃ­cio 16 - OperaÃ§Ãµes com Vetor</strong>
+        <span>Inicializa, exibe e insere valores em um vetor com funÃ§Ãµes.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-17'>
+        <span class='toc-number'>17</span>
+        <strong>ExercÃ­cio 17 - Struct de Temperatura</strong>
+        <span>Usa uma struct para armazenar temperaturas de 7 dias.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-18'>
+        <span class='toc-number'>18</span>
+        <strong>ExercÃ­cio 18 - Menu AvanÃ§ado</strong>
+        <span>Apresenta um menu com funÃ§Ãµes auxiliares e switch.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-19'>
+        <span class='toc-number'>19</span>
+        <strong>ExercÃ­cio 19 - Sistema de Abastecimento</strong>
+        <span>Controla abastecimento, caixa e vouchers em um posto.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-20'>
+        <span class='toc-number'>20</span>
+        <strong>ExercÃ­cio 20 - Calculadora Simples</strong>
+        <span>Calculadora com operaÃ§Ãµes bÃ¡sicas usando funÃ§Ãµes.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-21'>
+        <span class='toc-number'>21</span>
+        <strong>ExercÃ­cio 21 - Hamburgueria Central 1</strong>
+        <span>Sistema de vendas com menu, desconto e relatÃ³rio final.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-22'>
+        <span class='toc-number'>22</span>
+        <strong>ExercÃ­cio 22 - Hamburgueria Central 2</strong>
+        <span>Sistema de vendas com validaÃ§Ã£o de quantidade e funÃ§Ãµes refatoradas.</span>
+      </a>
+      <a class='toc-card' href='#exercicio-23'>
+        <span class='toc-number'>23</span>
+        <strong>ExercÃ­cio 23 - Sistema de Estacionamento</strong>
+        <span>Controla entrada, saÃ­da e visualizaÃ§Ã£o de vagas.</span>
+      </a>
 
-class Program
+      </div>
+    </section>
+
+    <section class='exercise-container' id='exercicio-01'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 01</p>
+          <h3>CÃ¡lculo de Total de PÃ£es</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <span class='nav-disabled'>Anterior</span>
+          <a href='#exercicio-02'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calcula o valor total com base na quantidade de pÃ£es e no preÃ§o informado.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    float total, preco;
+    int paes;
+
+    printf(&quot;Digite quantos paes vai levar: &quot;);
+    scanf(&quot;%d&quot;,&amp;paes);
+
+    printf(&quot;Digite qual o preco: &quot;);
+    scanf(&quot;%f&quot;,&amp;preco);
+
+    total = paes * preco;
+
+    printf(&quot;O total e: %f&quot;,total);
+
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp01
 {
     static void Main()
     {
-        for (int i = 1; i &lt;= 5; i++)
+        float total, preco;
+        int paes;
+
+        Console.Write(&quot;Digite quantos paes vai levar: &quot;);
+        int.TryParse(Console.ReadLine(), out paes);
+
+        Console.Write(&quot;Digite qual o preco: &quot;);
+        float.TryParse(Console.ReadLine(), out preco);
+
+        total = paes * preco;
+
+        Console.Write($&quot;O total e: {total}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>$"...{total}"</strong>: em C#, isso Ã© interpolaÃ§Ã£o de string. O valor da variÃ¡vel entra direto no texto, sem precisar de <code>%f</code> como no <code>printf</code>.</p></li>
+                <li><p><strong>int.TryParse(...)</strong> e <strong>float.TryParse(...)</strong>: convertem o texto lido por <code>Console.ReadLine()</code> para nÃºmero.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-02'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 02</p>
+          <h3>CÃ¡lculo de PotÃªncia</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-01'>Anterior</a>
+          <a href='#exercicio-03'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calcula a potÃªncia cÃºbica de um nÃºmero.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    int n, potencia;
+
+    printf(&quot;Digite um numero n: &quot;);
+    scanf(&quot;%d&quot;,&amp;n);
+
+    potencia = n*n*n;
+
+    printf(&quot;A potencia e: %d&quot;,potencia);
+
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp02
+{
+    static void Main()
+    {
+        int n, potencia;
+
+        Console.Write(&quot;Digite um numero n: &quot;);
+        int.TryParse(Console.ReadLine(), out n);
+
+        potencia = n * n * n;
+
+        Console.Write($&quot;A potencia e: {potencia}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>$"...{potencia}"</strong>: interpolaÃ§Ã£o para exibir um inteiro direto no texto, equivalente ao uso de <code>%d</code> no C.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-03'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 03</p>
+          <h3>CÃ¡lculo de Folha de Pagamento</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-02'>Anterior</a>
+          <a href='#exercicio-04'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calcula salÃ¡rio bruto, desconto e salÃ¡rio lÃ­quido com base em horas trabalhadas.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    float HT, VH, PD, SB, TD, SL;
+
+    printf(&quot;Digite HT: &quot;);
+    scanf(&quot;%f&quot;,&amp;HT);
+
+    printf(&quot;Digite VH: &quot;);
+    scanf(&quot;%f&quot;,&amp;VH);
+
+    printf(&quot;Digite PD: &quot;);
+    scanf(&quot;%f&quot;,&amp;PD);
+
+    SB = HT * VH;
+    TD = SB - (SB*(PD/100));
+    SL = SB - TD;
+
+    printf(&quot;\nO valor do SB: %.2f&quot;,SB);
+    printf(&quot;\nO valor do TD: %.2f&quot;,TD);
+    printf(&quot;\nO valor do SL: %.2f&quot;,SL);
+
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp03
+{
+    static void Main()
+    {
+        float HT, VH, PD, SB, TD, SL;
+
+        Console.Write(&quot;Digite HT: &quot;);
+        float.TryParse(Console.ReadLine(), out HT);
+
+        Console.Write(&quot;Digite VH: &quot;);
+        float.TryParse(Console.ReadLine(), out VH);
+
+        Console.Write(&quot;Digite PD: &quot;);
+        float.TryParse(Console.ReadLine(), out PD);
+
+        SB = HT * VH;
+        TD = SB - (SB * (PD / 100));
+        SL = SB - TD;
+
+        Console.Write($&quot;\nO valor do SB: {SB:F2}&quot;);
+        Console.Write($&quot;\nO valor do TD: {TD:F2}&quot;);
+        Console.Write($&quot;\nO valor do SL: {SL:F2}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>SB</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{SB:F2}</strong>.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>TD</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{TD:F2}</strong>.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>SL</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{SL:F2}</strong>.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-04'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 04</p>
+          <h3>CÃ¡lculo de DistÃ¢ncia</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-03'>Anterior</a>
+          <a href='#exercicio-05'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calcula a distÃ¢ncia a partir de velocidade e tempo.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    float d, v, t;
+
+    printf(&quot;Digite o valor da velocidade: &quot;);
+    scanf(&quot;%f&quot;,&amp;v);
+
+    printf(&quot;Digite o valor do tempo: &quot;);
+    scanf(&quot;%f&quot;,&amp;t);
+
+    d = v * t;
+
+    printf(&quot;\nO valor da distancia e: %.2f&quot;,d);
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp04
+{
+    static void Main()
+    {
+        float d, v, t;
+
+        Console.Write(&quot;Digite o valor da velocidade: &quot;);
+        float.TryParse(Console.ReadLine(), out v);
+
+        Console.Write(&quot;Digite o valor do tempo: &quot;);
+        float.TryParse(Console.ReadLine(), out t);
+
+        d = v * t;
+
+        Console.Write($&quot;\nO valor da distancia e: {d:F2}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>{d:F2}</strong>: usa formataÃ§Ã£o fixa com 2 casas decimais na saÃ­da do valor da distÃ¢ncia.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-05'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 05</p>
+          <h3>Troca de Valores</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-04'>Anterior</a>
+          <a href='#exercicio-06'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Troca os valores de duas variÃ¡veis usando uma variÃ¡vel temporÃ¡ria.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    int a, b, temp;
+
+    printf(&quot;Digite o valor de A: &quot;);
+    scanf(&quot;%d&quot;,&amp;a);
+
+    printf(&quot;Digite o valor de B: &quot;);
+    scanf(&quot;%d&quot;,&amp;b);
+
+    temp = a;
+    a = b;
+    b = temp;
+
+    printf(&quot;\nO valor de A: %d&quot;,a);
+    printf(&quot;\nO valor de B: %d&quot;,b);
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp05
+{
+    static void Main()
+    {
+        int a, b, temp;
+
+        Console.Write(&quot;Digite o valor de A: &quot;);
+        int.TryParse(Console.ReadLine(), out a);
+
+        Console.Write(&quot;Digite o valor de B: &quot;);
+        int.TryParse(Console.ReadLine(), out b);
+
+        temp = a;
+        a = b;
+        b = temp;
+
+        Console.Write($&quot;\nO valor de A: {a}&quot;);
+        Console.Write($&quot;\nO valor de B: {b}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>\n</strong> dentro da string: quebra de linha no console para organizar a saÃ­da.</p></li>
+                <li><p><strong>{a}</strong> e <strong>{b}</strong>: interpolaÃ§Ã£o de inteiros, equivalente ao <code>%d</code> no C.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-06'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 06</p>
+          <h3>CÃ¡lculo de VazÃ£o de Ãgua</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-05'>Anterior</a>
+          <a href='#exercicio-07'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calcula litros totais com base no tempo de uso da torneira.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    int min;
+    float litros;
+
+    printf(&quot;Digite quantos minutos a torneira ficou aberta: &quot;);
+    scanf(&quot;%d&quot;,&amp;min);
+
+    litros = min*30;
+
+    printf(&quot;\nO total de litros e: %.2f&quot;,litros);
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp06
+{
+    static void Main()
+    {
+        int min;
+        float litros;
+
+        Console.Write(&quot;Digite quantos minutos a torneira ficou aberta: &quot;);
+        int.TryParse(Console.ReadLine(), out min);
+
+        litros = min * 30;
+
+        Console.Write($&quot;\nO total de litros e: {litros:F2}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>{litros:F2}</strong>: mantÃ©m o valor com 2 casas decimais, igual ao padrÃ£o de apresentaÃ§Ã£o em moeda/medida no C.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-07'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 07</p>
+          <h3>CÃ¡lculo de Tarifa de TÃ¡xi</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-06'>Anterior</a>
+          <a href='#exercicio-08'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calcula o valor da corrida com taxa fixa e valor por quilÃ´metro.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    float total, km;
+
+    printf(&quot;Digite quantos km rodou: &quot;);
+    scanf(&quot;%f&quot;,&amp;km);
+
+    total = 5.0 + (km * 0.80);
+
+    printf(&quot;O total e: %.2f&quot;,total);
+
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp07
+{
+    static void Main()
+    {
+        float total, km;
+
+        Console.Write(&quot;Digite quantos km rodou: &quot;);
+        float.TryParse(Console.ReadLine(), out km);
+
+        total = 5.0f + (km * 0.80f);
+
+        Console.Write($&quot;O total e: {total:F2}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>5.0f</strong> e <strong>0.80f</strong>: o sufixo <strong>f</strong> indica literal do tipo <code>float</code> em C#.</p></li>
+                <li><p><strong>{total:F2}</strong>: formataÃ§Ã£o decimal com 2 casas na interpolaÃ§Ã£o.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-08'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 08</p>
+          <h3>CÃ¡lculo de Desconto</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-07'>Anterior</a>
+          <a href='#exercicio-09'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Aplica desconto percentual sobre o valor de uma mercadoria.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    float precoOriginal, precoDesconto;
+
+    printf(&quot;Digite o preco da mercadoria: &quot;);
+    scanf(&quot;%f&quot;,&amp;precoOriginal);
+
+    precoDesconto = precoOriginal-(precoOriginal*(0.18));
+
+    printf(&quot;O preco com desconto e: %.2f&quot;,precoDesconto);
+
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp08
+{
+    static void Main()
+    {
+        float precoOriginal, precoDesconto;
+
+        Console.Write(&quot;Digite o preco da mercadoria: &quot;);
+        float.TryParse(Console.ReadLine(), out precoOriginal);
+
+        precoDesconto = precoOriginal - (precoOriginal * 0.18f);
+
+        Console.Write($&quot;O preco com desconto e: {precoDesconto:F2}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>0.18f</strong>: literal <code>float</code> para manter o cÃ¡lculo no mesmo tipo da variÃ¡vel.</p></li>
+                <li><p><strong>{precoDesconto:F2}</strong>: mostra o resultado com 2 casas decimais.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-09'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 09</p>
+          <h3>CÃ¡lculo de AcrÃ©scimo</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-08'>Anterior</a>
+          <a href='#exercicio-10'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Aplica acrÃ©scimo percentual sobre o valor de uma dÃ­vida.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    float vD, acrescimo, vA;
+
+    printf(&quot;Digite o valor da divida: &quot;);
+    scanf(&quot;%f&quot;,&amp;vD);
+
+    printf(&quot;Digite o valor do acrescimo: &quot;);
+    scanf(&quot;%f&quot;,&amp;acrescimo);
+
+    vA = vD +(vD*(acrescimo/100));
+
+    printf(&quot;O valor da divida atual e: %.2f&quot;,vA);
+
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp09
+{
+    static void Main()
+    {
+        float vD, acrescimo, vA;
+
+        Console.Write(&quot;Digite o valor da divida: &quot;);
+        float.TryParse(Console.ReadLine(), out vD);
+
+        Console.Write(&quot;Digite o valor do acrescimo: &quot;);
+        float.TryParse(Console.ReadLine(), out acrescimo);
+
+        vA = vD + (vD * (acrescimo / 100));
+
+        Console.Write($&quot;O valor da divida atual e: {vA:F2}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>{vA:F2}</strong>: saÃ­da formatada com duas casas decimais para o valor final da dÃ­vida.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-10'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 10</p>
+          <h3>ProporÃ§Ã£o de Alunos</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-09'>Anterior</a>
+          <a href='#exercicio-11'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Resolve uma proporÃ§Ã£o simples entre meninas e meninos.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    int meninas, meninos, total;
+
+    printf(&quot;Digite quantas meninas estao na sala: &quot;);
+    scanf(&quot;%d&quot;,&amp;meninas);
+
+    meninos = meninas / (80/20);
+
+    total = meninas + meninos;
+
+    printf(&quot;\nMeninas: %d&quot;,meninas);
+    printf(&quot;\nMeninos: %d&quot;,meninos);
+    printf(&quot;\nTotal: %d&quot;,total);
+
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp10
+{
+    static void Main()
+    {
+        int meninas, meninos, total;
+
+        Console.Write(&quot;Digite quantas meninas estao na sala: &quot;);
+        int.TryParse(Console.ReadLine(), out meninas);
+
+        meninos = meninas / (80 / 20);
+
+        total = meninas + meninos;
+
+        Console.Write($&quot;\nMeninas: {meninas}&quot;);
+        Console.Write($&quot;\nMeninos: {meninos}&quot;);
+        Console.Write($&quot;\nTotal: {total}&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>{meninas}</strong>, <strong>{meninos}</strong> e <strong>{total}</strong>: interpolaÃ§Ã£o de inteiros no lugar de <code>%d</code>.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-11'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 11</p>
+          <h3>CÃ¡lculo de Juros Simples</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-10'>Anterior</a>
+          <a href='#exercicio-12'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calcula juros simples e montante final.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main(){
+    float x, y, w, juros, montante;
+
+    printf(&quot;Digite o capital (X): &quot;);
+    scanf(&quot;%f&quot;,&amp;x);
+    printf(&quot;Digite o taxa (Y): &quot;);
+    scanf(&quot;%f&quot;,&amp;y);
+    printf(&quot;Digite o meses (W): &quot;);
+    scanf(&quot;%f&quot;,&amp;w);
+
+    juros = x * (y/100) * w;
+    montante = x + juros;
+
+    printf(&quot;\nCapital (x): %.2f&quot;,x);
+    printf(&quot;\nJuros Simples: %.2f&quot;,juros);
+    printf(&quot;\nMontante: %.2f&quot;,montante);
+    printf(&quot;\n\n&quot;);
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp11
+{
+    static void Main()
+    {
+        float x, y, w, juros, montante;
+
+        Console.Write(&quot;Digite o capital (X): &quot;);
+        float.TryParse(Console.ReadLine(), out x);
+        Console.Write(&quot;Digite o taxa (Y): &quot;);
+        float.TryParse(Console.ReadLine(), out y);
+        Console.Write(&quot;Digite o meses (W): &quot;);
+        float.TryParse(Console.ReadLine(), out w);
+
+        juros = x * (y / 100) * w;
+        montante = x + juros;
+
+        Console.Write($&quot;\nCapital (x): {x:F2}&quot;);
+        Console.Write($&quot;\nJuros Simples: {juros:F2}&quot;);
+        Console.Write($&quot;\nMontante: {montante:F2}&quot;);
+        Console.Write(&quot;\n\n&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>x</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{x:F2}</strong>.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>juros</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{juros:F2}</strong>.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>montante</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{montante:F2}</strong>.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-12'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 12</p>
+          <h3>Tabuada</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-11'>Anterior</a>
+          <a href='#exercicio-13'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Exibe a tabuada de um nÃºmero de 0 a 10.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main()
+{
+    int n, t, i,j;
+
+    printf(&quot;Digite o n da tabuada: &quot;);
+    scanf(&quot;%d&quot;,&amp;n);
+
+
+    for(i = 0; i&lt;= 10; i++)
+    {
+        t = n * i;
+        printf(&quot;\n%d x %d = %d&quot;, n,i,t);
+    }
+
+
+    printf(&quot;\n\n&quot;);
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp12
+{
+    static void Main()
+    {
+        int n, t;
+
+        Console.Write(&quot;Digite o n da tabuada: &quot;);
+        int.TryParse(Console.ReadLine(), out n);
+
+        for (int i = 0; i &lt;= 10; i++)
         {
-            if (i % 2 == 0)
+            t = n * i;
+            Console.Write($&quot;\n{n} x {i} = {t}&quot;);
+        }
+
+        Console.Write(&quot;\n\n&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>{n}</strong>, <strong>{i}</strong> e <strong>{t}</strong> na mesma string: a interpolaÃ§Ã£o permite montar toda a expressÃ£o da tabuada em uma Ãºnica linha de saÃ­da.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-13'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 13</p>
+          <h3>Menu com Switch</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-12'>Anterior</a>
+          <a href='#exercicio-14'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Mostra um menu com saudaÃ§Ã£o e saÃ­da usando switch.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+void bom_dia()
+{
+    system(&quot;cls&quot;);
+    printf(&quot;\n===============&quot;);
+    printf(&quot;\n     Bom dia!   &quot;);
+    printf(&quot;\n===============&quot;);
+    printf(&quot;\n\n&quot;);
+}
+
+void boa_noite()
+{
+    system(&quot;cls&quot;);
+    printf(&quot;\n===============&quot;);
+    printf(&quot;\n   Boa noite!   &quot;);
+    printf(&quot;\n===============&quot;);
+    printf(&quot;\n\n&quot;);
+}
+
+void menu()
+{
+    printf(&quot;\nD - Bom dia&quot;);
+    printf(&quot;\nN - Boa noite&quot;);
+    printf(&quot;\nS - Fecha o programa\n&quot;);
+}
+
+int main()
+{
+    char opcao;
+    do
+    {
+        system(&quot;cls&quot;);
+        menu();
+        printf(&quot;\nDigite a opcao desejada: &quot;);
+        scanf(&quot; %c&quot;, &amp;opcao);
+        switch (opcao)
+        {
+            case &apos;D&apos;:
+            case &apos;d&apos;:
+                {
+                    bom_dia();
+                    system(&quot;pause&quot;);
+                    break;
+                }
+            case &apos;N&apos;:
+            case &apos;n&apos;:
+                {
+                    boa_noite();
+                    system(&quot;pause&quot;);
+                    break;
+                }
+            case &apos;S&apos;:
+            case &apos;s&apos;:
+                {
+                    return 0;
+                }
+            default:
+                {
+                    printf(&quot;\nOpcao invalida!!!\n\n&quot;);
+                    system(&quot;pause&quot;);
+                    break;
+                }
+        }
+    }
+    while (1);
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp13
+{
+    static void BomDia()
+    {
+        Console.Clear();
+        Console.WriteLine(&quot;\n===============&quot;);
+        Console.WriteLine(&quot;     Bom dia!   &quot;);
+        Console.WriteLine(&quot;===============\n&quot;);
+    }
+
+    static void BoaNoite()
+    {
+        Console.Clear();
+        Console.WriteLine(&quot;\n===============&quot;);
+        Console.WriteLine(&quot;   Boa noite!   &quot;);
+        Console.WriteLine(&quot;===============\n&quot;);
+    }
+
+    static void Menu()
+    {
+        Console.WriteLine(&quot;\nD - Bom dia&quot;);
+        Console.WriteLine(&quot;N - Boa noite&quot;);
+        Console.WriteLine(&quot;S - Fecha o programa\n&quot;);
+    }
+
+    static void Pausar()
+    {
+        Console.WriteLine(&quot;Pressione qualquer tecla para continuar...&quot;);
+        Console.ReadKey();
+    }
+
+    static void Main()
+    {
+        while (true)
+        {
+            Console.Clear();
+            Menu();
+            Console.Write(&quot;Digite a opcao desejada: &quot;);
+            char opcao = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            switch (opcao)
             {
-                Console.WriteLine(i + " e par");
-            }
-            else
-            {
-                Console.WriteLine(i + " e impar");
+                case &apos;D&apos;:
+                case &apos;d&apos;:
+                    BomDia();
+                    Pausar();
+                    break;
+                case &apos;N&apos;:
+                case &apos;n&apos;:
+                    BoaNoite();
+                    Pausar();
+                    break;
+                case &apos;S&apos;:
+                case &apos;s&apos;:
+                    return;
+                default:
+                    Console.WriteLine(&quot;\nOpcao invalida!!!\n&quot;);
+                    Pausar();
+                    break;
             }
         }
     }
 }</code></pre>
-      <p>O código acima usa a mesma ideia que voce ja praticou: percorrer valores e classificar cada um por uma condicao.</p>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>Console.ReadKey().KeyChar</strong>: lÃª uma tecla e retorna o caractere digitado para controlar o menu.</p></li>
+                <li><p><strong>while (true)</strong> com <strong>return</strong>: mantÃ©m o menu contÃ­nuo e encerra quando a opÃ§Ã£o de saÃ­da Ã© escolhida.</p></li>
+            </ul>
     </section>
 
-    <section>
-      <h2>Erros comuns de quem esta migrando</h2>
-      <ol>
-        <li>Esquecer que <strong>ReadLine</strong> retorna texto.</li>
-        <li>Tentar usar <strong>scanf</strong> em C#.</li>
-        <li>Confundir <strong>Write</strong> com <strong>WriteLine</strong>.</li>
-        <li>não validar entrada quando o usuario pode digitar valor invalido.</li>
-      </ol>
-      <p>Com pratica, esses pontos viram rotina. O mais importante e manter o foco na sequencia lógica da solucao.</p>
+    <section class='exercise-container' id='exercicio-14'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 14</p>
+          <h3>CÃ¡lculo do Baile</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-13'>Anterior</a>
+          <a href='#exercicio-15'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calcula o total de pessoas no baile conforme o dia informado.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+int main()
+{
+    int dia, h = 0, m = 0, t = 0;
+
+    printf(&quot;\nSJPALPR: Prova 1 - 22/04/2026&quot;);
+    printf(&quot;\n\nPROBLEMA: O BOTECO DO JOAO&quot;);
+    printf(&quot;\n\nQue dia voce quer calcular? (1 - sab) ou (2 - dom) &quot;);
+    scanf(&quot;%d&quot;,&amp;dia);
+
+    if (dia == 1)
+    {
+        printf(&quot;\nDigite o numero de mulheres no baile: &quot;);
+        scanf(&quot;%d&quot;,&amp;m);
+        h = (m * 3) / 4;
+    }
+    else if (dia == 2)
+    {
+        printf(&quot;\nDigite o numero de homens no baile: &quot;);
+        scanf(&quot;%d&quot;,&amp;h);
+        m = (h * 8) / 5;
+    }
+    else
+    {
+        printf(&quot;\n\nEssa opcao nao existe! O boteco esta fechado!&quot;);
+    }
+
+    t = h + m;
+
+    printf(&quot;\n\n&quot;);
+    printf(&quot;\n======= TOTAL DE PESSOAS NO BAILE =======&quot;);
+    if (dia == 1)
+    {
+        printf(&quot;\n\nSABADO:&quot;);
+    }
+    else if (dia == 2)
+    {
+        printf(&quot;\n\nDOMINGO:&quot;);
+    }
+    else
+    {
+        printf(&quot;\n\nDIA FECHADO&quot;);
+    }
+
+    printf(&quot;\n&quot;);
+    printf(&quot;\nO total de mulheres eh:             %5d&quot;,m);
+    printf(&quot;\nO total de homens eh:               %5d&quot;,h);
+    printf(&quot;\n&quot;);
+    printf(&quot;\nTOTAL:                                   &quot;);
+    printf(&quot;\nO total de pessoas eh:              %5d&quot;,t);
+    printf(&quot;\n&quot;);
+    printf(&quot;\n=========================================&quot;);
+    printf(&quot;\n\n&quot;);
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp14
+{
+    static void Main()
+    {
+        int dia, h = 0, m = 0, t;
+
+        Console.WriteLine(&quot;\nSJPALPR: Prova 1 - 22/04/2026&quot;);
+        Console.WriteLine(&quot;\nPROBLEMA: O BOTECO DO JOAO&quot;);
+        Console.Write(&quot;\nQue dia voce quer calcular? (1 - sab) ou (2 - dom) &quot;);
+        int.TryParse(Console.ReadLine(), out dia);
+
+        if (dia == 1)
+        {
+            Console.Write(&quot;\nDigite o numero de mulheres no baile: &quot;);
+            int.TryParse(Console.ReadLine(), out m);
+            h = (m * 3) / 4;
+        }
+        else if (dia == 2)
+        {
+            Console.Write(&quot;\nDigite o numero de homens no baile: &quot;);
+            int.TryParse(Console.ReadLine(), out h);
+            m = (h * 8) / 5;
+        }
+        else
+        {
+            Console.WriteLine(&quot;\n\nEssa opcao nao existe! O boteco esta fechado!&quot;);
+        }
+
+        t = h + m;
+
+        Console.WriteLine(&quot;\n\n======= TOTAL DE PESSOAS NO BAILE =======&quot;);
+        if (dia == 1)
+        {
+            Console.WriteLine(&quot;\nSABADO:&quot;);
+        }
+        else if (dia == 2)
+        {
+            Console.WriteLine(&quot;\nDOMINGO:&quot;);
+        }
+        else
+        {
+            Console.WriteLine(&quot;\nDIA FECHADO&quot;);
+        }
+
+        Console.WriteLine($&quot;\nO total de mulheres eh:             {m,5}&quot;);
+        Console.WriteLine($&quot;O total de homens eh:               {h,5}&quot;);
+        Console.WriteLine(&quot;\nTOTAL:&quot;);
+        Console.WriteLine($&quot;O total de pessoas eh:              {t,5}&quot;);
+        Console.WriteLine(&quot;\n=========================================\n&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>{m,5}</strong>, <strong>{h,5}</strong> e <strong>{t,5}</strong>: o <strong>,5</strong> define largura mÃ­nima de 5 posiÃ§Ãµes para alinhar os nÃºmeros na coluna.</p></li>
+            </ul>
     </section>
 
-    <section>
-      <h2>Resumo da aula</h2>
-      <p>A Transição de C para C# não exige abandonar o que voce sabe. Voce aproveita a base de lógica e aprende uma nova forma de expressar essa base.</p>
-      <p>Ao final desta etapa, voce deve conseguir:</p>
-      <ul>
-        <li>Escrever entrada e saida em C#.</li>
-        <li>Converter texto para numeros.</li>
-        <li>Reproduzir em C# algoritmos simples que ja funcionavam em C.</li>
-      </ul>
+    <section class='exercise-container' id='exercicio-15'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 15</p>
+          <h3>CÃ¡lculo de MÃ©dia com Vetor</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-14'>Anterior</a>
+          <a href='#exercicio-16'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calcula a mÃ©dia de um vetor de notas e mostra a situaÃ§Ã£o.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+
+#define SIZE 5
+
+int main()
+{
+    float media;
+    float nota[SIZE];
+    float soma = 0;
+
+    printf(&quot;\n\n&quot;);
+
+    for(int i=0; i&lt;SIZE; i++)
+    {
+        printf(&quot;\nDigite n%d: &quot;,i+1);
+        scanf(&quot;%f&quot;,&amp;nota[i]);
+        soma += nota[i];
+    }
+    media = soma/SIZE;
+    printf(&quot;\n\nA media eh: %.2f&quot;,media);
+    if (media &gt;= 6)
+        printf(&quot;\n&gt;&gt; Aprovado :)&quot;);
+    else if (media &gt;=4)
+        printf(&quot;\n&gt;&gt; Recuperacao :|&quot;);
+    else
+        printf(&quot;\n&gt;&gt; Nao foi dessa vez :(&quot;);
+    printf(&quot;\n\n&quot;);
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp15
+{
+    static void Main()
+    {
+        const int SIZE = 5;
+        float media;
+        float[] nota = new float[SIZE];
+        float soma = 0;
+
+        Console.WriteLine();
+
+        for (int i = 0; i &lt; SIZE; i++)
+        {
+            Console.Write($&quot;\nDigite n{i + 1}: &quot;);
+            float.TryParse(Console.ReadLine(), out nota[i]);
+            soma += nota[i];
+        }
+
+        media = soma / SIZE;
+        Console.Write($&quot;\n\nA media eh: {media:F2}&quot;);
+        if (media &gt;= 6)
+            Console.Write(&quot;\n&gt;&gt; Aprovado :)&quot;);
+        else if (media &gt;= 4)
+            Console.Write(&quot;\n&gt;&gt; Recuperacao :|&quot;);
+        else
+            Console.Write(&quot;\n&gt;&gt; Nao foi dessa vez :(&quot;);
+
+        Console.WriteLine(&quot;\n&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>float[] nota = new float[SIZE]</strong>: vetor tipado em C# com tamanho definido.</p></li>
+                <li><p><strong>{media:F2}</strong>: saÃ­da da mÃ©dia com 2 casas decimais.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Escolha um exercicio em C que voce ja resolveu e reescreva em C# mantendo a mesma lógica. Depois, anote em duas colunas:</p>
-      <ul>
-        <li>Comandos usados em C.</li>
-        <li>Comandos equivalentes em C#.</li>
-      </ul>
+    <section class='exercise-container' id='exercicio-16'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 16</p>
+          <h3>OperaÃ§Ãµes com Vetor</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-15'>Anterior</a>
+          <a href='#exercicio-17'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Inicializa, exibe e insere valores em um vetor com funÃ§Ãµes.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+
+int notas[3];
+
+void mostraVetor()
+{
+    for(int i=0; i&lt;3; i++)
+    {
+        printf(&quot;\nO valor da posicao: notas[%d]=%d&quot;,i,notas[i]);
+    }
+}
+
+void insereVetor()
+{
+    for(int i=0; i&lt;3; i++)
+    {
+        int x;
+        printf(&quot;\nDigite o numero %d: &quot;,i+1);
+        scanf(&quot;%d&quot;,&amp;x);
+        notas[i]=x;
+    }
+}
+
+void initVetor()
+{
+    for(int i=0; i&lt;3; i++)
+    {
+        notas[i]=0;
+    }
+}
+
+int main()
+{
+
+    initVetor();
+
+    mostraVetor();
+
+    insereVetor();
+
+    mostraVetor();
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp16
+{
+    static int[] notas = new int[3];
+
+    static void MostraVetor()
+    {
+        for (int i = 0; i &lt; 3; i++)
+        {
+            Console.Write($&quot;\nO valor da posicao: notas[{i}]={notas[i]}&quot;);
+        }
+    }
+
+    static void InsereVetor()
+    {
+        for (int i = 0; i &lt; 3; i++)
+        {
+            Console.Write($&quot;\nDigite o numero {i + 1}: &quot;);
+            int.TryParse(Console.ReadLine(), out notas[i]);
+        }
+    }
+
+    static void InitVetor()
+    {
+        for (int i = 0; i &lt; 3; i++)
+        {
+            notas[i] = 0;
+        }
+    }
+
+    static void Main()
+    {
+        InitVetor();
+        MostraVetor();
+        InsereVetor();
+        MostraVetor();
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>{notas[i]}</strong>: interpolaÃ§Ã£o com acesso direto a posiÃ§Ã£o do vetor dentro da string.</p></li>
+            </ul>
     </section>
-  </article>
+
+    <section class='exercise-container' id='exercicio-17'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 17</p>
+          <h3>Struct de Temperatura</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-16'>Anterior</a>
+          <a href='#exercicio-18'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Usa uma struct para armazenar temperaturas de 7 dias.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+
+struct dia{
+    int min;
+    int max;
+};
+
+int main()
+{
+    int tamanaho;
+    struct dia penultimaSemana[7];
+
+
+    for(int i=0; i&lt;7; i++)
+    {
+        printf(&quot;========================&quot;);
+        printf(&quot;\nLeitura do dia: %d&quot;, i);
+
+        printf(&quot;\n---Digite a temp. min: &quot;);
+        scanf(&quot;%d&quot;,&amp;penultimaSemana[i].min);
+
+        printf(&quot;\n---Digite a temp. max: &quot;);
+        scanf(&quot;%d&quot;,&amp;penultimaSemana[i].max);
+    }
+
+
+
+    printf(&quot;\n\n&quot;);
+    for(int i=0; i&lt;7; i++)
+    {
+        printf(&quot;\n========================&quot;);
+        printf(&quot;\nValores do dia: %d&quot;, i);
+
+        printf(&quot;\n---Digite a temp. min: %d&quot;,penultimaSemana[i].min);
+
+        printf(&quot;\n---Digite a temp. max: %d&quot;,penultimaSemana[i].max);
+    }
+
+
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp17
+{
+    struct Dia
+    {
+        public int Min;
+        public int Max;
+    }
+
+    static void Main()
+    {
+        int tamanaho;
+        Dia[] penultimaSemana = new Dia[7];
+
+        tamanaho = 0;
+
+        for (int i = 0; i &lt; 7; i++)
+        {
+            Console.Write(&quot;========================&quot;);
+            Console.Write($&quot;\nLeitura do dia: {i}&quot;);
+
+            Console.Write(&quot;\n---Digite a temp. min: &quot;);
+            int.TryParse(Console.ReadLine(), out penultimaSemana[i].Min);
+
+            Console.Write(&quot;\n---Digite a temp. max: &quot;);
+            int.TryParse(Console.ReadLine(), out penultimaSemana[i].Max);
+        }
+
+        Console.WriteLine(&quot;\n&quot;);
+        for (int i = 0; i &lt; 7; i++)
+        {
+            Console.Write(&quot;\n========================&quot;);
+            Console.Write($&quot;\nValores do dia: {i}&quot;);
+            Console.Write($&quot;\n---Digite a temp. min: {penultimaSemana[i].Min}&quot;);
+            Console.Write($&quot;\n---Digite a temp. max: {penultimaSemana[i].Max}&quot;);
+        }
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>struct Dia</strong> com campos <strong>Min</strong> e <strong>Max</strong>: define um tipo para agrupar dados relacionados.</p></li>
+                <li><p><strong>Dia[] penultimaSemana = new Dia[7]</strong>: vetor de estruturas, mantendo a mesma lÃ³gica do C com sintaxe de C#.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-18'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 18</p>
+          <h3>Menu AvanÃ§ado</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-17'>Anterior</a>
+          <a href='#exercicio-19'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Apresenta um menu com funÃ§Ãµes auxiliares e switch.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void menu()
+{
+    system(&quot;cls&quot;);
+    printf(&quot;\nD - Bom dia!&quot;);
+    printf(&quot;\nT - Boa tarde!&quot;);
+    printf(&quot;\nN - Boa noite!&quot;);
+    printf(&quot;\n- - - - - - - -&quot;);
+    printf(&quot;\nF - Boa noite!\n\n&quot;);
+}
+
+
+void bd()
+{
+    system(&quot;cls&quot;);
+    printf(&quot;\nVoce escolheu bom dia!\n\n&quot;);
+}
+
+void bt()
+{
+    system(&quot;cls&quot;);
+    printf(&quot;\nVoce escolheu boa tarde!\n\n&quot;);
+}
+
+void bn()
+{
+    printf(&quot;\nVoce escolheu boa noite!\n\n&quot;);
+}
+
+int dobro(int n)
+{
+    int total;
+    total = n * 2;
+    return total;
+}
+
+int soma(int a,int b)
+{
+    return a+b;
+}
+
+int main()
+{
+    char opcao;
+    do
+    {
+        menu();
+
+        printf(&quot;\nEscolha uma letra: &quot;);
+        scanf(&quot; %c&quot;,&amp;opcao);
+
+        switch (opcao)
+        {
+        case &apos;d&apos;:
+        case &apos;D&apos;:
+        {
+
+            bd();
+            break;
+        }
+        case &apos;t&apos;:
+        case &apos;T&apos;:
+        {
+
+            bt();
+            break;
+        }
+        case &apos;N&apos;:
+        case &apos;n&apos;:
+        {
+
+            bn();
+;
+            break;
+        }
+        case &apos;F&apos;:
+        case &apos;f&apos;:
+        {
+
+            printf(&quot;\nSaindo...!\n\n&quot;);
+            break;
+        }
+        default:
+        {
+            printf(&quot;\nOpcao invalida!\n\n&quot;);
+            break;
+        }
+        }
+
+        system(&quot;pause&quot;);
+    }
+    while (opcao != &apos;F&apos; &amp;&amp; opcao!=&apos;f&apos;);
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp18
+{
+    static void Menu()
+    {
+        Console.Clear();
+        Console.WriteLine(&quot;\nD - Bom dia!&quot;);
+        Console.WriteLine(&quot;T - Boa tarde!&quot;);
+        Console.WriteLine(&quot;N - Boa noite!&quot;);
+        Console.WriteLine(&quot;- - - - - - - -&quot;);
+        Console.WriteLine(&quot;F - Boa noite!\n&quot;);
+    }
+
+    static void Bd()
+    {
+        Console.Clear();
+        Console.WriteLine(&quot;\nVoce escolheu bom dia!\n&quot;);
+    }
+
+    static void Bt()
+    {
+        Console.Clear();
+        Console.WriteLine(&quot;\nVoce escolheu boa tarde!\n&quot;);
+    }
+
+    static void Bn()
+    {
+        Console.WriteLine(&quot;\nVoce escolheu boa noite!\n&quot;);
+    }
+
+    static int Dobro(int n)
+    {
+        int total;
+        total = n * 2;
+        return total;
+    }
+
+    static int Soma(int a, int b)
+    {
+        return a + b;
+    }
+
+    static void Pausar()
+    {
+        Console.WriteLine(&quot;Pressione qualquer tecla para continuar...&quot;);
+        Console.ReadKey();
+    }
+
+    static void Main()
+    {
+        char opcao;
+        do
+        {
+            Menu();
+            Console.Write(&quot;\nEscolha uma letra: &quot;);
+            opcao = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            switch (opcao)
+            {
+                case &apos;d&apos;:
+                case &apos;D&apos;:
+                    Bd();
+                    break;
+                case &apos;t&apos;:
+                case &apos;T&apos;:
+                    Bt();
+                    break;
+                case &apos;N&apos;:
+                case &apos;n&apos;:
+                    Bn();
+                    break;
+                case &apos;F&apos;:
+                case &apos;f&apos;:
+                    Console.WriteLine(&quot;\nSaindo...!\n&quot;);
+                    break;
+                default:
+                    Console.WriteLine(&quot;\nOpcao invalida!\n&quot;);
+                    break;
+            }
+
+            Pausar();
+        }
+        while (opcao != &apos;F&apos; &amp;&amp; opcao != &apos;f&apos;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>Console.Clear()</strong> e <strong>Console.ReadKey()</strong>: substituem <code>system("cls")</code> e <code>system("pause")</code> para controle de navegaÃ§Ã£o no console.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-19'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 19</p>
+          <h3>Sistema de Abastecimento</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-18'>Anterior</a>
+          <a href='#exercicio-20'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Controla abastecimento, caixa e vouchers em um posto.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+float totalCaixa = 0.0;
+int veiculos = 0;
+int vouchers = 0;
+void exibirMenu() {
+    printf(&quot;\n---- MENU POSTO -----\n&quot;);
+    printf(&quot;A - Alcool\n&quot;);
+    printf(&quot;G - Gasolina\n&quot;);
+    printf(&quot;F - Finalizar Sistema\n&quot;);
+    printf(&quot;---------------------\n&quot;);
+    printf(&quot;\nEscolha uma opcao: &quot;);
+}
+void gerenciarNavegacao() {
+    system(&quot;pause&quot;);
+    system(&quot;cls&quot;);
+}
+void processarAbastecimento(float preco, float limiteVoucher) {
+    float litros, valorPagar;
+    printf(&quot;\nDigite a quantidade de litros: &quot;);
+    scanf(&quot;%f&quot;, &amp;litros);
+    valorPagar = litros * preco;
+    totalCaixa += valorPagar;
+    veiculos++;
+    printf(&quot;\nValor a pagar: R$ %.2f\n&quot;, valorPagar);
+    if (litros &gt;= limiteVoucher) {
+        printf(&quot;Parabens! Voce ganhou um voucher de ducha.\n\n&quot;);
+        vouchers++;
+    }
+    gerenciarNavegacao();
+}
+void encerrarSistema() {
+    printf(&quot;\nSistema encerrado com sucesso!\n&quot;);
+    printf(&quot;Total de veiculos atendidos: %d\n&quot;, veiculos);
+    printf(&quot;Total acumulado no caixa: R$ %.2f\n&quot;, totalCaixa);
+    printf(&quot;Total de vouchers concedidos: %d\n&quot;, vouchers);
+}
+void tratarErro() {
+    printf(&quot;\nOpcao invalida! Tente novamente.\n\n&quot;);
+    gerenciarNavegacao();
+}
+int main() {
+    char opcao;
+    do {
+        exibirMenu();
+        scanf(&quot; %c&quot;, &amp;opcao);
+        switch(opcao) {
+            case &apos;A&apos;:
+            case &apos;a&apos;:
+                processarAbastecimento(4.50, 20.0);
+                break;
+            case &apos;G&apos;:
+            case &apos;g&apos;:
+                processarAbastecimento(5.80, 10.0);
+                break;
+            case &apos;F&apos;:
+            case &apos;f&apos;:
+                encerrarSistema();
+                break;
+            default:
+                tratarErro();
+        }
+    } while(opcao != &apos;F&apos; &amp;&amp; opcao != &apos;f&apos;);
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp19
+{
+    static float totalCaixa = 0.0f;
+    static int veiculos = 0;
+    static int vouchers = 0;
+
+    static void ExibirMenu()
+    {
+        Console.WriteLine(&quot;\n---- MENU POSTO -----&quot;);
+        Console.WriteLine(&quot;A - Alcool&quot;);
+        Console.WriteLine(&quot;G - Gasolina&quot;);
+        Console.WriteLine(&quot;F - Finalizar Sistema&quot;);
+        Console.WriteLine(&quot;---------------------&quot;);
+        Console.Write(&quot;\nEscolha uma opcao: &quot;);
+    }
+
+    static void GerenciarNavegacao()
+    {
+        Console.WriteLine(&quot;Pressione qualquer tecla para continuar...&quot;);
+        Console.ReadKey();
+        Console.Clear();
+    }
+
+    static void ProcessarAbastecimento(float preco, float limiteVoucher)
+    {
+        float litros, valorPagar;
+        Console.Write(&quot;\nDigite a quantidade de litros: &quot;);
+        float.TryParse(Console.ReadLine(), out litros);
+
+        valorPagar = litros * preco;
+        totalCaixa += valorPagar;
+        veiculos++;
+
+        Console.WriteLine($&quot;\nValor a pagar: R$ {valorPagar:F2}&quot;);
+        if (litros &gt;= limiteVoucher)
+        {
+            Console.WriteLine(&quot;Parabens! Voce ganhou um voucher de ducha.\n&quot;);
+            vouchers++;
+        }
+
+        GerenciarNavegacao();
+    }
+
+    static void EncerrarSistema()
+    {
+        Console.WriteLine(&quot;\nSistema encerrado com sucesso!&quot;);
+        Console.WriteLine($&quot;Total de veiculos atendidos: {veiculos}&quot;);
+        Console.WriteLine($&quot;Total acumulado no caixa: R$ {totalCaixa:F2}&quot;);
+        Console.WriteLine($&quot;Total de vouchers concedidos: {vouchers}&quot;);
+    }
+
+    static void TratarErro()
+    {
+        Console.WriteLine(&quot;\nOpcao invalida! Tente novamente.\n&quot;);
+        GerenciarNavegacao();
+    }
+
+    static void Main()
+    {
+        char opcao;
+        do
+        {
+            ExibirMenu();
+            opcao = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            switch (opcao)
+            {
+                case &apos;A&apos;:
+                case &apos;a&apos;:
+                    ProcessarAbastecimento(4.50f, 20.0f);
+                    break;
+                case &apos;G&apos;:
+                case &apos;g&apos;:
+                    ProcessarAbastecimento(5.80f, 10.0f);
+                    break;
+                case &apos;F&apos;:
+                case &apos;f&apos;:
+                    EncerrarSistema();
+                    break;
+                default:
+                    TratarErro();
+                    break;
+            }
+        }
+        while (opcao != &apos;F&apos; &amp;&amp; opcao != &apos;f&apos;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>4.50f</strong>, <strong>20.0f</strong> e similares: literais do tipo <code>float</code> explÃ­citos no C#.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>valorPagar</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{valorPagar:F2}</strong>.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>totalCaixa</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{totalCaixa:F2}</strong>.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-20'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 20</p>
+          <h3>Calculadora Simples</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-19'>Anterior</a>
+          <a href='#exercicio-21'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Calculadora com operaÃ§Ãµes bÃ¡sicas usando funÃ§Ãµes.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+float a;
+float b;
+float resultado;
+
+void gerenciarNavegacao() {
+    system(&quot;pause&quot;);
+    system(&quot;cls&quot;);
+}
+
+void exibirMenu() {
+    printf(&quot;=====================================\n&quot;);
+    printf(&quot;        CALCULADORA SIMPLES          \n&quot;);
+    printf(&quot;=====================================\n&quot;);
+    printf(&quot; [ + ] Adicao\n&quot;);
+    printf(&quot; [ - ] Subtracao\n&quot;);
+    printf(&quot; [ * ] Multiplicacao\n&quot;);
+    printf(&quot; [ / ] Divisao\n&quot;);
+    printf(&quot; [ S ] Sair\n&quot;);
+    printf(&quot;=====================================\n&quot;);
+    printf(&quot;Escolha uma opcao: &quot;);
+}
+
+void lerValores() {
+    printf(&quot;\nDigite o primeiro valor: &quot;);
+    scanf(&quot;%f&quot;, &amp;a);
+    printf(&quot;Digite o segundo valor: &quot;);
+    scanf(&quot;%f&quot;, &amp;b);
+}
+
+void tratarErro() {
+    printf(&quot;\nOpcao invalida!\n&quot;);
+    printf(&quot;Utilize apenas +, -, * ou /.\n\n&quot;);
+    gerenciarNavegacao();
+}
+
+void encerrarSistema() {
+    printf(&quot;\nCalculadora encerrada com sucesso.\n\n&quot;);
+    printf(&quot;***************************************************\n&quot;);
+    printf(&quot;*      Desenvolvido por: NOME DO ALUNO            *\n&quot;);
+    printf(&quot;***************************************************\n&quot;);
+}
+
+float somar(float a, float b) {
+    return a + b;
+}
+
+float subtrair(float a, float b) {
+    return a - b;
+}
+
+float multiplicar(float a, float b) {
+    return a * b;
+}
+
+float dividir(float a, float b) {
+    return a / b;
+}
+
+int main() {
+    char opcao;
+    do {
+        exibirMenu();
+        scanf(&quot; %c&quot;, &amp;opcao);
+        switch(opcao) {
+            case &apos;+&apos;:
+                printf(&quot;\nADICAO [ + ]\n&quot;);
+                lerValores();
+                resultado = somar(a, b);
+                printf(&quot;\nResultado: %.2f\n\n&quot;, resultado);
+                gerenciarNavegacao();
+                break;
+            case &apos;-&apos;:
+                printf(&quot;\nSUBTRACAO [ - ]\n&quot;);
+                lerValores();
+                resultado = subtrair(a, b);
+                printf(&quot;\nResultado: %.2f\n\n&quot;, resultado);
+                gerenciarNavegacao();
+                break;
+            case &apos;*&apos;:
+                printf(&quot;\nMULTIPLICACAO [ * ]\n&quot;);
+                lerValores();
+                resultado = multiplicar(a, b);
+                printf(&quot;\nResultado: %.2f\n\n&quot;, resultado);
+                gerenciarNavegacao();
+                break;
+            case &apos;/&apos;:
+                printf(&quot;\nDIVISAO [ / ]\n&quot;);
+                lerValores();
+                if (b == 0) {
+                    printf(&quot;\nErro: divisao por zero nao e permitida.\n\n&quot;);
+                } else {
+                    resultado = dividir(a, b);
+                    printf(&quot;\nResultado: %.2f\n\n&quot;, resultado);
+                }
+                gerenciarNavegacao();
+                break;
+            case &apos;S&apos;:
+            case &apos;s&apos;:
+                encerrarSistema();
+                break;
+            default:
+                tratarErro();
+        }
+    } while(opcao != &apos;S&apos; &amp;&amp; opcao != &apos;s&apos;);
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp20
+{
+    static float a;
+    static float b;
+    static float resultado;
+
+    static void GerenciarNavegacao()
+    {
+        Console.WriteLine(&quot;Pressione qualquer tecla para continuar...&quot;);
+        Console.ReadKey();
+        Console.Clear();
+    }
+
+    static void ExibirMenu()
+    {
+        Console.WriteLine(&quot;=====================================&quot;);
+        Console.WriteLine(&quot;        CALCULADORA SIMPLES          &quot;);
+        Console.WriteLine(&quot;=====================================&quot;);
+        Console.WriteLine(&quot; [ + ] Adicao&quot;);
+        Console.WriteLine(&quot; [ - ] Subtracao&quot;);
+        Console.WriteLine(&quot; [ * ] Multiplicacao&quot;);
+        Console.WriteLine(&quot; [ / ] Divisao&quot;);
+        Console.WriteLine(&quot; [ S ] Sair&quot;);
+        Console.WriteLine(&quot;=====================================&quot;);
+        Console.Write(&quot;Escolha uma opcao: &quot;);
+    }
+
+    static void LerValores()
+    {
+        Console.Write(&quot;\nDigite o primeiro valor: &quot;);
+        float.TryParse(Console.ReadLine(), out a);
+        Console.Write(&quot;Digite o segundo valor: &quot;);
+        float.TryParse(Console.ReadLine(), out b);
+    }
+
+    static void TratarErro()
+    {
+        Console.WriteLine(&quot;\nOpcao invalida!&quot;);
+        Console.WriteLine(&quot;Utilize apenas +, -, * ou /.\n&quot;);
+        GerenciarNavegacao();
+    }
+
+    static void EncerrarSistema()
+    {
+        Console.WriteLine(&quot;\nCalculadora encerrada com sucesso.\n&quot;);
+        Console.WriteLine(&quot;***************************************************&quot;);
+        Console.WriteLine(&quot;*      Desenvolvido por: NOME DO ALUNO            *&quot;);
+        Console.WriteLine(&quot;***************************************************&quot;);
+    }
+
+    static float Somar(float x, float y) =&gt; x + y;
+    static float Subtrair(float x, float y) =&gt; x - y;
+    static float Multiplicar(float x, float y) =&gt; x * y;
+    static float Dividir(float x, float y) =&gt; x / y;
+
+    static void Main()
+    {
+        char opcao;
+        do
+        {
+            ExibirMenu();
+            opcao = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            switch (opcao)
+            {
+                case &apos;+&apos;:
+                    Console.WriteLine(&quot;\nADICAO [ + ]&quot;);
+                    LerValores();
+                    resultado = Somar(a, b);
+                    Console.WriteLine($&quot;\nResultado: {resultado:F2}\n&quot;);
+                    GerenciarNavegacao();
+                    break;
+                case &apos;-&apos;:
+                    Console.WriteLine(&quot;\nSUBTRACAO [ - ]&quot;);
+                    LerValores();
+                    resultado = Subtrair(a, b);
+                    Console.WriteLine($&quot;\nResultado: {resultado:F2}\n&quot;);
+                    GerenciarNavegacao();
+                    break;
+                case &apos;*&apos;:
+                    Console.WriteLine(&quot;\nMULTIPLICACAO [ * ]&quot;);
+                    LerValores();
+                    resultado = Multiplicar(a, b);
+                    Console.WriteLine($&quot;\nResultado: {resultado:F2}\n&quot;);
+                    GerenciarNavegacao();
+                    break;
+                case &apos;/&apos;:
+                    Console.WriteLine(&quot;\nDIVISAO [ / ]&quot;);
+                    LerValores();
+                    if (b == 0)
+                    {
+                        Console.WriteLine(&quot;\nErro: divisao por zero nao e permitida.\n&quot;);
+                    }
+                    else
+                    {
+                        resultado = Dividir(a, b);
+                        Console.WriteLine($&quot;\nResultado: {resultado:F2}\n&quot;);
+                    }
+                    GerenciarNavegacao();
+                    break;
+                case &apos;S&apos;:
+                case &apos;s&apos;:
+                    EncerrarSistema();
+                    break;
+                default:
+                    TratarErro();
+                    break;
+            }
+        }
+        while (opcao != &apos;S&apos; &amp;&amp; opcao != &apos;s&apos;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>static float Somar(float x, float y) =&gt; x + y;</strong>: mÃ©todo em forma curta (expression-bodied member) para retorno direto.</p></li>
+                <li><p><strong>{resultado:F2}</strong>: saÃ­da padronizada do resultado da calculadora com duas casas decimais.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-21'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 21</p>
+          <h3>Hamburgueria Central 1</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-20'>Anterior</a>
+          <a href='#exercicio-22'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Sistema de vendas com menu, desconto e relatÃ³rio final.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;ctype.h&gt;
+
+
+void exibirMenu();
+float calcularValorBruto(char opcao, int quantidade);
+float calcularDesconto(float valorBruto);
+void exibirAutoria();
+
+int main() {
+    char opcao;
+    int quantidade;
+
+
+    int totalItensVendidos = 0;
+    int totalDescontosConcedidos = 0;
+    float totalCaixaAcumulado = 0.0;
+
+    do {
+        exibirMenu();
+        scanf(&quot; %c&quot;, &amp;opcao);
+        opcao = toupper(opcao);
+
+        switch (opcao) {
+            case &apos;H&apos;:
+                printf(&quot;\nHAMBURGUER SIMPLES [ H ]\n&quot;);
+                break;
+            case &apos;C&apos;:
+                printf(&quot;\nCOMBO COMPLETO [ C ]\n&quot;);
+                break;
+            case &apos;B&apos;:
+                printf(&quot;\nBATATA FRITA [ B ]\n&quot;);
+                break;
+            case &apos;R&apos;:
+                printf(&quot;\nREFRIGERANTE [ R ]\n&quot;);
+                break;
+            case &apos;F&apos;:
+
+                break;
+            default:
+                printf(&quot;\nOpcao invalida! Tente novamente.\n&quot;);
+                printf(&quot;[Pressione ENTER para continuar]&quot;);
+                getchar();
+                getchar();
+                continue;
+        }
+
+
+        if (opcao == &apos;H&apos; || opcao == &apos;C&apos; || opcao == &apos;B&apos; || opcao == &apos;R&apos;) {
+            printf(&quot;Digite a quantidade desejada: &quot;);
+            scanf(&quot;%d&quot;, &amp;quantidade);
+
+
+            if (quantidade &lt;= 0) {
+                printf(&quot;\nQuantidade invalida! Operacao cancelada.\n&quot;);
+            } else {
+
+                float bruto = calcularValorBruto(opcao, quantidade);
+                float desconto = calcularDesconto(bruto);
+                float liquido = bruto - desconto;
+
+
+                printf(&quot;\nValor Bruto: R$ %.2f\n&quot;, bruto);
+                if (desconto &gt; 0) {
+                    printf(&quot;Desconto Applied (10%%): -R$ %.2f\n&quot;, desconto);
+                } else {
+                    printf(&quot;Desconto Applied (0%%): R$ 0.00\n&quot;);
+                }
+                printf(&quot;Total a Pagar: R$ %.2f\n&quot;, liquido);
+
+
+                totalItensVendidos += quantidade;
+                totalCaixaAcumulado += liquido;
+                if (desconto &gt; 0) {
+                    totalDescontosConcedidos++;
+                }
+            }
+
+            printf(&quot;\n[Pressione ENTER para continuar]&quot;);
+            getchar();
+            getchar();
+        }
+
+    } while (opcao != &apos;F&apos;);
+
+
+    printf(&quot;\nSistema encerrado com sucesso.\n&quot;);
+    printf(&quot;\n======= RELATORIO DO CAIXA =======\n&quot;);
+    printf(&quot;Total de itens vendidos: %d\n&quot;, totalItensVendidos);
+    printf(&quot;Quantidade de descontos aplicados: %d\n&quot;, totalDescontosConcedidos);
+    printf(&quot;Total acumulado em caixa: R$ %.2f\n&quot;, totalCaixaAcumulado);
+    printf(&quot;==================================\n\n&quot;);
+
+    exibirAutoria();
+
+    return 0;
+}
+
+
+
+void exibirMenu() {
+    #ifdef _WIN32
+        system(&quot;cls&quot;);
+    #else
+        system(&quot;clear&quot;);
+    #endif
+
+    printf(&quot;=====================================\n&quot;);
+    printf(&quot;        HAMBURGUERIA CENTRAL         \n&quot;);
+    printf(&quot;=====================================\n&quot;);
+    printf(&quot; [ H ] Hamburguer Simples (R$ 18.50)\n&quot;);
+    printf(&quot; [ C ] Combo Completo   (R$ 32.00)\n&quot;);
+    printf(&quot; [ B ] Batata Frita     (R$ 12.00)\n&quot;);
+    printf(&quot; [ R ] Refrigerante     (R$  6.50)\n&quot;);
+    printf(&quot; [ F ] Finalizar Sistema             \n&quot;);
+    printf(&quot;=====================================\n&quot;);
+    printf(&quot;Escolha uma opcao: &quot;);
+}
+
+float calcularValorBruto(char opcao, int quantidade) {
+    float precoUnitario = 0.0;
+
+    if (opcao == &apos;H&apos;) precoUnitario = 18.50;
+    else if (opcao == &apos;C&apos;) precoUnitario = 32.00;
+    else if (opcao == &apos;B&apos;) precoUnitario = 12.00;
+    else if (opcao == &apos;R&apos;) precoUnitario = 6.50;
+
+    return precoUnitario * quantidade;
+}
+
+float calcularDesconto(float valorBruto) {
+
+    if (valorBruto &gt; 60.00) {
+        return valorBruto * 0.10;
+    }
+    return 0.0;
+}
+
+void exibirAutoria() {
+    printf(&quot;***************************************************\n&quot;);
+    printf(&quot;* Desenvolvido por: NOME DO ALUNO                 *\n&quot;);
+    printf(&quot;***************************************************\n&quot;);
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp21
+{
+    static void ExibirMenu()
+    {
+        Console.Clear();
+        Console.WriteLine(&quot;=====================================&quot;);
+        Console.WriteLine(&quot;        HAMBURGUERIA CENTRAL         &quot;);
+        Console.WriteLine(&quot;=====================================&quot;);
+        Console.WriteLine(&quot; [ H ] Hamburguer Simples (R$ 18.50)&quot;);
+        Console.WriteLine(&quot; [ C ] Combo Completo   (R$ 32.00)&quot;);
+        Console.WriteLine(&quot; [ B ] Batata Frita     (R$ 12.00)&quot;);
+        Console.WriteLine(&quot; [ R ] Refrigerante     (R$  6.50)&quot;);
+        Console.WriteLine(&quot; [ F ] Finalizar Sistema             &quot;);
+        Console.WriteLine(&quot;=====================================&quot;);
+        Console.Write(&quot;Escolha uma opcao: &quot;);
+    }
+
+    static float CalcularValorBruto(char opcao, int quantidade)
+    {
+        float precoUnitario = 0.0f;
+
+        if (opcao == &apos;H&apos;) precoUnitario = 18.50f;
+        else if (opcao == &apos;C&apos;) precoUnitario = 32.00f;
+        else if (opcao == &apos;B&apos;) precoUnitario = 12.00f;
+        else if (opcao == &apos;R&apos;) precoUnitario = 6.50f;
+
+        return precoUnitario * quantidade;
+    }
+
+    static float CalcularDesconto(float valorBruto)
+    {
+        if (valorBruto &gt; 60.00f)
+        {
+            return valorBruto * 0.10f;
+        }
+        return 0.0f;
+    }
+
+    static void ExibirAutoria()
+    {
+        Console.WriteLine(&quot;***************************************************&quot;);
+        Console.WriteLine(&quot;* Desenvolvido por: NOME DO ALUNO                 *&quot;);
+        Console.WriteLine(&quot;***************************************************&quot;);
+    }
+
+    static void Main()
+    {
+        char opcao;
+        int quantidade;
+
+        int totalItensVendidos = 0;
+        int totalDescontosConcedidos = 0;
+        float totalCaixaAcumulado = 0.0f;
+
+        do
+        {
+            ExibirMenu();
+            opcao = char.ToUpper(Console.ReadKey().KeyChar);
+            Console.WriteLine();
+
+            switch (opcao)
+            {
+                case &apos;H&apos;:
+                    Console.WriteLine(&quot;\nHAMBURGUER SIMPLES [ H ]&quot;);
+                    break;
+                case &apos;C&apos;:
+                    Console.WriteLine(&quot;\nCOMBO COMPLETO [ C ]&quot;);
+                    break;
+                case &apos;B&apos;:
+                    Console.WriteLine(&quot;\nBATATA FRITA [ B ]&quot;);
+                    break;
+                case &apos;R&apos;:
+                    Console.WriteLine(&quot;\nREFRIGERANTE [ R ]&quot;);
+                    break;
+                case &apos;F&apos;:
+                    break;
+                default:
+                    Console.WriteLine(&quot;\nOpcao invalida! Tente novamente.&quot;);
+                    Console.Write(&quot;[Pressione ENTER para continuar]&quot;);
+                    Console.ReadLine();
+                    continue;
+            }
+
+            if (opcao == &apos;H&apos; || opcao == &apos;C&apos; || opcao == &apos;B&apos; || opcao == &apos;R&apos;)
+            {
+                Console.Write(&quot;Digite a quantidade desejada: &quot;);
+                int.TryParse(Console.ReadLine(), out quantidade);
+
+                if (quantidade &lt;= 0)
+                {
+                    Console.WriteLine(&quot;\nQuantidade invalida! Operacao cancelada.&quot;);
+                }
+                else
+                {
+                    float bruto = CalcularValorBruto(opcao, quantidade);
+                    float desconto = CalcularDesconto(bruto);
+                    float liquido = bruto - desconto;
+
+                    Console.WriteLine($&quot;\nValor Bruto: R$ {bruto:F2}&quot;);
+                    if (desconto &gt; 0)
+                    {
+                        Console.WriteLine($&quot;Desconto Applied (10%): -R$ {desconto:F2}&quot;);
+                    }
+                    else
+                    {
+                        Console.WriteLine(&quot;Desconto Applied (0%): R$ 0.00&quot;);
+                    }
+                    Console.WriteLine($&quot;Total a Pagar: R$ {liquido:F2}&quot;);
+
+                    totalItensVendidos += quantidade;
+                    totalCaixaAcumulado += liquido;
+                    if (desconto &gt; 0)
+                    {
+                        totalDescontosConcedidos++;
+                    }
+                }
+
+                Console.Write(&quot;\n[Pressione ENTER para continuar]&quot;);
+                Console.ReadLine();
+            }
+        }
+        while (opcao != &apos;F&apos;);
+
+        Console.WriteLine(&quot;\nSistema encerrado com sucesso.&quot;);
+        Console.WriteLine(&quot;\n======= RELATORIO DO CAIXA =======&quot;);
+        Console.WriteLine($&quot;Total de itens vendidos: {totalItensVendidos}&quot;);
+        Console.WriteLine($&quot;Quantidade de descontos aplicados: {totalDescontosConcedidos}&quot;);
+        Console.WriteLine($&quot;Total acumulado em caixa: R$ {totalCaixaAcumulado:F2}&quot;);
+        Console.WriteLine(&quot;==================================\n&quot;);
+
+        ExibirAutoria();
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>char.ToUpper(...)</strong>: converte a opÃ§Ã£o digitada para maiÃºscula e reduz comparaÃ§Ãµes duplicadas.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>bruto</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{bruto:F2}</strong>.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>desconto</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{desconto:F2}</strong>.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>liquido</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{liquido:F2}</strong>.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-22'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 22</p>
+          <h3>Hamburgueria Central 2</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-21'>Anterior</a>
+          <a href='#exercicio-23'>PrÃ³ximo</a>
+        </div>
+      </div>
+      <p class='exercise-note'>Sistema de vendas com validaÃ§Ã£o de quantidade e funÃ§Ãµes refatoradas.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+
+#define PRECO_HAMBURGUER 18.50
+#define PRECO_COMBO 32.00
+#define PRECO_BATATA 12.00
+#define PRECO_REFRIGERANTE 6.50
+
+
+void limpar_tela();
+void pausar_sistema();
+int valida_quantidade(int qtd);
+float calcular_valor_bruto(float preco, int qtd);
+float calcular_desconto(float valor_bruto);
+
+int main() {
+    char opcao;
+
+
+    int total_itens_vendidos = 0;
+    int qtd_descontos_aplicados = 0;
+    float total_acumulado_caixa = 0.0;
+
+
+    float preco_item;
+    int quantidade;
+    float valor_bruto;
+    float desconto;
+    float total_a_pagar;
+
+    do {
+        limpar_tela();
+
+
+        printf(&quot;=====================================\n&quot;);
+        printf(&quot;        HAMBURGUERIA CENTRAL         \n&quot;);
+        printf(&quot;=====================================\n&quot;);
+        printf(&quot; [ H ] Hamburguer Simples (R$ 18.50)\n&quot;);
+        printf(&quot; [ C ] Combo Completo (R$ 32.00)\n&quot;);
+        printf(&quot; [ B ] Batata Frita (R$ 12.00)\n&quot;);
+        printf(&quot; [ R ] Refrigerante (R$ 6.50)\n&quot;);
+        printf(&quot; [ F ] Finalizar Sistema \n&quot;);
+        printf(&quot;=====================================\n&quot;);
+        printf(&quot;Escolha uma opcao: &quot;);
+        scanf(&quot; %c&quot;, &amp;opcao);
+
+
+        if (opcao == &apos;F&apos;) {
+            break;
+        }
+
+        preco_item = 0.0;
+
+
+        switch (opcao) {
+            case &apos;H&apos;:
+                printf(&quot;\nHAMBURGUER SIMPLES [ H ]\n&quot;);
+                preco_item = PRECO_HAMBURGUER;
+                break;
+            case &apos;C&apos;:
+                printf(&quot;\nCOMBO COMPLETO [ C ]\n&quot;);
+                preco_item = PRECO_COMBO;
+                break;
+            case &apos;B&apos;:
+                printf(&quot;\nBATATA FRITA [ B ]\n&quot;);
+                preco_item = PRECO_BATATA;
+                break;
+            case &apos;R&apos;:
+                printf(&quot;\nREFRIGERANTE [ R ]\n&quot;);
+                preco_item = PRECO_REFRIGERANTE;
+                break;
+            default:
+                printf(&quot;\nOpcao invalida!\n&quot;);
+                pausar_sistema();
+                continue;
+        }
+
+
+        printf(&quot;Digite a quantidade que voce deseja: &quot;);
+        scanf(&quot;%d&quot;, &amp;quantidade);
+
+
+        if (!valida_quantidade(quantidade)) {
+            printf(&quot;\nErro: Quantidade invalida. Venda cancelada.\n&quot;);
+            pausar_sistema();
+            continue;
+        }
+
+
+        valor_bruto = calcular_valor_bruto(preco_item, quantidade);
+        desconto = calcular_desconto(valor_bruto);
+        total_a_pagar = valor_bruto - desconto;
+
+
+        printf(&quot;\nValor Bruto: R$ %.2f\n&quot;, valor_bruto);
+        if (desconto &gt; 0) {
+            printf(&quot;Desconto Aplicado (10%%): -R$ %.2f\n&quot;, desconto);
+        } else {
+            printf(&quot;Desconto Aplicado (0%%): R$ 0.00\n&quot;);
+        }
+        printf(&quot;Total a Pagar: R$ %.2f\n&quot;, total_a_pagar);
+
+
+        total_itens_vendidos += quantidade;
+        total_acumulado_caixa += total_a_pagar;
+        if (desconto &gt; 0) {
+            qtd_descontos_aplicados++;
+        }
+
+        pausar_sistema();
+
+    } while (opcao != &apos;F&apos;);
+
+
+    limpar_tela();
+    printf(&quot;Sistema encerrado com sucesso.\n\n&quot;);
+    printf(&quot;======= RELATORIO DO CAIXA =======\n\n&quot;);
+    printf(&quot;Total de itens vendidos: %d\n&quot;, total_itens_vendidos);
+    printf(&quot;Quantidade de descontos aplicados: %d\n&quot;, qtd_descontos_aplicados);
+    printf(&quot;Total acumulado em caixa: R$ %.2f\n\n&quot;, total_acumulado_caixa);
+    printf(&quot;==================================\n\n&quot;);
+
+
+    printf(&quot;***************************************************\n&quot;);
+    printf(&quot;* Desenvolvido por: ifsp felipe                   *\n&quot;);
+    printf(&quot;***************************************************\n&quot;);
+
+    return 0;
+}
+
+
+
+void limpar_tela() {
+    #ifdef _WIN32
+        system(&quot;cls&quot;);
+    #else
+        system(&quot;clear&quot;);
+    #endif
+}
+
+
+void pausar_sistema() {
+    printf(&quot;\nPressione ENTER para continuar...&quot;);
+    getchar();
+    getchar();
+}
+
+
+int valida_quantidade(int qtd) {
+    if (qtd &gt; 0) {
+        return 1;
+    }
+    return 0;
+}
+
+
+float calcular_valor_bruto(float preco, int qtd) {
+    return preco * (float)qtd;
+}
+
+
+float calcular_desconto(float valor_bruto) {
+    if (valor_bruto &gt; 60.00) {
+        return valor_bruto * 0.10;
+    }
+    return 0.0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp22
+{
+    const float PRECO_HAMBURGUER = 18.50f;
+    const float PRECO_COMBO = 32.00f;
+    const float PRECO_BATATA = 12.00f;
+    const float PRECO_REFRIGERANTE = 6.50f;
+
+    static void LimparTela()
+    {
+        Console.Clear();
+    }
+
+    static void PausarSistema()
+    {
+        Console.Write(&quot;\nPressione ENTER para continuar...&quot;);
+        Console.ReadLine();
+    }
+
+    static bool ValidaQuantidade(int qtd)
+    {
+        return qtd &gt; 0;
+    }
+
+    static float CalcularValorBruto(float preco, int qtd)
+    {
+        return preco * qtd;
+    }
+
+    static float CalcularDesconto(float valorBruto)
+    {
+        if (valorBruto &gt; 60.00f)
+        {
+            return valorBruto * 0.10f;
+        }
+        return 0.0f;
+    }
+
+    static void Main()
+    {
+        char opcao;
+
+        int totalItensVendidos = 0;
+        int qtdDescontosAplicados = 0;
+        float totalAcumuladoCaixa = 0.0f;
+
+        float precoItem;
+        int quantidade;
+        float valorBruto;
+        float desconto;
+        float totalAPagar;
+
+        do
+        {
+            LimparTela();
+
+            Console.WriteLine(&quot;=====================================&quot;);
+            Console.WriteLine(&quot;        HAMBURGUERIA CENTRAL         &quot;);
+            Console.WriteLine(&quot;=====================================&quot;);
+            Console.WriteLine(&quot; [ H ] Hamburguer Simples (R$ 18.50)&quot;);
+            Console.WriteLine(&quot; [ C ] Combo Completo (R$ 32.00)&quot;);
+            Console.WriteLine(&quot; [ B ] Batata Frita (R$ 12.00)&quot;);
+            Console.WriteLine(&quot; [ R ] Refrigerante (R$ 6.50)&quot;);
+            Console.WriteLine(&quot; [ F ] Finalizar Sistema &quot;);
+            Console.WriteLine(&quot;=====================================&quot;);
+            Console.Write(&quot;Escolha uma opcao: &quot;);
+            opcao = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            if (opcao == &apos;F&apos;)
+            {
+                break;
+            }
+
+            precoItem = 0.0f;
+
+            switch (opcao)
+            {
+                case &apos;H&apos;:
+                    Console.WriteLine(&quot;\nHAMBURGUER SIMPLES [ H ]&quot;);
+                    precoItem = PRECO_HAMBURGUER;
+                    break;
+                case &apos;C&apos;:
+                    Console.WriteLine(&quot;\nCOMBO COMPLETO [ C ]&quot;);
+                    precoItem = PRECO_COMBO;
+                    break;
+                case &apos;B&apos;:
+                    Console.WriteLine(&quot;\nBATATA FRITA [ B ]&quot;);
+                    precoItem = PRECO_BATATA;
+                    break;
+                case &apos;R&apos;:
+                    Console.WriteLine(&quot;\nREFRIGERANTE [ R ]&quot;);
+                    precoItem = PRECO_REFRIGERANTE;
+                    break;
+                default:
+                    Console.WriteLine(&quot;\nOpcao invalida!&quot;);
+                    PausarSistema();
+                    continue;
+            }
+
+            Console.Write(&quot;Digite a quantidade que voce deseja: &quot;);
+            int.TryParse(Console.ReadLine(), out quantidade);
+
+            if (!ValidaQuantidade(quantidade))
+            {
+                Console.WriteLine(&quot;\nErro: Quantidade invalida. Venda cancelada.&quot;);
+                PausarSistema();
+                continue;
+            }
+
+            valorBruto = CalcularValorBruto(precoItem, quantidade);
+            desconto = CalcularDesconto(valorBruto);
+            totalAPagar = valorBruto - desconto;
+
+            Console.WriteLine($&quot;\nValor Bruto: R$ {valorBruto:F2}&quot;);
+            if (desconto &gt; 0)
+            {
+                Console.WriteLine($&quot;Desconto Aplicado (10%): -R$ {desconto:F2}&quot;);
+            }
+            else
+            {
+                Console.WriteLine(&quot;Desconto Aplicado (0%): R$ 0.00&quot;);
+            }
+            Console.WriteLine($&quot;Total a Pagar: R$ {totalAPagar:F2}&quot;);
+
+            totalItensVendidos += quantidade;
+            totalAcumuladoCaixa += totalAPagar;
+            if (desconto &gt; 0)
+            {
+                qtdDescontosAplicados++;
+            }
+
+            PausarSistema();
+        }
+        while (opcao != &apos;F&apos;);
+
+        LimparTela();
+        Console.WriteLine(&quot;Sistema encerrado com sucesso.\n&quot;);
+        Console.WriteLine(&quot;======= RELATORIO DO CAIXA =======\n&quot;);
+        Console.WriteLine($&quot;Total de itens vendidos: {totalItensVendidos}&quot;);
+        Console.WriteLine($&quot;Quantidade de descontos aplicados: {qtdDescontosAplicados}&quot;);
+        Console.WriteLine($&quot;Total acumulado em caixa: R$ {totalAcumuladoCaixa:F2}\n&quot;);
+        Console.WriteLine(&quot;==================================\n&quot;);
+
+        Console.WriteLine(&quot;***************************************************&quot;);
+        Console.WriteLine(&quot;* Desenvolvido por: ifsp felipe                   *&quot;);
+        Console.WriteLine(&quot;***************************************************&quot;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>const float PRECO_...</strong>: constantes tipadas para preÃ§os fixos no sistema.</p></li>
+                <li><p><strong>bool ValidaQuantidade(int qtd)</strong>: retorna <code>true</code> ou <code>false</code> para validaÃ§Ã£o explÃ­cita.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>valorBruto</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{valorBruto:F2}</strong>.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>desconto</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{desconto:F2}</strong>.</p></li>
+                <li><p>Esse exercÃ­cio faz a saÃ­da da variÃ¡vel <strong>totalAPagar</strong> com duas casas decimais F2, logo aparece a expressÃ£o <strong>{totalAPagar:F2}</strong>.</p></li>
+                <li><p>Regra geral de casas decimais: <strong>{variavel:F0}</strong> (0 casa), <strong>{variavel:F1}</strong> (1 casa), <strong>{variavel:F2}</strong> (2 casas), e assim por diante.</p></li>
+            </ul>
+    </section>
+
+    <section class='exercise-container' id='exercicio-23'>
+      <div class="exercise-header">
+        <div>
+          <p class='eyebrow'>ExercÃ­cio 23</p>
+          <h3>Sistema de Estacionamento</h3>
+        </div>
+        <div class="exercise-links">
+          <a href='#indice-exercicios'>Indice</a>
+          <a href='#exercicio-22'>Anterior</a>
+          <span class='nav-disabled'>PrÃ³ximo</span>
+        </div>
+      </div>
+      <p class='exercise-note'>Controla entrada, saÃ­da e visualizaÃ§Ã£o de vagas.</p>
+      <div class="exercise-pair">
+        <article class="code-card">
+          <h4>VersÃ£o em C</h4>
+          <pre><code data-lang='c'>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define TOTALVAGAS 10
+
+int vagas[TOTALVAGAS];
+
+void pausar() {
+    system(&quot;pause&quot;);
+}
+
+void limparTela() {
+    system(&quot;cls&quot;);
+}
+
+int contarVagasLivres() {
+    int i;
+    int livres = 0;
+
+    for(i = 0; i &lt; 10; i++) {
+        if(vagas[i] == 0) {
+            livres++;
+        }
+    }
+
+    return livres;
+}
+
+void mostrarMapaVagas() {
+    int i;
+
+    printf(&quot;=====================================\n&quot;);
+    printf(&quot;           MAPA DE VAGAS\n&quot;);
+    printf(&quot;=====================================\n\n&quot;);
+
+    for(i = 0; i &lt; 10; i++) {
+
+        if(vagas[i] == 0) {
+            printf(&quot;Vaga %d -&gt; Livre\n&quot;, i);
+        } else {
+            printf(&quot;Vaga %d -&gt; Ocupada\n&quot;, i);
+        }
+    }
+
+    printf(&quot;\n&quot;);
+}
+
+void exibirMenu() {
+    int livres;
+
+    livres = contarVagasLivres();
+
+    printf(&quot;=====================================\n&quot;);
+    printf(&quot;    CONTROLE DE ESTACIONAMENTO\n&quot;);
+    printf(&quot;=====================================\n\n&quot;);
+
+    if(livres == 0) {
+        printf(&quot;Status: TODAS AS VAGAS OCUPADAS!\n\n&quot;);
+    } else {
+        printf(&quot;Status: Restam %d vagas!\n\n&quot;, livres);
+    }
+
+    printf(&quot; [ E ] Entrada de Veiculo\n&quot;);
+    printf(&quot; [ S ] Saida de Veiculo\n&quot;);
+    printf(&quot; [ M ] Mostrar Vagas\n&quot;);
+    printf(&quot; [ F ] Finalizar Sistema\n\n&quot;);
+
+    printf(&quot;=====================================\n&quot;);
+    printf(&quot;Escolha uma opcao: &quot;);
+}
+
+void entradaVeiculo() {
+
+    int vaga;
+
+    limparTela();
+
+
+
+    mostrarMapaVagas();
+
+    printf(&quot;Digite a vaga desejada: &quot;);
+    scanf(&quot;%d&quot;, &amp;vaga);
+
+    if(vaga &lt; 0 || vaga &gt; 9) {
+
+        limparTela();
+
+        mostrarMapaVagas();
+
+        printf(&quot;Numero de vaga invalido!\n\n&quot;);
+
+    } else if(vagas[vaga] == 1) {
+
+        limparTela();
+
+        mostrarMapaVagas();
+
+        printf(&quot;A vaga escolhida ja esta ocupada!\n\n&quot;);
+
+    } else {
+
+        vagas[vaga] = 1;
+
+        limparTela();
+
+        mostrarMapaVagas();
+
+        printf(&quot;Veiculo estacionado na vaga %d.\n\n&quot;, vaga);
+    }
+
+    pausar();
+    limparTela();
+}
+
+void saidaVeiculo() {
+
+    int vaga;
+
+    limparTela();
+
+
+
+    mostrarMapaVagas();
+
+    printf(&quot;Digite a vaga para saida: &quot;);
+    scanf(&quot;%d&quot;, &amp;vaga);
+
+    if(vaga &lt; 0 || vaga &gt; 9) {
+
+        limparTela();
+
+        mostrarMapaVagas();
+
+        printf(&quot;Numero de vaga invalido!\n\n&quot;);
+
+    } else if(vagas[vaga] == 0) {
+
+        limparTela();
+
+        mostrarMapaVagas();
+
+        printf(&quot;Nao existe veiculo estacionado nessa vaga.\n\n&quot;);
+
+    } else {
+
+        vagas[vaga] = 0;
+
+        limparTela();
+
+        mostrarMapaVagas();
+
+        printf(&quot;Veiculo removido da vaga %d.\n\n&quot;, vaga);
+    }
+
+    pausar();
+    limparTela();
+}
+
+void mostrarVagas() {
+
+    limparTela();
+
+
+
+    mostrarMapaVagas();
+
+    pausar();
+    limparTela();
+}
+
+void tratarErro() {
+
+    printf(&quot;\nOpcao invalida!\n\n&quot;);
+
+    pausar();
+    limparTela();
+}
+
+void encerrarSistema() {
+
+    int contaVeiculos = TOTALVAGAS - contarVagasLivres();
+
+    if (contaVeiculos &gt; 0)
+        printf(&quot;\nAtencao: Ainda existem %d veiculo(s) estacionados!\n\n&quot;);
+    else
+        printf(&quot;\nEstacionamento vazio!\n\n&quot;);
+
+    printf(&quot;\nSistema encerrado com sucesso.\n\n&quot;);
+
+    printf(&quot;***************************************************\n&quot;);
+    printf(&quot;*      Desenvolvido por: NOME DO ALUNO            *\n&quot;);
+    printf(&quot;***************************************************\n&quot;);
+}
+
+int main() {
+
+    char opcao;
+    int i;
+
+    for(i = 0; i &lt; 10; i++) {
+        vagas[i] = 0;
+    }
+
+    do {
+
+        exibirMenu();
+
+        scanf(&quot; %c&quot;, &amp;opcao);
+
+        switch(opcao) {
+
+            case &apos;E&apos;:
+            case &apos;e&apos;:
+                entradaVeiculo();
+                break;
+
+            case &apos;S&apos;:
+            case &apos;s&apos;:
+                saidaVeiculo();
+                break;
+
+            case &apos;M&apos;:
+            case &apos;m&apos;:
+                mostrarVagas();
+                break;
+
+            case &apos;F&apos;:
+            case &apos;f&apos;:
+                encerrarSistema();
+                break;
+
+            default:
+                tratarErro();
+        }
+
+    } while(opcao != &apos;F&apos; &amp;&amp; opcao != &apos;f&apos;);
+
+    return 0;
+}</code></pre>
+</article>
+        <article class="code-card">
+          <h4>VersÃ£o em C#</h4>
+          <pre><code data-lang='csharp'>using System;
+
+class ExercicioCSharp23
+{
+    const int TOTALVAGAS = 10;
+    static int[] vagas = new int[TOTALVAGAS];
+
+    static void Pausar()
+    {
+        Console.WriteLine(&quot;Pressione qualquer tecla para continuar...&quot;);
+        Console.ReadKey();
+    }
+
+    static void LimparTela()
+    {
+        Console.Clear();
+    }
+
+    static int ContarVagasLivres()
+    {
+        int livres = 0;
+
+        for (int i = 0; i &lt; 10; i++)
+        {
+            if (vagas[i] == 0)
+            {
+                livres++;
+            }
+        }
+
+        return livres;
+    }
+
+    static void MostrarMapaVagas()
+    {
+        Console.WriteLine(&quot;=====================================&quot;);
+        Console.WriteLine(&quot;           MAPA DE VAGAS&quot;);
+        Console.WriteLine(&quot;=====================================\n&quot;);
+
+        for (int i = 0; i &lt; 10; i++)
+        {
+            if (vagas[i] == 0)
+            {
+                Console.WriteLine($&quot;Vaga {i} -&gt; Livre&quot;);
+            }
+            else
+            {
+                Console.WriteLine($&quot;Vaga {i} -&gt; Ocupada&quot;);
+            }
+        }
+
+        Console.WriteLine();
+    }
+
+    static void ExibirMenu()
+    {
+        int livres = ContarVagasLivres();
+
+        Console.WriteLine(&quot;=====================================&quot;);
+        Console.WriteLine(&quot;    CONTROLE DE ESTACIONAMENTO&quot;);
+        Console.WriteLine(&quot;=====================================\n&quot;);
+
+        if (livres == 0)
+        {
+            Console.WriteLine(&quot;Status: TODAS AS VAGAS OCUPADAS!\n&quot;);
+        }
+        else
+        {
+            Console.WriteLine($&quot;Status: Restam {livres} vagas!\n&quot;);
+        }
+
+        Console.WriteLine(&quot; [ E ] Entrada de Veiculo&quot;);
+        Console.WriteLine(&quot; [ S ] Saida de Veiculo&quot;);
+        Console.WriteLine(&quot; [ M ] Mostrar Vagas&quot;);
+        Console.WriteLine(&quot; [ F ] Finalizar Sistema\n&quot;);
+        Console.WriteLine(&quot;=====================================&quot;);
+        Console.Write(&quot;Escolha uma opcao: &quot;);
+    }
+
+    static void EntradaVeiculo()
+    {
+        LimparTela();
+        MostrarMapaVagas();
+
+        Console.Write(&quot;Digite a vaga desejada: &quot;);
+        int.TryParse(Console.ReadLine(), out int vaga);
+
+        if (vaga &lt; 0 || vaga &gt; 9)
+        {
+            LimparTela();
+            MostrarMapaVagas();
+            Console.WriteLine(&quot;Numero de vaga invalido!\n&quot;);
+        }
+        else if (vagas[vaga] == 1)
+        {
+            LimparTela();
+            MostrarMapaVagas();
+            Console.WriteLine(&quot;A vaga escolhida ja esta ocupada!\n&quot;);
+        }
+        else
+        {
+            vagas[vaga] = 1;
+
+            LimparTela();
+            MostrarMapaVagas();
+            Console.WriteLine($&quot;Veiculo estacionado na vaga {vaga}.\n&quot;);
+        }
+
+        Pausar();
+        LimparTela();
+    }
+
+    static void SaidaVeiculo()
+    {
+        LimparTela();
+        MostrarMapaVagas();
+
+        Console.Write(&quot;Digite a vaga para saida: &quot;);
+        int.TryParse(Console.ReadLine(), out int vaga);
+
+        if (vaga &lt; 0 || vaga &gt; 9)
+        {
+            LimparTela();
+            MostrarMapaVagas();
+            Console.WriteLine(&quot;Numero de vaga invalido!\n&quot;);
+        }
+        else if (vagas[vaga] == 0)
+        {
+            LimparTela();
+            MostrarMapaVagas();
+            Console.WriteLine(&quot;Nao existe veiculo estacionado nessa vaga.\n&quot;);
+        }
+        else
+        {
+            vagas[vaga] = 0;
+
+            LimparTela();
+            MostrarMapaVagas();
+            Console.WriteLine($&quot;Veiculo removido da vaga {vaga}.\n&quot;);
+        }
+
+        Pausar();
+        LimparTela();
+    }
+
+    static void MostrarVagas()
+    {
+        LimparTela();
+        MostrarMapaVagas();
+        Pausar();
+        LimparTela();
+    }
+
+    static void TratarErro()
+    {
+        Console.WriteLine(&quot;\nOpcao invalida!\n&quot;);
+        Pausar();
+        LimparTela();
+    }
+
+    static void EncerrarSistema()
+    {
+        int contaVeiculos = TOTALVAGAS - ContarVagasLivres();
+
+        if (contaVeiculos &gt; 0)
+            Console.WriteLine($&quot;\nAtencao: Ainda existem {contaVeiculos} veiculo(s) estacionados!\n&quot;);
+        else
+            Console.WriteLine(&quot;\nEstacionamento vazio!\n&quot;);
+
+        Console.WriteLine(&quot;\nSistema encerrado com sucesso.\n&quot;);
+        Console.WriteLine(&quot;***************************************************&quot;);
+        Console.WriteLine(&quot;*      Desenvolvido por: NOME DO ALUNO            *&quot;);
+        Console.WriteLine(&quot;***************************************************&quot;);
+    }
+
+    static void Main()
+    {
+        for (int i = 0; i &lt; 10; i++)
+        {
+            vagas[i] = 0;
+        }
+
+        char opcao;
+        do
+        {
+            ExibirMenu();
+            opcao = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            switch (opcao)
+            {
+                case &apos;E&apos;:
+                case &apos;e&apos;:
+                    EntradaVeiculo();
+                    break;
+                case &apos;S&apos;:
+                case &apos;s&apos;:
+                    SaidaVeiculo();
+                    break;
+                case &apos;M&apos;:
+                case &apos;m&apos;:
+                    MostrarVagas();
+                    break;
+                case &apos;F&apos;:
+                case &apos;f&apos;:
+                    EncerrarSistema();
+                    break;
+                default:
+                    TratarErro();
+                    break;
+            }
+        }
+        while (opcao != &apos;F&apos; &amp;&amp; opcao != &apos;f&apos;);
+    }
+}</code></pre>
+</article>
+      </div>
+            <p><strong>ObservaÃ§Ãµes:</strong></p>
+            <ul>
+                <li><p><strong>int.TryParse(Console.ReadLine(), out int vaga)</strong>: converte a entrada e jÃ¡ declara a variÃ¡vel no prÃ³prio comando.</p></li>
+                <li><p><strong>{i}</strong>, <strong>{livres}</strong> e <strong>{contaVeiculos}</strong>: interpolaÃ§Ã£o usada para mensagens dinÃ¢micas do sistema.</p></li>
+            </ul>
+    </section>
+
+    <section class="lesson-section section-end">
+      <h2>Resumo da Aula</h2>
+      <p>A TransiÃ§Ã£o de C para C# nÃ£o exige abandonar o que voce sabe. Voce aproveita a base de lÃ³gica e aprende uma nova forma de expressar essa base.</p>
+      <p>Ao final desta etapa, voce deve conseguir ler entrada, converter valores e reproduzir em C# algoritmos simples que ja funcionavam em C.</p>
+    </section>
+
+<section class='update-log' aria-label='Informacao de atualizacao'>
+  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+</section>
+</article>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

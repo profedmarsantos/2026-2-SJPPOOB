@@ -25,6 +25,19 @@
 - Ao clicar em cada botao de fonte, a familia selecionada deve ser aplicada de forma deterministica ao texto da pagina.
 - Botoes + e - devem aumentar/reduzir o tamanho da fonte de forma progressiva por cliques sucessivos.
 - Todas as seções das aulas devem ser numeradas ou hierarquizadas para facilitar referencia do aluno.
+- Toda pagina de licao em `material/html-moodle/lessons/lessonNNN.html` deve exibir na propria pagina um log visivel de ultima atualizacao no formato `Ultima atualizacao: DD/MM/AAAA`.
+- Ao editar apenas uma licao, atualizar somente o log dessa pagina.
+- Ao realizar atualizacao completa do projeto de licoes, atualizar o log de todas as paginas de licao para a mesma data.
+
+## Responsividade obrigatoria
+
+- Toda alteracao visual deve preservar leitura e uso em desktop, tablet e mobile sem sobreposição de elementos.
+- Nao usar larguras fixas que gerem rolagem horizontal em telas pequenas.
+- Hero com botao de tema deve manter espaco reservado para o botao em telas medias e grandes.
+- Em telas pequenas, componentes de cabecalho e abas devem quebrar linha de forma controlada.
+- Botoes iconicos devem manter area de toque minima de 32x32.
+- Tabelas e conteudos longos devem quebrar texto ou permitir rolagem local, nunca estourar o layout da pagina.
+- Antes de concluir qualquer ajuste de UI, validar no minimo em 1280px, 768px e 360px.
 
 ## Estrutura padrão da aula
 
@@ -42,3 +55,4 @@
 1. Incluir `assets/theme.css` em todas as paginas de aulas.
 2. Incluir `assets/code-enhancer.js` em todas as paginas de aulas.
 3. Garantir consistencia visual entre as 20 aulas e o indice.
+4. Incluir e manter o log `Ultima atualizacao: DD/MM/AAAA` em cada pagina de licao.

@@ -1,43 +1,59 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aula 02 - Introdução a programação orientada a objetos</title>
+  <title>MÃ³dulo 02 - IntroduÃ§Ã£o a ProgramaÃ§Ã£o Orientada a Objetos</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
 </head>
 <body>
   <article>
-    <header>
-      <h1>Aula 02 - Introdução a programação orientada a objetos</h1>
-      <p>Objetivo: entender o que e POO e usar os conceitos de classe e objeto para modelar situacoes reais em C#.</p>
+    <header class="lesson-hero">
+      <h1 class="hero-title">MÃ³dulo 02 - IntroduÃ§Ã£o a ProgramaÃ§Ã£o Orientada a Objetos</h1>
+      <p class="hero-subtitle">Objetivo: Entender o Que e POO e Usar os Conceitos de Classe e Objeto para Modelar Situacoes Reais em C#.</p>
     </header>
 
     <section>
-      <h2>O que muda quando entramos em POO</h2>
-      <p>Na programação estruturada, voce pensa primeiro em funcoes e passos. Na <strong>programação orientada a objetos</strong>, voce organiza o sistema em <strong>modelos de entidades</strong> e nas ações dessas entidades.</p>
-      <p>Em outras palavras: em vez de pensar apenas no que o programa faz, voce também pensa em <strong>quem</strong> participa do problema (Aluno, Produto, Conta, Pedido) e <strong>quais dados e comportamentos</strong> cada participante possui.</p>
+      <h2>O Que Muda na ProgramaÃ§Ã£o Orientada a Objetos</h2>
+      <p>Na programaÃ§Ã£o estruturada, voce pensa primeiro em funcoes e passos. Na <strong>programaÃ§Ã£o orientada a objetos</strong>, voce organiza o sistema em <strong>modelos de entidades</strong> e nas aÃ§Ãµes dessas entidades.</p>
+      <p>Em outras palavras: em vez de pensar apenas no que o programa faz, voce tambÃ©m pensa em <strong>quem</strong> participa do problema e <strong>quais dados e comportamentos</strong> cada participante possui.</p>
     </section>
 
     <section>
-      <h2>Conceitos essenciais desta aula</h2>
-      <div class="keywords">
-        <span>Classe</span>
-        <span>Objeto</span>
-        <span>Atributo</span>
-        <span>método</span>
-        <span>Instancia</span>
+      <h2>Conceitos Essenciais Desta Aula</h2>
+      <div class="concept-board" role="list" aria-label="Painel de conceitos desta aula">
+        <article class="concept-note" role="listitem">
+          <h3>Classe</h3>
+          <p>Modelo de codigo que define estrutura e comportamento para criar objetos.</p>
+        </article>
+        <article class="concept-note" role="listitem">
+          <h3>Objeto</h3>
+          <p>Instancia concreta criada a partir de uma classe, com dados proprios.</p>
+        </article>
+        <article class="concept-note" role="listitem">
+          <h3>Atributo</h3>
+          <p>Informacao armazenada no objeto, como nome, preco, idade ou saldo.</p>
+        </article>
+        <article class="concept-note" role="listitem">
+          <h3>MÃ©todo</h3>
+          <p>Acao que o objeto executa, implementando regras e operacoes do modelo.</p>
+        </article>
+        <article class="concept-note" role="listitem">
+          <h3>Instancia</h3>
+          <p>Cada objeto gerado de uma classe, representando um caso especifico.</p>
+        </article>
+        <article class="concept-note" role="listitem">
+          <h3>Entidade</h3>
+          <p>Elemento do problema real que sera representado no sistema por classe e objeto.</p>
+        </article>
       </div>
-      <p><strong>Classe</strong> e a definicao de um modelo de código que iremos reutilizar sempre que precisarmos representar algo da vida real mais de uma vez.</p>
-      <p><strong>Objeto</strong> e uma instancia concreta criada a partir da classe.</p>
-      <p><strong>Atributo</strong> representa uma informacao do objeto (exemplo: nome, preco, saldo).</p>
-      <p><strong>método</strong> representa uma ação que o objeto sabe executar.</p>
+      <p class="concept-summary"><strong>Resumo:</strong> classe define o modelo; objeto e a instancia; atributos guardam dados; metodos executam acoes; entidade e o que sera representado no dominio do problema.</p>
     </section>
 
     <section>
-      <h2>Classe como modelo reutilizavel</h2>
-      <p>Imagine que uma escola precisa guardar dados de varios alunos. Em vez de criar variaveis separadas para cada aluno, criamos uma <strong>classe Aluno</strong> como modelo. Depois, geramos quantos objetos forem necessarios.</p>
+      <h2>Classe Como Modelo ReutilizÃ¡vel</h2>
+      <p>Se uma escola precisa guardar dados de varios alunos. Em vez de criar variaveis separadas para cada aluno, criamos uma <strong>classe Aluno</strong> como modelo. Depois, geramos quantos objetos forem necessarios.</p>
       <div class="note">
         Pense assim: a classe e como uma <strong>planta tecnica</strong>. O objeto e a construcao real feita com essa planta.
       </div>
@@ -45,8 +61,8 @@
     </section>
 
     <section>
-      <h2>Primeiro exemplo completo</h2>
-      <p>Neste exemplo, a classe define os dados e uma ação. Em seguida, criamos dois objetos diferentes do mesmo modelo.</p>
+      <h2>Primeiro Exemplo Completo</h2>
+      <p>Neste exemplo, a classe define os dados e uma aÃ§Ã£o. Em seguida, criamos dois objetos diferentes do mesmo modelo.</p>
       <pre><code data-lang="csharp">using System;
 
 class Aluno
@@ -81,19 +97,30 @@ class Program
     </section>
 
     <section>
-      <h2>Passo a passo para leitura do código</h2>
+      <h2>O Que Significa public</h2>
+      <p>No cÃ³digo anterior, aparecem palavras como <strong>public string Nome;</strong> e <strong>public void ExibirDados()</strong>. Esse termo Ã© um <strong>modificador de acesso</strong>.</p>
+      <p>Ele indica que o atributo ou o mÃ©todo pode ser usado por outras partes do programa, inclusive por outras classes.</p>
+      <div class="note">
+        Em termos simples: <strong>public</strong> torna o conteÃºdo da classe visÃ­vel para fora dela.
+      </div>
+      <p>Isso Ã© importante porque, ao criar objetos, o programa precisa acessar seus dados e executar seus mÃ©todos.</p>
+      <p>Mais adiante, vocÃª vai conhecer outros modificadores, como <strong>private</strong>, que restringem esse acesso.</p>
+    </section>
+
+    <section>
+      <h2>Passo a Passo para Leitura do CÃ³digo</h2>
       <ol>
         <li>Definimos a <strong>classe Aluno</strong> com atributos <strong>Nome</strong> e <strong>Idade</strong>.</li>
-        <li>Criamos o método <strong>ExibirDados</strong> para mostrar as informações.</li>
+        <li>Criamos o mÃ©todo <strong>ExibirDados</strong> para mostrar as informaÃ§Ãµes.</li>
         <li>No Main, criamos os objetos <strong>a1</strong> e <strong>a2</strong> usando <strong>new</strong>.</li>
         <li>Preenchemos cada objeto com dados proprios.</li>
-        <li>Chamamos o mesmo método para cada objeto.</li>
+        <li>Chamamos o mesmo mÃ©todo para cada objeto.</li>
       </ol>
       <p>Esse processo sera repetido ao longo da disciplina em modelos cada vez mais completos.</p>
     </section>
 
     <section>
-      <h2>Comparacao curta: variaveis soltas x classe</h2>
+      <h2>Comparacao Curta: Variaveis Soltas X Classe</h2>
       <table>
         <thead>
           <tr>
@@ -107,7 +134,7 @@ class Program
             <td>Dados agrupados por entidade</td>
           </tr>
           <tr>
-            <td>repetição de blocos parecidos</td>
+            <td>repetiÃ§Ã£o de blocos parecidos</td>
             <td>Reaproveitamento de modelo</td>
           </tr>
           <tr>
@@ -119,16 +146,36 @@ class Program
     </section>
 
     <section>
-      <h2>Resumo da aula</h2>
-      <p>POO organiza o código por modelos reutilizaveis. A <strong>classe</strong> define o formato e o comportamento; o <strong>objeto</strong> representa um caso real desse formato.</p>
-      <p>Com isso, o código fica mais facil de entender, manter e expandir.</p>
+      <h2>Resumo da Aula</h2>
+      <p>POO organiza o cÃ³digo por modelos reutilizaveis. A <strong>classe</strong> define o formato e o comportamento; o <strong>objeto</strong> representa um caso real desse formato.</p>
+      <p>Com isso, o cÃ³digo fica mais facil de entender, manter e expandir.</p>
     </section>
 
     <section>
-      <h2>Atividade guiada</h2>
-      <p>Crie uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Preco</strong> e um método <strong>Exibir</strong> para mostrar os dados.</p>
+      <h2>Atividade Guiada</h2>
+      <p>Crie uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Preco</strong> e um mÃ©todo <strong>Exibir</strong> para mostrar os dados.</p>
       <p>Depois crie dois objetos diferentes e apresente os resultados na tela.</p>
     </section>
-  </article>
+
+<section class='update-log' aria-label='Informacao de atualizacao'>
+  <p>Ultima atualizacao: 03/08/2026 16:28:10</p>
+</section>
+</article>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

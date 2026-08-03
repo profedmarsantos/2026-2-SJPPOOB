@@ -1,266 +1,134 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Indice das Aulas - 2026-2-SJPPOOB</title>
-  <style>
-    :root {
-      --bg-1: #d3d3ff;
-      --bg-2: #e4e6ff;
-      --panel: #ececff;
-      --text: #1f2340;
-      --muted: #3f4468;
-      --line: #c5c8f6;
-      --accent: #2f7fdf;
-      --accent-2: #4a9f67;
-      --warm: #f2c14e;
-      --shadow: 0 10px 30px rgba(38, 47, 117, 0.16);
-      --radius: 14px;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 10% 0%, #f3f4ff 0%, transparent 40%),
-        linear-gradient(160deg, var(--bg-1), var(--bg-2));
-      min-height: 100vh;
-    }
-
-    .container {
-      width: min(1100px, 92%);
-      margin: 0 auto;
-      padding: 28px 0 40px;
-    }
-
-    .hero {
-      background: linear-gradient(120deg, #2f3878, #3f57b8 52%, #4a9f67);
-      color: #f8f9ff;
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero h1 {
-      margin: 0 0 12px;
-      line-height: 1.2;
-      font-size: clamp(1.4rem, 2.2vw, 2rem);
-    }
-
-    .hero p {
-      margin: 0;
-      line-height: 1.5;
-      max-width: 75ch;
-      opacity: 0.98;
-    }
-
-    .meta {
-      margin-top: 12px;
-      font-size: 0.95rem;
-      opacity: 0.95;
-    }
-
-    .list-title {
-      margin: 26px 0 12px;
-      font-size: 1.25rem;
-      color: #262d63;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      counter-reset: lesson;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 14px;
-      box-shadow: 0 6px 16px rgba(10, 48, 74, 0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(10, 48, 74, 0.12);
-    }
-
-    .card h2 {
-      margin: 0 0 8px;
-      font-size: 1.02rem;
-      color: #1f2556;
-      counter-increment: lesson;
-    }
-
-    .card h2::before {
-      content: counter(lesson, decimal-leading-zero) ". ";
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .card p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      line-height: 1.45;
-      font-size: 0.95rem;
-    }
-
-    .card a {
-      display: inline-block;
-      text-decoration: none;
-      color: #f8f9ff;
-      background: linear-gradient(120deg, var(--accent), var(--accent-2));
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .card a:hover,
-    .card a:focus {
-      filter: brightness(1.05);
-    }
-
-    footer {
-      margin-top: 24px;
-      color: #3e4471;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 820px) {
-      .grid { grid-template-columns: 1fr; }
-      .hero { padding: 18px; }
-    }
-  </style>
+  <title>Indice dos Módulos - 2026-2-SJPPOOB</title>
 <link rel="stylesheet" href="assets/theme.css">
 <script defer src="assets/code-enhancer.js"></script>
 </head>
 <body>
   <main class="container">
-    <section class="hero">
-      <h1>2026-2-SJPPOOB - Indice de Aulas em HTML</h1>
-      <p>
-        Esta Publicação reune 20 aulas da disciplina de programação Orientada a Objetos,
-        iniciando na Transição de C para C# e evoluindo para modelagem com classes,
-        herança, polimorfismo, interfaces e integração com banco de dados ate o fluxo de Implantação.
+    <section class="hero lesson-hero">
+      <p class="hero-kicker"><strong>Indice dos Módulos</strong></p>
+      <h1 class="hero-title">Programação Orientada a Objetos</h1>
+      <p class="hero-subtitle">
+        Esta Publicação Reune 20 Módulos da Disciplina de Programação Orientada a Objetos,
+        Iniciando na Transição de C para C# e Evoluindo para Modelagem com Classes,
+        Herança, Polimorfismo, Interfaces e Integração com Banco de Dados Ate o Fluxo de Implantação.
       </p>
-      <p class="meta">Formato: uma pagina por aula, pronta para consulta e uso no Moodle.</p>
     </section>
 
-    <h2 class="list-title">Lista de licoes</h2>
+    <h2 class="list-title">Lista de Módulos</h2>
 
-    <section class="grid" aria-label="Lista de licoes com resumo e link">
+    <section class="grid" aria-label="Lista de módulos com resumo e link">
       <article class="card">
-        <h2>Aula 01 - Transição de C para C#</h2>
+        <h2>Módulo 01 - Transição de C para C#</h2>
         <p>Apresenta equivalencias de sintaxe e a base para migrar a lógica dos exercicios de C para C#.</p>
-        <a href="lesson001.html">Abrir aula 01</a>
+        <a href="lesson001.html">Abrir módulo 01</a>
       </article>
       <article class="card">
-        <h2>Aula 02 - Introdução a POO</h2>
+        <h2>Módulo 02 - Introdução a POO</h2>
         <p>Define os primeiros conceitos de orientação a objetos: classe, objeto, atributo e método.</p>
-        <a href="lesson002.html">Abrir aula 02</a>
+        <a href="lesson002.html">Abrir módulo 02</a>
       </article>
       <article class="card">
-        <h2>Aula 03 - Classe e objeto</h2>
+        <h2>Módulo 03 - Classe e Objeto</h2>
         <p>Diferencia tipo e instancia, com foco em criacao e uso de objetos em exemplos pequenos.</p>
-        <a href="lesson003.html">Abrir aula 03</a>
+        <a href="lesson003.html">Abrir módulo 03</a>
       </article>
       <article class="card">
-        <h2>Aula 04 - Atributos e estado</h2>
+        <h2>Módulo 04 - Atributos e Estado</h2>
         <p>Mostra como representar dados na classe e como o estado muda conforme os valores dos atributos.</p>
-        <a href="lesson004.html">Abrir aula 04</a>
+        <a href="lesson004.html">Abrir módulo 04</a>
       </article>
       <article class="card">
-        <h2>Aula 05 - métodos</h2>
+        <h2>Módulo 05 - Métodos</h2>
         <p>Organiza ações em métodos com parametros e retorno para reduzir repetição de código.</p>
-        <a href="lesson005.html">Abrir aula 05</a>
+        <a href="lesson005.html">Abrir módulo 05</a>
       </article>
       <article class="card">
-        <h2>Aula 06 - Encapsulamento</h2>
+        <h2>Módulo 06 - Encapsulamento</h2>
         <p>Explica protecao de dados internos e validacoes de acesso para manter consistencia.</p>
-        <a href="lesson006.html">Abrir aula 06</a>
+        <a href="lesson006.html">Abrir módulo 06</a>
       </article>
       <article class="card">
-        <h2>Aula 07 - Construtores</h2>
+        <h2>Módulo 07 - Construtores</h2>
         <p>Apresenta inicializacao obrigatoria de objetos para evitar estados incompletos.</p>
-        <a href="lesson007.html">Abrir aula 07</a>
+        <a href="lesson007.html">Abrir módulo 07</a>
       </article>
       <article class="card">
-        <h2>Aula 08 - Propriedades</h2>
+        <h2>Módulo 08 - Propriedades</h2>
         <p>Trabalha leitura e escrita controlada de atributos por meio de get e set.</p>
-        <a href="lesson008.html">Abrir aula 08</a>
+        <a href="lesson008.html">Abrir módulo 08</a>
       </article>
       <article class="card">
-        <h2>Aula 09 - Modificadores de acesso</h2>
+        <h2>Módulo 09 - Modificadores de Acesso</h2>
         <p>Compara public, private e protected para modelagem correta de classes.</p>
-        <a href="lesson009.html">Abrir aula 09</a>
+        <a href="lesson009.html">Abrir módulo 09</a>
       </article>
       <article class="card">
-        <h2>Aula 10 - herança</h2>
+        <h2>Módulo 10 - Herança</h2>
         <p>Explora reaproveitamento de código com classes base e derivadas.</p>
-        <a href="lesson010.html">Abrir aula 10</a>
+        <a href="lesson010.html">Abrir módulo 10</a>
       </article>
       <article class="card">
-        <h2>Aula 11 - Polimorfismo</h2>
+        <h2>Módulo 11 - Polimorfismo</h2>
         <p>Mostra variação de comportamento com virtual e override em hierarquias.</p>
-        <a href="lesson011.html">Abrir aula 11</a>
+        <a href="lesson011.html">Abrir módulo 11</a>
       </article>
       <article class="card">
-        <h2>Aula 12 - abstração</h2>
+        <h2>Módulo 12 - Abstração</h2>
         <p>Foca no essencial da modelagem e no uso de classes e métodos abstratos.</p>
-        <a href="lesson012.html">Abrir aula 12</a>
+        <a href="lesson012.html">Abrir módulo 12</a>
       </article>
       <article class="card">
-        <h2>Aula 13 - Interfaces</h2>
+        <h2>Módulo 13 - Interfaces</h2>
         <p>Define contratos de implementacao para padronizar comportamentos entre classes.</p>
-        <a href="lesson013.html">Abrir aula 13</a>
+        <a href="lesson013.html">Abrir módulo 13</a>
       </article>
       <article class="card">
-        <h2>Aula 14 - coleções e listas</h2>
+        <h2>Módulo 14 - Coleções e Listas</h2>
         <p>Introduz estruturas para armazenar varios objetos e percorrer registros.</p>
-        <a href="lesson014.html">Abrir aula 14</a>
+        <a href="lesson014.html">Abrir módulo 14</a>
       </article>
       <article class="card">
-        <h2>Aula 15 - Banco de dados (conceitos)</h2>
+        <h2>Módulo 15 - Banco de Dados (Conceitos)</h2>
         <p>Apresenta fundamentos de persistencia: tabelas, registros e chaves.</p>
-        <a href="lesson015.html">Abrir aula 15</a>
+        <a href="lesson015.html">Abrir módulo 15</a>
       </article>
       <article class="card">
-        <h2>Aula 16 - Conexão com banco em C#</h2>
+        <h2>Módulo 16 - Conexão com Banco em C#</h2>
         <p>Mostra o fluxo técnico de abrir Conexão, executar comando e fechar recursos.</p>
-        <a href="lesson016.html">Abrir aula 16</a>
+        <a href="lesson016.html">Abrir módulo 16</a>
       </article>
       <article class="card">
-        <h2>Aula 17 - CRUD básico</h2>
+        <h2>Módulo 17 - CRUD Básico</h2>
         <p>Aplica criação, consulta, atualização e exclusão de dados com comandos SQL.</p>
-        <a href="lesson017.html">Abrir aula 17</a>
+        <a href="lesson017.html">Abrir módulo 17</a>
       </article>
       <article class="card">
-        <h2>Aula 18 - Geração de relatórios</h2>
+        <h2>Módulo 18 - Geração de Relatórios</h2>
         <p>Organiza dados em saídas claras para leitura, filtro e tomada de decisão.</p>
-        <a href="lesson018.html">Abrir aula 18</a>
+        <a href="lesson018.html">Abrir módulo 18</a>
       </article>
       <article class="card">
-        <h2>Aula 19 - distribuição do aplicativo</h2>
+        <h2>Módulo 19 - Distribuição do Aplicativo</h2>
         <p>Prepara o sistema para entrega e execução em outros ambientes.</p>
-        <a href="lesson019.html">Abrir aula 19</a>
+        <a href="lesson019.html">Abrir módulo 19</a>
       </article>
       <article class="card">
-        <h2>Aula 20 - Implantação e Revisão final</h2>
+        <h2>Módulo 20 - Implantação e Revisão Final</h2>
         <p>Consolida o ciclo completo do curso: modelagem, código, dados e Publicação.</p>
-        <a href="lesson020.html">Abrir aula 20</a>
+        <a href="lesson020.html">Abrir módulo 20</a>
       </article>
     </section>
 
     <footer>
-      Repositorio: 2026-2-SJPPOOB | Publicação automatica via GitHub Pages a partir desta pasta.
+      Repositorio: 2026-2-SJPPOOB | Publicação automatica via GitHub Pages.
     </footer>
   </main>
 </body>
 </html>
+
+

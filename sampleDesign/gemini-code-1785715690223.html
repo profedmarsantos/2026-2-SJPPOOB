@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 01 - Transição C para C#</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5.0.19/700.css');
+    @import url('https://cdn.jsdelivr.net/npm/@fontsource/atkinson-hyperlegible@5.0.13/index.css');
+
+    /* Tema Escuro */
+    [data-theme="dark"] {
+      --bg: #18181b;
+      --paper: #27272a;
+      --paper-soft: #3f3f46;
+      --hero-bg: linear-gradient(135deg, #27272a 0%, #1f1f23 100%);
+      --hero-border: #3f3f46;
+      --ink: #ececec;
+      --ink-heading: #ffffff;
+      --muted: #a1a1aa;
+      --line: #3f3f46;
+
+      --dyad-purple: #7c3aed;
+      --dyad-purple-hover: #6d28d9;
+      --dyad-purple-light: rgba(124, 58, 237, 0.25);
+      
+      --code-inline-text: #cdb3f9;
+      
+      --code-bg: #09090b;
+      --code-header: #121215;
+      --code-border: #27272a;
+      --code-line-no-bg: #121215;
+      --code-line-no-text: #52525b;
+      --code-text: #f4f4f5;
+      
+      --tab-inactive-text: #71717a;
+      --dot-inactive: #52525b;
+
+      --copy-btn-bg: #1f1f23;
+      --copy-btn-border: #3f3f46;
+      --copy-btn-text: #a1a1aa;
+    }
+
+    /* Tema Claro */
+    [data-theme="light"] {
+      --bg: #f4f4f5;
+      --paper: #ffffff;
+      --paper-soft: #f4f4f7;
+      --hero-bg: linear-gradient(135deg, #ffffff 0%, #f3f0ff 100%);
+      --hero-border: #e4e4e7;
+      --ink: #0f172a;
+      --ink-heading: #0f172a;
+      --muted: #64748b;
+      --line: #e4e4e7;
+
+      --dyad-purple: #7c3aed;
+      --dyad-purple-hover: #6d28d9;
+      --dyad-purple-light: #f3e8ff;
+      
+      --code-inline-text: #7c3aed;
+      
+      --code-bg: #0f172a;
+      --code-header: #1e293b;
+      --code-border: #334155;
+      --code-line-no-bg: #182234;
+      --code-line-no-text: #64748b;
+      --code-text: #f8fafc;
+      
+      --tab-inactive-text: #94a3b8;
+      --dot-inactive: #64748b;
+
+      --copy-btn-bg: #334155;
+      --copy-btn-border: #475569;
+      --copy-btn-text: #cbd5e1;
+    }
+
+    :root {
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+      
+      --font-title: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-body: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "Fira Code", "Consolas", monospace;
+
+      --token-keyword: #c084fc;
+      --token-directive: #f472b6;
+      --token-func: #38bdf8;
+      --token-string: #4ade80;
+      --token-type: #fbbf24;
+      --token-operator: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .header-card {
+      background: var(--hero-bg);
+      border: 1px solid var(--hero-border);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin-bottom: 32px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .badge-tag {
+      font-family: var(--font-title);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--code-inline-text);
+      background-color: var(--dyad-purple-light);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+    }
+
+    .header-card h1 {
+      font-family: var(--font-title);
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 10px;
+      color: var(--ink-heading);
+    }
+
+    .header-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .theme-toggle {
+      background-color: var(--paper-soft);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--dyad-purple);
+      color: var(--dyad-purple);
+    }
+
+    .exercise-card {
+      background-color: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .exercise-header h2 {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--ink-heading);
+    }
+
+    .back-to-index {
+      color: #ffffff;
+      background-color: var(--dyad-purple);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+    }
+
+    .transition-notes {
+      background-color: var(--paper-soft);
+      border-left: 4px solid var(--dyad-purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+
+    .transition-notes strong {
+      display: block;
+      font-family: var(--font-title);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-heading);
+      margin-bottom: 8px;
+    }
+
+    .transition-notes ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--ink);
+    }
+
+    .transition-notes code {
+      font-family: var(--font-mono);
+      color: var(--code-inline-text);
+      background-color: var(--dyad-purple-light);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      font-size: 13px;
+    }
+
+    .code-tabs-container {
+      background-color: var(--code-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--code-border);
+      overflow: hidden;
+    }
+
+    /* Cabeçalho das Abas com Botão Copiar */
+    .tabs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--code-header);
+      border-bottom: 1px solid var(--code-border);
+      padding-right: 12px;
+    }
+
+    .tabs-group {
+      display: flex;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--tab-inactive-text);
+      padding: 12px 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid transparent;
+      opacity: 0.65;
+    }
+
+    .tab-btn:hover {
+      opacity: 0.9;
+      color: var(--code-text);
+    }
+
+    .tab-btn.active {
+      color: #ffffff;
+      background-color: var(--code-bg);
+      border-bottom: 2px solid var(--dyad-purple);
+      opacity: 1;
+    }
+
+    .tab-btn::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--dot-inactive);
+    }
+
+    .tab-btn.c-tab.active::before { background-color: #64748b; }
+    .tab-btn.cs-tab.active::before { background-color: var(--dyad-purple); }
+
+    /* Estilo do Botão Copiar */
+    .copy-btn {
+      background-color: var(--copy-btn-bg);
+      color: var(--copy-btn-text);
+      border: 1px solid var(--copy-btn-border);
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .copy-btn:hover {
+      color: #ffffff;
+      border-color: var(--dyad-purple);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .code-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .code-table td {
+      padding: 0;
+      border: 0;
+      vertical-align: top;
+    }
+
+    .code-table .line-no {
+      width: 44px;
+      background-color: var(--code-line-no-bg);
+      color: var(--code-line-no-text);
+      text-align: right;
+      padding: 0 12px 0 0;
+      user-select: none;
+      border-right: 1px solid var(--code-border);
+    }
+
+    .code-table .line-code {
+      padding: 0 16px;
+      color: var(--code-text);
+      white-space: pre;
+      overflow-x: auto;
+    }
+
+    .code-container-scroll {
+      padding: 16px 0;
+      overflow-x: auto;
+    }
+
+    .kwd { color: var(--token-keyword); font-weight: 600; }
+    .dir { color: var(--token-directive); font-weight: 600; }
+    .fn  { color: var(--token-func); }
+    .str { color: var(--token-string); }
+    .typ { color: var(--token-type); }
+    .op  { color: var(--token-operator); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header class="header-card">
+      <div class="header-top">
+        <span class="badge-tag">Módulo 01</span>
+        <button class="theme-toggle" onclick="toggleTheme()">
+          Tema <span id="theme-name">Claro</span>
+        </button>
+      </div>
+      <h1>Aula 01 — Transição C para C#</h1>
+      <p>Entrada de dados e comparação de sintaxe em exercícios práticos.</p>
+    </header>
+
+    <div class="exercise-card" id="ex-01">
+      <div class="exercise-header">
+        <h2>01. Soma de Dois Números Inteiros</h2>
+        <a href="#indice" class="back-to-index">Voltar ao Índice</a>
+      </div>
+
+      <div class="transition-notes">
+        <strong>Notas de Transição</strong>
+        <ul>
+          <li><strong>Leitura:</strong> O comando <code>scanf</code> é substituído por <code>Console.ReadLine()</code>.</li>
+          <li><strong>Conversão:</strong> Utiliza-se <code>int.Parse()</code> para converter o texto lido em número inteiro.</li>
+          <li><strong>Exibição:</strong> O comando <code>printf</code> é substituído por <code>Console.WriteLine</code> com interpolação <code>$""</code>.</li>
+        </ul>
+      </div>
+
+      <div class="code-tabs-container">
+        <div class="tabs-header">
+          <div class="tabs-group">
+            <button class="tab-btn c-tab active" onclick="switchTab(this, 'ex1-c')">Linguagem C</button>
+            <button class="tab-btn cs-tab" onclick="switchTab(this, 'ex1-cs')">Linguagem C#</button>
+          </div>
+          <button class="copy-btn" onclick="copyActiveCode(this)">Copiar</button>
+        </div>
+
+        <div id="ex1-c" class="tab-content active">
+          <div class="code-container-scroll">
+            <table class="code-table">
+              <tr><td class="line-no">1</td><td class="line-code"><span class="dir">#include</span> <span class="str">&lt;stdio.h&gt;</span></td></tr>
+              <tr><td class="line-no">2</td><td class="line-code"></td></tr>
+              <tr><td class="line-no">3</td><td class="line-code"><span class="kwd">int</span> <span class="fn">main</span><span class="op">()</span> <span class="op">{</span></td></tr>
+              <tr><td class="line-no">4</td><td class="line-code">    <span class="kwd">int</span> num1<span class="op">,</span> num2<span class="op">,</span> soma<span class="op">;</span></td></tr>
+              <tr><td class="line-no">5</td><td class="line-code">    <span class="fn">printf</span><span class="op">(</span><span class="str">"Digite o primeiro numero: "</span><span class="op">);</span></td></tr>
+              <tr><td class="line-no">6</td><td class="line-code">    <span class="fn">scanf</span><span class="op">(</span><span class="str">"%d"</span><span class="op">,</span> <span class="op">&amp;</span>num1<span class="op">);</span></td></tr>
+              <tr><td class="line-no">7</td><td class="line-code">    <span class="fn">printf</span><span class="op">(</span><span class="str">"Digite o segundo numero: "</span><span class="op">);</span></td></tr>
+              <tr><td class="line-no">8</td><td class="line-code">    <span class="fn">scanf</span><span class="op">(</span><span class="str">"%d"</span><span class="op">,</span> <span class="op">&amp;</span>num2<span class="op">);</span></td></tr>
+              <tr><td class="line-no">9</td><td class="line-code">    soma <span class="op">=</span> num1 <span class="op">+</span> num2<span class="op">;</span></td></tr>
+              <tr><td class="line-no">10</td><td class="line-code">    <span class="fn">printf</span><span class="op">(</span><span class="str">"Soma: %d\n"</span><span class="op">,</span> soma<span class="op">);</span></td></tr>
+              <tr><td class="line-no">11</td><td class="line-code">    <span class="kwd">return</span> <span class="str">0</span><span class="op">;</span></td></tr>
+              <tr><td class="line-no">12</td><td class="line-code"><span class="op">}</span></td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div id="ex1-cs" class="tab-content">
+          <div class="code-container-scroll">
+            <table class="code-table">
+              <tr><td class="line-no">1</td><td class="line-code"><span class="kwd">using</span> <span class="typ">System</span><span class="op">;</span></td></tr>
+              <tr><td class="line-no">2</td><td class="line-code"></td></tr>
+              <tr><td class="line-no">3</td><td class="line-code"><span class="kwd">class</span> <span class="typ">Program</span></td></tr>
+              <tr><td class="line-no">4</td><td class="line-code"><span class="op">{</span></td></tr>
+              <tr><td class="line-no">5</td><td class="line-code">    <span class="kwd">static</span> <span class="kwd">void</span> <span class="fn">Main</span><span class="op">()</span></td></tr>
+              <tr><td class="line-no">6</td><td class="line-code">    <span class="op">{</span></td></tr>
+              <tr><td class="line-no">7</td><td class="line-code">        <span class="typ">Console</span><span class="op">.</span><span class="fn">Write</span><span class="op">(</span><span class="str">"Digite o primeiro numero: "</span><span class="op">);</span></td></tr>
+              <tr><td class="line-no">8</td><td class="line-code">        <span class="kwd">int</span> num1 <span class="op">=</span> <span class="kwd">int</span><span class="op">.</span><span class="fn">Parse</span><span class="op">(</span><span class="typ">Console</span><span class="op">.</span><span class="fn">ReadLine</span><span class="op">());</span></td></tr>
+              <tr><td class="line-no">9</td><td class="line-code">        <span class="typ">Console</span><span class="op">.</span><span class="fn">Write</span><span class="op">(</span><span class="str">"Digite o segundo numero: "</span><span class="op">);</span></td></tr>
+              <tr><td class="line-no">10</td><td class="line-code">        <span class="kwd">int</span> num2 <span class="op">=</span> <span class="kwd">int</span><span class="op">.</span><span class="fn">Parse</span><span class="op">(</span><span class="typ">Console</span><span class="op">.</span><span class="fn">ReadLine</span><span class="op">());</span></td></tr>
+              <tr><td class="line-no">11</td><td class="line-code">        <span class="kwd">int</span> soma <span class="op">=</span> num1 <span class="op">+</span> num2<span class="op">;</span></td></tr>
+              <tr><td class="line-no">12</td><td class="line-code">        <span class="typ">Console</span><span class="op">.</span><span class="fn">WriteLine</span><span class="op">(</span><span class="str">$"Soma: {soma}"</span><span class="op">);</span></td></tr>
+              <tr><td class="line-no">13</td><td class="line-code">    <span class="op">}</span></td></tr>
+              <tr><td class="line-no">14</td><td class="line-code"><span class="op">}</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function switchTab(button, tabId) {
+      const container = button.closest('.code-tabs-container');
+      container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      button.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function copyActiveCode(btn) {
+      const container = btn.closest('.code-tabs-container');
+      const activeTab = container.querySelector('.tab-content.active');
+      const lines = activeTab.querySelectorAll('.line-code');
+      
+      const textToCopy = Array.from(lines).map(line => line.textContent).join('\n');
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = 'Copiado!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 1500);
+      });
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      document.getElementById('theme-name').textContent = newTheme === 'dark' ? 'Claro' : 'Escuro';
+    }
+  </script>
+
+</body>
+</html>

@@ -6,7 +6,7 @@ int main(){
     printf("Digite quantos paes vai levar: ");
     scanf("%d",&paes);
 
-    printf("Digite qual o preço: ");
+    printf("Digite qual o preco: ");
     scanf("%f",&preco);
 
     total = paes * preco;
