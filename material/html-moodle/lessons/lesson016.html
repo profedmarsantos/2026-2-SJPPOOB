@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MÃ³dulo 16 - ConexÃ£o com Banco em C#</title>
+  <title>Módulo 16 - Conexão com Banco em C#</title>
 <link rel="stylesheet" href="assets/theme.css">
 <script defer src="assets/code-enhancer.js"></script>
 </head>
 <body>
   <article>
     <header class="lesson-hero">
-      <h1 class="hero-title">MÃ³dulo 16 - ConexÃ£o com Banco em C#</h1>
-      <p class="hero-subtitle">Objetivo: Abrir ConexÃ£o, Executar Comando e Fechar ConexÃ£o.</p>
+      <h1 class="hero-title">Módulo 16 - Conexão com Banco em C#</h1>
+      <p class="hero-subtitle">Objetivo: Abrir Conexão, Executar Comando e Fechar Conexão.</p>
     </header>
 
     <section>
@@ -20,31 +20,31 @@
     </section>
 
     <section>
-      <h2>DefiniÃ§Ãµes</h2>
-      <p>Connection string identifica o banco. SqlConnection abre ConexÃ£o. SqlCommand executa comandos SQL.</p>
+      <h2>Definições</h2>
+      <p>Connection string identifica o banco. SqlConnection abre Conexão. SqlCommand executa comandos SQL.</p>
     </section>
 
     <section>
-      <h2>ExplicaÃ§Ã£o Curta</h2>
+      <h2>Explicação Curta</h2>
       <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
     </section>
 
     <section>
       <h2>Exemplo Curto</h2>
-      <pre><code>using var ConexÃ£o = new SqlConnection(connectionString);
-ConexÃ£o.Open();
-using var comando = new SqlCommand("SELECT 1", ConexÃ£o);
+      <pre><code>using var Conexão = new SqlConnection(connectionString);
+Conexão.Open();
+using var comando = new SqlCommand("SELECT 1", Conexão);
 var resultado = comando.ExecuteScalar();</code></pre>
     </section>
 
     <section>
       <h2>Resumo</h2>
-      <p>ConexÃ£o deve ser aberta e fechada com controle.</p>
+      <p>Conexão deve ser aberta e fechada com controle.</p>
     </section>
 
     <section>
       <h2>Atividade</h2>
-      <p>Escreva o fluxo: abrir ConexÃ£o, executar consulta, fechar ConexÃ£o.</p>
+      <p>Escreva o fluxo: abrir Conexão, executar consulta, fechar Conexão.</p>
     </section>
 
 <section class='update-log' aria-label='Informacao de atualizacao'>
