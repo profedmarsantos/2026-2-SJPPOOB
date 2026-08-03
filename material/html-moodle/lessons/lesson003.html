@@ -3,73 +3,249 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MÃ³dulo 03 - Classe e Objeto</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <title>Módulo 03 - Atributos e Métodos em Classes</title>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-03">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">MÃ³dulo 03 - Classe e Objeto</h1>
-      <p class="hero-subtitle">Objetivo: Diferenciar Classe de Objeto e Criar Instancias.</p>
+      <p class="hero-kicker"><strong>Módulo 03</strong></p>
+      <h1 class="hero-title">Atributos e Métodos em Classes</h1>
+      <p class="hero-subtitle">Objetivo: aprender a definir dados e ações dentro de uma classe e usar esses recursos em objetos diferentes.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Classe</li><li>Objeto</li><li>Instancia</li></ul>
+    <section class="lesson-section">
+      <h2>Estado e comportamento</h2>
+      <p>Um objeto não é apenas um nome. Ele guarda <strong>dados</strong> e também executa <strong>ações</strong>. Esses dois lados são importantes na programação orientada a objetos.</p>
+      <p>Os dados de um objeto são representados por <strong>atributos</strong>. As ações são representadas por <strong>métodos</strong>.</p>
     </section>
 
-    <section>
-      <h2>DefiniÃ§Ãµes</h2>
-      <p>Classe e o tipo. Objeto e uma instancia desse tipo.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <div class="concept-board" role="list" aria-label="Painel de conceitos desta aula">
+        <article class="concept-note" role="listitem">
+          <h3>Atributo</h3>
+          <p>Armazena informações do objeto, como nome, idade, saldo ou preço.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
+        <article class="concept-note" role="listitem">
+          <h3>Método</h3>
+          <p>Representa uma ação que o objeto pode executar, como mostrar dados ou calcular um valor.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
+        <article class="concept-note" role="listitem">
+          <h3>Estado</h3>
+          <p>É o conjunto de valores atuais armazenados nos atributos do objeto.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
+        <article class="concept-note" role="listitem">
+          <h3>Comportamento</h3>
+          <p>É a forma como o objeto reage quando um método é chamado.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
+      </div>
+      <p class="concept-summary"><strong>Resumo:</strong> a classe define o modelo; os atributos guardam os dados; os métodos representam as ações; cada objeto possui seu próprio estado.</p>
     </section>
 
-    <section>
-      <h2>ExplicaÃ§Ã£o Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    <section class="lesson-section">
+      <h2>Exemplo com atributo e método</h2>
+      <p>Vamos construir uma classe <strong>Conta</strong> com um saldo e um método para depositar dinheiro.</p>
+      <pre><code data-lang="csharp">using System;
+
+class Conta
+{
+    public string Titular;
+    public double Saldo;
+
+    public void Depositar(double valor)
+    {
+        Saldo = Saldo + valor;
+    }
+
+    public void ExibirSaldo()
+    {
+        Console.WriteLine("Saldo atual: " + Saldo);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Conta c1 = new Conta();
+        c1.Titular = "Ana";
+        c1.Saldo = 100;
+        c1.Depositar(50);
+        c1.ExibirSaldo();
+    }
+}</code></pre>
+      <p>Neste exemplo, o objeto <strong>c1</strong> tem seus próprios dados e pode executar ações por meio dos métodos.</p>
     </section>
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>class Livro
+    <section class="lesson-section">
+      <h2>Diferença entre atributo e método</h2>
+      <div class="note">
+        O atributo guarda informação. O método executa uma ação.
+      </div>
+      <p>Em uma classe <strong>Aluno</strong>, o atributo <strong>Nome</strong> guarda o nome do aluno. O método <strong>Apresentar</strong> mostra esse nome na tela.</p>
+      <p>Assim, a classe une dados e comportamento em um único modelo.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Vários objetos, valores diferentes</h2>
+      <p>Cada objeto pode ter valores diferentes para os mesmos atributos. Isso é um ponto importante da POO.</p>
+      <pre><code data-lang="csharp">Conta c1 = new Conta();
+Conta c2 = new Conta();
+
+c1.Titular = "Ana";
+c1.Saldo = 100;
+
+c2.Titular = "Bruno";
+c2.Saldo = 300;</code></pre>
+      <p>Mesmo usando a mesma classe, os objetos <strong>c1</strong> e <strong>c2</strong> possuem estados diferentes.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Exercícios de fixação</h2>
+      <ol>
+        <li>
+          <p><strong>Exercício 1:</strong> crie uma classe <strong>Livro</strong> com os atributos <strong>Titulo</strong> e <strong>Autor</strong> e um método <strong>ExibirDados</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">using System;
+
+class Livro
 {
     public string Titulo;
     public string Autor;
+
+    public void ExibirDados()
+    {
+        Console.WriteLine("Titulo: " + Titulo);
+        Console.WriteLine("Autor: " + Autor);
+    }
 }
 
-Livro l1 = new Livro();
-l1.Titulo = "Algoritmos";</code></pre>
+class Program
+{
+    static void Main()
+    {
+        Livro l = new Livro();
+        l.Titulo = "Algoritmos";
+        l.Autor = "Maria";
+        l.ExibirDados();
+    }
+}</code></pre>
+          </details>
+        </li>
+
+        <li>
+          <p><strong>Exercício 2:</strong> crie uma classe <strong>Aluno</strong> com os atributos <strong>Nome</strong> e <strong>Nota</strong> e um método <strong>MostrarSituacao</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">using System;
+
+class Aluno
+{
+    public string Nome;
+    public double Nota;
+
+    public void MostrarSituacao()
+    {
+        Console.WriteLine("Nome: " + Nome);
+        Console.WriteLine("Nota: " + Nota);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Aluno a = new Aluno();
+        a.Nome = "João";
+        a.Nota = 8.5;
+        a.MostrarSituacao();
+    }
+}</code></pre>
+          </details>
+        </li>
+
+        <li>
+          <p><strong>Exercício 3:</strong> explique a diferença entre atributo e método usando a classe <strong>Produto</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>O atributo guarda dados do produto, como <strong>Nome</strong> ou <strong>Preco</strong>. O método executa uma ação, como <strong>Exibir</strong> ou <strong>AplicarDesconto</strong>.</p>
+          </details>
+        </li>
+
+        <li>
+          <p><strong>Exercício 4:</strong> complete o código para criar uma classe <strong>Carro</strong> com os atributos <strong>Modelo</strong> e <strong>Ano</strong> e um método <strong>MostrarDados</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">using System;
+
+class Carro
+{
+    public string Modelo;
+    public int Ano;
+
+    public void MostrarDados()
+    {
+        Console.WriteLine("Modelo: " + Modelo);
+        Console.WriteLine("Ano: " + Ano);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Carro c = new Carro();
+        c.Modelo = "Civic";
+        c.Ano = 2023;
+        c.MostrarDados();
+    }
+}</code></pre>
+          </details>
+        </li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Classe e definicao. Objeto e uso concreto da definicao.</p>
+    <section class="lesson-section">
+      <h2>Resumo da Aula</h2>
+      <p>A classe organiza dados e ações. Os atributos guardam o estado do objeto, enquanto os métodos definem o comportamento.</p>
+      <p>Isso torna o código mais claro, mais organizado e mais próximo de situações reais.</p>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Crie dois objetos da classe Livro com valores diferentes.</p>
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p>Crie uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Quantidade</strong> e um método <strong>Exibir</strong>.</p>
+      <p>Depois, crie dois objetos diferentes e mostre os valores na tela.</p>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
-</section>
-</article>
+    <section class="update-log" aria-label="Informação de atualização">
+      <p>Última atualização: 03/08/2026 17:10:00</p>
+    </section>
+  
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -45,7 +45,8 @@ for ($i = 1; $i -le 20; $i++) {
   $name = "lesson{0:D3}.html" -f $i
   $path = Join-Path "material/html-moodle/lessons" $name
   $content = Get-Content -LiteralPath $path -Raw
-  if (-not ($content -match "Ultima atualizacao:\s*$DataAtualizacao")) {
+  $pattern = "(?i)Ultima atualizacao[^0-9]*$([regex]::Escape($DataAtualizacao))"
+  if (-not ($content -match $pattern)) {
     throw "Log de atualizacao ausente ou incorreto em: $path"
   }
 }

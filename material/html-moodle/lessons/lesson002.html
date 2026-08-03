@@ -3,66 +3,91 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MÃ³dulo 02 - IntroduÃ§Ã£o a ProgramaÃ§Ã£o Orientada a Objetos</title>
+  <title>Módulo 02 - Introdução à Programação Orientada a Objetos</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-02">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">MÃ³dulo 02 - IntroduÃ§Ã£o a ProgramaÃ§Ã£o Orientada a Objetos</h1>
-      <p class="hero-subtitle">Objetivo: Entender o Que e POO e Usar os Conceitos de Classe e Objeto para Modelar Situacoes Reais em C#.</p>
+      <p class="hero-kicker"><strong>Módulo 02</strong></p>
+      <h1 class="hero-title">Introdução à Programação Orientada a Objetos</h1>
+      <p class="hero-subtitle">Objetivo: entender o que é POO e usar classe e objeto para modelar situações reais em C#.</p>
     </header>
 
-    <section>
-      <h2>O Que Muda na ProgramaÃ§Ã£o Orientada a Objetos</h2>
-      <p>Na programaÃ§Ã£o estruturada, voce pensa primeiro em funcoes e passos. Na <strong>programaÃ§Ã£o orientada a objetos</strong>, voce organiza o sistema em <strong>modelos de entidades</strong> e nas aÃ§Ãµes dessas entidades.</p>
-      <p>Em outras palavras: em vez de pensar apenas no que o programa faz, voce tambÃ©m pensa em <strong>quem</strong> participa do problema e <strong>quais dados e comportamentos</strong> cada participante possui.</p>
+    <section class="lesson-section">
+      <h2>O que muda na programação orientada a objetos</h2>
+      <p>Na programação estruturada, você pensa primeiro em funções e passos. Na <strong>programação orientada a objetos</strong>, você organiza o sistema em <strong>modelos de entidades</strong> e nas ações dessas entidades.</p>
+      <p>Em outras palavras: em vez de pensar apenas no que o programa faz, você também pensa em <strong>quem</strong> participa do problema e <strong>quais dados e comportamentos</strong> cada participante possui.</p>
     </section>
 
-    <section>
-      <h2>Conceitos Essenciais Desta Aula</h2>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
       <div class="concept-board" role="list" aria-label="Painel de conceitos desta aula">
         <article class="concept-note" role="listitem">
           <h3>Classe</h3>
-          <p>Modelo de codigo que define estrutura e comportamento para criar objetos.</p>
-        </article>
+          <p>Modelo de código que define estrutura e comportamento para criar objetos.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
         <article class="concept-note" role="listitem">
           <h3>Objeto</h3>
-          <p>Instancia concreta criada a partir de uma classe, com dados proprios.</p>
-        </article>
+          <p>Instância concreta criada a partir de uma classe, com dados próprios.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
         <article class="concept-note" role="listitem">
           <h3>Atributo</h3>
-          <p>Informacao armazenada no objeto, como nome, preco, idade ou saldo.</p>
-        </article>
+          <p>Informação armazenada no objeto, como nome, preço, idade ou saldo.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
         <article class="concept-note" role="listitem">
-          <h3>MÃ©todo</h3>
-          <p>Acao que o objeto executa, implementando regras e operacoes do modelo.</p>
-        </article>
+          <h3>Método</h3>
+          <p>Ação que o objeto executa, implementando regras e operações do modelo.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
         <article class="concept-note" role="listitem">
-          <h3>Instancia</h3>
-          <p>Cada objeto gerado de uma classe, representando um caso especifico.</p>
-        </article>
+          <h3>Instância</h3>
+          <p>Cada objeto gerado a partir de uma classe, representando um caso específico.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
         <article class="concept-note" role="listitem">
           <h3>Entidade</h3>
-          <p>Elemento do problema real que sera representado no sistema por classe e objeto.</p>
-        </article>
+          <p>Elemento do problema real que será representado no sistema por classe e objeto.</p>
+        
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
       </div>
-      <p class="concept-summary"><strong>Resumo:</strong> classe define o modelo; objeto e a instancia; atributos guardam dados; metodos executam acoes; entidade e o que sera representado no dominio do problema.</p>
+      <p class="concept-summary"><strong>Resumo:</strong> classe define o modelo; objeto é a instância; atributos guardam dados; métodos executam ações; entidade é o que será representado no domínio do problema.</p>
     </section>
 
-    <section>
-      <h2>Classe Como Modelo ReutilizÃ¡vel</h2>
-      <p>Se uma escola precisa guardar dados de varios alunos. Em vez de criar variaveis separadas para cada aluno, criamos uma <strong>classe Aluno</strong> como modelo. Depois, geramos quantos objetos forem necessarios.</p>
+    <section class="lesson-section">
+      <h2>Classe como modelo reutilizável</h2>
+      <p>Se uma escola precisa guardar dados de vários alunos, em vez de criar variáveis separadas para cada aluno, criamos uma <strong>classe Aluno</strong> como modelo. Depois, geramos quantos objetos forem necessários.</p>
       <div class="note">
-        Pense assim: a classe e como uma <strong>planta tecnica</strong>. O objeto e a construcao real feita com essa planta.
+        Pense assim: a classe é como uma <strong>planta técnica</strong>. O objeto é a construção real feita com essa planta.
       </div>
-      <p>Esse modelo facilita manutencao, leitura e crescimento do sistema.</p>
+      <p>Esse modelo facilita manutenção, leitura e crescimento do sistema.</p>
     </section>
 
-    <section>
-      <h2>Primeiro Exemplo Completo</h2>
-      <p>Neste exemplo, a classe define os dados e uma aÃ§Ã£o. Em seguida, criamos dois objetos diferentes do mesmo modelo.</p>
+    <section class="lesson-section">
+      <h2>Primeiro exemplo completo</h2>
+      <p>Neste exemplo, a classe define os dados e uma ação. Em seguida, criamos dois objetos diferentes do mesmo modelo.</p>
       <pre><code data-lang="csharp">using System;
 
 class Aluno
@@ -72,8 +97,8 @@ class Aluno
 
     public void ExibirDados()
     {
-      Console.WriteLine("Nome: " + Nome);
-      Console.WriteLine("Idade: " + Idade);
+        Console.WriteLine("Nome: " + Nome);
+        Console.WriteLine("Idade: " + Idade);
     }
 }
 
@@ -93,34 +118,34 @@ class Program
         a2.ExibirDados();
     }
 }</code></pre>
-      <p>Observe o reaproveitamento: uma unica classe gerou dois objetos com valores diferentes.</p>
+      <p>Observe o reaproveitamento: uma única classe gerou dois objetos com valores diferentes.</p>
     </section>
 
-    <section>
-      <h2>O Que Significa public</h2>
-      <p>No cÃ³digo anterior, aparecem palavras como <strong>public string Nome;</strong> e <strong>public void ExibirDados()</strong>. Esse termo Ã© um <strong>modificador de acesso</strong>.</p>
-      <p>Ele indica que o atributo ou o mÃ©todo pode ser usado por outras partes do programa, inclusive por outras classes.</p>
+    <section class="lesson-section">
+      <h2>O que significa public</h2>
+      <p>No código anterior, aparecem palavras como <strong>public string Nome;</strong> e <strong>public void ExibirDados()</strong>. Esse termo é um <strong>modificador de acesso</strong>.</p>
+      <p>Ele indica que o atributo ou o método pode ser usado por outras partes do programa, inclusive por outras classes.</p>
       <div class="note">
-        Em termos simples: <strong>public</strong> torna o conteÃºdo da classe visÃ­vel para fora dela.
+        Em termos simples: <strong>public</strong> torna o conteúdo da classe visível para fora dela.
       </div>
-      <p>Isso Ã© importante porque, ao criar objetos, o programa precisa acessar seus dados e executar seus mÃ©todos.</p>
-      <p>Mais adiante, vocÃª vai conhecer outros modificadores, como <strong>private</strong>, que restringem esse acesso.</p>
+      <p>Isso é importante porque, ao criar objetos, o programa precisa acessar seus dados e executar seus métodos.</p>
+      <p>Mais adiante, você vai conhecer outros modificadores, como <strong>private</strong>, que restringem esse acesso.</p>
     </section>
 
-    <section>
-      <h2>Passo a Passo para Leitura do CÃ³digo</h2>
+    <section class="lesson-section">
+      <h2>Passo a passo para leitura do código</h2>
       <ol>
         <li>Definimos a <strong>classe Aluno</strong> com atributos <strong>Nome</strong> e <strong>Idade</strong>.</li>
-        <li>Criamos o mÃ©todo <strong>ExibirDados</strong> para mostrar as informaÃ§Ãµes.</li>
+        <li>Criamos o método <strong>ExibirDados</strong> para mostrar as informações.</li>
         <li>No Main, criamos os objetos <strong>a1</strong> e <strong>a2</strong> usando <strong>new</strong>.</li>
-        <li>Preenchemos cada objeto com dados proprios.</li>
-        <li>Chamamos o mesmo mÃ©todo para cada objeto.</li>
+        <li>Preenchemos cada objeto com dados próprios.</li>
+        <li>Chamamos o mesmo método para cada objeto.</li>
       </ol>
-      <p>Esse processo sera repetido ao longo da disciplina em modelos cada vez mais completos.</p>
+      <p>Esse processo será repetido ao longo da disciplina em modelos cada vez mais completos.</p>
     </section>
 
-    <section>
-      <h2>Comparacao Curta: Variaveis Soltas X Classe</h2>
+    <section class="lesson-section">
+      <h2>Comparação curta: variáveis soltas x classe</h2>
       <table>
         <thead>
           <tr>
@@ -130,50 +155,149 @@ class Program
         </thead>
         <tbody>
           <tr>
-            <td>Muitas variaveis espalhadas</td>
+            <td>Muitas variáveis espalhadas</td>
             <td>Dados agrupados por entidade</td>
           </tr>
           <tr>
-            <td>repetiÃ§Ã£o de blocos parecidos</td>
+            <td>Repetição de blocos parecidos</td>
             <td>Reaproveitamento de modelo</td>
           </tr>
           <tr>
-            <td>Manutencao dificil quando cresce</td>
-            <td>Estrutura mais organizada e escalavel</td>
+            <td>Manutenção difícil quando cresce</td>
+            <td>Estrutura mais organizada e escalável</td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <section>
+    <section class="lesson-section">
+      <h2>Exercícios de fixação</h2>
+      <ol>
+        <li>
+          <p><strong>Exercício 1:</strong> crie uma classe <strong>Pessoa</strong> com os atributos <strong>Nome</strong> e <strong>Idade</strong> e um método <strong>Apresentar</strong> que mostre os dados na tela.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">using System;
+
+class Pessoa
+{
+    public string Nome;
+    public int Idade;
+
+    public void Apresentar()
+    {
+        Console.WriteLine("Nome: " + Nome);
+        Console.WriteLine("Idade: " + Idade);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Pessoa p = new Pessoa();
+        p.Nome = "Maria";
+        p.Idade = 17;
+        p.Apresentar();
+    }
+}</code></pre>
+          </details>
+        </li>
+
+        <li>
+          <p><strong>Exercício 2:</strong> crie uma classe <strong>Carro</strong> com os atributos <strong>Marca</strong> e <strong>Ano</strong> e um método <strong>MostrarInfo</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">using System;
+
+class Carro
+{
+    public string Marca;
+    public int Ano;
+
+    public void MostrarInfo()
+    {
+        Console.WriteLine("Marca: " + Marca);
+        Console.WriteLine("Ano: " + Ano);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Carro c = new Carro();
+        c.Marca = "Honda";
+        c.Ano = 2022;
+        c.MostrarInfo();
+    }
+}</code></pre>
+          </details>
+        </li>
+
+        <li>
+          <p><strong>Exercício 3:</strong> explique a diferença entre <strong>classe</strong> e <strong>objeto</strong> usando a ideia de <strong>Aluno</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>A classe é o modelo. O objeto é um caso concreto criado a partir desse modelo. Por exemplo, a classe <strong>Aluno</strong> define os atributos e comportamentos. Cada aluno da sala, como Ana ou João, é um objeto diferente.</p>
+          </details>
+        </li>
+
+        <li>
+          <p><strong>Exercício 4:</strong> complete o programa abaixo para criar uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Preco</strong> e um método <strong>Exibir</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">using System;
+
+class Produto
+{
+    public string Nome;
+    public double Preco;
+
+    public void Exibir()
+    {
+        Console.WriteLine("Nome: " + Nome);
+        Console.WriteLine("Preco: " + Preco);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Produto p = new Produto();
+        p.Nome = "Caneta";
+        p.Preco = 2.50;
+        p.Exibir();
+    }
+}</code></pre>
+          </details>
+        </li>
+      </ol>
+    </section>
+
+    <section class="lesson-section">
       <h2>Resumo da Aula</h2>
-      <p>POO organiza o cÃ³digo por modelos reutilizaveis. A <strong>classe</strong> define o formato e o comportamento; o <strong>objeto</strong> representa um caso real desse formato.</p>
-      <p>Com isso, o cÃ³digo fica mais facil de entender, manter e expandir.</p>
+      <p>POO organiza o código por modelos reutilizáveis. A <strong>classe</strong> define o formato e o comportamento; o <strong>objeto</strong> representa um caso real desse formato.</p>
+      <p>Com isso, o código fica mais fácil de entender, manter e expandir.</p>
     </section>
 
-    <section>
-      <h2>Atividade Guiada</h2>
-      <p>Crie uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Preco</strong> e um mÃ©todo <strong>Exibir</strong> para mostrar os dados.</p>
-      <p>Depois crie dois objetos diferentes e apresente os resultados na tela.</p>
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p>Crie uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Preço</strong> e um método <strong>Exibir</strong> para mostrar os dados.</p>
+      <p>Depois, crie dois objetos diferentes e apresente os resultados na tela.</p>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:28:10</p>
-</section>
-</article>
+    <section class="update-log" aria-label="Informação de atualização">
+      <p>Última atualização: 03/08/2026 16:48:00</p>
+    </section>
+  
+    <section class='update-log' aria-label='Informacao de atualizacao'>
+      <p><strong>Ultima atualizacao:</strong> 03/08/2026</p>
+    </section>
+  </article>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
