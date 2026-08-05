@@ -1,63 +1,147 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 13 - Interfaces</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-13">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 13 - Interfaces</h1>
-      <p class="hero-subtitle">Objetivo: Definir Contratos de Implementacao.</p>
+      <p class="hero-kicker"><strong>Módulo 13</strong></p>
+      <h1 class="hero-title">Interfaces</h1>
+      <p class="hero-subtitle">Objetivo: definir contratos de implementacao para padronizar comportamentos entre classes diferentes.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Interface</li><li>Contrato</li><li>Implementacao</li></ul>
+    <section class="lesson-section">
+      <h2>Introducao teorica</h2>
+      <p>Interface define um contrato: quais metodos uma classe deve implementar.</p>
+      <p>Ela nao guarda estado. Ela padroniza comportamento.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>Interface define métodos que a classe deve implementar.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>Interface:</strong> contrato de membros sem implementacao concreta.</li>
+        <li><strong>Implementacao:</strong> classe que cumpre todos os metodos exigidos pelo contrato.</li>
+        <li><strong>Padronizacao:</strong> classes diferentes respondem ao mesmo conjunto de operacoes.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
-    </section>
+    <section class="lesson-section">
+      <h2>Exemplo em C#</h2>
+      <pre><code data-lang="csharp">using System;
+using System.Collections.Generic;
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>interface IRelatorio
+interface IRelatorio
 {
     void Gerar();
 }
 
 class RelatorioAluno : IRelatorio
 {
-    public void Gerar() { Console.WriteLine("Relatorio"); }
+    public void Gerar()
+    {
+        Console.WriteLine("Relatorio de aluno gerado");
+    }
+}
+
+class RelatorioFinanceiro : IRelatorio
+{
+    public void Gerar()
+    {
+        Console.WriteLine("Relatorio financeiro gerado");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<IRelatorio> relatorios = new List<IRelatorio>
+        {
+            new RelatorioAluno(),
+            new RelatorioFinanceiro()
+        };
+
+        foreach (IRelatorio relatorio in relatorios)
+        {
+            relatorio.Gerar();
+        }
+    }
 }</code></pre>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Interfaces padronizam comportamento entre classes diferentes.</p>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li>A interface <strong>IRelatorio</strong> exige o metodo <strong>Gerar()</strong>.</li>
+        <li>Cada classe implementa o mesmo metodo com resultado proprio.</li>
+        <li>A lista usa o tipo da interface, nao o tipo concreto das classes.</li>
+        <li>O codigo consumidor chama <strong>Gerar()</strong> de forma padronizada.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Crie uma interface IExportavel com método Exportar().</p>
+    <section class="lesson-section">
+      <h2>Exercicios de fixacao</h2>
+      <ol>
+        <li>
+          <p><strong>Exercicio 1:</strong> crie a interface <strong>IExportavel</strong> com metodo <strong>Exportar()</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">interface IExportavel
+{
+    void Exportar();
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 2:</strong> implemente <strong>ExportadorCsv</strong> e <strong>ExportadorPdf</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>As duas classes devem implementar <strong>Exportar()</strong> com mensagens diferentes.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 3:</strong> explique a diferenca entre heranca de classe e implementacao de interface.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Heranca reaproveita codigo de uma classe base. Interface define apenas o contrato que a classe deve cumprir.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 4:</strong> crie uma lista de <strong>IExportavel</strong> e execute <strong>Exportar()</strong> em cada item.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Use <strong>List&lt;IExportavel&gt;</strong> e <strong>foreach</strong> para chamar o metodo padronizado.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Interfaces criam contratos claros entre partes do sistema.</p>
+      <p>Elas aumentam padronizacao e facilitam troca de implementacoes.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> crie a interface <strong>INotificador</strong> com metodo <strong>Enviar()</strong>.</p>
+      <p><strong>Passo 2:</strong> implemente as classes <strong>EmailNotificador</strong> e <strong>SmsNotificador</strong>.</p>
+      <p><strong>Passo 3:</strong> use uma lista de <strong>INotificador</strong> para executar todos os envios.</p>
+    </section>
+
+<section class='update-log' aria-label='Informação de atualização'>
+  <p>Última atualização: 05/08/2026 00:34:05</p>
 </section>
 </article>
 </body>
 </html>
+
+
 
 
 

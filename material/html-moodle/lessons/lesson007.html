@@ -1,65 +1,153 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 07 - Construtores</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-07">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 07 - Construtores</h1>
-      <p class="hero-subtitle">Objetivo: Inicializar Objetos com Dados Obrigatorios.</p>
+      <p class="hero-kicker"><strong>Módulo 07</strong></p>
+      <h1 class="hero-title">Construtores</h1>
+      <p class="hero-subtitle">Objetivo: inicializar objetos com dados obrigatórios no momento da criação.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Construtor</li><li>Inicializacao</li></ul>
+    <section class="lesson-section">
+      <h2>Introdução teórica</h2>
+      <p>Construtor é um método especial chamado automaticamente quando o objeto é criado.</p>
+      <p>Ele garante que o objeto já nasça em estado válido, com dados iniciais definidos.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>Construtor e executado no momento da criacao do objeto.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>Construtor:</strong> método com mesmo nome da classe e sem tipo de retorno.</li>
+        <li><strong>Inicialização:</strong> atribuição de valores iniciais ao criar o objeto.</li>
+        <li><strong>Sobrecarga:</strong> uso de mais de um construtor com assinaturas diferentes.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    <section class="lesson-section">
+      <h2>Exemplo em C#</h2>
+      <pre><code data-lang="csharp">using System;
+
+class Produto
+{
+    public string Nome;
+    public decimal Preco;
+
+    public Produto(string nome, decimal preco)
+    {
+        Nome = nome;
+        Preco = preco;
+    }
+
+    public Produto(string nome)
+    {
+        Nome = nome;
+        Preco = 0m;
+    }
+
+    public void Exibir()
+    {
+        Console.WriteLine("Nome: " + Nome + " | Preco: " + Preco);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Produto p1 = new Produto("Teclado", 120m);
+        Produto p2 = new Produto("Mouse");
+
+        p1.Exibir();
+        p2.Exibir();
+    }
+}</code></pre>
     </section>
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>class Pessoa
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li>O primeiro construtor recebe nome e preço.</li>
+        <li>O segundo construtor recebe apenas nome e define preço padrão.</li>
+        <li>No <strong>Main</strong>, cada chamada de <strong>new Produto(...)</strong> escolhe automaticamente o construtor compatível.</li>
+      </ol>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Exercícios de fixação</h2>
+      <ol>
+        <li>
+          <p><strong>Exercício 1:</strong> crie a classe <strong>Aluno</strong> com construtor que receba <strong>nome</strong> e <strong>idade</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">class Aluno
 {
     public string Nome;
     public int Idade;
 
-    public Pessoa(string nome, int idade)
+    public Aluno(string nome, int idade)
     {
         Nome = nome;
         Idade = idade;
     }
 }</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 2:</strong> adicione sobrecarga para criar <strong>Aluno</strong> apenas com nome e idade padrão 0.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">public Aluno(string nome)
+{
+    Nome = nome;
+    Idade = 0;
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 3:</strong> explique por que construtor ajuda a evitar objeto incompleto.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Porque ele força a inicialização no momento da criação, reduzindo chance de atributos importantes ficarem sem valor adequado.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 4:</strong> crie um programa que instancie dois objetos da mesma classe usando construtores diferentes.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Use uma instância com todos os parâmetros e outra com sobrecarga para comparar os estados iniciais.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Construtor melhora consistencia dos dados iniciais.</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Construtor define o estado inicial do objeto de forma controlada.</p>
+      <p>Sobrecarga de construtores oferece flexibilidade sem perder consistência.</p>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Crie um construtor para Produto com nome e preco.</p>
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> crie a classe <strong>ContaAluno</strong> com atributos <strong>Nome</strong> e <strong>Saldo</strong>.</p>
+      <p><strong>Passo 2:</strong> implemente um construtor com os dois parâmetros.</p>
+      <p><strong>Passo 3:</strong> implemente uma sobrecarga com apenas nome e saldo inicial igual a zero.</p>
+      <p><strong>Passo 4:</strong> crie objetos usando os dois construtores e exiba os dados.</p>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
-</section>
-</article>
+    <section class="update-log" aria-label="Informação de atualização">
+      <p>Última atualização: 05/08/2026 00:34:05</p>
+    </section>
+  </article>
 </body>
 </html>
+
 
 
 

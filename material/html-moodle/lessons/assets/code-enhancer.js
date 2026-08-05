@@ -492,28 +492,56 @@
       var concepts = [];
       var conceptKeys = new Set();
 
-      function pushConcept(text) {
+      function splitConceptText(text) {
         var clean = (text || "").trim();
         if (!clean) {
+          return null;
+        }
+
+        var match = clean.match(/^([^:]{2,80}):\s*(.+)$/);
+        if (!match) {
+          return {
+            title: clean,
+            description: ""
+          };
+        }
+
+        return {
+          title: (match[1] || "").trim(),
+          description: (match[2] || "").trim()
+        };
+      }
+
+      function pushConcept(title, description) {
+        var cleanTitle = (title || "").trim();
+        if (!cleanTitle) {
           return;
         }
 
-        var key = normalizeText(clean);
+        var key = normalizeText(cleanTitle);
         if (!key || conceptKeys.has(key)) {
           return;
         }
 
         conceptKeys.add(key);
-        concepts.push(clean);
+        concepts.push({
+          title: cleanTitle,
+          description: (description || "").trim()
+        });
       }
 
       if (keywords.length > 0) {
         keywords.forEach(function (item) {
-          pushConcept(item.textContent);
+          pushConcept(item.textContent, "");
         });
       } else if (listItems.length > 0) {
         listItems.forEach(function (item) {
-          pushConcept(item.textContent);
+          var parsed = splitConceptText(item.textContent);
+          if (!parsed) {
+            return;
+          }
+
+          pushConcept(parsed.title, parsed.description);
         });
       }
 
@@ -529,7 +557,9 @@
       board.setAttribute("aria-label", "Painel de conceitos desta aula");
 
       concepts.forEach(function (concept) {
-        var conceptKey = normalizeText(concept);
+        var conceptTitle = concept.title;
+        var conceptDescription = concept.description;
+        var conceptKey = normalizeText(conceptTitle);
         var best = null;
         var bestScore = -1;
 
@@ -556,13 +586,13 @@
           }
         });
 
-        var description = "Conceito central desta aula que será aplicado nos exemplos e atividades.";
-        if (best) {
+        var description = conceptDescription || "Conceito central desta aula que será aplicado nos exemplos e atividades.";
+        if (!conceptDescription && best) {
           description = best.textContent.trim();
           usedParagraphs.add(best);
         }
 
-        board.appendChild(buildConceptNote(concept, description));
+        board.appendChild(buildConceptNote(conceptTitle, description));
       });
 
       heading.insertAdjacentElement("afterend", board);
@@ -582,7 +612,7 @@
       });
 
       var escapedConcepts = concepts.map(function (concept) {
-        return normalizeText(concept).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        return normalizeText(concept.title).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       }).filter(Boolean);
 
       if (escapedConcepts.length > 0) {

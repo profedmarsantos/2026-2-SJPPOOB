@@ -1,0 +1,37 @@
+27/07 - Apresentação da disciplina e plano de ensino.
+29/07 - Transição de C para C#: sintaxe, tipos e estrutura básica.
+03/08 - Transição de C para C#: sintaxe, tipos e estrutura básica.
+05/08 - Transição de C para C#: sintaxe, tipos e estrutura básica.
+10/08 - Fundamentos de POO: classe, objeto, atributo e método aplicados ao aplicativo.
+12/08 - Fundamentos de POO: classe, objeto, atributo e método aplicados ao aplicativo.
+17/08 - Encapsulamento, propriedades e construtores.
+19/08 - Encapsulamento, propriedades e construtores.
+24/08 - Modificadores de acesso e organização da modelagem.
+26/08 - Modificadores de acesso e organização da modelagem.
+31/08 - Herança e reutilização de código.
+02/09 - Herança e reutilização de código.
+09/09 - Polimorfismo e abstração.
+14/09 - Polimorfismo e abstração.
+16/09 - Interfaces e composição de comportamentos.
+21/09 - Interfaces e composição de comportamentos.
+23/09 - Coleções, listas e organização de dados no fluxo do aplicativo.
+28/09 - Coleções, listas e organização de dados no fluxo do aplicativo.
+30/09 - Persistência: banco de dados, tabelas, chaves e relacionamentos.
+05/10 - Persistência: banco de dados, tabelas, chaves e relacionamentos.
+07/10 - Conexão com banco, comandos SQL e organização do fluxo de uso.
+19/10 - Conexão com banco, comandos SQL e organização do fluxo de uso.
+21/10 IV Semana de Educação Especial e Inclusiva - SEMEEI
+26/10 - CRUD completo com validações, tratamento de erros e fluxo de operação.
+28/10 - CRUD completo com validações, tratamento de erros e fluxo de operação.
+04/11 - Geração de relatórios a partir da base de dados e consolidação de saídas.
+09/11 - Geração de relatórios a partir da base de dados e consolidação de saídas.
+11/11 - Distribuição e implantação do aplicativo.
+16/11 - Distribuição e implantação do aplicativo.
+18/11 V Semana da Diversidade Cultural e da Consciência Negra
+23/11 - Projeto final: modelagem e implementação guiada.
+25/11 - Projeto final: modelagem e implementação guiada.
+30/11 - Projeto final: testes, ajustes e integração final.
+02/12 - Projeto final: testes, ajustes e integração final.
+09/12 - Apresentação final e avaliação dos projetos.
+14/12 - Revisão geral, fechamento da disciplina e orientação final.
+15/12 Término do Semestre Letivo - Prazo limite para os docentes entregarem os diários à CRA

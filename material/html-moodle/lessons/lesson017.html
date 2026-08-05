@@ -1,55 +1,162 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 17 - CRUD Básico</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-17">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 17 - CRUD Básico</h1>
-      <p class="hero-subtitle">Objetivo: Criar, Consultar, Atualizar e Excluir Dados.</p>
+      <p class="hero-kicker"><strong>Módulo 17</strong></p>
+      <h1 class="hero-title">CRUD Basico</h1>
+      <p class="hero-subtitle">Objetivo: aplicar INSERT, SELECT, UPDATE e DELETE com comandos claros e parametros.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>INSERT</li><li>SELECT</li><li>UPDATE</li><li>DELETE</li></ul>
+    <section class="lesson-section">
+      <h2>Introducao teorica</h2>
+      <p>CRUD representa as quatro operacoes principais de dados: criar, consultar, atualizar e excluir.</p>
+      <p>Essas operacoes aparecem em praticamente todo sistema com banco.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>CRUD representa as quatro operacoes basicas em banco de dados.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>CREATE:</strong> inserir novo registro com INSERT.</li>
+        <li><strong>READ:</strong> consultar registros com SELECT.</li>
+        <li><strong>UPDATE:</strong> alterar dados existentes.</li>
+        <li><strong>DELETE:</strong> remover registro especifico.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    <section class="lesson-section">
+      <h2>Exemplo em C# com SQL parametrizado</h2>
+      <pre><code data-lang="csharp">using System.Data.SqlClient;
+
+// CREATE
+string insertSql = "INSERT INTO Alunos (Nome, Turma) VALUES (@Nome, @Turma)";
+
+// READ
+string selectSql = "SELECT Id, Nome, Turma FROM Alunos";
+
+// UPDATE
+string updateSql = "UPDATE Alunos SET Turma = @Turma WHERE Id = @Id";
+
+// DELETE
+string deleteSql = "DELETE FROM Alunos WHERE Id = @Id";
+
+// Exemplo de comando parametrizado
+using (SqlCommand comando = new SqlCommand(insertSql, conexao))
+{
+    comando.Parameters.AddWithValue("@Nome", "Ana");
+    comando.Parameters.AddWithValue("@Turma", "1A");
+    comando.ExecuteNonQuery();
+}</code></pre>
     </section>
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>string sql = "INSERT INTO Alunos (Nome, Turma) VALUES (@Nome, @Turma)";</code></pre>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li>Cada string SQL representa uma parte do CRUD.</li>
+        <li><strong>ExecuteNonQuery()</strong> e usado em INSERT, UPDATE e DELETE.</li>
+        <li>Parametros evitam concatenacao insegura.</li>
+        <li>Comandos com WHERE evitam alterar ou excluir todos os registros.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>CRUD e base de sistemas com dados persistentes.</p>
+    <section class="lesson-section">
+      <h2>Tabela comparativa rapida</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Operacao</th>
+            <th>Comando SQL</th>
+            <th>Uso principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Create</td>
+            <td>INSERT</td>
+            <td>Cadastrar novo item</td>
+          </tr>
+          <tr>
+            <td>Read</td>
+            <td>SELECT</td>
+            <td>Listar ou buscar item</td>
+          </tr>
+          <tr>
+            <td>Update</td>
+            <td>UPDATE</td>
+            <td>Alterar dado existente</td>
+          </tr>
+          <tr>
+            <td>Delete</td>
+            <td>DELETE</td>
+            <td>Remover item</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Escreva um exemplo de comando SELECT para listar alunos.</p>
+    <section class="lesson-section">
+      <h2>Exercicios de fixacao</h2>
+      <ol>
+        <li>
+          <p><strong>Exercicio 1:</strong> escreva um <strong>SELECT</strong> para listar nome e preco da tabela Produtos.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="sql">SELECT Nome, Preco FROM Produtos;</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 2:</strong> escreva um <strong>UPDATE</strong> para alterar turma do aluno Id 3.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="sql">UPDATE Alunos SET Turma = '2B' WHERE Id = 3;</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 3:</strong> explique por que comando DELETE deve usar WHERE.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Sem WHERE, todos os registros da tabela podem ser removidos.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 4:</strong> monte um INSERT parametrizado para cadastrar um produto.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Defina SQL com <strong>@Nome</strong>, <strong>@Preco</strong> e adicione parametros no SqlCommand.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>CRUD e a base operacional de sistemas com dados persistentes.</p>
+      <p>Comandos SQL e parametros corretos tornam a aplicacao mais segura e previsivel.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> escreva os quatro comandos CRUD para a tabela <strong>Produtos</strong>.</p>
+      <p><strong>Passo 2:</strong> marque onde usar parametros no C#.</p>
+      <p><strong>Passo 3:</strong> execute mentalmente um fluxo completo: cadastrar, listar, atualizar e excluir.</p>
+    </section>
+
+<section class='update-log' aria-label='Informação de atualização'>
+  <p>Última atualização: 05/08/2026 00:34:05</p>
 </section>
 </article>
 </body>
 </html>
+
+
+
 
 
 

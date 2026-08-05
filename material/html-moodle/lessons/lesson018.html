@@ -1,56 +1,134 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 18 - Geração de Relatórios</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-18">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 18 - Geração de Relatórios</h1>
-      <p class="hero-subtitle">Objetivo: Organizar Dados Consultados em Saida Clara.</p>
+      <p class="hero-kicker"><strong>Módulo 18</strong></p>
+      <h1 class="hero-title">Geracao de Relatorios</h1>
+      <p class="hero-subtitle">Objetivo: apresentar dados consultados em formato claro, com filtro e ordenacao.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Relatório</li><li>Consulta</li><li>Filtro</li><li>Ordenação</li></ul>
+    <section class="lesson-section">
+      <h2>Introducao teorica</h2>
+      <p>Relatorio transforma dados do banco em informacao util para leitura e decisao.</p>
+      <p>Um bom relatorio precisa de consulta correta, organizacao visual e criterio de ordenacao.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>Relatório é uma apresentação organizada dos dados para leitura e decisão.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>Consulta:</strong> SQL que recupera os dados necessarios.</li>
+        <li><strong>Filtro:</strong> condicao para exibir somente parte dos registros.</li>
+        <li><strong>Ordenacao:</strong> definicao da sequencia de exibicao.</li>
+        <li><strong>Layout:</strong> estrutura de cabecalho, colunas e totalizadores.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    <section class="lesson-section">
+      <h2>Exemplo em C#</h2>
+      <pre><code data-lang="csharp">using System;
+using System.Data.SqlClient;
+
+class Program
+{
+    static void Main()
+    {
+        string sql = "SELECT Nome, Turma, NotaFinal FROM Alunos ORDER BY Nome";
+
+        Console.WriteLine("RELATORIO DE ALUNOS");
+        Console.WriteLine("Nome                 | Turma | Nota");
+        Console.WriteLine("--------------------------------------");
+
+        using (SqlCommand comando = new SqlCommand(sql, conexao))
+        using (SqlDataReader leitor = comando.ExecuteReader())
+        {
+            while (leitor.Read())
+            {
+                string nome = leitor.GetString(0);
+                string turma = leitor.GetString(1);
+                decimal nota = leitor.GetDecimal(2);
+
+                Console.WriteLine($"{nome,-20} | {turma,-5} | {nota}");
+            }
+        }
+    }
+}</code></pre>
     </section>
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>Console.WriteLine("RELATORIO DE ALUNOS");
-Console.WriteLine("Nome | Turma");</code></pre>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li>A consulta busca nome, turma e nota final.</li>
+        <li><strong>ORDER BY Nome</strong> organiza o resultado em ordem alfabetica.</li>
+        <li>Cabecalho textual melhora a leitura no console.</li>
+        <li>O loop do <strong>SqlDataReader</strong> imprime linha por linha.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Relatorio depende de dados corretos e formato claro.</p>
+    <section class="lesson-section">
+      <h2>Exercicios de fixacao</h2>
+      <ol>
+        <li>
+          <p><strong>Exercicio 1:</strong> escreva SQL para listar produtos ordenados por preco crescente.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="sql">SELECT Nome, Preco FROM Produtos ORDER BY Preco ASC;</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 2:</strong> adicione filtro para mostrar apenas alunos da turma 1A.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="sql">SELECT Nome, Turma FROM Alunos WHERE Turma = '1A';</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 3:</strong> explique por que cabecalho e separador ajudam no relatorio.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Porque deixam o formato previsivel e facilitam leitura rapida das colunas.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 4:</strong> monte um relatorio textual com duas colunas e total no final.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Use <strong>Console.WriteLine</strong> para cabecalho, loop para linhas e uma linha final com totalizador.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Monte um layout textual de relatorio com cabeçalho e duas colunas.</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Relatorio combina consulta correta com apresentacao clara.</p>
+      <p>Filtro, ordenacao e layout bem definido tornam os dados mais uteis para decisao.</p>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> escolha uma tabela e tres colunas para relatorio.</p>
+      <p><strong>Passo 2:</strong> escreva SQL com filtro e ordenacao.</p>
+      <p><strong>Passo 3:</strong> desenhe o cabecalho e o formato de exibicao no console.</p>
+      <p><strong>Passo 4:</strong> inclua uma linha final com total de registros exibidos.</p>
+    </section>
+
+<section class='update-log' aria-label='Informação de atualização'>
+  <p>Última atualização: 05/08/2026 00:34:05</p>
 </section>
 </article>
 </body>
 </html>
+
+
+
 
 
 

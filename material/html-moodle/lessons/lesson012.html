@@ -1,58 +1,151 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 12 - Abstração</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-12">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 12 - Abstração</h1>
-      <p class="hero-subtitle">Objetivo: Focar no Essencial e Ocultar Detalhes Internos.</p>
+      <p class="hero-kicker"><strong>Módulo 12</strong></p>
+      <h1 class="hero-title">Abstracao</h1>
+      <p class="hero-subtitle">Objetivo: focar no essencial da modelagem com classes e metodos abstratos.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>abstração</li><li>Classe abstrata</li><li>método abstrato</li></ul>
+    <section class="lesson-section">
+      <h2>Introducao teorica</h2>
+      <p>Abstracao destaca o que e obrigatorio no comportamento de um tipo e oculta detalhes internos.</p>
+      <p>Em C#, isso pode ser feito com classes abstratas e metodos abstratos.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>abstração define o que e necessário para usar um objeto sem expor toda implementacao.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>Classe abstrata:</strong> classe que nao pode ser instanciada diretamente.</li>
+        <li><strong>Metodo abstrato:</strong> metodo sem corpo, obrigando implementacao nas classes filhas.</li>
+        <li><strong>Especializacao:</strong> cada classe derivada implementa o comportamento conforme sua necessidade.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
-    </section>
+    <section class="lesson-section">
+      <h2>Exemplo em C#</h2>
+      <pre><code data-lang="csharp">using System;
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>abstract class Forma
+abstract class Forma
 {
-    public abstract double Area();
+    public abstract double CalcularArea();
+}
+
+class Retangulo : Forma
+{
+    public double Base;
+    public double Altura;
+
+    public override double CalcularArea()
+    {
+        return Base * Altura;
+    }
+}
+
+class Circulo : Forma
+{
+    public double Raio;
+
+    public override double CalcularArea()
+    {
+        return 3.14 * Raio * Raio;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Retangulo r = new Retangulo();
+        r.Base = 4;
+        r.Altura = 3;
+
+        Circulo c = new Circulo();
+        c.Raio = 2;
+
+        Console.WriteLine("Area do retangulo: " + r.CalcularArea());
+        Console.WriteLine("Area do circulo: " + c.CalcularArea());
+    }
 }</code></pre>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>abstração simplifica uso de componentes do sistema.</p>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li><strong>Forma</strong> define contrato comum com <strong>CalcularArea()</strong>.</li>
+        <li><strong>Retangulo</strong> implementa com base vezes altura.</li>
+        <li><strong>Circulo</strong> implementa com formula da area do circulo.</li>
+        <li>A classe abstrata organiza um padrao, e cada classe concreta detalha o calculo.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Defina uma classe abstrata Veiculo com método abstrato Mover().</p>
+    <section class="lesson-section">
+      <h2>Exercicios de fixacao</h2>
+      <ol>
+        <li>
+          <p><strong>Exercicio 1:</strong> crie a classe abstrata <strong>Veiculo</strong> com metodo abstrato <strong>Mover()</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">abstract class Veiculo
+{
+    public abstract void Mover();
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 2:</strong> implemente <strong>Carro</strong> e <strong>Bicicleta</strong> herdando de <strong>Veiculo</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Cada classe deve sobrescrever <strong>Mover()</strong> com sua propria mensagem de deslocamento.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 3:</strong> explique por que classe abstrata nao pode ser instanciada.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Porque ela representa um modelo incompleto, que depende da implementacao das classes derivadas.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 4:</strong> crie um metodo abstrato e duas implementacoes diferentes em classes filhas.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Exemplo: metodo <strong>Calcular()</strong> na base e formulas diferentes em duas classes derivadas.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Abstracao define contratos claros para classes relacionadas.</p>
+      <p>Com classe abstrata, o sistema ganha organizacao e consistencia de implementacao.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> crie classe abstrata <strong>Funcionario</strong> com metodo abstrato <strong>CalcularSalario()</strong>.</p>
+      <p><strong>Passo 2:</strong> implemente classes <strong>Mensalista</strong> e <strong>Horista</strong>.</p>
+      <p><strong>Passo 3:</strong> mostre no console o resultado de cada implementacao.</p>
+    </section>
+
+<section class='update-log' aria-label='Informação de atualização'>
+  <p>Última atualização: 05/08/2026 00:34:05</p>
 </section>
 </article>
 </body>
 </html>
+
+
+
 
 
 

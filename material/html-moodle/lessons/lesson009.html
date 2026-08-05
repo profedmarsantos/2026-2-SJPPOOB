@@ -1,60 +1,180 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 09 - Modificadores de Acesso</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-09">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 09 - Modificadores de Acesso</h1>
-      <p class="hero-subtitle">Objetivo: Usar Public, Private e Protected Corretamente.</p>
+      <p class="hero-kicker"><strong>Módulo 09</strong></p>
+      <h1 class="hero-title">Modificadores de Acesso</h1>
+      <p class="hero-subtitle">Objetivo: usar public, private e protected corretamente para proteger dados e organizar responsabilidades.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>public</li><li>private</li><li>protected</li></ul>
+    <section class="lesson-section">
+      <h2>Introdução teórica</h2>
+      <p>Nem todo dado da classe deve ficar visível para qualquer parte do sistema.</p>
+      <p>Modificadores de acesso definem o que pode ser acessado de fora da classe e o que deve ficar protegido.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>public libera acesso geral. private restringe a propria classe. protected libera para classes derivadas.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>public:</strong> acessível por qualquer classe.</li>
+        <li><strong>private:</strong> acessível apenas dentro da própria classe.</li>
+        <li><strong>protected:</strong> acessível na própria classe e nas classes derivadas.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    <section class="lesson-section">
+      <h2>Tabela comparativa rápida</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Modificador</th>
+            <th>Onde pode ser acessado</th>
+            <th>Uso comum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>public</td>
+            <td>Em qualquer classe</td>
+            <td>Métodos de serviço e operações que precisam ser chamadas externamente</td>
+          </tr>
+          <tr>
+            <td>private</td>
+            <td>Apenas na classe atual</td>
+            <td>Campos internos e detalhes de implementação</td>
+          </tr>
+          <tr>
+            <td>protected</td>
+            <td>Na classe atual e em classes filhas</td>
+            <td>Dados compartilhados em hierarquias de herança</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>class Pessoa
+    <section class="lesson-section">
+      <h2>Exemplo em C#</h2>
+      <pre><code data-lang="csharp">using System;
+
+class Pessoa
 {
     public string Nome;
     private string cpf;
-    protected string CodigoInterno;
+    protected string codigoInterno;
+
+    public void DefinirCpf(string valor)
+    {
+        cpf = valor;
+    }
+
+    public string ObterCpfMascarado()
+    {
+        return "***.***.***-**";
+    }
+}
+
+class Aluno : Pessoa
+{
+    public void DefinirCodigo(string codigo)
+    {
+        codigoInterno = codigo;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Aluno a = new Aluno();
+        a.Nome = "Lia";
+        a.DefinirCpf("12345678900");
+        a.DefinirCodigo("A-2026");
+
+        Console.WriteLine("Nome: " + a.Nome);
+        Console.WriteLine("CPF: " + a.ObterCpfMascarado());
+    }
 }</code></pre>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Nivel de acesso faz parte da modelagem correta de classes.</p>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li><strong>Nome</strong> é público e pode ser lido e alterado externamente.</li>
+        <li><strong>cpf</strong> é privado, então só a própria classe <strong>Pessoa</strong> pode manipular diretamente.</li>
+        <li><strong>codigoInterno</strong> é protegido, então a classe <strong>Aluno</strong> consegue acessar.</li>
+        <li>Métodos públicos funcionam como acesso seguro para dados privados.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Classifique os atributos de Conta em publicos e privados.</p>
+    <section class="lesson-section">
+      <h2>Exercícios de fixação</h2>
+      <ol>
+        <li>
+          <p><strong>Exercício 1:</strong> classifique os membros abaixo em public, private ou protected: <strong>saldo</strong>, <strong>NumeroConta</strong>, <strong>agenciaInterna</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Uma resposta esperada: <strong>saldo</strong> private, <strong>NumeroConta</strong> public, <strong>agenciaInterna</strong> protected.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 2:</strong> crie método público <strong>Depositar</strong> para alterar um campo privado <strong>saldo</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">private decimal saldo;
+
+public void Depositar(decimal valor)
+{
+    if (valor > 0)
+        saldo += valor;
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 3:</strong> explique por que deixar todos os atributos públicos pode causar problemas.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Porque qualquer classe pode alterar dados sem validação, gerando estado inválido e comportamento imprevisível.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 4:</strong> crie uma classe derivada que use um campo protected da classe base.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>A classe filha pode atribuir valor ao campo protected dentro de seus métodos, sem expor esse campo para qualquer classe externa.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Modificadores de acesso controlam visibilidade e ajudam a proteger o estado interno.</p>
+      <p>Escolher corretamente entre public, private e protected faz parte da boa modelagem orientada a objetos.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> crie a classe <strong>Conta</strong> com campo <strong>saldo</strong> privado.</p>
+      <p><strong>Passo 2:</strong> adicione método público para depósito com validação.</p>
+      <p><strong>Passo 3:</strong> crie classe <strong>ContaAluno</strong> herdando de <strong>Conta</strong> e utilize um campo protegido na classe base.</p>
+    </section>
+
+<section class='update-log' aria-label='Informação de atualização'>
+  <p>Última atualização: 05/08/2026 00:34:05</p>
 </section>
 </article>
 </body>
 </html>
+
+
 
 
 

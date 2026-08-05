@@ -7,6 +7,21 @@ Repositorio da disciplina com material de apoio e aulas em HTML.
 - `exercicios_anteriores_em_c/`: exercicios e exemplos em C.
 - `material/html-moodle/lessons/`: 20 licoes em HTML para Moodle e Publicação web.
 - `material/html-moodle/lessons/index.html`: pagina inicial com links e resumo das licoes.
+- `.github/agents/modulo-writer.agent.md`: fonte oficial do agente didático deste projeto.
+- `scripts/sync-modulo-writer-agent.ps1`: sincroniza o agente do projeto para a pasta global do Copilot.
+
+## Agente do projeto (fonte unica)
+
+Este repositorio adota fonte unica para o agente `modulo-writer`.
+
+- Arquivo oficial: `.github/agents/modulo-writer.agent.md`
+- Destino de uso local do Copilot: `C:/Users/<usuario>/.copilot/agents/modulo-writer.agent.md`
+
+Sempre que o agente for alterado no repositorio, sincronize com:
+
+```powershell
+./scripts/sync-modulo-writer-agent.ps1
+```
 
 ## Publicação GitHub Pages
 
@@ -47,6 +62,12 @@ Para executar localmente no PowerShell:
 
 ```powershell
 ./scripts/Publicação-completa.ps1
+```
+
+Para executar com sincronizacao automatica do agente modulo-writer antes do commit:
+
+```powershell
+./scripts/Publicação-completa.ps1 -SincronizarAgente
 ```
 
 Opcionalmente, o workflow `Publicação Completa Command` também pode ser disparado manualmente no GitHub Actions.

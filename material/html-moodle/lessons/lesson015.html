@@ -1,57 +1,147 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Módulo 15 - Acesso a Banco de Dados - Conceitos</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <title>Módulo 15 - Acesso a Banco de Dados</title>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-15">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 15 - Acesso a Banco de Dados - Conceitos</h1>
-      <p class="hero-subtitle">Objetivo: Entender o Que e Banco de Dados e Como Ele Se Conecta ao Sistema.</p>
+      <p class="hero-kicker"><strong>Módulo 15</strong></p>
+      <h1 class="hero-title">Acesso a Banco de Dados</h1>
+      <p class="hero-subtitle">Objetivo: entender os conceitos de persistencia e modelar tabelas com foco em uso no sistema em C#.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Banco de dados</li><li>Tabela</li><li>Registro</li><li>Chave primaria</li></ul>
+    <section class="lesson-section">
+      <h2>Introducao teorica</h2>
+      <p>Banco de dados guarda informacoes de forma persistente, mesmo apos fechar o programa.</p>
+      <p>Antes de codificar, e necessario definir estrutura: tabelas, campos, tipos e chaves.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>Banco de dados guarda informações de forma persistente. Tabela organiza dados em linhas e colunas.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>Tabela:</strong> conjunto de dados sobre uma entidade, como Alunos ou Produtos.</li>
+        <li><strong>Registro:</strong> uma linha da tabela, representando um item cadastrado.</li>
+        <li><strong>Campo:</strong> coluna com tipo de dado definido, como texto, numero ou data.</li>
+        <li><strong>Chave primaria:</strong> campo unico que identifica cada registro.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    <section class="lesson-section">
+      <h2>Tabela comparativa de elementos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Elemento</th>
+            <th>Funcao</th>
+            <th>Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tabela</td>
+            <td>Organiza dados por tema</td>
+            <td>Produtos</td>
+          </tr>
+          <tr>
+            <td>Registro</td>
+            <td>Representa um item</td>
+            <td>Produto com Id 1</td>
+          </tr>
+          <tr>
+            <td>Campo</td>
+            <td>Define cada informacao</td>
+            <td>Nome, Preco, Estoque</td>
+          </tr>
+          <tr>
+            <td>Chave primaria</td>
+            <td>Identifica sem repeticao</td>
+            <td>Id</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>-- exemplo conceitual
-Tabela: Alunos
-Colunas: Id, Nome, Turma</code></pre>
+    <section class="lesson-section">
+      <h2>Exemplo conceitual</h2>
+      <pre><code data-lang="sql">-- Tabela de alunos
+CREATE TABLE Alunos (
+    Id INT PRIMARY KEY,
+    Nome VARCHAR(80),
+    Turma VARCHAR(10)
+);</code></pre>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Antes do código, e necessário entender a estrutura dos dados.</p>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li>A tabela <strong>Alunos</strong> representa a entidade aluno.</li>
+        <li><strong>Id</strong> e a chave primaria, sem duplicidade.</li>
+        <li><strong>Nome</strong> e <strong>Turma</strong> guardam dados textuais.</li>
+        <li>Essa estrutura sera usada nas proximas aulas para conexao e CRUD.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Desenhe uma tabela simples para cadastrar produtos.</p>
+    <section class="lesson-section">
+      <h2>Exercicios de fixacao</h2>
+      <ol>
+        <li>
+          <p><strong>Exercicio 1:</strong> desenhe a tabela <strong>Produtos</strong> com os campos <strong>Id</strong>, <strong>Nome</strong>, <strong>Preco</strong> e <strong>Estoque</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Uma solucao esperada: Id como chave primaria e os demais campos com tipos adequados.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 2:</strong> explique a diferenca entre tabela e registro.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Tabela e o conjunto. Registro e uma linha especifica desse conjunto.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 3:</strong> indique qual campo deve ser chave primaria na tabela <strong>Turmas</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Um campo identificador unico, como <strong>IdTurma</strong>.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 4:</strong> proponha dois campos obrigatorios para uma tabela <strong>Funcionarios</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Exemplo: <strong>IdFuncionario</strong> e <strong>Nome</strong>.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Acesso a banco começa pela modelagem correta dos dados.</p>
+      <p>Com tabela, campos e chave primaria bem definidos, a implementacao em C# fica mais segura.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> modele as tabelas <strong>Clientes</strong> e <strong>Pedidos</strong>.</p>
+      <p><strong>Passo 2:</strong> defina chaves primarias em cada tabela.</p>
+      <p><strong>Passo 3:</strong> descreva qual campo conecta pedido ao cliente.</p>
+      <p><strong>Passo 4:</strong> valide se nenhum campo essencial ficou sem tipo definido.</p>
+    </section>
+
+<section class='update-log' aria-label='Informação de atualização'>
+  <p>Última atualização: 05/08/2026 00:34:05</p>
 </section>
 </article>
 </body>
 </html>
+
+
 
 
 

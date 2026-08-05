@@ -1,55 +1,110 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 19 - Distribuição do Aplicativo</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-19">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 19 - Distribuição do Aplicativo</h1>
-      <p class="hero-subtitle">Objetivo: Preparar o Sistema para Uso em Outros Computadores.</p>
+      <p class="hero-kicker"><strong>Módulo 19</strong></p>
+      <h1 class="hero-title">Distribuicao do Aplicativo</h1>
+      <p class="hero-subtitle">Objetivo: preparar e entregar a aplicacao para execucao em outros computadores com menos risco de erro.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Build</li><li>Publicação</li><li>Arquivo executável</li></ul>
+    <section class="lesson-section">
+      <h2>Introducao teorica</h2>
+      <p>Distribuir uma aplicacao significa gerar os arquivos corretos para o ambiente de uso.</p>
+      <p>Nessa etapa, o foco e transformar o projeto de desenvolvimento em pacote executavel.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>Distribuir e entregar o sistema pronto para execucao em ambiente de uso.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>Build:</strong> compilacao do codigo para gerar binarios.</li>
+        <li><strong>Publish:</strong> pacote pronto para distribuicao.</li>
+        <li><strong>Release:</strong> configuracao otimizada para entrega final.</li>
+        <li><strong>Dependencias:</strong> arquivos e bibliotecas necessarios para executar.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    <section class="lesson-section">
+      <h2>Exemplo de comando</h2>
+      <pre><code data-lang="powershell">dotnet publish -c Release -r win-x64 --self-contained false</code></pre>
+      <p>Esse comando gera os arquivos de publicacao para Windows 64 bits usando runtime instalado no destino.</p>
     </section>
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>dotnet publish -c Release</code></pre>
+    <section class="lesson-section">
+      <h2>Checklist de distribuicao</h2>
+      <ol>
+        <li>Compilar sem erros em modo Release.</li>
+        <li>Executar testes basicos do fluxo principal.</li>
+        <li>Gerar pacote com <strong>dotnet publish</strong>.</li>
+        <li>Validar se arquivos de configuracao foram incluidos.</li>
+        <li>Testar em maquina ou pasta limpa.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Publicação correta reduz erros no ambiente final.</p>
+    <section class="lesson-section">
+      <h2>Exercicios de fixacao</h2>
+      <ol>
+        <li>
+          <p><strong>Exercicio 1:</strong> explique a diferenca entre build e publish.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Build compila o projeto. Publish gera o pacote final de entrega.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 2:</strong> escreva um comando publish para Linux x64.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="powershell">dotnet publish -c Release -r linux-x64 --self-contained false</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 3:</strong> cite dois riscos de distribuir sem testar o pacote.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Falta de arquivos essenciais e falhas de execucao no ambiente do usuario.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 4:</strong> crie um mini-checklist de entrega para seu projeto final.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Incluir compilacao, testes, publish, validacao de configuracao e teste final em ambiente limpo.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Descreva quais arquivos são necessarios para entregar a aplicacao.</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Distribuicao e parte tecnica essencial para colocar o sistema em uso real.</p>
+      <p>Um processo de publish com checklist reduz falhas na entrega.</p>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> execute build em Release no seu projeto.</p>
+      <p><strong>Passo 2:</strong> rode o publish para o sistema operacional alvo.</p>
+      <p><strong>Passo 3:</strong> liste os arquivos gerados na pasta de saida.</p>
+      <p><strong>Passo 4:</strong> valide o executavel em ambiente limpo e registre resultado.</p>
+    </section>
+
+<section class='update-log' aria-label='Informação de atualização'>
+  <p>Última atualização: 05/08/2026 00:34:05</p>
 </section>
 </article>
 </body>
 </html>
+
+
+
 
 
 

@@ -1,62 +1,143 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 04 - Atributos e Estado</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-04">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 04 - Atributos e Estado</h1>
-      <p class="hero-subtitle">Objetivo: Representar Dados com Atributos e Entender Estado.</p>
+      <p class="hero-kicker"><strong>Módulo 04</strong></p>
+      <h1 class="hero-title">Atributos e Estado</h1>
+      <p class="hero-subtitle">Objetivo: representar dados com atributos e acompanhar como o estado de um objeto muda durante a execução.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Atributo</li><li>Estado</li><li>Tipo de dado</li></ul>
+    <section class="lesson-section">
+      <h2>Introdução teórica</h2>
+      <p>Na POO, cada objeto guarda dados em atributos. Esses dados formam o estado atual do objeto.</p>
+      <p>Quando um valor de atributo muda, o estado também muda. Essa mudança precisa ser planejada para manter o programa correto.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>Atributo e um dado da classe. Estado e o conjunto dos valores atuais dos atributos.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>Atributo:</strong> campo que armazena um dado do objeto, como nome, saldo ou quantidade.</li>
+        <li><strong>Estado:</strong> conjunto dos valores atuais de todos os atributos do objeto.</li>
+        <li><strong>Tipo de dado:</strong> regra que define qual valor um atributo pode armazenar.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
-    </section>
+    <section class="lesson-section">
+      <h2>Exemplo em C#</h2>
+      <pre><code data-lang="csharp">using System;
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>class Conta
+class Produto
 {
-    public string Titular;
-    public decimal Saldo;
+    public string Nome;
+    public int Quantidade;
+    public decimal Preco;
+
+    public void ExibirEstado()
+    {
+        Console.WriteLine("Nome: " + Nome);
+        Console.WriteLine("Quantidade: " + Quantidade);
+        Console.WriteLine("Preco: " + Preco);
+    }
 }
 
-Conta c = new Conta();
-c.Titular = "Maria";</code></pre>
+class Program
+{
+    static void Main()
+    {
+        Produto p = new Produto();
+        p.Nome = "Caderno";
+        p.Quantidade = 10;
+        p.Preco = 24.90m;
+
+        p.ExibirEstado();
+
+        p.Quantidade = 8;
+        Console.WriteLine("Após venda de 2 unidades:");
+        p.ExibirEstado();
+    }
+}</code></pre>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Quando os valores mudam, o estado do objeto muda.</p>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li>A classe <strong>Produto</strong> define três atributos para representar seu estado.</li>
+        <li>O método <strong>ExibirEstado()</strong> mostra os valores atuais do objeto.</li>
+        <li>No <strong>Main</strong>, o objeto recebe os valores iniciais.</li>
+        <li>Depois da alteração em <strong>Quantidade</strong>, o estado muda e a saída confirma a mudança.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Defina a classe Produto com Nome, Quantidade e Preco.</p>
+    <section class="lesson-section">
+      <h2>Exercícios de fixação</h2>
+      <ol>
+        <li>
+          <p><strong>Exercício 1:</strong> crie a classe <strong>Aluno</strong> com os atributos <strong>Nome</strong>, <strong>Turma</strong> e <strong>NotaFinal</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">class Aluno
+{
+    public string Nome;
+    public string Turma;
+    public double NotaFinal;
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 2:</strong> explique o que muda no estado do objeto quando o atributo <strong>Quantidade</strong> passa de 20 para 15.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>O estado do objeto foi alterado porque um dos seus atributos mudou de valor. Os demais atributos podem continuar iguais.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 3:</strong> adicione um método <strong>ReporEstoque(int valor)</strong> na classe <strong>Produto</strong> para somar unidades no atributo <strong>Quantidade</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">public void ReporEstoque(int valor)
+{
+    Quantidade = Quantidade + valor;
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 4:</strong> escreva um programa que crie dois objetos <strong>Produto</strong> com valores diferentes e mostre o estado de cada um.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Use duas instâncias, como <strong>p1</strong> e <strong>p2</strong>, atribua dados diferentes e chame <strong>ExibirEstado()</strong> para cada uma.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
-</section>
-</article>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Atributos guardam dados do objeto. O conjunto desses dados forma o estado.</p>
+      <p>Controlar mudanças de estado é essencial para evitar inconsistências no sistema.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> crie a classe <strong>ContaEstudante</strong> com os atributos <strong>Nome</strong>, <strong>Curso</strong> e <strong>SaldoCreditos</strong>.</p>
+      <p><strong>Passo 2:</strong> adicione um método para mostrar o estado atual.</p>
+      <p><strong>Passo 3:</strong> altere o saldo e mostre novamente para verificar a mudança de estado.</p>
+    </section>
+
+    <section class="update-log" aria-label="Informação de atualização">
+      <p>Última atualização: 05/08/2026 00:34:05</p>
+    </section>
+  </article>
 </body>
 </html>
+
 
 
 

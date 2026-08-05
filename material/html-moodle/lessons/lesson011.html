@@ -1,63 +1,153 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 11 - Polimorfismo</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-11">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 11 - Polimorfismo</h1>
-      <p class="hero-subtitle">Objetivo: Usar o Mesmo Método com Comportamentos Diferentes.</p>
+      <p class="hero-kicker"><strong>Módulo 11</strong></p>
+      <h1 class="hero-title">Polimorfismo</h1>
+      <p class="hero-subtitle">Objetivo: usar a mesma chamada de metodo com comportamentos diferentes em classes derivadas.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Polimorfismo</li><li>Sobrescrita</li><li>virtual</li><li>override</li></ul>
+    <section class="lesson-section">
+      <h2>Introducao teorica</h2>
+      <p>Polimorfismo permite tratar objetos diferentes por uma referencia da classe base.</p>
+      <p>O metodo chamado e decidido conforme o tipo real do objeto em execucao.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>Polimorfismo permite tratar objetos diferentes por uma referencia comum.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>virtual:</strong> permite que o metodo da classe base seja sobrescrito.</li>
+        <li><strong>override:</strong> substitui o comportamento herdado na classe derivada.</li>
+        <li><strong>Referencia comum:</strong> variavel da classe base apontando para objetos derivados.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
-    </section>
+    <section class="lesson-section">
+      <h2>Exemplo em C#</h2>
+      <pre><code data-lang="csharp">using System;
+using System.Collections.Generic;
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>class Animal
+class Animal
 {
-    public virtual void Som() { Console.WriteLine("Som"); }
+    public virtual void EmitirSom()
+    {
+        Console.WriteLine("Som generico");
+    }
 }
 
 class Gato : Animal
 {
-    public override void Som() { Console.WriteLine("Miau"); }
+    public override void EmitirSom()
+    {
+        Console.WriteLine("Miau");
+    }
+}
+
+class Cachorro : Animal
+{
+    public override void EmitirSom()
+    {
+        Console.WriteLine("Au au");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Animal> animais = new List<Animal>
+        {
+            new Gato(),
+            new Cachorro()
+        };
+
+        foreach (Animal a in animais)
+        {
+            a.EmitirSom();
+        }
+    }
 }</code></pre>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Polimorfismo melhora extensão sem quebrar código existente.</p>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li>A classe base define <strong>EmitirSom()</strong> como virtual.</li>
+        <li>As classes derivadas sobrescrevem o metodo com <strong>override</strong>.</li>
+        <li>A lista usa a referencia comum <strong>Animal</strong> para guardar tipos diferentes.</li>
+        <li>No <strong>foreach</strong>, a mesma chamada executa comportamentos diferentes.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Crie duas classes derivadas sobrescrevendo o mesmo método.</p>
+    <section class="lesson-section">
+      <h2>Exercicios de fixacao</h2>
+      <ol>
+        <li>
+          <p><strong>Exercicio 1:</strong> crie classe base <strong>Pagamento</strong> com metodo virtual <strong>Processar()</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">class Pagamento
+{
+    public virtual void Processar()
+    {
+        Console.WriteLine("Processamento padrao");
+    }
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 2:</strong> crie duas classes derivadas sobrescrevendo <strong>Processar()</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Exemplo: <strong>PagamentoPix</strong> e <strong>PagamentoCartao</strong>, cada uma com sua mensagem no metodo sobrescrito.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 3:</strong> explique por que polimorfismo reduz acoplamento.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Porque o codigo consumidor usa a classe base e nao precisa conhecer detalhes de cada classe derivada.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 4:</strong> monte uma lista da classe base com dois objetos derivados e execute o mesmo metodo.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Crie uma <strong>List&lt;TipoBase&gt;</strong> e percorra com <strong>foreach</strong>, chamando o metodo virtual sobrescrito.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Polimorfismo permite estender comportamento sem alterar quem consome a classe base.</p>
+      <p>Virtual e override sao os recursos principais para implementar essa estrategia em C#.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> crie classe base <strong>Relatorio</strong> com metodo virtual <strong>Gerar()</strong>.</p>
+      <p><strong>Passo 2:</strong> crie duas classes derivadas com mensagens diferentes.</p>
+      <p><strong>Passo 3:</strong> use uma lista de <strong>Relatorio</strong> e chame <strong>Gerar()</strong> para cada item.</p>
+    </section>
+
+<section class='update-log' aria-label='Informação de atualização'>
+  <p>Última atualização: 05/08/2026 00:34:05</p>
 </section>
 </article>
 </body>
 </html>
+
+
 
 
 

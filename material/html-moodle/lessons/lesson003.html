@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Módulo 03 - Atributos e Métodos em Classes</title>
+  <title>Módulo 03 - Classe e Objeto</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
 </head>
@@ -11,14 +11,14 @@
   <article class="lesson-page">
     <header class="lesson-hero">
       <p class="hero-kicker"><strong>Módulo 03</strong></p>
-      <h1 class="hero-title">Atributos e Métodos em Classes</h1>
-      <p class="hero-subtitle">Objetivo: aprender a definir dados e ações dentro de uma classe e usar esses recursos em objetos diferentes.</p>
+      <h1 class="hero-title">Classe e Objeto</h1>
+      <p class="hero-subtitle">Objetivo: compreender a relação entre classe e objeto e aplicar atributos e métodos em instâncias diferentes.</p>
     </header>
 
     <section class="lesson-section">
-      <h2>Estado e comportamento</h2>
-      <p>Um objeto não é apenas um nome. Ele guarda <strong>dados</strong> e também executa <strong>ações</strong>. Esses dois lados são importantes na programação orientada a objetos.</p>
-      <p>Os dados de um objeto são representados por <strong>atributos</strong>. As ações são representadas por <strong>métodos</strong>.</p>
+      <h2>Classe e objeto na prática</h2>
+      <p>A <strong>classe</strong> define o modelo. O <strong>objeto</strong> é a instância criada a partir desse modelo.</p>
+      <p>Cada objeto guarda seus próprios dados e executa ações por meio de métodos.</p>
     </section>
 
     <section class="lesson-section">
@@ -80,6 +80,18 @@ class Program
     </section>
 
     <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li><strong>Classe Conta:</strong> define os atributos <strong>Titular</strong> e <strong>Saldo</strong>.</li>
+        <li><strong>Método Depositar:</strong> recebe um valor e soma no saldo atual.</li>
+        <li><strong>Método ExibirSaldo:</strong> mostra no console o estado atual do objeto.</li>
+        <li><strong>Objeto c1:</strong> é criado com <strong>new Conta()</strong> e recebe valores próprios.</li>
+        <li><strong>Chamada de método:</strong> ao executar <strong>Depositar(50)</strong>, o estado do objeto muda de 100 para 150.</li>
+      </ol>
+      <p>Esse fluxo mostra a ideia central da aula: a classe define o modelo e o objeto guarda o estado real durante a execução.</p>
+    </section>
+
+    <section class="lesson-section">
       <h2>Diferença entre atributo e método</h2>
       <div class="note">
         O atributo guarda informação. O método executa uma ação.
@@ -100,6 +112,16 @@ c1.Saldo = 100;
 c2.Titular = "Bruno";
 c2.Saldo = 300;</code></pre>
       <p>Mesmo usando a mesma classe, os objetos <strong>c1</strong> e <strong>c2</strong> possuem estados diferentes.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Erros comuns nesta etapa</h2>
+      <ul>
+        <li><strong>Esquecer de criar o objeto:</strong> tentar usar atributos e métodos sem executar <strong>new</strong>.</li>
+        <li><strong>Confundir classe com objeto:</strong> tratar o nome da classe como se já fosse uma instância.</li>
+        <li><strong>Não alterar o estado:</strong> chamar método sem atualizar os dados necessários.</li>
+        <li><strong>Duplicar lógica no Main:</strong> colocar regras de negócio fora da classe em vez de usar métodos.</li>
+      </ul>
     </section>
 
     <section class="lesson-section">
@@ -216,16 +238,19 @@ class Program
 
     <section class="lesson-section">
       <h2>Atividade guiada</h2>
-      <p>Crie uma classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Quantidade</strong> e um método <strong>Exibir</strong>.</p>
-      <p>Depois, crie dois objetos diferentes e mostre os valores na tela.</p>
+      <p><strong>Passo 1:</strong> crie a classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Quantidade</strong>.</p>
+      <p><strong>Passo 2:</strong> crie o método <strong>Exibir()</strong> para mostrar os dados de um produto.</p>
+      <p><strong>Passo 3:</strong> no <strong>Main</strong>, crie dois objetos com valores diferentes.</p>
+      <p><strong>Passo 4:</strong> chame <strong>Exibir()</strong> para cada objeto e compare os estados.</p>
     </section>
 
     <section class="update-log" aria-label="Informação de atualização">
-      <p>Última atualização: 03/08/2026 17:10:00</p>
+      <p>Última atualização: 05/08/2026 00:34:05</p>
     </section>
   </article>
 </body>
 </html>
+
 
 
 

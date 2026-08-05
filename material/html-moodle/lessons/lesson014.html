@@ -1,57 +1,140 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 14 - Coleções e Listas</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-14">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 14 - Coleções e Listas</h1>
-      <p class="hero-subtitle">Objetivo: Armazenar Varios Objetos em Memoria.</p>
+      <p class="hero-kicker"><strong>Módulo 14</strong></p>
+      <h1 class="hero-title">Colecoes e Listas</h1>
+      <p class="hero-subtitle">Objetivo: armazenar varios objetos em memoria usando List&lt;T&gt; e percorrer os dados com seguranca.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Colecao</li><li>List<T></li><li>Iteracao</li></ul>
+    <section class="lesson-section">
+      <h2>Introducao teorica</h2>
+      <p>Quando o sistema precisa lidar com varios itens, variaveis isoladas nao sao suficientes.</p>
+      <p>As colecoes organizam dados em estruturas dinamicas. Em C#, a mais comum e <strong>List&lt;T&gt;</strong>.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>Colecao guarda varios elementos. List<T> e a colecao mais usada em C#.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>Colecao:</strong> estrutura que guarda varios elementos.</li>
+        <li><strong>List&lt;T&gt;:</strong> colecao generica com insercao, remocao e busca simples.</li>
+        <li><strong>Iteracao:</strong> percurso dos elementos com <strong>for</strong> ou <strong>foreach</strong>.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
+    <section class="lesson-section">
+      <h2>Exemplo em C#</h2>
+      <pre><code data-lang="csharp">using System;
+using System.Collections.Generic;
+
+class Aluno
+{
+    public string Nome { get; set; }
+    public double Nota { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Aluno> alunos = new List<Aluno>();
+
+        alunos.Add(new Aluno { Nome = "Ana", Nota = 8.5 });
+        alunos.Add(new Aluno { Nome = "Bruno", Nota = 7.0 });
+        alunos.Add(new Aluno { Nome = "Caio", Nota = 9.2 });
+
+        foreach (Aluno aluno in alunos)
+        {
+            Console.WriteLine(aluno.Nome + " - Nota: " + aluno.Nota);
+        }
+
+        alunos.RemoveAt(1);
+        Console.WriteLine("Total apos remocao: " + alunos.Count);
+    }
+}</code></pre>
     </section>
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>List<string> nomes = new List<string>();
-nomes.Add("Ana");
-nomes.Add("Bruno");</code></pre>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li>A lista e criada com o tipo <strong>Aluno</strong>.</li>
+        <li>Cada item e adicionado com <strong>Add</strong>.</li>
+        <li>O <strong>foreach</strong> percorre todos os objetos para exibicao.</li>
+        <li><strong>RemoveAt(1)</strong> remove o item da posicao 1 e <strong>Count</strong> mostra a nova quantidade.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>coleções são essenciais para trabalhar com varios registros.</p>
+    <section class="lesson-section">
+      <h2>Exercicios de fixacao</h2>
+      <ol>
+        <li>
+          <p><strong>Exercicio 1:</strong> crie uma <strong>List&lt;string&gt;</strong> chamada <strong>nomes</strong> e adicione tres valores.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">List<string> nomes = new List<string>();
+nomes.Add("Lia");
+nomes.Add("Joao");
+nomes.Add("Marcos");</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 2:</strong> percorra a lista com <strong>foreach</strong> e mostre os itens.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">foreach (string nome in nomes)
+{
+    Console.WriteLine(nome);
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 3:</strong> explique quando usar lista em vez de variaveis separadas.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Quando a quantidade de itens pode crescer ou variar, a lista facilita insercao, remocao e percurso.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercicio 4:</strong> crie uma lista de objetos <strong>Produto</strong> e mostre nome e preco de cada item.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>Declare <strong>List&lt;Produto&gt;</strong>, adicione objetos com <strong>Add</strong> e percorra com <strong>foreach</strong>.</p>
+          </details>
+        </li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Crie uma lista de alunos e adicione tres nomes.</p>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Listas sao fundamentais para programas que manipulam varios registros.</p>
+      <p>Com <strong>List&lt;T&gt;</strong>, o codigo fica mais flexivel e pronto para evoluir.</p>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> crie a classe <strong>Produto</strong> com <strong>Nome</strong> e <strong>Preco</strong>.</p>
+      <p><strong>Passo 2:</strong> crie uma <strong>List&lt;Produto&gt;</strong> e adicione quatro itens.</p>
+      <p><strong>Passo 3:</strong> percorra a lista e exiba os itens.</p>
+      <p><strong>Passo 4:</strong> remova um item e mostre a quantidade final com <strong>Count</strong>.</p>
+    </section>
+
+<section class='update-log' aria-label='Informação de atualização'>
+  <p>Última atualização: 05/08/2026 00:34:05</p>
 </section>
 </article>
 </body>
 </html>
+
+
+
 
 
 

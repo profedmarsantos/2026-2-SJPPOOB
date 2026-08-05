@@ -1,64 +1,171 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Módulo 08 - Propriedades</title>
-<link rel="stylesheet" href="assets/theme.css">
-<script defer src="assets/code-enhancer.js"></script>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script defer src="assets/code-enhancer.js"></script>
 </head>
-<body>
-  <article>
+<body class="lesson-08">
+  <article class="lesson-page">
     <header class="lesson-hero">
-      <h1 class="hero-title">Módulo 08 - Propriedades</h1>
-      <p class="hero-subtitle">Objetivo: Controlar Leitura e Escrita com Get e Set.</p>
+      <p class="hero-kicker"><strong>Módulo 08</strong></p>
+      <h1 class="hero-title">Propriedades</h1>
+      <p class="hero-subtitle">Objetivo: controlar leitura e escrita de atributos com get e set, aplicando validações simples.</p>
     </header>
 
-    <section>
-      <h2>Conceitos Desta Aula</h2>
-      <ul><li>Propriedade</li><li>get</li><li>set</li></ul>
+    <section class="lesson-section">
+      <h2>Introdução teórica</h2>
+      <p>Propriedade é a forma padrão de expor dados em C#. Ela permite ler e escrever valores com controle.</p>
+      <p>Com <strong>get</strong> e <strong>set</strong>, você mantém encapsulamento e validação no mesmo ponto.</p>
     </section>
 
-    <section>
-      <h2>Definições</h2>
-      <p>Propriedade expoe dados com controle. get le o valor. set altera o valor.</p>
+    <section class="lesson-section">
+      <h2>Conceitos essenciais desta aula</h2>
+      <ul>
+        <li><strong>Propriedade:</strong> membro que fornece acesso controlado a um valor.</li>
+        <li><strong>get:</strong> bloco responsável por devolver o valor atual.</li>
+        <li><strong>set:</strong> bloco responsável por validar e atribuir novo valor.</li>
+      </ul>
     </section>
 
-    <section>
-      <h2>Explicação Curta</h2>
-      <p>Aplicar este conceito com exemplos pequenos melhora a leitura e prepara a turma para programas maiores.</p>
-    </section>
+    <section class="lesson-section">
+      <h2>Exemplo em C#</h2>
+      <pre><code data-lang="csharp">using System;
 
-    <section>
-      <h2>Exemplo Curto</h2>
-      <pre><code>class Aluno
+class Aluno
 {
     private int nota;
 
     public int Nota
     {
         get { return nota; }
-        set { if (value >= 0 && value <= 10) nota = value; }
+        set
+        {
+            if (value >= 0 && value <= 10)
+                nota = value;
+        }
+    }
+
+    public string Nome { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Aluno a = new Aluno();
+        a.Nome = "Bianca";
+        a.Nota = 8;
+
+        Console.WriteLine("Nome: " + a.Nome);
+        Console.WriteLine("Nota: " + a.Nota);
+
+        a.Nota = 15;
+        Console.WriteLine("Nota após tentativa inválida: " + a.Nota);
     }
 }</code></pre>
     </section>
 
-    <section>
-      <h2>Resumo</h2>
-      <p>Propriedades são o caminho padrao para expor dados em C#.</p>
+    <section class="lesson-section">
+      <h2>Leitura guiada do exemplo</h2>
+      <ol>
+        <li>O campo privado <strong>nota</strong> não é acessado diretamente fora da classe.</li>
+        <li>A propriedade <strong>Nota</strong> valida o intervalo entre 0 e 10 no <strong>set</strong>.</li>
+        <li>A propriedade <strong>Nome</strong> usa formato automático (<strong>get; set;</strong>).</li>
+        <li>Ao tentar atribuir 15, o valor não é aceito e a nota permanece 8.</li>
+      </ol>
     </section>
 
-    <section>
-      <h2>Atividade</h2>
-      <p>Crie a propriedade Idade com validacao para não aceitar negativo.</p>
+    <section class="lesson-section">
+      <h2>Exercícios de fixação</h2>
+      <ol>
+        <li>
+          <p><strong>Exercício 1:</strong> crie a propriedade <strong>Idade</strong> com validação para aceitar apenas valores maiores ou iguais a zero.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">private int idade;
+
+public int Idade
+{
+    get { return idade; }
+    set
+    {
+        if (value >= 0)
+            idade = value;
+    }
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 2:</strong> converta um atributo público <strong>Preco</strong> para propriedade com validação de valor positivo.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">private decimal preco;
+
+public decimal Preco
+{
+    get { return preco; }
+    set
+    {
+        if (value > 0)
+            preco = value;
+    }
+}</code></pre>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 3:</strong> explique a diferença entre propriedade automática e propriedade com regra no <strong>set</strong>.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <p>A propriedade automática apenas armazena o valor. A propriedade com regra no <strong>set</strong> valida o valor antes de salvar.</p>
+          </details>
+        </li>
+        <li>
+          <p><strong>Exercício 4:</strong> escreva uma classe <strong>Produto</strong> com propriedades <strong>Nome</strong> e <strong>Estoque</strong>, onde estoque não aceita negativo.</p>
+          <details>
+            <summary>Ver resposta</summary>
+            <pre><code data-lang="csharp">class Produto
+{
+    public string Nome { get; set; }
+
+    private int estoque;
+    public int Estoque
+    {
+        get { return estoque; }
+        set
+        {
+            if (value >= 0)
+                estoque = value;
+        }
+    }
+}</code></pre>
+          </details>
+        </li>
+      </ol>
     </section>
 
-<section class='update-log' aria-label='Informacao de atualizacao'>
-  <p>Ultima atualizacao: 03/08/2026 16:09:06</p>
-</section>
-</article>
+    <section class="lesson-section">
+      <h2>Resumo da aula</h2>
+      <p>Propriedades oferecem acesso controlado aos dados da classe.</p>
+      <p>Com validação no <strong>set</strong>, você protege o estado do objeto com regra simples e direta.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Atividade guiada</h2>
+      <p><strong>Passo 1:</strong> crie a classe <strong>ContaAluno</strong> com propriedade <strong>Nome</strong> automática.</p>
+      <p><strong>Passo 2:</strong> crie propriedade <strong>Faltas</strong> com validação para não aceitar valor negativo.</p>
+      <p><strong>Passo 3:</strong> teste valores válidos e inválidos para verificar o comportamento.</p>
+    </section>
+
+    <section class="update-log" aria-label="Informação de atualização">
+      <p>Última atualização: 05/08/2026 00:34:05</p>
+    </section>
+  </article>
 </body>
 </html>
+
 
 
 
