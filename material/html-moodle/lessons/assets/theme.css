@@ -98,6 +98,20 @@ body > article,
   margin: 0 auto;
 }
 
+.institution-logo {
+  display: block;
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+html:not([data-theme]) .institution-logo.logo-dark,
+html[data-theme="light"] .institution-logo.logo-dark,
+html[data-theme="dark"] .institution-logo.logo-light {
+  display: none;
+}
+
 body > article {
   background: var(--paper);
   border: 1px solid var(--line);
