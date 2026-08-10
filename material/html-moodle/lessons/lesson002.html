@@ -25,12 +25,12 @@
       <h2>Conceitos essenciais desta aula</h2>
       <div class="concept-board" role="list" aria-label="Painel de conceitos desta aula">
         <article class="concept-note" role="listitem">
-          <h3>Classe</h3>
-          <p>Modelo de código que define estrutura e comportamento para criar objetos.</p>
+          <h3>Entidade</h3>
+          <p>Elemento do problema real que será representado no sistema por classe e objeto.</p>
   </article>
         <article class="concept-note" role="listitem">
-          <h3>Objeto</h3>
-          <p>Instância concreta criada a partir de uma classe, com dados próprios.</p>
+          <h3>Classe</h3>
+          <p>Modelo de código que define estrutura e comportamento para criar objetos.</p>
   </article>
         <article class="concept-note" role="listitem">
           <h3>Atributo</h3>
@@ -45,11 +45,11 @@
           <p>Cada objeto gerado a partir de uma classe, representando um caso específico.</p>
   </article>
         <article class="concept-note" role="listitem">
-          <h3>Entidade</h3>
-          <p>Elemento do problema real que será representado no sistema por classe e objeto.</p>
+          <h3>Objeto</h3>
+          <p>Instância concreta criada a partir de uma classe, com dados próprios.</p>
   </article>
       </div>
-      <p class="concept-summary"><strong>Resumo:</strong> classe define o modelo; objeto é a instância; atributos guardam dados; métodos executam ações; entidade é o que será representado no domínio do problema.</p>
+      <p class="concept-summary"><strong>Resumo:</strong> primeiro identificamos a entidade; depois definimos a classe; em seguida declaramos atributos e métodos; por fim criamos instâncias e objetos para uso no programa.</p>
     </section>
 
     <section class="lesson-section">
@@ -59,6 +59,170 @@
         Pense assim: a classe é como uma <strong>planta técnica</strong>. O objeto é a construção real feita com essa planta.
       </div>
       <p>Esse modelo facilita manutenção, leitura e crescimento do sistema.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Passo a passo: criar e executar no console (CLI)</h2>
+      <p><strong>Objetivo:</strong> criar o primeiro projeto no terminal, adicionar dois arquivos de código e executar com <strong>dotnet run</strong>.</p>
+
+      <h3>Arquivos do tutorial (mesmo conteúdo para os dois cenários)</h3>
+      <p>Crie os arquivos <strong>Programa.cs</strong> e <strong>Comandos.cs</strong> com o conteúdo abaixo.</p>
+
+      <p><strong>Arquivo 1: Programa.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+namespace Pacote
+{
+    class MeuPrograma
+    {
+        static void Main()
+        {
+            MeusComandos.Saudacao();
+        }
+    }
+}</code></pre>
+
+      <p><strong>Arquivo 2: Comandos.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+namespace Pacote
+{
+    public class MeusComandos
+    {
+        public static void Saudacao()
+        {
+            Console.WriteLine("\nE aí Turminha!");
+        }
+    }
+}</code></pre>
+
+      <h3>Cenário A: pasta existente (vazia ou com arquivos)</h3>
+      <ol>
+        <li>Abra o terminal na pasta que você vai usar.</li>
+        <li>Se a pasta ainda não tem projeto, crie com: <strong>dotnet new console --force</strong>.</li>
+        <li>Crie os arquivos <strong>Programa.cs</strong> e <strong>Comandos.cs</strong> com os códigos do tutorial.</li>
+        <li>Remova o conteúdo padrão de <strong>Program.cs</strong> (ou apague o arquivo) para evitar dois métodos <strong>Main</strong>.</li>
+        <li>Execute com: <strong>dotnet run</strong>.</li>
+      </ol>
+      <p><strong>Tela de console (exemplo do cenário A):</strong></p>
+      <pre><code data-lang="bash">PS Y:\projetos\2026-2-SJPPOOB\aula2> dotnet new console --force
+The template "Console App" was created successfully.
+
+PS Y:\projetos\2026-2-SJPPOOB\aula2> notepad Programa.cs
+PS Y:\projetos\2026-2-SJPPOOB\aula2> notepad Comandos.cs
+
+PS Y:\projetos\2026-2-SJPPOOB\aula2> dotnet run
+E aí Turminha!</code></pre>
+
+      <h3>Cenário B: pasta nova (nenhum arquivo)</h3>
+      <ol>
+        <li>Abra o terminal na pasta mãe onde o projeto será criado.</li>
+        <li>Crie o projeto em uma nova pasta com: <strong>dotnet new console -o Modulo02POO</strong>.</li>
+        <li>Entre na pasta: <strong>cd Modulo02POO</strong>.</li>
+        <li>Crie os arquivos <strong>Programa.cs</strong> e <strong>Comandos.cs</strong> com os códigos do tutorial.</li>
+        <li>Remova o conteúdo padrão de <strong>Program.cs</strong> (ou apague o arquivo) para evitar dois métodos <strong>Main</strong>.</li>
+        <li>Execute com: <strong>dotnet run</strong>.</li>
+      </ol>
+      <p><strong>Tela de console (exemplo do cenário B):</strong></p>
+      <pre><code data-lang="bash">PS Y:\projetos\2026-2-SJPPOOB> dotnet new console -o Modulo02POO
+The template "Console App" was created successfully.
+
+PS Y:\projetos\2026-2-SJPPOOB> cd Modulo02POO
+
+PS Y:\projetos\2026-2-SJPPOOB\Modulo02POO> notepad Programa.cs
+PS Y:\projetos\2026-2-SJPPOOB\Modulo02POO> notepad Comandos.cs
+
+PS Y:\projetos\2026-2-SJPPOOB\Modulo02POO> dotnet run
+E aí Turminha!</code></pre>
+
+      <div class="note">
+        <strong>Resultado esperado:</strong> ao executar, o console deve mostrar a mensagem <strong>E aí Turminha!</strong>.
+      </div>
+    </section>
+
+    <section class="lesson-section">
+      <h2>Exemplos por conceito</h2>
+      <p>Antes do exemplo completo, vamos identificar cada conceito separadamente com blocos curtos de código.</p>
+
+      <h3>1) Entidade</h3>
+      <p><strong>Conceito:</strong> entidade é o elemento do problema real que será representado no programa.</p>
+      <p><strong>Entidade representada neste caso:</strong> aluno.</p>
+
+      <h3>2) Classe</h3>
+      <p><strong>Conceito:</strong> a classe é o modelo que representa a entidade.</p>
+      <pre><code data-lang="csharp">class Aluno
+{
+}</code></pre>
+      <p><strong>Quem é a classe no código:</strong> <strong>Aluno</strong>.</p>
+
+      <h3>3) Atributo</h3>
+      <p><strong>Conceito:</strong> atributo é um dado armazenado no objeto.</p>
+      <pre><code data-lang="csharp">class Aluno
+{
+    public string Nome;
+    public int Idade;
+}</code></pre>
+      <p><strong>Quais são os atributos no código:</strong> <strong>Nome</strong> e <strong>Idade</strong>.</p>
+
+      <h3>4) Método</h3>
+      <p><strong>Conceito:</strong> método é a ação definida na classe.</p>
+      <pre><code data-lang="csharp">class Aluno
+{
+    public string Nome;
+
+    public void ExibirNome()
+    {
+        Console.WriteLine("Nome: " + Nome);
+    }
+}</code></pre>
+      <p><strong>Qual é o método no código:</strong> <strong>ExibirNome</strong>.</p>
+
+      <h3>5) Instância</h3>
+      <p><strong>Conceito:</strong> instanciar é criar ocorrências da classe com <strong>new</strong>.</p>
+      <pre><code data-lang="csharp">Aluno a1 = new Aluno();
+Aluno a2 = new Aluno();</code></pre>
+      <p><strong>Quais são as instâncias no código:</strong> <strong>a1</strong> e <strong>a2</strong>.</p>
+
+      <h3>6) Objeto</h3>
+      <p><strong>Conceito:</strong> objeto é cada instância em uso, com valores próprios nos atributos.</p>
+      <pre><code data-lang="csharp">Aluno a1 = new Aluno();
+    a1.Nome = "Ana";
+    a1.Idade = 15;</code></pre>
+      <p><strong>Quem é o objeto no código:</strong> <strong>a1</strong>.</p>
+
+      <h3>7) Junção progressiva (prévia do exemplo completo)</h3>
+      <p><strong>Conceito:</strong> agora unimos entidade, classe, atributos, método, instâncias e objetos em um mesmo fluxo.</p>
+      <pre><code data-lang="csharp">using System;
+
+class Aluno
+{
+    public string Nome;
+    public int Idade;
+
+    public void ExibirDados()
+    {
+        Console.WriteLine("Nome: " + Nome);
+        Console.WriteLine("Idade: " + Idade);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Aluno a1 = new Aluno();
+        a1.Nome = "Ana";
+        a1.Idade = 15;
+
+        Aluno a2 = new Aluno();
+        a2.Nome = "Bruno";
+        a2.Idade = 16;
+
+        a1.ExibirDados();
+        a2.ExibirDados();
+    }
+}</code></pre>
+      <p><strong>Próximo passo:</strong> ler o primeiro exemplo completo com todos os conceitos já identificados.</p>
     </section>
 
     <section class="lesson-section">
@@ -264,8 +428,185 @@ class Program
       <p>Depois, crie dois objetos diferentes e apresente os resultados na tela.</p>
     </section>
 
+    <section class="lesson-section">
+      <h2>Mapa visual do código completo</h2>
+      <p>
+        O mesmo exemplo completo da aula agora aparece como um mapa visual.
+        Os retângulos maiores representam estruturas que contêm outras partes;
+        os menores ficam à frente para destacar os elementos internos.
+      </p>
+
+      <div
+        aria-label="Mapa visual de um exemplo completo de Programação Orientada a Objetos em C#"
+        style="
+          --map-bg:#0b1220;
+          --map-border:#334155;
+          --map-text:#f8fafc;
+          --map-muted:#cbd5e1;
+          --map-purple:rgba(168,85,247,.22);
+          --map-green:rgba(34,197,94,.27);
+          --map-yellow:rgba(250,204,21,.30);
+          --map-blue:rgba(56,189,248,.27);
+          --map-pink:rgba(244,114,182,.27);
+          --map-orange:rgba(251,146,60,.30);
+          --map-cyan:rgba(45,212,191,.24);
+          margin:16px 0 12px;
+          padding:18px;
+          border:1px solid var(--map-border);
+          border-radius:16px;
+          background:var(--map-bg);
+          color:var(--map-text);
+          overflow-x:auto;
+          box-shadow:0 12px 28px rgba(15,23,42,.16);
+        "
+      >
+        <div
+          style="
+            position:relative;
+            width:900px;
+            min-height:640px;
+            margin:0 auto;
+            font-family:Consolas,'Courier New',monospace;
+            font-size:14px;
+            line-height:1.55;
+          "
+        >
+          <!-- CAMADAS GRANDES: ficam atrás -->
+          <!-- Classe Aluno (roxo) - linhas 3-13 -->
+          <div style="position:absolute;z-index:1;left:12px;top:51px;width:875px;height:217px;border:2px solid rgba(168,85,247,.72);border-radius:12px;background:var(--map-purple);"></div>
+          <!-- Classe Program (roxo) - linhas 15-30 -->
+          <div style="position:absolute;z-index:1;left:12px;top:312px;width:875px;height:326px;border:2px solid rgba(168,85,247,.72);border-radius:12px;background:var(--map-purple);"></div>
+
+          <!-- CAMADAS INTERMEDIÁRIAS -->
+          <!-- Atributos Nome e Idade (verde) - linhas 5-6 -->
+          <div style="position:absolute;z-index:2;left:28px;top:95px;width:845px;height:43px;border:2px solid rgba(34,197,94,.72);border-radius:10px;background:var(--map-green);"></div>
+          <!-- Main method body (azul) - linhas 18-29 -->
+          <div style="position:absolute;z-index:2;left:28px;top:355px;width:845px;height:260px;border:2px solid rgba(56,189,248,.72);border-radius:10px;background:var(--map-blue);"></div>
+
+          <!-- RETÂNGULOS MENORES: ficam à frente -->
+          <!-- Método ExibirDados (definição - linhas 8-12 - amarelo) -->
+          <div style="position:absolute;z-index:3;left:52px;top:160px;width:190px;height:87px;border:2px solid rgba(250,204,21,.85);border-radius:8px;background:var(--map-yellow);"></div>
+          <!-- Chamadas a1.ExibirDados() e a2.ExibirDados() (linhas 27-28 - amarelo) -->
+          <div style="position:absolute;z-index:3;left:282px;top:572px;width:455px;height:43px;border:2px solid rgba(250,204,21,.85);border-radius:8px;background:var(--map-yellow);"></div>
+
+          <!-- Instância a1 (rosa) - linha 19 -->
+          <div style="position:absolute;z-index:3;left:52px;top:399px;width:250px;height:22px;border:2px solid rgba(244,114,182,.85);border-radius:8px;background:var(--map-pink);"></div>
+          <!-- Instância a2 (rosa) - linha 23 -->
+          <div style="position:absolute;z-index:3;left:52px;top:485px;width:250px;height:22px;border:2px solid rgba(244,114,182,.85);border-radius:8px;background:var(--map-pink);"></div>
+
+          <!-- Objeto a1 atribuições (linhas 20-21 - laranja) -->
+          <div style="position:absolute;z-index:3;left:330px;top:420px;width:455px;height:43px;border:2px solid rgba(251,146,60,.85);border-radius:8px;background:var(--map-orange);"></div>
+          <!-- Objeto a2 atribuições (linhas 24-25 - laranja) -->
+          <div style="position:absolute;z-index:3;left:330px;top:507px;width:455px;height:43px;border:2px solid rgba(251,146,60,.85);border-radius:8px;background:var(--map-orange);"></div>
+
+          <!-- CABEÇALHO DO MAPA -->
+          <div style="position:relative;z-index:5;margin:0 0 10px 12px;color:var(--map-muted);font-family:Atkinson Hyperlegible,Arial,sans-serif;font-size:12px;">
+            C# — exemplo completo usado na aula
+          </div>
+
+          <!-- CÓDIGO: fica acima dos retângulos -->
+          <pre
+            style="
+              position:relative;
+              z-index:4;
+              margin:0;
+              padding:8px 18px 18px;
+              background:transparent;
+              color:var(--map-text);
+              white-space:pre;
+              font:inherit;
+              line-height:1.55;
+            "
+          ><code>using System;
+
+class <span style="color:#e9d5ff;font-weight:800;">Aluno</span>
+{
+    <span style="color:#bbf7d0;font-weight:700;">public</span> <span style="color:#fde68a;">string</span> <span style="color:#dcfce7;font-weight:800;">Nome</span>;
+    <span style="color:#bbf7d0;font-weight:700;">public</span> <span style="color:#fde68a;">int</span> <span style="color:#dcfce7;font-weight:800;">Idade</span>;
+
+    <span style="color:#bbf7d0;font-weight:700;">public</span> <span style="color:#fde68a;">void</span> <span style="color:#fef08a;font-weight:800;">ExibirDados</span>()
+    {
+        Console.WriteLine(<span style="color:#bbf7d0;">"Nome: "</span> + <span style="color:#dcfce7;">Nome</span>);
+        Console.WriteLine(<span style="color:#bbf7d0;">"Idade: "</span> + <span style="color:#dcfce7;">Idade</span>);
+    }
+}
+
+class <span style="color:#e9d5ff;font-weight:800;">Program</span>
+{
+    <span style="color:#bbf7d0;font-weight:700;">static</span> <span style="color:#fde68a;">void</span> <span style="color:#7dd3fc;font-weight:800;">Main</span>()
+    {
+        <span style="color:#7dd3fc;font-weight:800;">Aluno</span> <span style="color:#fbcfe8;font-weight:800;">a1</span> = <span style="color:#fbbf24;font-weight:800;">new</span> <span style="color:#e9d5ff;font-weight:800;">Aluno</span>();
+        <span style="color:#fbcfe8;font-weight:800;">a1</span>.<span style="color:#dcfce7;font-weight:800;">Nome</span> = <span style="color:#bbf7d0;">"Ana"</span>;
+        <span style="color:#fbcfe8;font-weight:800;">a1</span>.<span style="color:#dcfce7;font-weight:800;">Idade</span> = <span style="color:#7dd3fc;">15</span>;
+
+        <span style="color:#7dd3fc;font-weight:800;">Aluno</span> <span style="color:#fbcfe8;font-weight:800;">a2</span> = <span style="color:#fbbf24;font-weight:800;">new</span> <span style="color:#e9d5ff;font-weight:800;">Aluno</span>();
+        <span style="color:#fbcfe8;font-weight:800;">a2</span>.<span style="color:#dcfce7;font-weight:800;">Nome</span> = <span style="color:#bbf7d0;">"Bruno"</span>;
+        <span style="color:#fbcfe8;font-weight:800;">a2</span>.<span style="color:#dcfce7;font-weight:800;">Idade</span> = <span style="color:#7dd3fc;">16</span>;
+
+        <span style="color:#fbcfe8;font-weight:800;">a1</span>.<span style="color:#fef08a;font-weight:800;">ExibirDados</span>();
+        <span style="color:#fbcfe8;font-weight:800;">a2</span>.<span style="color:#fef08a;font-weight:800;">ExibirDados</span>();
+    }
+}</code></pre>
+        </div>
+      </div>
+
+      <div
+        aria-label="Legenda do mapa visual"
+        style="
+          display:flex;
+          flex-wrap:wrap;
+          gap:8px 16px;
+          margin-top:14px;
+          padding:12px 14px;
+          border:1px solid var(--line);
+          border-radius:10px;
+          background:var(--paper-soft);
+          color:var(--ink);
+          font-family:var(--chosen-font);
+        "
+      >
+        <strong style="width:100%;color:var(--ink-heading);">Legenda</strong>
+
+        <span style="display:inline-flex;align-items:center;gap:7px;">
+          <i style="width:18px;height:18px;border-radius:4px;border:2px solid rgba(168,85,247,.72);background:rgba(168,85,247,.22);display:inline-block;"></i>
+          Classe / estrutura
+        </span>
+
+        <span style="display:inline-flex;align-items:center;gap:7px;">
+          <i style="width:18px;height:18px;border-radius:4px;border:2px solid rgba(34,197,94,.72);background:rgba(34,197,94,.27);display:inline-block;"></i>
+          Atributos / dados
+        </span>
+
+        <span style="display:inline-flex;align-items:center;gap:7px;">
+          <i style="width:18px;height:18px;border-radius:4px;border:2px solid rgba(250,204,21,.85);background:rgba(250,204,21,.30);display:inline-block;"></i>
+          Métodos / ações
+        </span>
+
+        <span style="display:inline-flex;align-items:center;gap:7px;">
+          <i style="width:18px;height:18px;border-radius:4px;border:2px solid rgba(56,189,248,.72);background:rgba(56,189,248,.27);display:inline-block;"></i>
+          Área de criação / uso
+        </span>
+
+        <span style="display:inline-flex;align-items:center;gap:7px;">
+          <i style="width:18px;height:18px;border-radius:4px;border:2px solid rgba(244,114,182,.85);background:rgba(244,114,182,.27);display:inline-block;"></i>
+          Instâncias
+        </span>
+
+        <span style="display:inline-flex;align-items:center;gap:7px;">
+          <i style="width:18px;height:18px;border-radius:4px;border:2px solid rgba(251,146,60,.85);background:rgba(251,146,60,.30);display:inline-block;"></i>
+          Objetos em uso
+        </span>
+      </div>
+
+      <p style="margin-top:12px;">
+        <strong>Como ler:</strong> os blocos maiores mostram a estrutura que organiza o código.
+        Dentro deles, os retângulos menores destacam os elementos específicos, permitindo
+        visualizar a relação entre classe, atributos, métodos, instâncias e objetos.
+      </p>
+    </section>
+
     <section class="update-log" aria-label="Informação de atualização">
-      <p>Última atualização: 05/08/2026 00:51:11</p>
+      <p>Última atualização: 10/08/2026</p>
     </section>
   </article>
 </body>
