@@ -32,14 +32,18 @@
 
     <section class="lesson-section">
       <h2>Exemplo em C#</h2>
+      <p><strong>Arquivo 1: Forma.cs</strong></p>
       <pre><code data-lang="csharp">using System;
 
-abstract class Forma
+public abstract class Forma
 {
     public abstract double CalcularArea();
-}
+}</code></pre>
 
-class Retangulo : Forma
+      <p><strong>Arquivo 2: Retangulo.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+public class Retangulo : Forma
 {
     public double Base;
     public double Altura;
@@ -48,9 +52,12 @@ class Retangulo : Forma
     {
         return Base * Altura;
     }
-}
+}</code></pre>
 
-class Circulo : Forma
+      <p><strong>Arquivo 3: Circulo.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+public class Circulo : Forma
 {
     public double Raio;
 
@@ -58,7 +65,10 @@ class Circulo : Forma
     {
         return 3.14 * Raio * Raio;
     }
-}
+}</code></pre>
+
+      <p><strong>Arquivo 4: Program.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
 
 class Program
 {
@@ -138,11 +148,12 @@ class Program
     </section>
 
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 05/08/2026 00:51:11</p>
+  <p>Última atualização: 17/08/2026 16:15:25</p>
 </section>
 </article>
 </body>
 </html>
+
 
 
 

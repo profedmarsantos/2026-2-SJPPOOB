@@ -1,0 +1,59 @@
+1.
+27/07 - Apresentação da disciplina e plano de ensino. / Transição de C para C#: sintaxe e estrutura básica.
+
+2.
+03/08 - Transição de C para C#: tipos e estrutura básica. / Transição de C para C#: consolidação prática.
+
+3.
+10/08 - POO: classe, objeto, atributo e método no aplicativo. / POO: prática guiada de modelagem inicial.
+
+4.
+17/08 - Encapsulamento, propriedades e construtores. / Encapsulamento: prática e validações.
+
+5.
+24/08 - Modificadores de acesso na modelagem. / Modificadores de acesso: prática aplicada.
+
+6.
+31/08 - Herança e reutilização de código. / Herança: prática com classes derivadas.
+
+7.
+09/09 - Polimorfismo e abstração.
+
+8.
+14/09 - Polimorfismo e abstração: prática aplicada. / Interfaces e composição de comportamentos.
+
+9.
+21/09 - Interfaces: prática de implementação. / Coleções e listas no fluxo do aplicativo.
+
+10.
+28/09 - Coleções e listas: prática com dados. / Persistência: tabelas, chaves e relacionamentos.
+
+11.
+05/10 - Persistência: modelagem e consultas básicas. / Conexão com banco e comandos SQL.
+
+12.
+19/10 - Conexão com banco: prática integrada. / IV Semana de Educação Especial e Inclusiva - SEMEEI
+
+13.
+26/10 - CRUD completo com validações e erros. / CRUD completo: prática integrada.
+
+14.
+04/11 - Relatórios a partir da base de dados.
+
+15.
+09/11 - Relatórios: consolidação e ajustes. / Distribuição e implantação do aplicativo.
+
+16.
+16/11 - Distribuição e implantação: validação final. / V Semana da Diversidade Cultural e da Consciência Negra
+
+17.
+23/11 - Projeto final: modelagem e implementação. / Projeto final: implementação guiada.
+
+18.
+30/11 - Projeto final: testes e ajustes. / Projeto final: ajustes finais.
+
+19.
+09/12 - Apresentação final e avaliação dos projetos.
+
+20.
+14/12 - Revisão geral e fechamento da disciplina. / Término do Semestre Letivo - Prazo limite para os docentes entregarem os diários à CRA

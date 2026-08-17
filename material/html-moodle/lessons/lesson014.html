@@ -32,20 +32,24 @@
 
     <section class="lesson-section">
       <h2>Exemplo em C#</h2>
+      <p><strong>Arquivo 1: Aluno.cs</strong></p>
       <pre><code data-lang="csharp">using System;
-using System.Collections.Generic;
 
-class Aluno
+public class Aluno
 {
     public string Nome { get; set; }
     public double Nota { get; set; }
-}
+}</code></pre>
+
+      <p><strong>Arquivo 2: Program.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main()
     {
-        List<Aluno> alunos = new List<Aluno>();
+        List&lt;Aluno&gt; alunos = new List&lt;Aluno&gt;();
 
         alunos.Add(new Aluno { Nome = "Ana", Nota = 8.5 });
         alunos.Add(new Aluno { Nome = "Bruno", Nota = 7.0 });
@@ -127,11 +131,12 @@ nomes.Add("Marcos");</code></pre>
     </section>
 
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 05/08/2026 00:51:11</p>
+  <p>Última atualização: 17/08/2026 16:15:25</p>
 </section>
 </article>
 </body>
 </html>
+
 
 
 

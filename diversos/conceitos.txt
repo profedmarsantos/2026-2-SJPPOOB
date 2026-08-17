@@ -1,0 +1,82 @@
+===============================================================================
+LISTA 1: COMANDOS E PALAVRAS-CHAVE (O que você digita no código C#)
+===============================================================================
+
+* class
+  Declara uma classe. Funciona como o molde, fábrica ou fôrma que define quais 
+  atributos e comportamentos os objetos daquela categoria terão.
+
+* new
+  Instancia um objeto. Aloca espaço na memória do computador e dá vida real 
+  a uma classe criada no código.
+
+* virtual
+  Colocado em um método da classe pai. Avisa ao C# que o comportamento padrão 
+  deste método pode ser modificado pelas classes filhas se elas quiserem.
+
+* abstract
+  Aplicado em classes ou métodos. Na classe, impede que ela seja instanciada 
+  com 'new'. No método, elimina o corpo dele (sem chaves) e obriga a classe 
+  filha a criar a lógica.
+
+* override
+  Colocado no método da classe filha. Indica explicitamente que você está 
+  substituindo ou complementando a lógica que veio da classe pai (virtual ou abstract).
+
+* base
+  Usado dentro da classe filha. Serve para chamar propriedades, construtores ou 
+  métodos exatamente como eles foram programados originalmente na classe pai.
+
+* interface
+  Declara um contrato puro de assinaturas. Não permite armazenar estado (campos) 
+  e obriga qualquer classe que a assine a implementar todos os seus métodos.
+
+* public / private / protected / internal
+  Modificadores de acesso. Comandos que controlam a visibilidade e definem quem 
+  pode enxergar ou alterar uma variável, método ou classe.
+
+* sealed
+  Bloqueador de herança. Aplicado em uma classe, impede que outras herdem dela. 
+  Aplicado em um método override, impede que subclasses futuras o modifiquem.
+
+
+===============================================================================
+LISTA 2: CONCEITOS TEÓRICOS (O entendimento e a capacidade da OO)
+===============================================================================
+
+* Abstração
+  O ato de isolar e mapear apenas as características essenciais do mundo real 
+  para dentro do sistema, ignorando detalhes irrelevantes para o negócio.
+
+* Herança
+  A capacidade de criar uma classe nova baseando-se em uma classe existente, 
+  reutilizando automaticamente seus atributos, propriedades e métodos.
+
+* Polimorfismo
+  A capacidade de tratar múltiplos objetos de tipos diferentes através de uma 
+  única linha de comando comum, fazendo com que cada um reaja do seu próprio jeito.
+
+* Encapsulamento
+  A prática de esconder os detalhes internos de funcionamento de um objeto e 
+  proteger seus dados, expondo apenas o que for estritamente necessário por 
+  meio de métodos públicos seguros.
+
+* Classe
+  O conceito abstrato, a ideia, o projeto ou a representação teórica de algo 
+  (ex: o projeto de papel de um carro).
+
+* Objeto (ou Instância)
+  A materialização física da classe na memória do computador durante a 
+  execução do programa (ex: o carro físico estacionado na garagem).
+
+* Sobrescrita (Method Overriding)
+  O conceito de redefinir o comportamento de um método herdado para atender 
+  a uma necessidade específica da subclasse.
+
+* Sobrecarga (Method Overloading)
+  O conceito de criar variações do mesmo método com o exato mesmo nome dentro 
+  da mesma classe, mudando apenas a quantidade ou o tipo dos parâmetros recebidos.
+
+* Acoplamento
+  O nível de dependência que uma classe tem da outra. O objetivo da OO é 
+  manter o acoplamento baixo para que alterar uma classe não quebre as outras.

@@ -33,12 +33,13 @@
 
     <section class="lesson-section">
       <h2>Exemplo em C#</h2>
+      <p><strong>Arquivo 1: BancoDados.cs</strong></p>
       <pre><code data-lang="csharp">using System;
 using System.Data.SqlClient;
 
-class Program
+public class BancoDados
 {
-    static void Main()
+    public static int ContarAlunos()
     {
         string connectionString = "Server=SERVIDOR;Database=Escola;Trusted_Connection=True;";
 
@@ -49,10 +50,21 @@ class Program
             string sql = "SELECT COUNT(*) FROM Alunos";
             using (SqlCommand comando = new SqlCommand(sql, conexao))
             {
-                int total = (int)comando.ExecuteScalar();
-                Console.WriteLine("Total de alunos: " + total);
+                return (int)comando.ExecuteScalar();
             }
         }
+    }
+}</code></pre>
+
+      <p><strong>Arquivo 2: Program.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+class Program
+{
+    static void Main()
+    {
+        int total = BancoDados.ContarAlunos();
+        Console.WriteLine("Total de alunos: " + total);
     }
 }</code></pre>
     </section>
@@ -126,11 +138,12 @@ class Program
     </section>
 
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 05/08/2026 00:51:11</p>
+  <p>Última atualização: 17/08/2026 16:15:25</p>
 </section>
 </article>
 </body>
 </html>
+
 
 
 

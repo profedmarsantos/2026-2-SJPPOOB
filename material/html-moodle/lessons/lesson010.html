@@ -32,9 +32,10 @@
 
     <section class="lesson-section">
       <h2>Exemplo em C#</h2>
+      <p><strong>Arquivo 1: Pessoa.cs</strong></p>
       <pre><code data-lang="csharp">using System;
 
-class Pessoa
+public class Pessoa
 {
     public string Nome;
 
@@ -42,9 +43,12 @@ class Pessoa
     {
         Console.WriteLine("Nome: " + Nome);
     }
-}
+}</code></pre>
 
-class Aluno : Pessoa
+      <p><strong>Arquivo 2: Aluno.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+public class Aluno : Pessoa
 {
     public string Turma;
 
@@ -52,9 +56,12 @@ class Aluno : Pessoa
     {
         Console.WriteLine("Turma: " + Turma);
     }
-}
+}</code></pre>
 
-class Funcionario : Pessoa
+      <p><strong>Arquivo 3: Funcionario.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+public class Funcionario : Pessoa
 {
     public string Cargo;
 
@@ -62,7 +69,10 @@ class Funcionario : Pessoa
     {
         Console.WriteLine("Cargo: " + Cargo);
     }
-}
+}</code></pre>
+
+      <p><strong>Arquivo 4: Program.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
 
 class Program
 {
@@ -159,11 +169,12 @@ class Program
     </section>
 
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 05/08/2026 00:51:11</p>
+  <p>Última atualização: 17/08/2026 16:15:25</p>
 </section>
 </article>
 </body>
 </html>
+
 
 
 

@@ -33,12 +33,13 @@
 
     <section class="lesson-section">
       <h2>Exemplo em C#</h2>
+      <p><strong>Arquivo 1: RelatorioAlunos.cs</strong></p>
       <pre><code data-lang="csharp">using System;
 using System.Data.SqlClient;
 
-class Program
+public class RelatorioAlunos
 {
-    static void Main()
+    public static void Exibir()
     {
         string sql = "SELECT Nome, Turma, NotaFinal FROM Alunos ORDER BY Nome";
 
@@ -46,18 +47,34 @@ class Program
         Console.WriteLine("Nome                 | Turma | Nota");
         Console.WriteLine("--------------------------------------");
 
-        using (SqlCommand comando = new SqlCommand(sql, conexao))
-        using (SqlDataReader leitor = comando.ExecuteReader())
+        using (SqlConnection conexao = new SqlConnection("Server=SERVIDOR;Database=Escola;Trusted_Connection=True;"))
         {
-            while (leitor.Read())
-            {
-                string nome = leitor.GetString(0);
-                string turma = leitor.GetString(1);
-                decimal nota = leitor.GetDecimal(2);
+            conexao.Open();
 
-                Console.WriteLine($"{nome,-20} | {turma,-5} | {nota}");
+            using (SqlCommand comando = new SqlCommand(sql, conexao))
+            using (SqlDataReader leitor = comando.ExecuteReader())
+            {
+                while (leitor.Read())
+                {
+                    string nome = leitor.GetString(0);
+                    string turma = leitor.GetString(1);
+                    decimal nota = leitor.GetDecimal(2);
+
+                    Console.WriteLine($"{nome,-20} | {turma,-5} | {nota}");
+                }
             }
         }
+    }
+}</code></pre>
+
+      <p><strong>Arquivo 2: Program.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+class Program
+{
+    static void Main()
+    {
+        RelatorioAlunos.Exibir();
     }
 }</code></pre>
     </section>
@@ -121,11 +138,12 @@ class Program
     </section>
 
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 05/08/2026 00:51:11</p>
+  <p>Última atualização: 17/08/2026 16:15:25</p>
 </section>
 </article>
 </body>
 </html>
+
 
 
 

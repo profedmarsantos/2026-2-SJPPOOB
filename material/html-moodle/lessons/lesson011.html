@@ -32,38 +32,48 @@
 
     <section class="lesson-section">
       <h2>Exemplo em C#</h2>
+      <p><strong>Arquivo 1: Animal.cs</strong></p>
       <pre><code data-lang="csharp">using System;
-using System.Collections.Generic;
 
-class Animal
+public class Animal
 {
     public virtual void EmitirSom()
     {
         Console.WriteLine("Som generico");
     }
-}
+}</code></pre>
 
-class Gato : Animal
+      <p><strong>Arquivo 2: Gato.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+public class Gato : Animal
 {
     public override void EmitirSom()
     {
         Console.WriteLine("Miau");
     }
-}
+}</code></pre>
 
-class Cachorro : Animal
+      <p><strong>Arquivo 3: Cachorro.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+public class Cachorro : Animal
 {
     public override void EmitirSom()
     {
         Console.WriteLine("Au au");
     }
-}
+}</code></pre>
+
+      <p><strong>Arquivo 4: Program.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main()
     {
-        List<Animal> animais = new List<Animal>
+        List&lt;Animal&gt; animais = new List&lt;Animal&gt;
         {
             new Gato(),
             new Cachorro()
@@ -141,11 +151,12 @@ class Program
     </section>
 
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 05/08/2026 00:51:11</p>
+  <p>Última atualização: 17/08/2026 16:15:25</p>
 </section>
 </article>
 </body>
 </html>
+
 
 
 
