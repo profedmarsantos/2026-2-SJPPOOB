@@ -26,22 +26,50 @@ jobs:
       - name: Validate lesson files and index links
         shell: bash
         run: |
-          set -euo pipefail
+          set -uo pipefail
 
           lessons_dir="material/html-moodle/lessons"
-          test -d "$lessons_dir"
-          test -f "$lessons_dir/index.html"
+          has_errors=0
+
+          if [[ ! -d "$lessons_dir" ]]; then
+            echo "::error::Pasta ausente: $lessons_dir"
+            exit 1
+          fi
+
+          if [[ ! -f "$lessons_dir/index.html" ]]; then
+            echo "::error::Arquivo ausente: $lessons_dir/index.html"
+            exit 1
+          fi
 
           for i in $(seq -w 1 20); do
             file="$lessons_dir/lesson0${i}.html"
-            test -f "$file"
-            grep -qi "<title>" "$file"
-            grep -qi "<h1>" "$file"
+            if [[ ! -f "$file" ]]; then
+              echo "::error::Arquivo ausente: $file"
+              has_errors=1
+              continue
+            fi
+
+            if ! grep -qi "<title[ >]" "$file"; then
+              echo "::error::Tag <title> ausente: $file"
+              has_errors=1
+            fi
+
+            if ! grep -qi "<h1[ >]" "$file"; then
+              echo "::error::Tag <h1> ausente: $file"
+              has_errors=1
+            fi
           done
 
           for i in $(seq -w 1 20); do
             link="lesson0${i}.html"
-            grep -q "$link" "$lessons_dir/index.html"
+            if ! grep -q "$link" "$lessons_dir/index.html"; then
+              echo "::error::Link ausente no indice: $link"
+              has_errors=1
+            fi
           done
+
+          if [[ "$has_errors" -ne 0 ]]; then
+            exit 1
+          fi
 
           echo "Estrutura de lessons validada com sucesso."
