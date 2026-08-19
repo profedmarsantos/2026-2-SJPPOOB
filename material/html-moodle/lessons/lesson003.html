@@ -16,13 +16,13 @@
     </header>
 
     <section class="lesson-section">
-      <h2>Classe e objeto na prática</h2>
+      <h2>1. Classe e objeto na prática</h2>
       <p>A <strong>classe</strong> define o modelo. O <strong>objeto</strong> é a instância criada a partir desse modelo.</p>
       <p>Cada objeto guarda seus próprios dados e executa ações por meio de métodos.</p>
     </section>
 
     <section class="lesson-section">
-      <h2>Conceitos essenciais desta aula</h2>
+      <h2>2. Conceitos essenciais desta aula</h2>
       <div class="concept-board" role="list" aria-label="Painel de conceitos desta aula">
         <article class="concept-note" role="listitem">
           <h3>Atributo</h3>
@@ -45,25 +45,105 @@
     </section>
 
     <section class="lesson-section">
-      <h2>Exemplo com atributo e método</h2>
-      <p>Vamos construir uma classe <strong>Conta</strong> com um saldo e um método para depositar dinheiro.</p>
+      <h2>3. Exemplo com atributo e método</h2>
+      <p>Vamos usar a classe <strong>Conta</strong> com um titular, um saldo privado e métodos para mostrar e depositar valores.</p>
 
       <p><strong>Arquivo 1: Conta.cs</strong></p>
       <pre><code data-lang="csharp">using System;
 
 public class Conta
 {
-    public string Titular;
-    public double Saldo;
+    public string Titular = "";
+    decimal Saldo = 0;
 
-    public void Depositar(double valor)
+    public void MostrarSaldo()
     {
-        Saldo = Saldo + valor;
+      Console.WriteLine();
+      Console.WriteLine($"Titular: {Titular}");
+      Console.WriteLine($"Conta Saldo: {Saldo}");
     }
 
-    public void ExibirSaldo()
+    public void Depositar(decimal valor)
     {
-        Console.WriteLine("Saldo atual: " + Saldo);
+      Saldo += valor;
+    }
+
+}</code></pre>
+
+      <p><strong>Arquivo 2: Program.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+
+class Program
+{
+    static void Main()
+    {
+        Conta a = new Conta();
+        a.Titular = "Fulano Silva";
+        a.MostrarSaldo();
+        a.Depositar(500);
+        a.MostrarSaldo();
+    }
+}</code></pre>
+      <p>Neste exemplo, o objeto <strong>a</strong> tem seus próprios dados e executa ações por meio dos métodos da classe.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>4. Por que o atributo saldo deve ser private?</h2>
+      <p>O atributo <strong>saldo</strong> representa um dado interno da conta. Ele deve ser <strong>private</strong> para impedir alterações diretas fora da classe.</p>
+      <p>Se <strong>saldo</strong> fosse público, qualquer parte do programa poderia atribuir um valor negativo diretamente, sem verificar se o valor é válido.</p>
+      <p>Com o atributo privado, a classe controla as alterações por meio dos métodos <strong>Depositar</strong> e <strong>Sacar</strong>. Assim, as regras ficam concentradas na classe e o estado do objeto permanece válido.</p>
+      <p>No arquivo atual, <strong>Saldo</strong> não tem um modificador escrito. Em um campo de classe, isso significa que ele é privado por padrão. Escrever <strong>private</strong> explicitamente também documenta essa decisão.</p>
+      <pre><code data-lang="csharp">private decimal Saldo = 0;
+
+public void Depositar(decimal valor)
+{
+    Saldo += valor;
+}</code></pre>
+      <p>O programa consulta e altera o saldo por métodos públicos, sem acessar o campo diretamente.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>5. Exemplo completo atualizado</h2>
+      <p>O código abaixo corresponde à implementação atual dos arquivos <strong>Conta.cs</strong> e <strong>Program.cs</strong>.</p>
+      <p><strong>Arquivo 1: Conta.cs</strong></p>
+      <pre><code data-lang="csharp">using System;
+using System.Runtime.CompilerServices;
+
+class Conta
+{
+    public string Titular = "";
+    decimal Saldo = 0;
+
+    public void MostrarSaldo()
+    {
+        Console.WriteLine();
+        Console.WriteLine($"Titular: {Titular}");
+        Console.WriteLine($"Conta Saldo: {Saldo}");
+    }
+
+    public void Depositar(decimal valor)
+    {
+        Saldo += valor;
+    }
+    
+    public void Sacar(decimal valor)
+    {
+        if (valor <= 0)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Valor inválido. O valor deve ser maior que 0 (zero).");
+        }
+        else if (valor > Saldo)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Valor inválido. O valor deve ser menor ou igual ao saldo atual.");
+        }
+        else
+        {
+            Saldo -= valor;
+            Console.WriteLine();
+            Console.WriteLine($"O valor {valor} foi sacado com sucesso!");
+        }
     }
 }</code></pre>
 
@@ -74,30 +154,56 @@ class Program
 {
     static void Main()
     {
-        Conta c1 = new Conta();
-        c1.Titular = "Ana";
-        c1.Saldo = 100;
-        c1.Depositar(50);
-        c1.ExibirSaldo();
+        Conta a = new Conta();
+        a.Titular = "Fulano Silva";
+        a.MostrarSaldo();
+        a.Depositar(500);
+        a.MostrarSaldo();
+        a.Sacar(75);
+        a.MostrarSaldo();
     }
 }</code></pre>
-      <p>Neste exemplo, o objeto <strong>c1</strong> tem seus próprios dados e pode executar ações por meio dos métodos.</p>
+      <p>O <strong>Main</strong> usa os métodos públicos da classe. O campo <strong>Saldo</strong> continua protegido contra acesso direto.</p>
     </section>
 
     <section class="lesson-section">
-      <h2>Leitura guiada do exemplo</h2>
+      <h2>6. Outro exemplo: cláusula de guarda profissional</h2>
+      <p>A implementação atual usa <strong>if/else</strong> e mensagens no console. Como alternativa, uma versão mais profissional pode retornar <strong>true</strong> ou <strong>false</strong> e usar cláusulas de guarda.</p>
+      <p>Esse estilo testa cada condição no início do método e retorna imediatamente quando encontra um problema. O exemplo abaixo é uma alternativa; ele não substitui os métodos dos arquivos atuais.</p>
+      <pre><code data-lang="csharp">// ESTILO CLÁUSULA DE GUARDA: Limpo, reto e direto
+  public bool SacarComGuarda(decimal valor)
+  {
+    if (valor &lt;= 0) return false;          // Barreira 1
+    if (valor &gt; saldo) return false;       // Barreira 2
+    if (!ContaAtiva) return false;         // Barreira 3
+    if (valor &gt; LimiteDiario) return false; // Barreira 4
+
+    // Se chegou aqui, é porque passou por todos os testes!
+    saldo -= valor;
+    return true;
+  }</code></pre>
       <ol>
-        <li><strong>Classe Conta:</strong> define os atributos <strong>Titular</strong> e <strong>Saldo</strong>.</li>
-        <li><strong>Método Depositar:</strong> recebe um valor e soma no saldo atual.</li>
-        <li><strong>Método ExibirSaldo:</strong> mostra no console o estado atual do objeto.</li>
-        <li><strong>Objeto c1:</strong> é criado com <strong>new Conta()</strong> e recebe valores próprios.</li>
-        <li><strong>Chamada de método:</strong> ao executar <strong>Depositar(50)</strong>, o estado do objeto muda de 100 para 150.</li>
+      <li><strong>Barreira 1:</strong> impede saque zero ou negativo.</li>
+      <li><strong>Barreira 2:</strong> impede saque maior que o saldo disponível.</li>
+      <li><strong>Barreira 3:</strong> impede operação em conta inativa.</li>
+      <li><strong>Barreira 4:</strong> impede saque acima do limite diário.</li>
+      </ol>
+    </section>
+
+    <section class="lesson-section">
+      <h2>7. Leitura guiada do exemplo</h2>
+      <ol>
+        <li><strong>Classe Conta:</strong> define o titular, o campo privado <strong>Saldo</strong> e os métodos da conta.</li>
+        <li><strong>Método MostrarSaldo:</strong> mostra o titular e o saldo atual no console.</li>
+        <li><strong>Método Depositar:</strong> adiciona o valor recebido ao saldo.</li>
+        <li><strong>Método Sacar:</strong> valida o valor, verifica o saldo e realiza o saque quando possível.</li>
+        <li><strong>Objeto a:</strong> é criado com <strong>new Conta()</strong> e recebe o titular "Fulano Silva".</li>
       </ol>
       <p>Esse fluxo mostra a ideia central da aula: a classe define o modelo e o objeto guarda o estado real durante a execução.</p>
     </section>
 
     <section class="lesson-section">
-      <h2>Diferença entre atributo e método</h2>
+      <h2>8. Diferença entre atributo e método</h2>
       <div class="note">
         O atributo guarda informação. O método executa uma ação.
       </div>
@@ -106,21 +212,21 @@ class Program
     </section>
 
     <section class="lesson-section">
-      <h2>Vários objetos, valores diferentes</h2>
+      <h2>9. Vários objetos, valores diferentes</h2>
       <p>Cada objeto pode ter valores diferentes para os mesmos atributos. Isso é um ponto importante da POO.</p>
       <pre><code data-lang="csharp">Conta c1 = new Conta();
 Conta c2 = new Conta();
 
 c1.Titular = "Ana";
-c1.Saldo = 100;
+c1.Depositar(100);
 
 c2.Titular = "Bruno";
-c2.Saldo = 300;</code></pre>
+c2.Depositar(300);</code></pre>
       <p>Mesmo usando a mesma classe, os objetos <strong>c1</strong> e <strong>c2</strong> possuem estados diferentes.</p>
     </section>
 
     <section class="lesson-section">
-      <h2>Erros comuns nesta etapa</h2>
+      <h2>10. Erros comuns nesta etapa</h2>
       <ul>
         <li><strong>Esquecer de criar o objeto:</strong> tentar usar atributos e métodos sem executar <strong>new</strong>.</li>
         <li><strong>Confundir classe com objeto:</strong> tratar o nome da classe como se já fosse uma instância.</li>
@@ -130,7 +236,7 @@ c2.Saldo = 300;</code></pre>
     </section>
 
     <section class="lesson-section">
-      <h2>Exercícios de fixação</h2>
+      <h2>11. Exercícios de fixação</h2>
       <ol>
         <li>
           <p><strong>Exercício 1:</strong> crie uma classe <strong>Livro</strong> com os atributos <strong>Titulo</strong> e <strong>Autor</strong> e um método <strong>ExibirDados</strong>.</p>
@@ -248,13 +354,13 @@ class Program
     </section>
 
     <section class="lesson-section">
-      <h2>Resumo da Aula</h2>
+      <h2>12. Resumo da Aula</h2>
       <p>A classe organiza dados e ações. Os atributos guardam o estado do objeto, enquanto os métodos definem o comportamento.</p>
       <p>Isso torna o código mais claro, mais organizado e mais próximo de situações reais.</p>
     </section>
 
     <section class="lesson-section">
-      <h2>Atividade guiada</h2>
+      <h2>13. Atividade guiada</h2>
       <p><strong>Passo 1:</strong> crie a classe <strong>Produto</strong> com os atributos <strong>Nome</strong> e <strong>Quantidade</strong>.</p>
       <p><strong>Passo 2:</strong> crie o método <strong>Exibir()</strong> para mostrar os dados de um produto.</p>
       <p><strong>Passo 3:</strong> no <strong>Main</strong>, crie dois objetos com valores diferentes.</p>
@@ -262,11 +368,12 @@ class Program
     </section>
 
     <section class="update-log" aria-label="Informação de atualização">
-      <p>Última atualização: 17/08/2026 16:15:25</p>
+      <p>Última atualização: 19/08/2026 20:09:31</p>
     </section>
   </article>
 </body>
 </html>
+
 
 
 
