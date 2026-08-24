@@ -1,0 +1,138 @@
+## Título
+
+Exercício de Fixação 4: Encapsulamento Avançado e Validação de Dados
+
+## Objetivo
+
+Praticar a aplicação de regras de negócio em propriedades com lógica condicional em C#.
+
+## Conhecimentos Necessários
+
+* Modificadores de acesso `private` e `public`.
+* Uso de propriedades com blocos `get` e `set`.
+* Uso de construtores para inicialização.
+
+## Conceitos Principais
+
+Impedir a alteração direta de dados privados e aplicar restrições lógicas por meio de propriedades.
+
+## Definições
+
+* **Encapsulamento**: Proteção dos dados internos de uma classe.
+* **Validação**: Regra lógica aplicada na propriedade para aceitar ou recusar novos valores.
+
+## Explicação
+
+O exercício a seguir exige a criação de uma classe com restrições lógicas mais rígidas. Você deve usar propriedades para verificar se o valor fornecido atende às regras estabelecidas antes de alterar o atributo privado.
+
+---
+
+## Exercício Prático
+
+### Objetivo
+
+Criar uma classe chamada `ProdutoLoja` que represente um item com controle de quantidade em estoque.
+
+### Regras
+
+1. A classe `ProdutoLoja` deve ter dois atributos privados:
+* `nome` do tipo `string`.
+* `quantidade` do tipo `int`.
+
+
+2. A classe deve possuir um construtor que receba o nome e a quantidade inicial, atribuindo os valores aos atributos.
+3. A classe deve conter uma propriedade pública chamada `Quantidade` para leitura e escrita, garantindo que a quantidade em estoque nunca seja menor que zero. Se o valor recebido for menor que zero, a quantidade deve permanecer inalterada.
+4. A classe deve conter uma propriedade pública chamada `Nome` para leitura e escrita do nome.
+5. A classe deve possuir um método chamado `ExibirEstoque` que imprima no console o nome do produto e a quantidade atual.
+6. No método `Main` de um programa principal, crie um objeto da classe `ProdutoLoja`, tente alterar a quantidade para um valor negativo e exiba os dados finais.
+
+### Dados de Entrada (Exemplo)
+
+* Nome: "Teclado"
+* Quantidade inicial: 15
+
+### Processamento Esperado
+
+* O construtor atribui os valores iniciais.
+* A propriedade valida se a nova quantidade é maior ou igual a zero.
+* O método exibe o estado atual do estoque.
+
+### Resultado Esperado (Saída no Console)
+
+Produto: Teclado
+Quantidade: 15
+
+---
+
+## Solução Comentada
+
+```csharp
+using System;
+
+class ProdutoLoja
+{
+    private string nome;
+    private int quantidade;
+
+    public ProdutoLoja(string nome, int quantidade)
+    {
+        this.nome = nome;
+        Quantidade = quantidade;
+    }
+
+    public string Nome
+    {
+        get { return nome; }
+        set { nome = value; }
+    }
+
+    public int Quantidade
+    {
+        get { return quantidade; }
+        set 
+        { 
+            if (value >= 0)
+            {
+                quantidade = value;
+            }
+        }
+    }
+
+    public void ExibirEstoque()
+    {
+        Console.WriteLine("Produto: " + nome);
+        Console.WriteLine("Quantidade: " + quantidade);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        ProdutoLoja meuProduto = new ProdutoLoja("Teclado", 15);
+        meuProduto.ExibirEstoque();
+    }
+}
+
+```
+
+## Explicação da Solução
+
+* **Atributos Privados**: Protegem o nome e a quantidade contra acesso externo direto.
+* **Construtor**: Inicializa os dados obrigatórios no momento da criação do objeto.
+* **Propriedade Quantidade**: Avalia se o valor informado é válido antes de atualizar o atributo privado.
+* **Método ExibirEstoque**: Mostra os valores formatados no console.
+
+## Erros Comuns
+
+* Modificar o atributo `quantidade` diretamente no código sem passar pela propriedade `Quantidade`.
+* Esquecer de validar se o valor é maior ou igual a zero no bloco `set`.
+
+## Resumo
+
+* Propriedades com validação protegem o estado interno da classe.
+* O construtor assegura que o objeto inicia com dados consistentes.
+
+---
+
+Deseja prosseguir para o próximo conteúdo ou ajustar este exercício?

@@ -1,0 +1,146 @@
+## Título
+
+Exercício Integrado: Aulas de 1 a 7
+
+## Objetivo
+
+Praticar de forma integrada os conceitos de classes, objetos, atributos, métodos, construtores e encapsulamento em C#.
+
+## Conhecimentos Necessários
+
+* Conceito de classe e objeto.
+* Declaração de atributos e métodos.
+* Uso de construtores para inicialização.
+* Aplicação de encapsulamento com modificadores de acesso e propriedades.
+
+## Conceitos Principais
+
+Integração de todos os pilares fundamentais vistos até o momento para modelar uma entidade computacional com dados protegidos e comportamentos definidos.
+
+## Definições
+
+* **Classe**: Modelo que define a estrutura e o comportamento de objetos.
+* **Objeto**: Instância de uma classe.
+* **Encapsulamento**: Mecanismo de proteção dos dados internos de uma classe utilizando propriedades públicas e atributos privados.
+* **Construtor**: Método especial executado no momento da criação do objeto.
+
+## Explicação
+
+O exercício a seguir reúne a criação de uma classe completa. Você deve aplicar a visibilidade correta para os dados, inicializar esses dados usando um construtor e disponibilizar métodos para exibir as informações na tela.
+
+---
+
+## Exercício Prático
+
+### Objetivo
+
+Criar uma classe chamada `Produto` que represente um item em estoque, aplicando encapsulamento, construtores e métodos.
+
+### Regras
+
+1. A classe `Produto` deve ter dois atributos privados:
+* `nome` do tipo `string`.
+* `preco` do tipo `double`.
+
+
+2. A classe deve possuir um construtor que receba o nome e o preço como parâmetros e atribua esses valores aos atributos.
+3. A classe deve conter propriedades públicas (ou métodos de acesso) para leitura e escrita segura dos atributos, garantindo que o preço não possa ser negativo. Se o valor recebido for menor que zero, o preço deve ser definido como zero.
+4. A classe deve possuir um método chamado `ExibirInformacoes` que imprima no console o nome e o preço do produto.
+5. No método `Main` de um programa principal, crie um objeto da classe `Produto`, altere o preço usando uma regra de validação e exiba os dados finais.
+
+### Dados de Entrada (Exemplo)
+
+* Nome: "Caderno"
+* Preço inicial: 25.50
+
+### Processamento Esperado
+
+* O construtor atribui os valores iniciais.
+* A propriedade valida se o preço é maior ou igual a zero.
+* O método exibe os dados formatados.
+
+### Resultado Esperado (Saída no Console)
+
+Produto: Caderno
+Preço: R$ 25,50
+
+---
+
+## Solução Comentada
+
+```csharp
+using System;
+
+class Produto
+{
+    private string nome;
+    private double preco;
+
+    public Produto(string nome, double preco)
+    {
+        this.nome = nome;
+        Preco = preco;
+    }
+
+    public string Nome
+    {
+        get { return nome; }
+        set { nome = value; }
+    }
+
+    public double Preco
+    {
+        get { return preco; }
+        set 
+        { 
+            if (value >= 0)
+            {
+                preco = value;
+            }
+            else
+            {
+                preco = 0;
+            }
+        }
+    }
+
+    public void ExibirInformacoes()
+    {
+        Console.WriteLine("Produto: " + nome);
+        Console.WriteLine("Preço: R$ " + preco);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Produto meuProduto = new Produto("Caderno", 25.50);
+        meuProduto.ExibirInformacoes();
+    }
+}
+
+```
+
+## Explicação da Solução
+
+* **Atributos Privados**: `nome` e `preco` ficam ocultos e protegidos contra alterações diretas externas.
+* **Construtor**: Recebe os dados iniciais e garante que o objeto nasce preenchido corretamente.
+* **Propriedades**: Permitem o acesso controlado aos atributos privados, aplicando a lógica para evitar preços negativos.
+* **Método**: `ExibirInformacoes` centraliza a lógica de impressão dos dados do objeto.
+
+## Erros Comuns
+
+* Tentar acessar diretamente `meuProduto.preco` fora da classe, gerando erro de compilação por causa da visibilidade privada.
+* Esquecer de validar o preço negativo na propriedade.
+* Declarar o construtor com um nome diferente do nome da classe.
+
+## Resumo
+
+* Classes agrupam dados e comportamentos.
+* O encapsulamento protege os atributos.
+* O construtor inicializa o objeto.
+
+---
+
+Deseja que eu detalhe algum ponto específico deste exercício integrado?

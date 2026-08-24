@@ -706,6 +706,30 @@ footer {
   font-size: 0.9rem;
 }
 
+.lesson-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.lesson-navigation a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.lesson-navigation a:hover,
+.lesson-navigation a:focus {
+  background: var(--accent-hover);
+}
+
 /* Aula 1 com indice interno e pares */
 .toc-panel {
   padding: 26px 28px 30px;

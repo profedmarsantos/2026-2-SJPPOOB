@@ -23,10 +23,37 @@
 
     <section class="lesson-section">
       <h2>2. Conceitos essenciais desta aula</h2>
+      <p>Os modificadores de acesso definem <strong>quem pode ver e usar um membro da classe</strong>. A ideia principal é controlar o que é público para o sistema e o que fica interno à classe.</p>
+
       <ul>
-        <li><strong>public:</strong> acessível por qualquer classe.</li>
-        <li><strong>private:</strong> acessível apenas dentro da própria classe.</li>
-        <li><strong>protected:</strong> acessível na própria classe e nas classes derivadas.</li>
+        <li>
+          <strong>public:</strong> o membro fica visível para qualquer classe do programa. É como dizer: “qualquer parte do sistema pode usar isso”.
+          <ul>
+            <li>Use quando a informação ou operação precisa ser acessada de fora da classe.</li>
+            <li>Exemplo: um método que realiza uma ação útil para outras classes.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>private:</strong> o membro só pode ser usado dentro da própria classe. Nenhuma outra classe consegue acessar diretamente.
+          <ul>
+            <li>Use para guardar dados internos e proteger regras da implementação.</li>
+            <li>Exemplo: um atributo que representa um valor sensível, como saldo, CPF ou código interno.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>protected:</strong> o membro pode ser usado na própria classe e também nas classes derivadas, ou seja, nas classes filhas.
+          <ul>
+            <li>Use quando a classe base quer compartilhar algo com as classes filhas, sem expor esse membro para todo o sistema.</li>
+            <li>Exemplo: um campo que a classe filha precisa herdar e reutilizar.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><strong>Diferença prática:</strong></p>
+      <ul>
+        <li><strong>public</strong> = “todo mundo pode ver e usar”.</li>
+        <li><strong>private</strong> = “só a própria classe pode usar”.</li>
+        <li><strong>protected</strong> = “a própria classe e as classes filhas podem usar”.</li>
       </ul>
     </section>
 
@@ -174,12 +201,16 @@ public void Depositar(decimal valor)
       <p><strong>Passo 3:</strong> crie classe <strong>ContaAluno</strong> herdando de <strong>Conta</strong> e utilize um campo protegido na classe base.</p>
     </section>
 
+<nav class="lesson-navigation" aria-label="Navegação do módulo">
+  <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
+</nav>
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 19/08/2026 20:09:31</p>
+  <p>Última atualização: 24/08/2026 17:22:28</p>
 </section>
 </article>
 </body>
 </html>
+
 
 
 

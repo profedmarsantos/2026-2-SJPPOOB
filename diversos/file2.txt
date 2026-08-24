@@ -1,0 +1,140 @@
+## Título
+
+Exercício de Fixação 2: Construtores e Encapsulamento
+
+## Objetivo
+
+Praticar a criação de construtores, atributos privados e propriedades públicas de validação em C#.
+
+## Conhecimentos Necessários
+
+* Conceito de classe e objeto.
+* Modificador de acesso `private` e `public`.
+* Uso de construtores para inicialização de dados.
+* Uso de propriedades com blocos `get` e `set`.
+
+## Conceitos Principais
+
+Reforçar o uso de construtores para inicializar objetos e de propriedades para proteger dados internos de uma classe.
+
+## Definições
+
+* **Encapsulamento**: Proteção de dados privados da classe por meio de propriedades públicas.
+* **Construtor**: Método especial chamado automaticamente na criação de um objeto.
+
+## Explicação
+
+O exercício a seguir foca na criação de uma classe que possui regras de validação para seus atributos. Você deve usar um construtor para receber os valores iniciais e propriedades com lógica para impedir dados inválidos.
+
+---
+
+## Exercício Prático
+
+### Objetivo
+
+Criar uma classe chamada `ContaBancaria` que represente uma conta com saldo protegido.
+
+### Regras
+
+1. A classe `ContaBancaria` deve ter dois atributos privados:
+* `titular` do tipo `string`.
+* `saldo` do tipo `double`.
+
+
+2. A classe deve possuir um construtor que receba o nome do titular e o saldo inicial, atribuindo esses valores aos atributos.
+3. A classe deve conter uma propriedade pública chamada `Saldo` para leitura e escrita, garantindo que o saldo não possa ficar abaixo de zero. Se o valor atribuído for menor que zero, o saldo deve ser mantido inalterado ou ajustado para zero.
+4. A classe deve conter uma propriedade pública chamada `Titular` apenas para leitura ou leitura e escrita do nome.
+5. A classe deve possuir um método chamado `ExibirSaldo` que imprima no console o nome do titular e o valor atual do saldo.
+6. No método `Main` de um programa principal, crie um objeto da classe `ContaBancaria`, tente definir um saldo negativo para testar a validação e exiba os dados finais.
+
+### Dados de Entrada (Exemplo)
+
+* Titular: "Ana"
+* Saldo inicial: 100.00
+
+### Processamento Esperado
+
+* O construtor atribui o titular e o saldo inicial.
+* A propriedade valida a alteração do saldo para evitar valores negativos.
+* O método exibe os dados da conta.
+
+### Resultado Esperado (Saída no Console)
+
+Titular: Ana
+Saldo: R$ 100,00
+
+---
+
+## Solução Comentada
+
+```csharp
+using System;
+
+class ContaBancaria
+{
+    private string titular;
+    private double saldo;
+
+    public ContaBancaria(string titular, double saldo)
+    {
+        this.titular = titular;
+        Saldo = saldo;
+    }
+
+    public string Titular
+    {
+        get { return titular; }
+        set { titular = value; }
+    }
+
+    public double Saldo
+    {
+        get { return saldo; }
+        set 
+        { 
+            if (value >= 0)
+            {
+                saldo = value;
+            }
+        }
+    }
+
+    public void ExibirSaldo()
+    {
+        Console.WriteLine("Titular: " + titular);
+        Console.WriteLine("Saldo: R$ " + saldo);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        ContaBancaria minhaConta = new ContaBancaria("Ana", 100.00);
+        minhaConta.ExibirSaldo();
+    }
+}
+
+```
+
+## Explicação da Solução
+
+* **Atributos Privados**: `titular` e `saldo` ficam ocultos fora da classe.
+* **Construtor**: Inicializa o objeto com os dados fornecidos no momento da criação.
+* **Propriedade Saldo**: Impede que atribuições de valores negativos alterem o saldo de forma incorreta.
+* **Método ExibirSaldo**: Mostra as informações formatadas no console.
+
+## Erros Comuns
+
+* Acessar diretamente o atributo `saldo` fora da classe sem passar pela propriedade.
+* Esquecer de usar a palavra-chave `this` no construtor quando o parâmetro tem o mesmo nome do atributo.
+* Permitir valores negativos na propriedade de saldo.
+
+## Resumo
+
+* Construtores garantem que o objeto comece com dados válidos.
+* Propriedades controlam o acesso e a alteração dos dados privados.
+
+---
+
+Deseja ajustar algum requisito deste exercício?

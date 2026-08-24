@@ -14,6 +14,8 @@
 - A linguagem deve ser natural, clara, direta e adequada para alunos do 1o ano do ensino medio.
 - Sempre que redigir, incluir ou editar qualquer texto, realizar verificacao ortografica e gramatical antes de finalizar.
 - Sempre que surgir nova determinacao pedagogica ou tecnica, este arquivo de regras deve ser atualizado.
+- Quando um exemplo ou exercicio incluir mais de uma classe, cada classe deve ficar em seu proprio bloco, identificado com o nome de um arquivo `.cs` separado.
+- A classe principal do programa deve ficar em um bloco `Program.cs` separado das demais classes.
 - Paleta base do projeto: lavanda `#D3D3FF`, com variacoes suaves para ambiente relaxante.
 - Para dinamismo visual, combinar lavanda com toques de amarelo/verde e azul claro, sem prejudicar leitura.
 - Garantir contraste alto entre texto e fundo (preferencia por texto escuro para conteúdo longo).

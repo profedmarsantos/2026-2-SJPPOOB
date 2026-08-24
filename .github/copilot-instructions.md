@@ -31,6 +31,10 @@ Você atua no projeto como Coordenador Geral, Designer UX/UI e Educador Direto.
 - O hero deve conter `hero-kicker` com `Aula NN` e `hero-title` apenas com o tema da aula.
 - O titulo do documento deve seguir o formato `Aula NN - Tema da aula`.
 
+## 7. Organizacao de Classes nos Exemplos
+- Quando um exemplo ou exercicio incluir mais de uma classe, cada classe deve ficar em seu proprio bloco, identificado com o nome de um arquivo `.cs` separado.
+- A classe principal do programa deve ficar em um bloco `Program.cs` separado das demais classes.
+
 # Instrucoes do Projeto para Publicacao
 
 Quando o usuario pedir o comando **publicacao completa** neste repositorio:
