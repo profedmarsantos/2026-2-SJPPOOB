@@ -1,0 +1,145 @@
+================================================================================
+    OS TRÊS NÍVEIS DE ABSTRAÇÃO EM DIAGRAMAS DE CLASSES (UML) — FOCO EM C#
+================================================================================
+
+1. NÍVEL CONCEITUAL (Conceptual / Domain Model)
+--------------------------------------------------------------------------------
+Objetivo:
+Mapear os conceitos reais do negócio e as regras do domínio, sem qualquer
+vínculo com tecnologia, banco de dados ou linguagem de programação. É voltado
+para a comunicação com o cliente e especialistas de domínio.
+
+O que deve aparecer detalhadamente:
+- Nomes dos Conceitos/Entidades (ex.: Cliente, Pedido, Produto).
+- Atributos do Negócio (somente os essenciais, sem indicação de tipos de código).
+- Relacionamentos do Domínio (Associações simples com nomes explicativos).
+- Multiplicidades reais do negócio (ex.: 1, 0..*).
+
+O que NÃO deve aparecer:
+- Visibilidade (+, -, #).
+- Tipos de dados de linguagens (string, int, long).
+- Métodos e operações (construtores, getters, setters).
+- Termos técnicos (Controller, DTO, Repository).
+
+--------------------------------------------------------------------------------
+
+2. NÍVEL DE ESPECIFICAÇÃO (Specification / Design Level)
+--------------------------------------------------------------------------------
+Objetivo:
+Definir as interfaces dos objetos e os contratos do sistema. Foca nas 
+responsabilidades de cada classe e nas mensagens que trocam entre si, mas sem
+se prender à sintaxe de uma linguagem específica.
+
+O que deve aparecer detalhadamente:
+- Interfaces e Métodos Públicos (a API exposta pela classe).
+- Tipos de Dados Abstratos (ex.: Texto, Número, Data).
+- Parâmetros principais das operações.
+- Estereótipos funcionais (ex.: <<interface>>, <<service>>).
+- Visibilidade Pública (+).
+- Navegabilidade entre as classes (setas de associação).
+
+O que NÃO deve aparecer:
+- Atributos privados e detalhes de implementação interna.
+- Tipos específicos do ecossistema .NET (ex.: System.String, List<T>).
+- Métodos privados de suporte.
+
+--------------------------------------------------------------------------------
+
+3. NÍVEL DE IMPLEMENTAÇÃO (Implementation / Code Level) - LINGUAGEM C# (.NET)
+--------------------------------------------------------------------------------
+Objetivo:
+Espelhar diretamente a estrutura orientada a objetos da linguagem C#. Serve como
+um blueprint fiel do código .NET para desenvolvimento manual ou engenharia
+reversa.
+
+O que deve aparecer detalhadamente:
+- Visibilidade completa com símbolos UML mapeados para C#:
+  + public
+  - private
+  # protected
+  ~ internal
+  #~ protected internal
+  #- private protected
+- Tipagem exata do ecossistema C# / .NET:
+  * Primitivos C#: string, int, long, decimal, bool, DateTime, Guid, object
+  * Coleções .NET: List<T>, IEnumerable<T>, ICollection<T>, Dictionary<TKey, TValue>
+  * Anulabilidade (Nullable): string?, int?, Guid?
+- Propriedades e Atributos nativos do C#:
+  * Campos/Atributos privados: - _saldo: decimal
+  * Propriedades C# com restrições de acessor: 
+    + Nome: string { get; set; }
+    + Id: Guid { get; private set; }
+    + DataCriacao: DateTime { get; init; }
+- Assinatura completa de Métodos:
+  * Nome, lista de parâmetros com seus tipos e retorno (ex.: void, Task, Task<bool>)
+  * Modificadores de parâmetros C#: in, out, ref, params
+  * Métodos Assíncronos: <<async>> ProcessarAsync(): Task<bool>
+- Modificadores de POO e palavras-chave C#:
+  * Membros/Classes estáticos (sublinhados) -> static
+  * Membros/Classes abstratos (em itálico) -> abstract
+  * Polimorfismo: virtual, override
+  * Classes/Membros não herdáveis -> sealed
+  * Somente leitura ({readOnly}) -> readonly ou const
+- Estruturas de código e Tipos Especiais em C#:
+  * Eventos e Delegados: event, delegate, Action<T>, Func<T, TResult>
+  * Métodos de Extensão (Extension Methods): <<extension>>
+- Estereótipos específicos de C# / .NET:
+  * <<interface>>, <<enum>>, <<struct>>, <<record>>, <<delegate>>
+  * Estereótipos de arquitetura: <<controller>>, <<repository>>, <<dbContext>>, <<dto>>
+- Relacionamentos orientados ao ecossistema .NET:
+  * Injeção de Dependência via Construtor
+  * Mapeamento do Entity Framework (Propriedades de Navegação e FKs)
+- Multiplicidades exatas e nomes de papéis nas pontas das associações.
+
+--------------------------------------------------------------------------------
+
+4. ANOTAÇÃO TÉCNICA: RESTRIÇÕES DE SINTAXE PARA GERADORES MERMAID.JS
+================================================================================
+Ao renderizar ou construir os diagramas de Nível de Implementação usando a
+ferramenta Mermaid.js (classDiagram), deve-se aplicar as seguintes adaptações
+de sintaxe para manter a compatibilidade com a linguagem:
+
+1. Sintaxe de Generics C#:
+   - É PROIBIDO o uso de parênteses angulares < > diretamente em atributos/métodos
+     para evitar quebra no parser do Mermaid.
+   - REGRA: Substitua < > por til ~ ~.
+     * Em vez de: List<Pedido>  => Use: List~Pedido~
+     * Em vez de: Dictionary<string, int> => Use: Dictionary~string, int~
+
+2. Modificadores Específicos C# (Static / Abstract):
+   - O Mermaid não aceita formatação Markdown (sublinhado/itálico) em membros.
+   - REGRA: Utilize os sufixos nativos do Mermaid no final da declaração:
+     * Membros Estáticos (static): adicione $ ao final (ex.: +TAXA: decimal$)
+     * Membros Abstratos (abstract): adicione * ao final (ex.: +Calcular()* decimal)
+
+3. Modificadores de Visibilidade Compostos:
+   - O Mermaid aceita apenas +, -, # e ~.
+   - REGRA: Para protected internal (#~) ou private protected (#-), utilize a
+     visibilidade base (# ou ~) acrescida de um comentário/estereótipo se
+     for crítico destacar o detalhe de acesso da DLL.
+
+4. Propriedades C# e Métodos Assíncronos:
+   - Para métodos assíncronos C#, adicione o estereótipo <<async>> ou retorne a 
+     task do .NET: +ProcessarAsync() Task~bool~
+   - Para propriedades C#, prefira a declaração direta do tipo e nome:
+     +string Nome  ou  +Guid Id
+     Evite chaves { get; set; } dentro de declarações no Mermaid para evitar
+     conflitos no parser.
+
+--------------------------------------------------------------------------------
+FONTES OFICIAIS DA VERDADE (SINTAXE E PADRÕES)
+--------------------------------------------------------------------------------
+- Especificação UML 2.5 (OMG):
+  * Documentação oficial da Object Management Group para padrões conceituais,
+    de especificação e notação gráfica da linguagem UML.
+
+- Documentação Oficial do Mermaid.js:
+  * Repositório Oficial: github.com/mermaid-js/mermaid
+  * Site e Manual da Sintaxe: mermaid.js.org
+  * Seção Específica para Diagrama de Classes:
+    mermaid.js.org/syntax/classDiagram.html (Tópicos: "Generic Types",
+    "Members", "Abstract and Static", "Visibility").
+================================================================================
+
+
+https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/

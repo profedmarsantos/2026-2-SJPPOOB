@@ -347,7 +347,7 @@
       return true;
     }
 
-    if (parent.closest("pre, code, script, style, textarea, .code-block, .concept-board, .concept-note, .concept-summary, .update-log, .lesson-hero, .hero-kicker, .hero-title")) {
+    if (parent.closest("pre, code, script, style, textarea, .code-block, .mermaid, .concept-board, .concept-note, .concept-summary, .update-log, .lesson-hero, .hero-kicker, .hero-title")) {
       return true;
     }
 

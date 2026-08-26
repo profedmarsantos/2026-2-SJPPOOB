@@ -31,6 +31,15 @@
 - Ao editar apenas uma licao, atualizar somente o log dessa pagina.
 - Ao realizar atualizacao completa do projeto de licoes, atualizar o log de todas as paginas de licao para a mesma data.
 
+## Diagramas UML de classes
+
+- Usar `diversos/diagramas_rules.txt` como referencia detalhada dos niveis conceitual, de especificacao e de implementacao C#/.NET.
+- No nivel conceitual, mostrar somente conceitos do negocio, atributos essenciais, relacionamentos e multiplicidades reais.
+- No nivel de especificacao, mostrar contratos, metodos publicos, tipos abstratos, parametros, estereotipos funcionais e navegabilidade.
+- No nivel de implementacao, representar a estrutura real do C#/.NET: visibilidade, tipos exatos, anulabilidade, propriedades, assinaturas completas, modificadores, eventos, delegados, estereotipos, injecao de dependencia, FKs e multiplicidades.
+- Em Mermaid `classDiagram`, trocar `< >` de generics por `~ ~`, usar `$` para membros estaticos, `*` para membros abstratos e `<<async>>` ou `Task~Tipo~` para assincronos.
+- Em propriedades Mermaid, usar o nome e o tipo sem `{ get; set; }`. Validar o diagrama contra o codigo apresentado, incluindo parametros, retornos, visibilidades, construtores e relacionamentos.
+
 ## Responsividade obrigatoria
 
 - Toda alteracao visual deve preservar leitura e uso em desktop, tablet e mobile sem sobreposição de elementos.

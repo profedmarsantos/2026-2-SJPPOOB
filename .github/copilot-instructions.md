@@ -35,6 +35,15 @@ Você atua no projeto como Coordenador Geral, Designer UX/UI e Educador Direto.
 - Quando um exemplo ou exercicio incluir mais de uma classe, cada classe deve ficar em seu proprio bloco, identificado com o nome de um arquivo `.cs` separado.
 - A classe principal do programa deve ficar em um bloco `Program.cs` separado das demais classes.
 
+## 8. Regras para diagramas UML de classes
+- Usar `diversos/diagramas_rules.txt` como referencia detalhada para os tres niveis: conceitual, especificacao e implementacao.
+- No nivel conceitual, mostrar conceitos do negocio, atributos essenciais, relacionamentos e multiplicidades, sem visibilidade, tipos de linguagem, metodos ou termos tecnicos.
+- No nivel de especificacao, mostrar a API publica, tipos abstratos, parametros, estereotipos funcionais, visibilidade publica e navegabilidade, sem atributos privados ou detalhes de implementacao.
+- No nivel de implementacao C#/.NET, representar visibilidade, tipos exatos, anulabilidade, propriedades, assinaturas completas, modificadores de POO, eventos, delegados, estereotipos .NET, injecao de dependencia, FKs, navegabilidade e multiplicidades.
+- Em diagramas Mermaid `classDiagram`, substituir generics C# com `< >` por `~ ~`, usar `$` para membros estaticos, `*` para membros abstratos, e `<<async>>` ou `Task~Tipo~` para metodos assincronos.
+- Para propriedades Mermaid, usar `+Nome: string` ou `+Id: Guid`, sem blocos `{ get; set; }`. Para visibilidades compostas, usar a visibilidade base aceita pelo Mermaid e esclarecer o detalhe por estereotipo ou anotacao quando necessario.
+- Validar se cada diagrama corresponde ao codigo apresentado: nomes, visibilidades, tipos, parametros, retornos, construtores, modificadores e relacionamentos.
+
 # Instrucoes do Projeto para Publicacao
 
 Quando o usuario pedir o comando **publicacao completa** neste repositorio:

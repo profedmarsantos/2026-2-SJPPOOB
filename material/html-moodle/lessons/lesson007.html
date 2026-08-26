@@ -6,6 +6,10 @@
   <title>Módulo 07 - Construtores</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script>
 </head>
 <body class="lesson-07">
   <article class="lesson-page">
@@ -81,13 +85,28 @@ class Program
         <li>O segundo construtor recebe apenas nome e define preço padrão.</li>
         <li>No <strong>Main</strong>, cada chamada de <strong>new Produto(...)</strong> escolhe automaticamente o construtor compatível.</li>
       </ol>
+      <h3>Diagrama de Classes UML no Nível de Implementação (ou Implementation-level Class Diagram / Design-level Class Diagram)</h3>
+      <div class="mermaid">classDiagram
+class Produto {
+  +Nome: string
+  +Preco: decimal
+  +Produto(nome: string, preco: decimal)
+  +Produto(nome: string)
+  +Exibir() void
+}
+
+class Program {
+  ~Main() void$
+}
+
+Program ..> Produto : cria e usa</div>
     </section>
 
     <section class="lesson-section">
       <h2>5. Exercícios de fixação</h2>
       <ol>
         <li>
-          <p><strong>Exercício 1:</strong> crie a classe <strong>Aluno</strong> com construtor que receba <strong>nome</strong> e <strong>idade</strong>.</p>
+          <p><strong class="exercise-label">5.1 Exercício:</strong> crie a classe <strong>Aluno</strong> com construtor que receba <strong>nome</strong> e <strong>idade</strong>.</p>
           <details>
             <summary>Ver resposta</summary>
             <pre><code data-lang="csharp">class Aluno
@@ -104,7 +123,7 @@ class Program
           </details>
         </li>
         <li>
-          <p><strong>Exercício 2:</strong> adicione sobrecarga para criar <strong>Aluno</strong> apenas com nome e idade padrão 0.</p>
+          <p><strong class="exercise-label">5.2 Exercício:</strong> adicione sobrecarga para criar <strong>Aluno</strong> apenas com nome e idade padrão 0.</p>
           <details>
             <summary>Ver resposta</summary>
             <pre><code data-lang="csharp">public Aluno(string nome)
@@ -115,14 +134,14 @@ class Program
           </details>
         </li>
         <li>
-          <p><strong>Exercício 3:</strong> explique por que construtor ajuda a evitar objeto incompleto.</p>
+          <p><strong class="exercise-label">5.3 Exercício:</strong> explique por que construtor ajuda a evitar objeto incompleto.</p>
           <details>
             <summary>Ver resposta</summary>
             <p>Porque ele força a inicialização no momento da criação, reduzindo chance de atributos importantes ficarem sem valor adequado.</p>
           </details>
         </li>
         <li>
-          <p><strong>Exercício 4:</strong> crie um programa que instancie dois objetos da mesma classe usando construtores diferentes.</p>
+          <p><strong class="exercise-label">5.4 Exercício:</strong> crie um programa que instancie dois objetos da mesma classe usando construtores diferentes.</p>
           <details>
             <summary>Ver resposta</summary>
             <p>Use uma instância com todos os parâmetros e outra com sobrecarga para comparar os estados iniciais.</p>
@@ -136,9 +155,25 @@ class Program
       <p>Os exercícios a seguir revisam classes, objetos, atributos, métodos, construtores e encapsulamento.</p>
       <ol>
         <li>
-          <h3>Exercício 5: Produto</h3>
+          <h3 class="exercise-label">6.1 Exercício: Produto</h3>
           <h4>Objetivo</h4>
           <p>Criar a classe <strong>Produto</strong> para representar um item em estoque, aplicando encapsulamento, construtor e método.</p>
+          <h4>Diagrama de Classe</h4>
+          <div class="mermaid">classDiagram
+class Produto {
+  -nome: string
+  -preco: double
+  +Produto(nome: string, preco: double)
+  +Nome: string
+  +Preco: double
+  +ExibirInformacoes() void
+}
+
+class Program {
+  ~Main() void$
+}
+
+Program ..> Produto : cria e usa</div>
           <h4>Conhecimentos necessários</h4>
           <ul>
             <li>Conceito de classe e objeto.</li>
@@ -245,9 +280,25 @@ class Produto
           <p>Classes agrupam dados e comportamentos. O encapsulamento protege os atributos. O construtor inicializa o objeto.</p>
         </li>
         <li>
-          <h3>Exercício 6: ContaBancaria</h3>
+          <h3 class="exercise-label">6.2 Exercício: ContaBancaria</h3>
           <h4>Objetivo</h4>
           <p>Criar a classe <strong>ContaBancaria</strong> para representar uma conta com saldo protegido.</p>
+          <h4>Diagrama de Classe</h4>
+          <div class="mermaid">classDiagram
+class ContaBancaria {
+  -titular: string
+  -saldo: double
+  +ContaBancaria(titular: string, saldo: double)
+  +Titular: string
+  +Saldo: double
+  +ExibirSaldo() void
+}
+
+class Program {
+  ~Main() void$
+}
+
+Program ..> ContaBancaria : cria e usa</div>
           <h4>Conhecimentos necessários</h4>
           <ul>
             <li>Conceito de classe e objeto.</li>
@@ -351,9 +402,25 @@ class ContaBancaria
           <p>Construtores inicializam objetos com dados válidos. Propriedades controlam alterações nos dados privados.</p>
         </li>
         <li>
-          <h3>Exercício 7: ProdutoLoja</h3>
+          <h3 class="exercise-label">6.3 Exercício: ProdutoLoja</h3>
           <h4>Objetivo</h4>
           <p>Criar a classe <strong>ProdutoLoja</strong> para representar um item com controle de quantidade em estoque.</p>
+          <h4>Diagrama de Classe</h4>
+          <div class="mermaid">classDiagram
+class ProdutoLoja {
+  -nome: string
+  -quantidade: int
+  +ProdutoLoja(nome: string, quantidade: int)
+  +Nome: string
+  +Quantidade: int
+  +ExibirEstoque() void
+}
+
+class Program {
+  ~Main() void$
+}
+
+Program ..> ProdutoLoja : cria e usa</div>
           <h4>Conhecimentos necessários</h4>
           <ul>
             <li>Modificadores de acesso <strong>private</strong> e <strong>public</strong>.</li>
@@ -475,11 +542,13 @@ class ProdutoLoja
       <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
     </nav>
     <section class="update-log" aria-label="Informação de atualização">
-      <p>Última atualização: 24/08/2026 17:22:28</p>
+      <p>Última atualização: 26/08/2026 20:06:25</p>
     </section>
   </article>
 </body>
 </html>
+
+
 
 
 

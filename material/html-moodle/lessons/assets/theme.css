@@ -1,6 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5.0.19/700.css");
 @import url("https://cdn.jsdelivr.net/npm/@fontsource/atkinson-hyperlegible@5.0.13/index.css");
-@import url("https://cdn.jsdelivr.net/npm/@fontsource/open-dyslexic@5.0.13/index.css");
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/open-dyslexic@5.0.13/400.css");
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/open-dyslexic@5.0.13/700.css");
 
 :root {
   --radius-lg: 16px;
@@ -294,6 +295,19 @@ section:last-of-type {
   border-bottom: 0;
 }
 
+.lesson-section .mermaid {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.lesson-section .mermaid svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 h2,
 h3,
 h4 {
@@ -325,6 +339,19 @@ ol {
 
 li {
   margin: 6px 0;
+}
+
+/* Remove marcador 1., 2., 3. apenas nas listas de exercícios,
+   mantendo a numeração hierárquica já escrita no título (ex.: 5.1). */
+ol:has(> li > p > .exercise-label),
+ol:has(> li > h3.exercise-label) {
+  list-style: none;
+  padding-left: 0;
+}
+
+ol > li:has(> p > .exercise-label),
+ol > li:has(> h3.exercise-label) {
+  list-style: none;
 }
 
 strong {

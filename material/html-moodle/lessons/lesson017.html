@@ -105,28 +105,28 @@ using (SqlCommand comando = new SqlCommand(insertSql, conexao))
       <h2>6. Exercicios de fixacao</h2>
       <ol>
         <li>
-          <p><strong>Exercicio 1:</strong> escreva um <strong>SELECT</strong> para listar nome e preco da tabela Produtos.</p>
+          <p><strong class="exercise-label">6.1 Exercicio:</strong> escreva um <strong>SELECT</strong> para listar nome e preco da tabela Produtos.</p>
           <details>
             <summary>Ver resposta</summary>
             <pre><code data-lang="sql">SELECT Nome, Preco FROM Produtos;</code></pre>
           </details>
         </li>
         <li>
-          <p><strong>Exercicio 2:</strong> escreva um <strong>UPDATE</strong> para alterar turma do aluno Id 3.</p>
+          <p><strong class="exercise-label">6.2 Exercicio:</strong> escreva um <strong>UPDATE</strong> para alterar turma do aluno Id 3.</p>
           <details>
             <summary>Ver resposta</summary>
             <pre><code data-lang="sql">UPDATE Alunos SET Turma = '2B' WHERE Id = 3;</code></pre>
           </details>
         </li>
         <li>
-          <p><strong>Exercicio 3:</strong> explique por que comando DELETE deve usar WHERE.</p>
+          <p><strong class="exercise-label">6.3 Exercicio:</strong> explique por que comando DELETE deve usar WHERE.</p>
           <details>
             <summary>Ver resposta</summary>
             <p>Sem WHERE, todos os registros da tabela podem ser removidos.</p>
           </details>
         </li>
         <li>
-          <p><strong>Exercicio 4:</strong> monte um INSERT parametrizado para cadastrar um produto.</p>
+          <p><strong class="exercise-label">6.4 Exercicio:</strong> monte um INSERT parametrizado para cadastrar um produto.</p>
           <details>
             <summary>Ver resposta</summary>
             <p>Defina SQL com <strong>@Nome</strong>, <strong>@Preco</strong> e adicione parametros no SqlCommand.</p>
@@ -152,11 +152,13 @@ using (SqlCommand comando = new SqlCommand(insertSql, conexao))
   <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
 </nav>
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 24/08/2026 17:22:28</p>
+  <p>Última atualização: 26/08/2026 20:06:25</p>
 </section>
 </article>
 </body>
 </html>
+
+
 
 
 
