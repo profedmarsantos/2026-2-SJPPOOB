@@ -151,13 +151,262 @@ public decimal Preco
     </section>
 
     <section class="lesson-section">
-      <h2>6. Resumo da aula</h2>
+      <h2>6. Exercícios integradores</h2>
+      <p>Os exercícios a seguir integram propriedades, encapsulamento e validação de dados.</p>
+      <ol>
+        <li>
+          <h3 class="exercise-label">6.1 Exercício: ContaBancaria</h3>
+          <h4>Objetivo</h4>
+          <p>Criar a classe <strong>ContaBancaria</strong> para representar uma conta com saldo protegido.</p>
+          <h4>Diagrama de Classe</h4>
+          <div class="mermaid">classDiagram
+class ContaBancaria {
+  -titular: string
+  -saldo: double
+  +ContaBancaria(titular: string, saldo: double)
+  +Titular: string
+  +Saldo: double
+  +ExibirSaldo() void
+}
+
+class Program {
+  ~Main() void$
+}
+
+Program ..> ContaBancaria : cria e usa</div>
+          <h4>Conhecimentos necessários</h4>
+          <ul>
+            <li>Conceito de classe e objeto.</li>
+            <li>Modificadores de acesso <strong>private</strong> e <strong>public</strong>.</li>
+            <li>Uso de construtores para inicialização.</li>
+            <li>Uso de propriedades com blocos <strong>get</strong> e <strong>set</strong>.</li>
+          </ul>
+          <h4>Conceitos principais</h4>
+          <p>Usar construtores para inicializar objetos e propriedades para proteger dados internos.</p>
+          <h4>Definições</h4>
+          <ul>
+            <li><strong>Encapsulamento:</strong> proteção de dados privados por meio de propriedades públicas.</li>
+            <li><strong>Construtor:</strong> método chamado automaticamente na criação de um objeto.</li>
+          </ul>
+          <h4>Explicação</h4>
+          <p>Use um construtor para receber os valores iniciais e propriedades com lógica para impedir dados inválidos.</p>
+          <h4>Regras</h4>
+          <ol>
+            <li>Crie os atributos privados <strong>titular</strong> (<strong>string</strong>) e <strong>saldo</strong> (<strong>double</strong>).</li>
+            <li>Crie um construtor que receba o titular e o saldo inicial.</li>
+            <li>Crie a propriedade <strong>Saldo</strong>. Valores negativos não podem alterar o saldo.</li>
+            <li>Crie a propriedade <strong>Titular</strong>.</li>
+            <li>Crie o método <strong>ExibirSaldo</strong> e teste um valor negativo no <strong>Main</strong>.</li>
+          </ol>
+          <h4>Dados de entrada (exemplo)</h4>
+          <p><strong>Titular:</strong> Ana<br><strong>Saldo inicial:</strong> 100,00</p>
+          <h4>Processamento esperado</h4>
+          <ul>
+            <li>O construtor atribui o titular e o saldo inicial.</li>
+            <li>A propriedade impede a alteração para um saldo negativo.</li>
+            <li>O método exibe os dados da conta.</li>
+          </ul>
+          <h4>Resultado esperado</h4>
+          <pre><code data-lang="text">Titular: Ana
+Saldo: R$ 100,00</code></pre>
+          <details>
+            <summary>Ver solução em C#</summary>
+            <p><strong>Arquivo 1: ContaBancaria.cs</strong></p>
+            <pre><code data-lang="csharp">using System;
+
+class ContaBancaria
+{
+    private string titular;
+    private double saldo;
+
+    public ContaBancaria(string titular, double saldo)
+    {
+        this.titular = titular;
+        Saldo = saldo;
+    }
+
+    public string Titular
+    {
+        get { return titular; }
+        set { titular = value; }
+    }
+
+    public double Saldo
+    {
+        get { return saldo; }
+        set
+        {
+            if (value >= 0)
+                saldo = value;
+        }
+    }
+
+    public void ExibirSaldo()
+    {
+        Console.WriteLine("Titular: " + titular);
+        Console.WriteLine("Saldo: R$ " + saldo);
+    }
+}</code></pre>
+            <p><strong>Arquivo 2: Program.cs</strong></p>
+            <pre><code data-lang="csharp">using System;
+
+class Program
+{
+    static void Main()
+    {
+        ContaBancaria minhaConta = new ContaBancaria("Ana", 100.00);
+        minhaConta.Saldo = -50;
+        minhaConta.ExibirSaldo();
+    }
+}</code></pre>
+          </details>
+          <h4>Explicação da solução</h4>
+          <ul>
+            <li><strong>Atributos privados:</strong> protegem <strong>titular</strong> e <strong>saldo</strong>.</li>
+            <li><strong>Construtor:</strong> inicializa o objeto no momento da criação.</li>
+            <li><strong>Propriedade Saldo:</strong> impede valores negativos.</li>
+            <li><strong>Método ExibirSaldo:</strong> mostra os dados formatados.</li>
+          </ul>
+          <h4>Erros comuns</h4>
+          <ul>
+            <li>Acessar diretamente o atributo <strong>saldo</strong> fora da classe.</li>
+            <li>Esquecer <strong>this</strong> quando parâmetro e atributo têm o mesmo nome.</li>
+            <li>Permitir valores negativos no saldo.</li>
+          </ul>
+          <h4>Resumo</h4>
+          <p>Construtores inicializam objetos com dados válidos. Propriedades controlam alterações nos dados privados.</p>
+        </li>
+        <li>
+          <h3 class="exercise-label">6.2 Exercício: ProdutoLoja</h3>
+          <h4>Objetivo</h4>
+          <p>Criar a classe <strong>ProdutoLoja</strong> para representar um item com controle de quantidade em estoque.</p>
+          <h4>Diagrama de Classe</h4>
+          <div class="mermaid">classDiagram
+class ProdutoLoja {
+  -nome: string
+  -quantidade: int
+  +ProdutoLoja(nome: string, quantidade: int)
+  +Nome: string
+  +Quantidade: int
+  +ExibirEstoque() void
+}
+
+class Program {
+  ~Main() void$
+}
+
+Program ..> ProdutoLoja : cria e usa</div>
+          <h4>Conhecimentos necessários</h4>
+          <ul>
+            <li>Modificadores de acesso <strong>private</strong> e <strong>public</strong>.</li>
+            <li>Uso de propriedades com blocos <strong>get</strong> e <strong>set</strong>.</li>
+            <li>Uso de construtores para inicialização.</li>
+          </ul>
+          <h4>Conceitos principais</h4>
+          <p>Impedir a alteração direta de dados privados e aplicar restrições por meio de propriedades.</p>
+          <h4>Definições</h4>
+          <ul>
+            <li><strong>Encapsulamento:</strong> proteção dos dados internos da classe.</li>
+            <li><strong>Validação:</strong> regra aplicada para aceitar ou recusar novos valores.</li>
+          </ul>
+          <h4>Explicação</h4>
+          <p>Use propriedades para verificar se os valores atendem às regras antes de alterar os atributos privados.</p>
+          <h4>Regras</h4>
+          <ol>
+            <li>Crie os atributos privados <strong>nome</strong> (<strong>string</strong>) e <strong>quantidade</strong> (<strong>int</strong>).</li>
+            <li>Crie um construtor que receba o nome e a quantidade inicial.</li>
+            <li>Crie a propriedade <strong>Quantidade</strong>. Se o valor for negativo, mantenha a quantidade atual.</li>
+            <li>Crie a propriedade <strong>Nome</strong>.</li>
+            <li>Crie o método <strong>ExibirEstoque</strong> e teste a validação no <strong>Main</strong>.</li>
+          </ol>
+          <h4>Dados de entrada (exemplo)</h4>
+          <p><strong>Nome:</strong> Teclado<br><strong>Quantidade inicial:</strong> 15</p>
+          <h4>Processamento esperado</h4>
+          <ul>
+            <li>O construtor atribui os valores iniciais.</li>
+            <li>A propriedade aceita somente quantidade maior ou igual a zero.</li>
+            <li>O método exibe o estado atual do estoque.</li>
+          </ul>
+          <h4>Resultado esperado</h4>
+          <pre><code data-lang="text">Produto: Teclado
+Quantidade: 15</code></pre>
+          <details>
+            <summary>Ver solução em C#</summary>
+            <p><strong>Arquivo 1: ProdutoLoja.cs</strong></p>
+            <pre><code data-lang="csharp">using System;
+
+class ProdutoLoja
+{
+    private string nome;
+    private int quantidade;
+
+    public ProdutoLoja(string nome, int quantidade)
+    {
+        this.nome = nome;
+        Quantidade = quantidade;
+    }
+
+    public string Nome
+    {
+        get { return nome; }
+        set { nome = value; }
+    }
+
+    public int Quantidade
+    {
+        get { return quantidade; }
+        set
+        {
+            if (value >= 0)
+                quantidade = value;
+        }
+    }
+
+    public void ExibirEstoque()
+    {
+        Console.WriteLine("Produto: " + nome);
+        Console.WriteLine("Quantidade: " + quantidade);
+    }
+}</code></pre>
+            <p><strong>Arquivo 2: Program.cs</strong></p>
+            <pre><code data-lang="csharp">using System;
+
+class Program
+{
+    static void Main()
+    {
+        ProdutoLoja meuProduto = new ProdutoLoja("Teclado", 15);
+        meuProduto.Quantidade = -2;
+        meuProduto.ExibirEstoque();
+    }
+}</code></pre>
+          </details>
+          <h4>Explicação da solução</h4>
+          <ul>
+            <li><strong>Atributos privados:</strong> protegem o nome e a quantidade.</li>
+            <li><strong>Construtor:</strong> inicializa os dados obrigatórios.</li>
+            <li><strong>Propriedade Quantidade:</strong> valida o valor antes de atualizar o atributo.</li>
+            <li><strong>Método ExibirEstoque:</strong> mostra os valores atuais.</li>
+          </ul>
+          <h4>Erros comuns</h4>
+          <ul>
+            <li>Modificar diretamente o atributo <strong>quantidade</strong>.</li>
+            <li>Esquecer a validação de valores menores que zero.</li>
+          </ul>
+          <h4>Resumo</h4>
+          <p>Propriedades com validação protegem o estado interno. O construtor garante que o objeto comece com dados consistentes.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="lesson-section">
+      <h2>7. Resumo da aula</h2>
       <p>Propriedades oferecem acesso controlado aos dados da classe.</p>
       <p>Com validação no <strong>set</strong>, você protege o estado do objeto com regra simples e direta.</p>
     </section>
 
     <section class="lesson-section">
-      <h2>7. Atividade guiada</h2>
+      <h2>8. Atividade guiada</h2>
       <p><strong>Passo 1:</strong> crie a classe <strong>ContaAluno</strong> com propriedade <strong>Nome</strong> automática.</p>
       <p><strong>Passo 2:</strong> crie propriedade <strong>Faltas</strong> com validação para não aceitar valor negativo.</p>
       <p><strong>Passo 3:</strong> teste valores válidos e inválidos para verificar o comportamento.</p>
@@ -167,11 +416,12 @@ public decimal Preco
       <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
     </nav>
     <section class="update-log" aria-label="Informação de atualização">
-      <p>Última atualização: 26/08/2026 20:06:25</p>
+      <p>Última atualização: 02/09/2026 18:01:03</p>
     </section>
   </article>
 </body>
 </html>
+
 
 
 
