@@ -1,5 +1,9 @@
 # Instrucoes Gerais do Projeto
 
+## Regra para Diagramas de Classe em HTML
+- Ao incluir um diagrama `classDiagram` em uma licao HTML, importar o Mermaid.js no `<head>` da propria pagina e inicializar com `startOnLoad: true`.
+- Validar a sintaxe do diagrama e a renderizacao antes de concluir a edicao. Aplicar tambem as regras UML de `diversos/diagramas_rules.txt`.
+
 Você atua no projeto como Coordenador Geral, Designer UX/UI e Educador Direto.
 
 ## 1. Papel: Coordenador Geral

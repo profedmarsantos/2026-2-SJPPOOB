@@ -6,6 +6,10 @@
   <title>Módulo 08 - Propriedades</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script>
 </head>
 <body class="lesson-08">
   <article class="lesson-page">
@@ -412,15 +416,146 @@ class Program
       <p><strong>Passo 3:</strong> teste valores válidos e inválidos para verificar o comportamento.</p>
     </section>
 
+    <section class="lesson-section">
+      <h2>9. Atividade Avaliativa</h2>
+      <p><strong>Objetivo:</strong> construir uma classe, criar objetos a partir dela e executar os testes solicitados.</p>
+      <p>A atividade reúne os conteúdos dos módulos 02 a 08: classe, objeto, atributos, estado, métodos, parâmetros, retorno, encapsulamento, construtor e propriedades.</p>
+
+      <h3>Tema: Controle de estoque</h3>
+      <p>Crie um programa em C# para representar um produto armazenado em estoque.</p>
+
+      <h3>Arquivos obrigatórios</h3>
+      <ul>
+        <li><strong>ProdutoEstoque.cs</strong></li>
+        <li><strong>Program.cs</strong></li>
+      </ul>
+
+      <h3>Diagrama de Classe</h3>
+      <div class="mermaid">classDiagram
+class ProdutoEstoque {
+  -nome: string
+  -quantidade: int
+  -preco: decimal
+  +ProdutoEstoque(nome: string, quantidade: int, preco: decimal)
+  +Nome: string
+  +Quantidade: int
+  +Preco: decimal
+  +AdicionarEstoque(valor: int) void
+  +Vender(valor: int) void
+  +CalcularValorDoEstoque() decimal
+  +ExibirDados() void
+}
+
+class Program {
+  ~Main() void$
+}
+
+Program ..> ProdutoEstoque : cria e testa</div>
+
+      <h3>Orientação de implementação</h3>
+      <p>Use o diagrama como referência para criar a classe, as propriedades, o construtor e os métodos. Os testes abaixo definem as regras de comportamento que serão avaliadas.</p>
+      <ol>
+        <li>As propriedades <strong>Nome</strong>, <strong>Quantidade</strong> e <strong>Preco</strong> devem permitir consulta, mas não precisam de <strong>set</strong> público. Os três valores são definidos pelo construtor.</li>
+        <li>O construtor deve verificar os valores iniciais e mostrar uma mensagem curta para cada erro:
+          <ul>
+            <li>Nome nulo ou vazio: <strong>Nome inválido.</strong></li>
+            <li>Quantidade menor que zero: <strong>Quantidade inválida.</strong></li>
+            <li>Preço menor que zero: <strong>Preço inválido.</strong></li>
+          </ul>
+        </li>
+        <li>Não crie um <strong>set</strong> público para <strong>Quantidade</strong>. A quantidade só pode ser modificada pelos métodos <strong>AdicionarEstoque</strong> e <strong>Vender</strong>.</li>
+        <li>O método <strong>AdicionarEstoque</strong> deve aceitar somente valores maiores que zero.</li>
+        <li>O método <strong>Vender</strong> deve realizar a venda quando houver quantidade suficiente. Quando a venda não for possível, deve mostrar a mensagem <strong>A venda não é possível</strong> e não deve alterar a quantidade.</li>
+        <li>O preço não será alterado depois da criação do objeto. Por isso, não é necessário criar um método para alterar <strong>Preco</strong>.</li>
+        <li>O método <strong>CalcularValorDoEstoque</strong> deve consultar a quantidade e o preço e retornar a multiplicação dos dois valores.</li>
+        <li>O preço e o valor total devem ser exibidos com duas casas decimais. Os rótulos da saída podem ser escritos de forma equivalente, mas os valores devem corresponder aos resultados esperados.</li>
+      </ol>
+
+      <h3>Entradas e saídas esperadas</h3>
+      <p>Implemente e execute os três casos de teste abaixo no arquivo <strong>Program.cs</strong>. Cada caso deve criar seu próprio objeto usando o construtor indicado no diagrama. Os blocos são casos independentes: execute cada um separadamente ou coloque cada caso em um bloco de escopo próprio.</p>
+      <p>Os valores abaixo estão apresentados como dados de entrada, sem código. O <strong>Valor total</strong> não é uma entrada: ele deve ser calculado pelo método <strong>CalcularValorDoEstoque()</strong> e aparecer na saída esperada.</p>
+
+      <h4>Caso de teste 1: operação válida</h4>
+      <p><strong>Entrada:</strong></p>
+      <pre><code data-lang="text">Nome: Caderno
+    Quantidade: 10
+    Preço: R$ 25,50
+    Adicionar ao estoque: 5
+    Vender: 3</code></pre>
+      <p><strong>Saída esperada:</strong></p>
+      <pre><code data-lang="text">Nome: Caderno
+    Quantidade: 12
+    Preço: R$ 25,50
+    Valor total: R$ 306,00</code></pre>
+
+      <h4>Caso de teste 2: venda maior que o estoque</h4>
+      <p><strong>Entrada:</strong></p>
+      <pre><code data-lang="text">Nome: Caneta
+    Quantidade: 4
+    Preço: R$ 2,00
+    Vender: 10</code></pre>
+      <p><strong>Saída esperada:</strong></p>
+      <pre><code data-lang="text">Nome: Caneta
+    Quantidade: 4
+    Preço: R$ 2,00
+    Valor total: R$ 8,00
+    A venda não é possível</code></pre>
+
+      <h4>Caso de teste 3: valores de operação inválidos</h4>
+      <p><strong>Entrada:</strong></p>
+      <pre><code data-lang="text">Nome: Mochila
+    Quantidade: 6
+    Preço: R$ 30,00
+    Adicionar ao estoque: -2
+    Vender: 0</code></pre>
+      <p><strong>Saída esperada:</strong></p>
+      <pre><code data-lang="text">Nome: Mochila
+    Quantidade: 6
+    Preço: R$ 30,00
+    Valor total: R$ 180,00
+    A venda não é possível</code></pre>
+
+      <h3>Entrega</h3>
+      <ul>
+        <li>Entregue os arquivos <strong>ProdutoEstoque.cs</strong> e <strong>Program.cs</strong>.</li>
+        <li>Execute o programa e confira os resultados no console.</li>
+        <li>O programa deve compilar sem erros.</li>
+        <li>O código deve seguir o diagrama e os requisitos apresentados.</li>
+      </ul>
+
+      <h3>Rubrica de correção</h3>
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Descrição</th>
+            <th>Pontos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Classe e campos privados</td><td>Classe criada com os três campos privados e tipos corretos.</td><td>15,0</td></tr>
+          <tr><td>Propriedades e encapsulamento</td><td>Propriedades de consulta sem <strong>set</strong> público desnecessário; os dados permanecem protegidos.</td><td>15,0</td></tr>
+          <tr><td>Construtor e validações iniciais</td><td>Construtor recebe os três dados, verifica valores nulos ou inválidos e mostra as mensagens correspondentes.</td><td>20,0</td></tr>
+          <tr><td>Métodos e validações</td><td><strong>AdicionarEstoque</strong> e <strong>Vender</strong> são os únicos responsáveis pelas alterações de quantidade; <strong>Vender</strong> mostra a mensagem solicitada quando a operação é recusada.</td><td>25,0</td></tr>
+          <tr><td>Valor do estoque</td><td><strong>CalcularValorDoEstoque</strong> retorna quantidade multiplicada pelo preço.</td><td>10,0</td></tr>
+          <tr><td>Instanciação e uso</td><td><strong>Program.cs</strong> cria o objeto e chama os métodos na ordem correta.</td><td>10,0</td></tr>
+          <tr><td>Testes solicitados</td><td>Os três casos de teste são executados, com operação válida, estoque insuficiente e valores inválidos.</td><td>3,0</td></tr>
+          <tr><td>Organização</td><td>Arquivos separados, nomes coerentes e código compilável.</td><td>2,0</td></tr>
+          <tr><th colspan="2">Total</th><th>100,0</th></tr>
+        </tbody>
+      </table>
+    </section>
+
     <nav class="lesson-navigation" aria-label="Navegação do módulo">
       <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
     </nav>
     <section class="update-log" aria-label="Informação de atualização">
-      <p>Última atualização: 02/09/2026 18:01:03</p>
+      <p>Última atualização: 14/09/2026 17:42:57</p>
     </section>
   </article>
 </body>
 </html>
+
 
 
 
