@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Módulo 09 - Modificadores de Acesso</title>
+  <title>Aula 09 - Modificadores de Acesso</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
 </head>
 <body class="lesson-09">
   <article class="lesson-page">
     <header class="lesson-hero">
-      <p class="hero-kicker"><strong>Módulo 09</strong></p>
+      <p class="hero-kicker"><strong>Aula 09</strong></p>
       <h1 class="hero-title">Modificadores de Acesso</h1>
       <p class="hero-subtitle">Objetivo: usar public, private e protected corretamente para proteger dados e organizar responsabilidades.</p>
     </header>
@@ -25,29 +25,22 @@
       <h2>2. Conceitos essenciais desta aula</h2>
       <p>Os modificadores de acesso definem <strong>quem pode ver e usar um membro da classe</strong>. A ideia principal é controlar o que é público para o sistema e o que fica interno à classe.</p>
 
-      <ul>
-        <li>
-          <strong>public:</strong> o membro fica visível para qualquer classe do programa. É como dizer: “qualquer parte do sistema pode usar isso”.
-          <ul>
-            <li>Use quando a informação ou operação precisa ser acessada de fora da classe.</li>
-            <li>Exemplo: um método que realiza uma ação útil para outras classes.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>private:</strong> o membro só pode ser usado dentro da própria classe. Nenhuma outra classe consegue acessar diretamente.
-          <ul>
-            <li>Use para guardar dados internos e proteger regras da implementação.</li>
-            <li>Exemplo: um atributo que representa um valor sensível, como saldo, CPF ou código interno.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>protected:</strong> o membro pode ser usado na própria classe e também nas classes derivadas, ou seja, nas classes filhas.
-          <ul>
-            <li>Use quando a classe base quer compartilhar algo com as classes filhas, sem expor esse membro para todo o sistema.</li>
-            <li>Exemplo: um campo que a classe filha precisa herdar e reutilizar.</li>
-          </ul>
-        </li>
-      </ul>
+      <div class="concept-board" role="list" aria-label="Painel de conceitos desta aula">
+        <article class="concept-note" role="listitem">
+          <h3>public</h3>
+          <p>Membro acessível por qualquer classe do programa.</p>
+        </article>
+        <article class="concept-note" role="listitem">
+          <h3>private</h3>
+          <p>Membro acessível somente dentro da própria classe.</p>
+        </article>
+        <article class="concept-note" role="listitem">
+          <h3>protected</h3>
+          <p>Membro acessível pela classe e por suas classes derivadas.</p>
+        </article>
+      </div>
+
+      <p class="concept-summary"><strong>Resumo:</strong> use <strong>public</strong> para acesso externo, <strong>private</strong> para proteger dados internos e <strong>protected</strong> para compartilhar com classes derivadas.</p>
 
       <p><strong>Diferença prática:</strong></p>
       <ul>
@@ -205,11 +198,12 @@ public void Depositar(decimal valor)
   <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
 </nav>
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 14/09/2026 17:42:57</p>
+  <p>Última atualização: 21/09/2026 17:47:39</p>
 </section>
 </article>
 </body>
 </html>
+
 
 
 

@@ -48,6 +48,19 @@ Você atua no projeto como Coordenador Geral, Designer UX/UI e Educador Direto.
 - Para propriedades Mermaid, usar `+Nome: string` ou `+Id: Guid`, sem blocos `{ get; set; }`. Para visibilidades compostas, usar a visibilidade base aceita pelo Mermaid e esclarecer o detalhe por estereotipo ou anotacao quando necessario.
 - Validar se cada diagrama corresponde ao codigo apresentado: nomes, visibilidades, tipos, parametros, retornos, construtores, modificadores e relacionamentos.
 
+## 9. Regra de Privacidade e Seguranca: Pasta de Avaliacoes
+- A pasta `avaliacoes/` (e todas as suas subpastas) e estritamente LOCAL e confidencial (contem notas, feedbacks e submissoes de alunos).
+- NUNCA incluir, comitar ou sincronizar a pasta `avaliacoes/` para o repositorio remoto no GitHub.
+- Deve permanecer sempre ignorada pelo `.gitignore` e ser tratada apenas para correcoes em ambiente local.
+
+## 10. Regra de Avaliacao Funcional das Atividades Praticas
+- Na correção de atividades práticas, priorizar a entrega do requisito funcional do exercício sobre detalhes menores de nomenclatura, formatação ou pequenas diferenças de implementação.
+- Se o código atende ao objetivo principal, mesmo com pequenos desvios de detalhe, a nota deve refletir isso. Se um requisito essencial não foi cumprido, a penalidade deve ser aplicada sem exceções.
+- Requisitos essenciais incluem: campos privados quando exigidos, construtor correto, propriedades com encapsulamento adequado, métodos solicitados, regras de negócio, cálculo correto e execução dos cenários pedidos.
+- NUNCA descontar nota por ausência de método extra, propriedade extra ou detalhe técnico não solicitado no enunciado, desde que o requisito principal e funcional tenha sido entregue.
+- Para validação de string no construtor, considerar como inválido apenas `null` e `""` quando o enunciado não exigir `trim` ou `IsNullOrWhiteSpace`; uma string composta somente por espaços deve ser considerada válida, salvo regra explícita contrária.
+- Sempre avaliar a solução pelo que ela consegue entregar e pelo que o enunciado exige, sem transformar pequenos detalhes em falha estrutural quando a lógica principal está correta.
+
 # Instrucoes do Projeto para Publicacao
 
 Quando o usuario pedir o comando **publicacao completa** neste repositorio:

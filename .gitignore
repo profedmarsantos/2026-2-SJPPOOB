@@ -1,0 +1,15 @@
+# Pastas locais de avaliacoes dos alunos (dados confidenciais / notas locais - NUNCA subir ao GitHub)
+avaliacoes/
+avaliacoes/**
+
+# Arquivos temporarios de scratch e testes
+_scratch/
+*.tmp
+*.temp
+
+# Artefatos .NET / VS / VS Code
+bin/
+obj/
+.vs/
+*.user
+*.suo
