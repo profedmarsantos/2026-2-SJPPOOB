@@ -3,176 +3,467 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Módulo 10 - Herança</title>
+  <title>Aula 10 - Herança</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script>
 </head>
 <body class="lesson-10">
   <article class="lesson-page">
     <header class="lesson-hero">
-      <p class="hero-kicker"><strong>Módulo 10</strong></p>
-      <h1 class="hero-title">Heranca</h1>
-      <p class="hero-subtitle">Objetivo: reaproveitar código com classe base e classe derivada, reduzindo repetição.</p>
+      <p class="hero-kicker"><strong>Aula 10</strong></p>
+      <h1 class="hero-title">Herança</h1>
+      <p class="hero-subtitle">Objetivo: construir classes relacionadas por herança, proteger o estado dos objetos e controlar votos em um array de candidatos.</p>
     </header>
 
     <section class="lesson-section">
-      <h2>1. Introducao teorica</h2>
-      <p>Heranca permite criar uma classe nova usando atributos e metodos de outra classe.</p>
-      <p>A classe que fornece os membros e chamada classe base. A nova classe e chamada classe derivada.</p>
+      <h2>1. Objetivo e resultado esperado</h2>
+      <p>Ao concluir esta atividade, você terá um projeto C# com as classes <strong>Pessoa</strong>, <strong>Candidato</strong>, <strong>Eleitor</strong> e <strong>UrnaEletronica</strong>. A classe <strong>Program</strong> criará objetos e demonstrará as operações.</p>
+      <p>As regras de cadastro e votação ficarão nas classes do projeto. A classe <strong>Program</strong> demonstrará as chamadas e apresentará os resultados.</p>
+      <p>Este exercício é um simulador didático. Ele não valida a identidade de eleitores, não verifica o formato do CPF e não salva dados depois que o programa termina.</p>
     </section>
 
     <section class="lesson-section">
-      <h2>2. Conceitos essenciais desta aula</h2>
+      <h2>2. Pré-requisitos e conceitos</h2>
+      <p>Antes de iniciar, você precisa saber criar classes e objetos, declarar atributos, escrever construtores, usar propriedades e percorrer um array com <strong>for</strong>.</p>
       <ul>
-        <li><strong>Classe base:</strong> define membros comuns para reuso.</li>
-        <li><strong>Classe derivada:</strong> herda membros da classe base e pode adicionar novos.</li>
-        <li><strong>Reuso:</strong> evita duplicar codigo igual em varias classes.</li>
+        <li><strong>Classe base:</strong> classe que concentra dados e operações comuns a outras classes.</li>
+        <li><strong>Classe derivada:</strong> classe que herda os membros acessíveis de uma classe base. Em C#, a herança é indicada por <strong>:</strong>.</li>
+        <li><strong>Encapsulamento:</strong> controle do acesso ao estado de um objeto. Nesta atividade, votos e situação de votação não poderão ser alterados diretamente pelo programa.</li>
       </ul>
     </section>
 
     <section class="lesson-section">
-      <h2>3. Exemplo em C#</h2>
-      <p><strong>Arquivo 1: Pessoa.cs</strong></p>
-      <pre><code data-lang="csharp">using System;
+      <h2>3. Regras do simulador</h2>
+      <ol>
+        <li>Uma urna recebe uma capacidade maior que zero e cria um array com essa quantidade de posições.</li>
+        <li>O cadastro retorna <strong>true</strong> somente quando o candidato foi incluído. Retorna <strong>false</strong> se o candidato for nulo, se o número já estiver cadastrado ou se não houver posição livre.</li>
+        <li>A busca percorre os candidatos cadastrados. Se não encontrar o número, retorna <strong>null</strong>.</li>
+        <li>Uma pessoa pode votar uma vez por instância de <strong>Eleitor</strong>. A urna recebe essa instância em cada operação de voto.</li>
+        <li>Um número cadastrado soma um voto ao candidato correspondente. Um número não cadastrado soma um voto nulo.</li>
+        <li>O voto branco usa uma operação própria e soma um voto branco.</li>
+        <li>Voto válido, voto nulo e voto branco marcam o eleitor como votante. Se o eleitor já votou ou for nulo, a operação retorna <strong>false</strong> e não altera total algum.</li>
+        <li>A verificação de voto repetido compara o estado do objeto recebido. Criar outro objeto <strong>Eleitor</strong> com o mesmo CPF não será reconhecido como a mesma pessoa.</li>
+      </ol>
+      <p><strong>Significado dos retornos:</strong> em operações de votação, <strong>true</strong> significa que o voto foi computado. Um número inexistente ainda é computado como voto nulo. <strong>false</strong> significa que o voto foi recusado porque o eleitor não pode votar.</p>
+    </section>
 
-public class Pessoa
+    <section class="lesson-section">
+      <h2>4. Diagrama final do projeto</h2>
+      <p>Este diagrama mostra o resultado completo antes da implementação. As etapas seguintes constroem cada classe e cada relação indicada. O símbolo <strong>~</strong> representa acesso <strong>internal</strong> em C#. As propriedades mostradas são somente para leitura; a anotação <strong>?</strong> indica que o valor pode ser nulo.</p>
+      <div class="mermaid">classDiagram
+class Pessoa {
+  +Nome: string
+  +Cpf: string
+  +Pessoa(nome: string, cpf: string)
+}
+
+class Candidato {
+  -votos: int
+  +Numero: int
+  +Partido: string
+  +Votos: int
+  +Candidato(nome: string, cpf: string, numero: int, partido: string)
+  ~AdicionarVoto() void
+}
+
+class Eleitor {
+  -jaVotou: bool
+  +JaVotou: bool
+  +Eleitor(nome: string, cpf: string)
+  ~MarcarVoto() void
+}
+
+class UrnaEletronica {
+  -candidatos: Candidato?[]
+  -totalCadastrados: int
+  -votosBrancos: int
+  -votosNulos: int
+  +VotosBrancos: int
+  +VotosNulos: int
+  +UrnaEletronica(capacidade: int)
+  +CadastrarCandidato(candidato: Candidato?) bool
+  +BuscarCandidato(numero: int) Candidato?
+  +RegistrarVoto(eleitor: Eleitor?, numero: int) bool
+  +RegistrarVotoBranco(eleitor: Eleitor?) bool
+  +ApurarResultados() string
+}
+
+class Program {
+  -Main() void$
+}
+
+Pessoa &lt;|-- Candidato
+Pessoa &lt;|-- Eleitor
+UrnaEletronica "1" --&gt; "0..*" Candidato : armazena ate a capacidade
+UrnaEletronica ..&gt; Eleitor : valida e atualiza
+Program ..&gt; UrnaEletronica : instancia e usa
+Program ..&gt; Candidato : instancia
+Program ..&gt; Eleitor : instancia
+
+note for UrnaEletronica "A quantidade armazenada nunca ultrapassa a capacidade do array."</div>
+      <p><strong>Como ler:</strong> <strong>Candidato</strong> e <strong>Eleitor</strong> herdam de <strong>Pessoa</strong>. A urna mantém referências para os candidatos cadastrados. A urna recebe um eleitor para conferir se ele já votou. <strong>Program</strong> apenas cria e conecta os objetos para demonstrar o funcionamento.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>5. Organização dos arquivos</h2>
+      <p>O professor orientará a criação e a configuração do projeto. Considere as classes desta atividade como arquivos separados que pertencem ao mesmo projeto.</p>
+      <p>Use um arquivo para cada classe: <strong>Pessoa.cs</strong>, <strong>Candidato.cs</strong>, <strong>Eleitor.cs</strong> e <strong>UrnaEletronica.cs</strong>. O código demonstrativo ficará em <strong>Program.cs</strong>.</p>
+      <p>Os exemplos usam tipos anuláveis, como <strong>Candidato?</strong>, para indicar quando um valor pode ser <strong>null</strong>. O projeto precisa permitir tipos anuláveis.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>6. Etapa 1: criar a classe base Pessoa</h2>
+      <p><strong>Objetivo:</strong> guardar nome e CPF uma única vez. As classes derivadas herdarão essas propriedades.</p>
+      <p><strong>Arquivo: Pessoa.cs</strong></p>
+      <pre><code data-lang="csharp">public class Pessoa
 {
-    public string Nome;
+    public string Nome { get; }
+    public string Cpf { get; }
 
-    public void Apresentar()
+    public Pessoa(string nome, string cpf)
     {
-        Console.WriteLine("Nome: " + Nome);
+        Nome = nome;
+        Cpf = cpf;
     }
 }</code></pre>
+      <ol>
+        <li>Crie o arquivo <strong>Pessoa.cs</strong>.</li>
+        <li>Declare as propriedades <strong>Nome</strong> e <strong>Cpf</strong> como públicas e somente para leitura.</li>
+        <li>Declare o construtor <strong>Pessoa</strong> com os parâmetros <strong>nome</strong> e <strong>cpf</strong>.</li>
+        <li>Atribua cada parâmetro à propriedade correspondente.</li>
+      </ol>
+      <p><strong>Verificação:</strong> uma instância de <strong>Pessoa</strong> recebe nome e CPF no construtor. Depois da criação, o programa não pode atribuir outro valor diretamente às propriedades.</p>
+    </section>
 
-      <p><strong>Arquivo 2: Aluno.cs</strong></p>
+    <section class="lesson-section">
+      <h2>7. Etapa 2: criar a classe Candidato</h2>
+      <p><strong>Objetivo:</strong> representar um candidato, reutilizando os dados de <strong>Pessoa</strong> e mantendo a contagem de votos encapsulada.</p>
+      <p><strong>Arquivo: Candidato.cs</strong></p>
       <pre><code data-lang="csharp">using System;
 
-public class Aluno : Pessoa
+public class Candidato : Pessoa
 {
-    public string Turma;
+    private int votos;
 
-    public void ExibirTurma()
+    public int Numero { get; }
+    public string Partido { get; }
+    public int Votos
     {
-        Console.WriteLine("Turma: " + Turma);
+        get { return votos; }
+    }
+
+    public Candidato(string nome, string cpf, int numero, string partido)
+        : base(nome, cpf)
+    {
+        if (numero &lt;= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(numero));
+        }
+
+        Numero = numero;
+        Partido = partido;
+        votos = 0;
+    }
+
+    internal void AdicionarVoto()
+    {
+        votos++;
     }
 }</code></pre>
+      <ol>
+        <li>Escreva <strong>: Pessoa</strong> depois do nome da classe. Isso declara a herança.</li>
+        <li>Use <strong>: base(nome, cpf)</strong> no construtor para enviar os dados comuns ao construtor de <strong>Pessoa</strong>.</li>
+        <li>Declare <strong>votos</strong> como privado. A propriedade pública <strong>Votos</strong> permite consultar a contagem, mas não permite atribuí-la.</li>
+        <li>O método <strong>AdicionarVoto</strong> incrementa a contagem. O modificador <strong>internal</strong> permite que qualquer classe do mesmo assembly o chame. Neste exercício, a regra do projeto é que somente a urna chame esse método.</li>
+        <li>O construtor recusa número menor ou igual a zero. <strong>ArgumentOutOfRangeException</strong> informa que o argumento está fora do intervalo permitido.</li>
+      </ol>
+      <p><strong>Verificação:</strong> crie um candidato com número positivo. Confirme que <strong>Nome</strong> e <strong>Cpf</strong> vêm de <strong>Pessoa</strong> e que <strong>Votos</strong> começa em zero. Não tente atribuir um valor diretamente a <strong>Votos</strong>.</p>
+    </section>
 
-      <p><strong>Arquivo 3: Funcionario.cs</strong></p>
+    <section class="lesson-section">
+      <h2>8. Etapa 3: criar a classe Eleitor</h2>
+      <p><strong>Objetivo:</strong> representar quem tenta votar e guardar no próprio objeto se o voto já foi registrado.</p>
+      <p><strong>Arquivo: Eleitor.cs</strong></p>
+      <pre><code data-lang="csharp">public class Eleitor : Pessoa
+{
+    private bool jaVotou;
+
+    public bool JaVotou
+    {
+        get { return jaVotou; }
+    }
+
+    public Eleitor(string nome, string cpf)
+        : base(nome, cpf)
+    {
+        jaVotou = false;
+    }
+
+    internal void MarcarVoto()
+    {
+        jaVotou = true;
+    }
+}</code></pre>
+      <ol>
+        <li>Escreva <strong>: Pessoa</strong> para herdar <strong>Nome</strong> e <strong>Cpf</strong>.</li>
+        <li>Declare <strong>jaVotou</strong> como privado e inicialize seu valor como <strong>false</strong>.</li>
+        <li>A propriedade <strong>JaVotou</strong> permite consultar o estado sem alterá-lo diretamente.</li>
+        <li>O método <strong>MarcarVoto</strong> muda o estado para <strong>true</strong>. A urna chamará esse método somente depois de computar o voto.</li>
+      </ol>
+      <p><strong>Limite desta regra:</strong> a marcação existe apenas no objeto em memória. Ela impede uma segunda operação com a mesma instância, mas não identifica automaticamente duas instâncias que tenham o mesmo CPF.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>9. Etapa 4: criar a classe UrnaEletronica</h2>
+      <p><strong>Objetivo:</strong> armazenar os candidatos, aplicar as regras de voto e produzir um resumo sem escrever diretamente no console.</p>
+      <p><strong>Arquivo: UrnaEletronica.cs</strong></p>
       <pre><code data-lang="csharp">using System;
 
-public class Funcionario : Pessoa
+public class UrnaEletronica
 {
-    public string Cargo;
+    private Candidato?[] candidatos;
+    private int totalCadastrados;
+    private int votosBrancos;
+    private int votosNulos;
 
-    public void ExibirCargo()
+    public int VotosBrancos
     {
-        Console.WriteLine("Cargo: " + Cargo);
+        get { return votosBrancos; }
+    }
+
+    public int VotosNulos
+    {
+        get { return votosNulos; }
+    }
+
+    public UrnaEletronica(int capacidade)
+    {
+        if (capacidade &lt;= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(capacidade));
+        }
+
+        candidatos = new Candidato?[capacidade];
+        totalCadastrados = 0;
+        votosBrancos = 0;
+        votosNulos = 0;
+    }
+
+    public bool CadastrarCandidato(Candidato? candidato)
+    {
+        if (candidato == null)
+        {
+            return false;
+        }
+
+        if (BuscarCandidato(candidato.Numero) != null)
+        {
+            return false;
+        }
+
+        if (totalCadastrados == candidatos.Length)
+        {
+            return false;
+        }
+
+        candidatos[totalCadastrados] = candidato;
+        totalCadastrados++;
+        return true;
+    }
+
+    public Candidato? BuscarCandidato(int numero)
+    {
+        for (int indice = 0; indice &lt; totalCadastrados; indice++)
+        {
+          Candidato? candidato = candidatos[indice];
+          if (candidato != null && candidato.Numero == numero)
+          {
+            return candidato;
+          }
+        }
+
+        return null;
+    }
+
+    public bool RegistrarVoto(Eleitor? eleitor, int numero)
+    {
+        if (eleitor == null || eleitor.JaVotou)
+        {
+            return false;
+        }
+
+        Candidato? candidato = BuscarCandidato(numero);
+
+        if (candidato == null)
+        {
+            votosNulos++;
+        }
+        else
+        {
+            candidato.AdicionarVoto();
+        }
+
+        eleitor.MarcarVoto();
+        return true;
+    }
+
+    public bool RegistrarVotoBranco(Eleitor? eleitor)
+    {
+        if (eleitor == null || eleitor.JaVotou)
+        {
+            return false;
+        }
+
+        votosBrancos++;
+        eleitor.MarcarVoto();
+        return true;
+    }
+
+    public string ApurarResultados()
+    {
+        string resultado = "APURAÇÃO DE VOTOS" + Environment.NewLine;
+        resultado += "-----------------" + Environment.NewLine;
+
+        for (int indice = 0; indice &lt; totalCadastrados; indice++)
+        {
+          Candidato? candidato = candidatos[indice];
+          if (candidato != null)
+          {
+            resultado += "Número: " + candidato.Numero;
+            resultado += " | Nome: " + candidato.Nome;
+            resultado += " | Partido: " + candidato.Partido;
+            resultado += " | Votos: " + candidato.Votos;
+            resultado += Environment.NewLine;
+          }
+        }
+
+        resultado += "Votos brancos: " + votosBrancos + Environment.NewLine;
+        resultado += "Votos nulos: " + votosNulos;
+        return resultado;
     }
 }</code></pre>
+      <h3>9.1. Como o array é controlado</h3>
+      <ol>
+        <li>O construtor recebe <strong>capacidade</strong> e cria <strong>new Candidato[capacidade]</strong>.</li>
+        <li>O array tem posições de <strong>0</strong> até <strong>capacidade - 1</strong>. Inicialmente, todas estão vazias.</li>
+        <li><strong>totalCadastrados</strong> começa em zero e aponta para a próxima posição livre.</li>
+        <li>O cadastro só grava na posição indicada depois de verificar candidato nulo, número duplicado e capacidade disponível.</li>
+        <li>A busca e a apuração percorrem índices menores que <strong>totalCadastrados</strong>. Elas não percorrem posições vazias.</li>
+      </ol>
+      <h3>9.2. Como cada voto é processado</h3>
+      <ol>
+        <li>A urna verifica se o eleitor foi informado e se <strong>JaVotou</strong> é <strong>false</strong>.</li>
+        <li>Para voto nominal, a urna busca o número. Se encontrar o candidato, chama <strong>AdicionarVoto</strong>. Se não encontrar, incrementa <strong>votosNulos</strong>.</li>
+        <li>Depois de computar voto válido ou nulo, a urna chama <strong>MarcarVoto</strong> e retorna <strong>true</strong>.</li>
+        <li>Para voto branco, a urna incrementa <strong>votosBrancos</strong>, marca o eleitor e retorna <strong>true</strong>.</li>
+        <li>Se o eleitor for nulo ou já tiver votado, a operação retorna <strong>false</strong> antes de alterar qualquer contador.</li>
+      </ol>
+      <p><strong>Verificação:</strong> cadastre dois candidatos em uma urna de capacidade dois. O terceiro cadastro deve retornar <strong>false</strong>. Busque um número existente e um inexistente. Confirme que a busca inexistente retorna <strong>null</strong>.</p>
+    </section>
 
-      <p><strong>Arquivo 4: Program.cs</strong></p>
+    <section class="lesson-section">
+      <h2>10. Etapa 5: demonstrar o uso em Program.cs</h2>
+      <p><strong>Objetivo:</strong> criar os objetos, chamar as operações e exibir os resultados. O programa não contém os contadores nem percorre o array de candidatos.</p>
+      <p><strong>Arquivo: Program.cs</strong></p>
       <pre><code data-lang="csharp">using System;
 
 class Program
 {
-    static void Main()
+    private static void Main()
     {
-        Aluno a = new Aluno();
-        a.Nome = "Iara";
-        a.Turma = "1A";
+        UrnaEletronica urna = new UrnaEletronica(2);
 
-        Funcionario f = new Funcionario();
-        f.Nome = "Carlos";
-        f.Cargo = "Tecnico";
+        Candidato candidatoUm = new Candidato("Ana Lima", "CPF-001", 11, "Partido A");
+        Candidato candidatoDois = new Candidato("Caio Souza", "CPF-002", 22, "Partido B");
+        Candidato candidatoRepetido = new Candidato("Outra Pessoa", "CPF-003", 11, "Partido C");
+        Candidato candidatoSemVaga = new Candidato("Bia Reis", "CPF-004", 33, "Partido D");
 
-        a.Apresentar();
-        a.ExibirTurma();
+        Console.WriteLine("Cadastro do candidato 11: " + urna.CadastrarCandidato(candidatoUm));
+        Console.WriteLine("Cadastro do candidato 22: " + urna.CadastrarCandidato(candidatoDois));
+        Console.WriteLine("Cadastro de número repetido: " + urna.CadastrarCandidato(candidatoRepetido));
+        Console.WriteLine("Cadastro sem vaga: " + urna.CadastrarCandidato(candidatoSemVaga));
 
-        f.Apresentar();
-        f.ExibirCargo();
+        Eleitor eleitorUm = new Eleitor("Dani Alves", "CPF-101");
+        Eleitor eleitorDois = new Eleitor("Eli Santos", "CPF-102");
+        Eleitor eleitorTres = new Eleitor("Fran Costa", "CPF-103");
+
+        Console.WriteLine("Voto no candidato 11: " + urna.RegistrarVoto(eleitorUm, 11));
+        Console.WriteLine("Voto branco: " + urna.RegistrarVotoBranco(eleitorDois));
+        Console.WriteLine("Voto no número 99: " + urna.RegistrarVoto(eleitorTres, 99));
+        Console.WriteLine("Segundo voto do eleitor 1: " + urna.RegistrarVoto(eleitorUm, 22));
+
+        Console.WriteLine();
+        Console.WriteLine(urna.ApurarResultados());
     }
 }</code></pre>
+      <p><strong>Dados usados:</strong> a urna tem capacidade para dois candidatos. Os textos <strong>CPF-001</strong> a <strong>CPF-103</strong> são identificadores fictícios; o exercício não verifica CPF.</p>
+      <p><strong>Resultado das chamadas:</strong> os dois primeiros cadastros retornam <strong>true</strong>; o número repetido e o cadastro sem vaga retornam <strong>false</strong>. O voto nominal, o voto branco e o número inexistente retornam <strong>true</strong>, pois foram computados. A segunda tentativa do primeiro eleitor retorna <strong>false</strong>.</p>
+      <p><strong>Resultado final esperado:</strong> candidato 11 com um voto, candidato 22 com zero votos, um voto branco e um voto nulo.</p>
     </section>
 
     <section class="lesson-section">
-      <h2>4. Leitura guiada do exemplo</h2>
-      <ol>
-        <li><strong>Pessoa</strong> concentra o atributo comum <strong>Nome</strong> e o metodo <strong>Apresentar()</strong>.</li>
-        <li><strong>Aluno</strong> herda de <strong>Pessoa</strong> e adiciona <strong>Turma</strong>.</li>
-        <li><strong>Funcionario</strong> herda de <strong>Pessoa</strong> e adiciona <strong>Cargo</strong>.</li>
-        <li>As duas classes derivadas reutilizam o metodo <strong>Apresentar()</strong> sem duplicar codigo.</li>
-      </ol>
-    </section>
-
-    <section class="lesson-section">
-      <h2>5. Erros comuns nesta etapa</h2>
+      <h2>11. Conferir cada comportamento</h2>
       <ul>
-        <li>Copiar e colar atributos iguais em vez de criar classe base.</li>
-        <li>Usar heranca quando nao ha relacao logica entre as classes.</li>
-        <li>Criar classe base com muitos detalhes que so uma classe usa.</li>
+        <li><strong>Cadastro válido:</strong> há espaço e o número ainda não existe. Retorno <strong>true</strong>; o candidato ocupa uma posição e <strong>totalCadastrados</strong> aumenta.</li>
+        <li><strong>Cadastro recusado:</strong> candidato nulo, número repetido ou array cheio. Retorno <strong>false</strong>; array e quantidade cadastrada não mudam.</li>
+        <li><strong>Voto nominal encontrado:</strong> o candidato recebe um voto e o eleitor é marcado. Retorno <strong>true</strong>.</li>
+        <li><strong>Número não cadastrado:</strong> votos nulos aumenta e o eleitor é marcado. Retorno <strong>true</strong>.</li>
+        <li><strong>Voto branco:</strong> votos brancos aumenta e o eleitor é marcado. Retorno <strong>true</strong>.</li>
+        <li><strong>Eleitor nulo ou já votante:</strong> retorno <strong>false</strong>. Nenhum contador de votos é alterado.</li>
       </ul>
     </section>
 
     <section class="lesson-section">
-      <h2>6. Exercicios de fixacao</h2>
+      <h2>12. Erros comuns e como conferir</h2>
+      <ul>
+        <li><strong>Percorrer candidatos.Length:</strong> isso inclui posições ainda vazias. Use a condição <strong>indice &lt; totalCadastrados</strong>.</li>
+        <li><strong>Incrementar totalCadastrados antes de gravar:</strong> grave o candidato na posição livre e só então incremente o contador.</li>
+        <li><strong>Expor votos com set público:</strong> isso permite que outra classe altere a contagem sem registrar um voto. Mantenha o campo privado e a propriedade somente para leitura.</li>
+        <li><strong>Marcar o eleitor antes de validar:</strong> a marcação deve ocorrer somente depois que um voto válido, branco ou nulo for computado.</li>
+        <li><strong>Contar número inexistente como voto recusado:</strong> neste simulador, o eleitor pode confirmar um número inexistente; esse voto é computado como nulo.</li>
+        <li><strong>Colocar regras no Program.cs:</strong> o programa de demonstração chama a urna. Ele não deve procurar candidatos nem incrementar contadores.</li>
+      </ul>
+    </section>
+
+    <section class="lesson-section">
+      <h2>13. Atividade de conferência</h2>
+      <p>Execute o programa e confira os resultados esperados. Depois, faça cada alteração separadamente e execute novamente:</p>
       <ol>
-        <li>
-          <p><strong class="exercise-label">6.1 Exercicio:</strong> crie a classe base <strong>Veiculo</strong> com atributo <strong>Marca</strong>.</p>
-          <details>
-            <summary>Ver resposta</summary>
-            <pre><code data-lang="csharp">class Veiculo
-{
-    public string Marca;
-}</code></pre>
-          </details>
-        </li>
-        <li>
-          <p><strong class="exercise-label">6.2 Exercicio:</strong> crie a classe derivada <strong>Carro</strong> com atributo <strong>Portas</strong>.</p>
-          <details>
-            <summary>Ver resposta</summary>
-            <pre><code data-lang="csharp">class Carro : Veiculo
-{
-    public int Portas;
-}</code></pre>
-          </details>
-        </li>
-        <li>
-          <p><strong class="exercise-label">6.3 Exercicio:</strong> explique por que heranca pode reduzir repeticao.</p>
-          <details>
-            <summary>Ver resposta</summary>
-            <p>Porque membros comuns ficam na classe base e sao reutilizados pelas classes derivadas.</p>
-          </details>
-        </li>
-        <li>
-          <p><strong class="exercise-label">6.4 Exercicio:</strong> crie duas classes filhas de <strong>Veiculo</strong> e mostre atributos comuns e especificos.</p>
-          <details>
-            <summary>Ver resposta</summary>
-            <p>Uma resposta possivel: <strong>Carro</strong> e <strong>Moto</strong> herdando <strong>Marca</strong>, cada uma com seus campos proprios.</p>
-          </details>
-        </li>
+        <li>Altere a capacidade da urna para <strong>1</strong>. Cadastre dois candidatos e confirme que o segundo cadastro retorna <strong>false</strong>.</li>
+        <li>Registre um voto para cada candidato. Confirme que o voto do número inexistente é nulo.</li>
+        <li>Tente registrar dois votos usando a mesma instância de <strong>Eleitor</strong>. Confirme que somente o primeiro é computado.</li>
+        <li>Crie duas instâncias de <strong>Eleitor</strong> com o mesmo CPF e teste uma votação com cada uma. Explique por que ambas são aceitas neste modelo.</li>
       </ol>
+      <h3>Critérios de conclusão</h3>
+      <ul>
+        <li>As quatro classes do domínio estão em arquivos separados.</li>
+        <li><strong>Candidato</strong> e <strong>Eleitor</strong> herdam de <strong>Pessoa</strong> e chamam o construtor base.</li>
+        <li>O array não ultrapassa a capacidade e as buscas ignoram posições vazias.</li>
+        <li>Os contadores só mudam quando a operação aceita e computa um voto.</li>
+        <li><strong>Program.cs</strong> demonstra o uso das classes sem implementar as regras da urna.</li>
+      </ul>
     </section>
 
     <section class="lesson-section">
-      <h2>7. Resumo da aula</h2>
-      <p>Heranca organiza reuso de codigo entre classes relacionadas.</p>
-      <p>Com classe base e derivada, o sistema fica mais limpo e mais facil de manter.</p>
-    </section>
-
-    <section class="lesson-section">
-      <h2>8. Atividade guiada</h2>
-      <p><strong>Passo 1:</strong> crie classe base <strong>Pessoa</strong> com <strong>Nome</strong> e <strong>ExibirNome()</strong>.</p>
-      <p><strong>Passo 2:</strong> crie classe <strong>Professor</strong> herdando de <strong>Pessoa</strong> com atributo <strong>Disciplina</strong>.</p>
-      <p><strong>Passo 3:</strong> crie classe <strong>Aluno</strong> herdando de <strong>Pessoa</strong> com atributo <strong>Turma</strong>.</p>
-      <p><strong>Passo 4:</strong> instancie os objetos e mostre dados comuns e especificos.</p>
+      <h2>14. Resumo</h2>
+      <ul>
+        <li><strong>Pessoa</strong> reúne os dados comuns usados por <strong>Candidato</strong> e <strong>Eleitor</strong>.</li>
+        <li><strong>UrnaEletronica</strong> controla o array de candidatos, os cadastros e os votos.</li>
+        <li><strong>totalCadastrados</strong> separa as posições ocupadas das posições vazias.</li>
+        <li>O campo privado <strong>jaVotou</strong> impede nova votação pela mesma instância do eleitor.</li>
+        <li><strong>Program.cs</strong> instancia as classes e demonstra suas operações; não contém as regras de negócio.</li>
+      </ul>
     </section>
 
 <nav class="lesson-navigation" aria-label="Navegação do módulo">
   <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
 </nav>
 <section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 21/09/2026 17:47:39</p>
+  <p>Última atualização: 28/09/2026</p>
 </section>
 </article>
 </body>

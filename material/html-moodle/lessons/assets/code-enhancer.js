@@ -308,12 +308,14 @@
       return;
     }
 
-    var lessonLabel = "Módulo " + String(lessonNumber).padStart(2, "0");
     var hero = document.querySelector(".lesson-hero") || document.querySelector("header");
     if (!hero) {
       return;
     }
 
+    var kicker = hero.querySelector(".hero-kicker");
+    var configuredLabel = kicker ? kicker.textContent.trim() : "";
+    var lessonLabel = configuredLabel || "Módulo " + String(lessonNumber).padStart(2, "0");
     var title = hero.querySelector(".hero-title") || hero.querySelector("h1");
     if (!title) {
       return;
@@ -328,7 +330,6 @@
     title.classList.add("hero-title");
     title.textContent = topic;
 
-    var kicker = hero.querySelector(".hero-kicker");
     if (!kicker) {
       kicker = document.createElement("p");
       kicker.className = "hero-kicker";
