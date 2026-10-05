@@ -27,6 +27,7 @@
 - Ao clicar em cada botao de fonte, a familia selecionada deve ser aplicada de forma deterministica ao texto da pagina.
 - Botoes + e - devem aumentar/reduzir o tamanho da fonte de forma progressiva por cliques sucessivos.
 - Todas as seções das aulas devem ser numeradas ou hierarquizadas para facilitar referencia do aluno.
+- Hierarquia visual das aulas: os títulos principais devem usar `h2` como filhos diretos de `.lesson-section` e recebem faixa lavanda com filete lateral de 4px. Os subtítulos hierárquicos devem usar `h3` ou `h4` dentro de `.lesson-section` e recebem filete lateral de 2px e borda inferior de 1px. Títulos de cartões conceituais devem permanecer dentro de `.concept-note` e não usam esse destaque.
 - Toda pagina de licao em `material/html-moodle/lessons/lessonNNN.html` deve exibir na propria pagina um log visivel de ultima atualizacao no formato `Ultima atualizacao: DD/MM/AAAA`.
 - Ao editar apenas uma licao, atualizar somente o log dessa pagina.
 - Ao realizar atualizacao completa do projeto de licoes, atualizar o log de todas as paginas de licao para a mesma data.

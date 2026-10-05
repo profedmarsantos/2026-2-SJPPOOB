@@ -321,9 +321,44 @@ h2 {
   font-size: 1.3rem;
 }
 
+.lesson-page > .lesson-section > h2:not(.toc-title) {
+  padding: 10px 14px;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+  font-weight: 700;
+}
+
 h3 {
   font-family: var(--font-title);
   font-size: 1.1rem;
+}
+
+.lesson-subsection {
+  margin-top: 24px;
+  padding: 0 0 8px 10px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 1px solid var(--line);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.lesson-page .lesson-section h3 {
+  margin-top: 24px;
+  padding: 0 0 8px 10px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-title);
+  font-weight: 700;
+}
+
+.lesson-page .lesson-section h4 {
+  margin-top: 24px;
+  padding: 0 0 8px 10px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-title);
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 p {
@@ -445,8 +480,11 @@ li code {
   box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
 }
 
-.concept-note h3 {
+.lesson-page .concept-note h3 {
   margin: 0 0 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   font-size: 0.96rem;
   font-family: var(--font-title);
 }

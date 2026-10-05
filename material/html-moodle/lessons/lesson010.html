@@ -23,7 +23,7 @@
       <h2>1. Objetivo e resultado esperado</h2>
       <p>Você criará uma classe base chamada <strong>Pessoa</strong> e duas classes derivadas: <strong>Aluno</strong> e <strong>Professor</strong>.</p>
       <p>As três classes terão objetos com nome. Cada classe derivada também terá uma informação própria.</p>
-      <p>O exemplo demonstra somente a herança. Ele não usa arrays, listas, validações ou banco de dados.</p>
+      <p>O exemplo demonstra somente a herança. Ele não usa arrays (vetores), listas, validações ou banco de dados.</p>
     </section>
 
     <section class="lesson-section">
@@ -33,6 +33,8 @@
         <li><strong>Classe derivada:</strong> classe que herda membros acessíveis de uma classe base.</li>
         <li><strong>Herança:</strong> recurso indicado por <strong>:</strong> depois do nome da classe derivada.</li>
         <li><strong>base(...):</strong> chamada que envia valores ao construtor da classe base.</li>
+        <li><strong>Membro:</strong> qualquer item declarado dentro de uma classe, como propriedade, método ou construtor.</li>
+        <li><strong>Propriedade somente leitura:</strong> propriedade com apenas <strong>get</strong>. Seu valor é definido uma única vez, no construtor, e depois só pode ser lido.</li>
       </ul>
     </section>
 
@@ -129,6 +131,7 @@ public class Pessoa
         <li>Use <strong>: base(nome)</strong> para enviar o nome ao construtor de <strong>Pessoa</strong>.</li>
         <li>Atribua o curso à propriedade da própria classe.</li>
       </ol>
+      <p><strong>Por que o construtor de Aluno recebe nome e curso?</strong> O construtor de <strong>Pessoa</strong> exige um nome. Por isso, <strong>Aluno</strong> recebe o nome e o repassa para <strong>Pessoa</strong> por meio de <strong>base(nome)</strong>. O curso é guardado na própria classe <strong>Aluno</strong>.</p>
       <p><strong>Verificação:</strong> um objeto <strong>Aluno</strong> possui <strong>Nome</strong>, herdado de <strong>Pessoa</strong>, e <strong>Curso</strong>, declarado em <strong>Aluno</strong>.</p>
     </section>
 
@@ -180,6 +183,12 @@ class Program
 Curso: Informática
 Nome: Marcos
 Disciplina: Programação</code></pre>
+      <p><strong>Ordem de execução em new Aluno("Lia", "Informática"):</strong></p>
+      <ol>
+        <li>O construtor de <strong>Aluno</strong> é chamado com <strong>"Lia"</strong> e <strong>"Informática"</strong>.</li>
+        <li><strong>base(nome)</strong> executa o construtor de <strong>Pessoa</strong>, que grava <strong>"Lia"</strong> em <strong>Nome</strong>.</li>
+        <li>O corpo do construtor de <strong>Aluno</strong> executa e grava <strong>"Informática"</strong> em <strong>Curso</strong>.</li>
+      </ol>
       <p><strong>Observação:</strong> o método <strong>Apresentar</strong> foi escrito uma vez em <strong>Pessoa</strong>. As duas classes derivadas podem usá-lo.</p>
     </section>
 
@@ -213,7 +222,7 @@ Disciplina: Programação</code></pre>
         <li>Crie uma classe <strong>Funcionario</strong> que herde de <strong>Pessoa</strong> e tenha a propriedade <strong>Setor</strong>.</li>
         <li>Crie um objeto <strong>Funcionario</strong> em <strong>Program.cs</strong>, chame <strong>Apresentar</strong> e mostre o setor.</li>
       </ol>
-      <h3>Critérios de conclusão</h3>
+      <h3>11.1. Critérios de conclusão</h3>
       <ul>
         <li>A classe <strong>Pessoa</strong> contém a propriedade <strong>Nome</strong> e o método <strong>Apresentar</strong>.</li>
         <li><strong>Aluno</strong> e <strong>Professor</strong> herdam de <strong>Pessoa</strong>.</li>
@@ -222,22 +231,24 @@ Disciplina: Programação</code></pre>
       </ul>
     </section>
 
+
     <section class="lesson-section">
-      <h2>12. Resumo</h2>
+      <h2>12. Exercício de prática: urna eletrônica</h2>
+      <p><strong>Objetivo:</strong> criar uma classe <strong>Urna</strong> que cadastre candidatos em arrays (vetores), registre votos e informe os resultados solicitados. Este exercício não exige herança.</p>
+      <p><strong>O que muda em relação ao exemplo anterior:</strong> aqui você não cria classes derivadas. Você cria uma única classe com vários dados privados e métodos públicos. O objetivo é praticar arrays (vetores), encapsulamento e regras de negócio.</p>
+      <p><strong>Regra de organização:</strong> crie <strong>Urna.cs</strong> para a classe <strong>Urna</strong>. A classe <strong>Urna</strong> guarda todos os dados e aplica todas as regras. O código que cria a urna, faz cadastros, registra votos e mostra os retornos fica no projeto de teste.</p>
+      <p><strong>Onde testar:</strong> a classe <strong>Urna</strong> pode ser testada em dois tipos de projeto. Escolha um deles:</p>
       <ul>
-        <li><strong>Pessoa</strong> concentra o dado e o comportamento comuns.</li>
-        <li><strong>Aluno</strong> reutiliza <strong>Nome</strong> e acrescenta <strong>Curso</strong>.</li>
-        <li><strong>Professor</strong> reutiliza <strong>Nome</strong> e acrescenta <strong>Disciplina</strong>.</li>
-        <li>A herança evita repetir em cada classe os membros que possuem o mesmo significado.</li>
+        <li><strong>Console App (aplicativo de console):</strong> o código de teste fica em <strong>Program.cs</strong>, no método <strong>Main</strong>. Os retornos são mostrados com <strong>Console.WriteLine</strong>.</li>
+        <li><strong>Windows Forms App (aplicativo de formulários):</strong> o código de teste fica nos eventos dos controles do formulário, como o evento <strong>Click</strong> de um botão. Os retornos são mostrados em controles como <strong>Label</strong>, <strong>TextBox</strong>, <strong>ListBox</strong> ou <strong>MessageBox</strong>.</li>
       </ul>
-    </section>
+      <p>Em ambos os casos, o arquivo <strong>Urna.cs</strong> é exatamente o mesmo. A classe <strong>Urna</strong> não deve conter <strong>Console</strong> nem controles de formulário.</p>
+            <figure>
+              <img src="img/UrnaBala.png" alt="Tela do formulário Urna Bala com um campo de texto para o número, um rótulo Nome, teclado numérico de 0 a 9 e os botões Branco, Corrige, Confirma e Resultados." style="max-width: 100%; height: auto;">
+              <figcaption><strong>Exemplo de tela para Windows Forms App:</strong> o campo no topo mostra o número digitado; o rótulo <strong>Nome</strong> mostra o retorno de <strong>GetCandidato</strong>; o teclado numérico digita o número; <strong>Branco</strong> vota em <code>-1</code>; <strong>Corrige</strong> apaga o número digitado; <strong>Confirma</strong> chama <strong>Votar</strong>; <strong>Resultados</strong> mostra os retornos de <strong>GetVotos</strong>.</figcaption>
+            </figure>
 
-    <section class="lesson-section">
-      <h2>13. Exercício de prática: urna eletrônica</h2>
-      <p><strong>Objetivo:</strong> criar uma classe <strong>Urna</strong> que cadastre candidatos em arrays, registre votos e informe os resultados solicitados. Este exercício não exige herança.</p>
-      <p><strong>Regra de organização:</strong> crie somente <strong>Urna.cs</strong> e <strong>Program.cs</strong>. A classe <strong>Program</strong> cria a urna, faz cadastros, registra votos e mostra os retornos. A classe <strong>Urna</strong> guarda todos os dados e aplica todas as regras.</p>
-
-      <h3>13.1. Diagrama detalhado da classe</h3>
+            <h3 class="lesson-subsection">12.1. Diagrama detalhado da classe</h3>
       <p>Este é um diagrama de implementação. Os nomes, tipos, visibilidades, parâmetros e retornos devem ser mantidos como estão no diagrama.</p>
       <div class="mermaid">classDiagram
 class Urna {
@@ -256,49 +267,74 @@ class Urna {
   +Votar(numeroVoto: int) void
 }</div>
       <p><strong>Leitura técnica:</strong> o símbolo <strong>-</strong> indica campo <strong>private</strong>; o símbolo <strong>+</strong> indica construtor ou método <strong>public</strong>.</p>
-  <p><strong>Relação entre os campos:</strong> os três arrays são paralelos; o índice <strong>i</strong> representa o mesmo candidato nos três arrays. O valor <strong>-1</strong> representa voto em branco. Um número não cadastrado representa voto nulo. <strong>indexCandidato</strong> aponta para a próxima posição livre e informa a quantidade cadastrada.</p>
+  <p><strong>Notação:</strong> números de candidatos aparecem em formato de código, como <code>10</code>, para não serem confundidos com outros números do texto.</p>
+  <p><strong>Relação entre os campos:</strong> os três arrays (vetores) são paralelos; o índice <strong>i</strong> representa o mesmo candidato nos três arrays (vetores). O valor <code>-1</code> representa voto em branco. Um número não cadastrado representa voto nulo. <strong>indexCandidato</strong> aponta para a próxima posição livre e informa a quantidade cadastrada.</p>
 
-      <h3>13.2. Dados privados obrigatórios</h3>
+      <h3 class="lesson-subsection">12.2. Dados privados obrigatórios</h3>
       <ul>
-        <li><strong>candidatoNome:</strong> array de textos com o nome de cada candidato.</li>
-        <li><strong>candidatoNumero:</strong> array de números dos candidatos.</li>
-        <li><strong>candidatoVotos:</strong> array com a quantidade de votos de cada candidato.</li>
-        <li><strong>contaVotosNulos:</strong> total de votos em números que não pertencem a candidatos cadastrados.</li>
-        <li><strong>contaVotosBrancos:</strong> total de votos com o número <strong>-1</strong>.</li>
-        <li><strong>contaVotosValidos:</strong> total de votos destinados a candidatos cadastrados.</li>
-        <li><strong>indexCandidato:</strong> quantidade atual de candidatos cadastrados e índice da próxima posição livre.</li>
+        <li><strong>candidatoNome:</strong> array (vetor) de textos com o nome de cada candidato. Serve para descobrir o nome do candidato a partir da posição dele. Exemplo: se Ana foi o primeiro cadastro, <code>candidatoNome[0]</code> guarda "Ana".</li>
+        <li><strong>candidatoNumero:</strong> array (vetor) de números dos candidatos. Serve para comparar o número digitado na votação com os números cadastrados. Exemplo: se Ana tem o número <code>10</code>, então <code>candidatoNumero[0]</code> guarda <code>10</code>.</li>
+        <li><strong>candidatoVotos:</strong> array (vetor) com a quantidade de votos de cada candidato. Serve para contar os votos recebidos por cada um. Exemplo: se Ana recebeu 2 votos, <code>candidatoVotos[0]</code> guarda 2.</li>
+        <li><strong>contaVotosNulos:</strong> total de votos em números que não pertencem a candidatos cadastrados. Serve para informar quantos votos foram anulados. Aumenta em 1 sempre que alguém vota em um número inexistente, como <code>99</code>.</li>
+        <li><strong>contaVotosBrancos:</strong> total de votos com o número <code>-1</code>. Serve para informar quantos eleitores não escolheram nenhum candidato. Aumenta em 1 a cada voto <code>-1</code>.</li>
+        <li><strong>contaVotosValidos:</strong> total de votos destinados a candidatos cadastrados. Serve para informar quantos votos foram para candidatos reais. Aumenta em 1 a cada voto em um número cadastrado.</li>
+        <li><strong>indexCandidato:</strong> quantidade atual de candidatos cadastrados e índice da próxima posição livre. Serve para saber onde gravar o próximo candidato e até onde percorrer os arrays (vetores) nas buscas. Começa em 0 e aumenta em 1 a cada cadastro. Exemplo: com 2 candidatos cadastrados, vale 2 e a próxima posição livre é a 2.</li>
       </ul>
-      <p><strong>Regra dos arrays:</strong> os três arrays são paralelos. Por exemplo, os valores da posição <strong>0</strong> nos três arrays descrevem o mesmo candidato.</p>
+      <p><strong>Regra dos arrays (vetores):</strong> os três arrays (vetores) são paralelos. Por exemplo, os valores da posição <strong>0</strong> nos três arrays (vetores) descrevem o mesmo candidato.</p>
 
-      <h3>13.3. Passo a passo de implementação</h3>
+      <h3 class="lesson-subsection">12.3. Passo a passo de implementação</h3>
       <ol>
-        <li><strong>Construtor Urna:</strong> receba <strong>max_candidato</strong>. Crie os três arrays com esse tamanho. Inicie os três contadores de votos e <strong>indexCandidato</strong> com zero.</li>
-        <li><strong>CadastroCandidato:</strong> receba <strong>nome</strong> e <strong>numero</strong>. Cadastre somente quando <strong>indexCandidato</strong> for menor que o tamanho do array. Grave nome e número na mesma posição, mantenha os votos dessa posição em zero e avance <strong>indexCandidato</strong>. Quando não houver posição livre, não altere nenhum array nem contador.</li>
-        <li><strong>GetNumCandidatos:</strong> crie um novo array de inteiros com tamanho igual a <strong>indexCandidato</strong>. Copie para ele somente os números das posições cadastradas. Retorne esse novo array; não retorne o array privado.</li>
-        <li><strong>GetCandidato:</strong> quando receber <strong>-1</strong>, retorne exatamente <strong>VOTO EM BRANCO</strong>. Para outro número, percorra apenas as posições menores que <strong>indexCandidato</strong>. Se encontrar o número, retorne o nome correspondente. Se não encontrar, retorne exatamente <strong>VOTO NULO</strong>.</li>
-        <li><strong>GetVotos:</strong> quando receber <strong>-1</strong>, retorne <strong>contaVotosBrancos</strong>. Para outro número cadastrado, retorne a posição correspondente de <strong>candidatoVotos</strong>. Para número não cadastrado, retorne <strong>contaVotosNulos</strong>.</li>
-        <li><strong>Votar:</strong> quando receber <strong>-1</strong>, aumente somente <strong>contaVotosBrancos</strong>. Para outro número, procure o candidato cadastrado. Ao encontrar, aumente o voto da posição correspondente e <strong>contaVotosValidos</strong>. Quando nenhum candidato for encontrado, aumente somente <strong>contaVotosNulos</strong>.</li>
+        <li><strong>Construtor Urna:</strong> Este construtor prepara uma urna nova e vazia, com espaço reservado para uma quantidade máxima de candidatos. Por exemplo, se a urna for criada com <strong>max_candidato</strong> igual a 5, ela poderá guardar até 5 candidatos. Para fazer isso, receba <strong>max_candidato</strong> e crie os três arrays (vetores) (<strong>candidatoNome</strong>, <strong>candidatoNumero</strong> e <strong>candidatoVotos</strong>) com esse tamanho. Depois, inicie <strong>contaVotosNulos</strong>, <strong>contaVotosBrancos</strong>, <strong>contaVotosValidos</strong> e <strong>indexCandidato</strong> com o valor zero.</li>
+        <li><strong>CadastroCandidato:</strong> Este método adiciona um novo candidato na urna, guardando o nome e o número dele. Por exemplo, ao cadastrar "Ana" com o número <code>10</code> em uma urna vazia, Ana fica na posição 0 dos arrays (vetores). O próximo candidato ficará na posição 1, e assim por diante. Para fazer isso, receba <strong>nome</strong> e <strong>numero</strong> e verifique se <strong>indexCandidato</strong> é menor que o tamanho do array (vetor). Se for, grave o nome em <strong>candidatoNome</strong> e o número em <strong>candidatoNumero</strong>, ambos na posição <strong>indexCandidato</strong>. Mantenha em zero os votos dessa posição em <strong>candidatoVotos</strong> e aumente <strong>indexCandidato</strong> em 1. Se a urna estiver cheia, não faça nada: não altere nenhum array (vetor) nem contador.</li>
+        <li><strong>GetNumCandidatos:</strong> Este método retorna um vetor de inteiros, contendo os números de todos os candidatos cadastrados na urna. Por exemplo, se foram cadastrados apenas 3 candidatos no objeto, então esse método deverá justamente retornar o número desses três candidatos. Para fazer isso, crie um novo array (vetor) de inteiros com tamanho igual a <strong>indexCandidato</strong>. Copie para ele somente os números das posições cadastradas. Retorne esse novo array (vetor); não retorne o array (vetor) privado.</li>
+        <li><strong>GetCandidato:</strong> Este método informa o nome do candidato que corresponde a um número digitado. Por exemplo, se Ana tem o número <code>10</code>, então <code>GetCandidato(10)</code> retorna "Ana". Se o número for <code>-1</code>, significa voto em branco; se o número não existir, significa voto nulo. Para fazer isso, verifique primeiro se o número recebido é <code>-1</code>; se for, retorne exatamente <strong>VOTO EM BRANCO</strong>. Para outro número, percorra apenas as posições menores que <strong>indexCandidato</strong>, comparando com <strong>candidatoNumero</strong>. Se encontrar o número, retorne o nome da mesma posição em <strong>candidatoNome</strong>. Se terminar a busca sem encontrar, retorne exatamente <strong>VOTO NULO</strong>.</li>
+        <li><strong>GetVotos:</strong> Este método informa quantos votos um número recebeu até o momento. Por exemplo, se o candidato <code>10</code> recebeu 2 votos, então <code>GetVotos(10)</code> retorna 2. O número <code>-1</code> retorna a quantidade de votos em branco, e um número não cadastrado retorna a quantidade de votos nulos. Para fazer isso, verifique se o número recebido é <code>-1</code>; se for, retorne <strong>contaVotosBrancos</strong>. Para outro número, percorra as posições menores que <strong>indexCandidato</strong>. Se encontrar o número, retorne o valor da mesma posição em <strong>candidatoVotos</strong>. Se não encontrar, retorne <strong>contaVotosNulos</strong>.</li>
+        <li><strong>Votar:</strong> Este método registra um voto na urna, somando 1 ao contador correto. Por exemplo, votar em <code>10</code> soma 1 aos votos da Ana; votar em <code>-1</code> soma 1 aos votos em branco; votar em <code>99</code>, que não existe, soma 1 aos votos nulos. Para fazer isso, verifique se o número recebido é <code>-1</code>; se for, aumente somente <strong>contaVotosBrancos</strong>. Para outro número, percorra as posições menores que <strong>indexCandidato</strong> procurando esse número. Ao encontrar, aumente em 1 o voto da posição correspondente em <strong>candidatoVotos</strong> e aumente também <strong>contaVotosValidos</strong>. Se nenhum candidato for encontrado, aumente somente <strong>contaVotosNulos</strong>.</li>
       </ol>
 
-      <h3>13.4. Cenário obrigatório de conferência</h3>
+      <h3 class="lesson-subsection">12.3.1. Exemplo visual: estado dos arrays (vetores)</h3>
+      <p>Após criar uma urna com capacidade para <strong>3</strong>, cadastrar Ana com <code>10</code> e Bia com <code>20</code>, os arrays (vetores) ficam assim:</p>
+      <table>
+        <thead><tr><th>Posição</th><th>candidatoNome</th><th>candidatoNumero</th><th>candidatoVotos</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>Ana</td><td><code>10</code></td><td>0</td></tr>
+          <tr><td>1</td><td>Bia</td><td><code>20</code></td><td>0</td></tr>
+          <tr><td>2</td><td>(vazia)</td><td>0</td><td>0</td></tr>
+        </tbody>
+      </table>
+      <p><strong>indexCandidato</strong> vale <strong>2</strong>. A posição <strong>2</strong> está livre e não deve ser lida nas buscas, porque só as posições menores que <strong>indexCandidato</strong> contêm candidatos. Se alguém votar em <code>10</code>, o valor da posição <strong>0</strong> de <strong>candidatoVotos</strong> passa a ser <strong>1</strong>.</p>
+
+      <h3 class="lesson-subsection">12.4. Cenário obrigatório de conferência</h3>
+      <p><strong>Onde executar:</strong> no Console App, escreva este cenário no método <strong>Main</strong> de <strong>Program.cs</strong> e mostre cada retorno com <strong>Console.WriteLine</strong>. No Windows Forms App, escreva o cenário no evento <strong>Click</strong> de um botão e mostre cada retorno em um <strong>Label</strong>, <strong>ListBox</strong> ou <strong>MessageBox</strong>. Nos dois casos, compare cada retorno com o valor esperado.</p>
       <ol>
         <li>Crie uma urna com capacidade para <strong>2</strong> candidatos.</li>
-        <li>Cadastre <strong>Ana</strong> com número <strong>10</strong> e <strong>Bia</strong> com número <strong>20</strong>.</li>
+        <li>Cadastre <strong>Ana</strong> com número <code>10</code> e <strong>Bia</strong> com número <code>20</code>.</li>
         <li>Tente cadastrar um terceiro candidato. Confirme que os dois cadastros anteriores permanecem os únicos armazenados.</li>
-        <li>Confira a lista retornada por <strong>GetNumCandidatos</strong>. Ela deve conter, nesta ordem, <strong>10</strong> e <strong>20</strong>.</li>
-        <li>Confira <strong>GetCandidato(10)</strong>, <strong>GetCandidato(-1)</strong> e <strong>GetCandidato(99)</strong>. Os retornos devem ser, respectivamente, <strong>Ana</strong>, <strong>VOTO EM BRANCO</strong> e <strong>VOTO NULO</strong>.</li>
-        <li>Registre dois votos para <strong>10</strong>, um voto para <strong>20</strong>, um voto para <strong>-1</strong> e um voto para <strong>99</strong>.</li>
-        <li>Confira <strong>GetVotos(10)</strong>, <strong>GetVotos(20)</strong>, <strong>GetVotos(-1)</strong> e <strong>GetVotos(99)</strong>. Os retornos devem ser, respectivamente, <strong>2</strong>, <strong>1</strong>, <strong>1</strong> e <strong>1</strong>.</li>
+        <li>Confira a lista retornada por <strong>GetNumCandidatos</strong>. Ela deve conter, nesta ordem, <code>10</code> e <code>20</code>.</li>
+        <li>Confira <code>GetCandidato(10)</code>, <code>GetCandidato(-1)</code> e <code>GetCandidato(99)</code>. Os retornos devem ser, respectivamente, <strong>Ana</strong>, <strong>VOTO EM BRANCO</strong> e <strong>VOTO NULO</strong>.</li>
+        <li>Registre dois votos para <code>10</code>, um voto para <code>20</code>, um voto para <code>-1</code> e um voto para <code>99</code>.</li>
+        <li>Confira <code>GetVotos(10)</code>, <code>GetVotos(20)</code>, <code>GetVotos(-1)</code> e <code>GetVotos(99)</code>. Os retornos devem ser, respectivamente, <strong>2</strong>, <strong>1</strong>, <strong>1</strong> e <strong>1</strong>.</li>
       </ol>
 
-      <h3>13.5. Critérios de conclusão</h3>
+      <h3 class="lesson-subsection">12.5. Critérios de conclusão</h3>
       <ul>
         <li>Todos os campos indicados no diagrama são privados e possuem os tipos mostrados.</li>
         <li>Os métodos públicos possuem os nomes, parâmetros e retornos mostrados no diagrama.</li>
-        <li>Os arrays não são acessados nem retornados diretamente pelo programa.</li>
+        <li>Os arrays (vetores) não são acessados nem retornados diretamente pelo programa de teste (console ou formulário).</li>
         <li>O cadastro não ultrapassa a capacidade definida no construtor.</li>
         <li>Voto branco, voto válido e voto nulo atualizam somente os contadores ou posições previstos para cada caso.</li>
-        <li>O cenário obrigatório produz todos os retornos esperados.</li>
+        <li>A classe <strong>Urna</strong> não contém código de console nem de formulário.</li>
+        <li>O cenário obrigatório produz todos os retornos esperados, em Console App ou Windows Forms App.</li>
+      </ul>
+    </section>
+
+    <section class="lesson-section">
+      <h2>13. Resumo</h2>
+      <ul>
+        <li><strong>Pessoa</strong> concentra o dado e o comportamento comuns.</li>
+        <li><strong>Aluno</strong> reutiliza <strong>Nome</strong> e acrescenta <strong>Curso</strong>.</li>
+        <li><strong>Professor</strong> reutiliza <strong>Nome</strong> e acrescenta <strong>Disciplina</strong>.</li>
+        <li>A herança evita repetir em cada classe os membros que possuem o mesmo significado.</li>
       </ul>
     </section>
 
@@ -306,9 +342,9 @@ class Urna {
       <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
     </nav>
     <section class="update-log" aria-label="Informação de atualização">
-      <p>Última atualização: 30/09/2026 20:48:36</p>
+      <p>Última atualização: 05/10/2026</p>
     </section>
+
   </article>
 </body>
 </html>
-
