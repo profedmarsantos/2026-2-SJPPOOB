@@ -245,7 +245,7 @@ Disciplina: Programação</code></pre>
       <p>Em ambos os casos, o arquivo <strong>Urna.cs</strong> é exatamente o mesmo. A classe <strong>Urna</strong> não deve conter <strong>Console</strong> nem controles de formulário.</p>
             <figure>
               <img src="img/UrnaBala.png" alt="Tela do formulário Urna Bala com um campo de texto para o número, um rótulo Nome, teclado numérico de 0 a 9 e os botões Branco, Corrige, Confirma e Resultados." style="max-width: 100%; height: auto;">
-              <figcaption><strong>Exemplo de tela para Windows Forms App:</strong> o campo no topo mostra o número digitado; o rótulo <strong>Nome</strong> mostra o retorno de <strong>GetCandidato</strong>; o teclado numérico digita o número; <strong>Branco</strong> vota em <code>-1</code>; <strong>Corrige</strong> apaga o número digitado; <strong>Confirma</strong> chama <strong>Votar</strong>; <strong>Resultados</strong> mostra os retornos de <strong>GetVotos</strong>.</figcaption>
+              <figcaption><strong>Exemplo de tela para Windows Forms App:</strong> o campo no topo mostra o número digitado; o rótulo <strong>Nome</strong> mostra o retorno de <strong>GetCandidato</strong>; o teclado numérico digita o número; <strong>Branco</strong> seleciona o voto <code>-1</code>; <strong>Corrige</strong> apaga a seleção atual; <strong>Confirma</strong> chama <strong>Votar</strong> para registrar o voto; <strong>Resultados</strong> mostra os retornos de <strong>GetVotos</strong>.</figcaption>
             </figure>
 
             <h3 class="lesson-subsection">12.1. Diagrama detalhado da classe</h3>
@@ -305,15 +305,109 @@ class Urna {
       <p><strong>indexCandidato</strong> vale <strong>2</strong>. A posição <strong>2</strong> está livre e não deve ser lida nas buscas, porque só as posições menores que <strong>indexCandidato</strong> contêm candidatos. Se alguém votar em <code>10</code>, o valor da posição <strong>0</strong> de <strong>candidatoVotos</strong> passa a ser <strong>1</strong>.</p>
 
       <h3 class="lesson-subsection">12.4. Cenário obrigatório de conferência</h3>
-      <p><strong>Onde executar:</strong> no Console App, escreva este cenário no método <strong>Main</strong> de <strong>Program.cs</strong> e mostre cada retorno com <strong>Console.WriteLine</strong>. No Windows Forms App, escreva o cenário no evento <strong>Click</strong> de um botão e mostre cada retorno em um <strong>Label</strong>, <strong>ListBox</strong> ou <strong>MessageBox</strong>. Nos dois casos, compare cada retorno com o valor esperado.</p>
+      <p>Construa a interface da urna conforme a imagem e programe os eventos dos controles no <strong>Form1.cs</strong>. Ao iniciar o formulário, crie uma <strong>Urna</strong> com capacidade para <code>4</code> candidatos. Escolham quatro alunos da turma e cadastrem os nomes deles como candidatos. Cada candidato pode ter um número escolhido pela turma, desde que os números sejam diferentes entre si e não sejam <code>0</code> nem <code>-1</code>. O exemplo usa <code>0</code> para consultar o total de votos nulos e <code>-1</code> para o voto branco. Façam o cadastro no evento <strong>Form1_Load</strong> e anotem os números escolhidos para usá-los na sequência de teste.</p>
+      <p><strong>Atenção ao escopo:</strong> <code>urna2026</code> precisa ser declarada como campo dentro da classe <strong>Form1</strong>, mas fora do construtor e dos métodos. No arquivo <strong>Form1.cs</strong>, localizem a linha <code>public partial class Form1 : Form</code>. Declarem o campo logo depois da chave de abertura da classe e antes do construtor <code>Form1()</code>, como neste exemplo:</p>
+      <pre><code>public partial class Form1 : Form
+{
+    private Urna urna2026;
+
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    // Os eventos Form1_Load e Click também ficam dentro desta classe.
+}</code></pre>
+      <p>Não declarem <code>urna2026</code> como variável local dentro de <strong>Form1_Load</strong>. Uma variável local só existe dentro do método em que foi declarada; por isso, os eventos dos botões não conseguiriam acessá-la. O campo declarado na classe pode ser usado por <strong>Form1_Load</strong> e pelos demais eventos. Atribuam a nova instância no evento <strong>Form1_Load</strong>, antes de usar os botões.</p>
+      <p>Substituam <code>"Nome do aluno 1"</code> até <code>"Nome do aluno 4"</code> pelos nomes escolhidos e troquem <code>11</code>, <code>22</code>, <code>33</code> e <code>44</code> pelos números diferentes que cadastraram.</p>
+      <h4>Função dos controles</h4>
       <ol>
-        <li>Crie uma urna com capacidade para <strong>2</strong> candidatos.</li>
-        <li>Cadastre <strong>Ana</strong> com número <code>10</code> e <strong>Bia</strong> com número <code>20</code>.</li>
-        <li>Tente cadastrar um terceiro candidato. Confirme que os dois cadastros anteriores permanecem os únicos armazenados.</li>
-        <li>Confira a lista retornada por <strong>GetNumCandidatos</strong>. Ela deve conter, nesta ordem, <code>10</code> e <code>20</code>.</li>
-        <li>Confira <code>GetCandidato(10)</code>, <code>GetCandidato(-1)</code> e <code>GetCandidato(99)</code>. Os retornos devem ser, respectivamente, <strong>Ana</strong>, <strong>VOTO EM BRANCO</strong> e <strong>VOTO NULO</strong>.</li>
-        <li>Registre dois votos para <code>10</code>, um voto para <code>20</code>, um voto para <code>-1</code> e um voto para <code>99</code>.</li>
-        <li>Confira <code>GetVotos(10)</code>, <code>GetVotos(20)</code>, <code>GetVotos(-1)</code> e <code>GetVotos(99)</code>. Os retornos devem ser, respectivamente, <strong>2</strong>, <strong>1</strong>, <strong>1</strong> e <strong>1</strong>.</li>
+        <li><strong>Cadastro ao iniciar — evento Form1_Load:</strong> substitua os nomes e números de exemplo pelos quatro nomes e números escolhidos pela turma.
+          <pre><code>private void Form1_Load(object sender, EventArgs e)
+{
+    urna2026 = new Urna(4);
+    urna2026.CadastroCandidato("Nome do aluno 1", 11);
+    urna2026.CadastroCandidato("Nome do aluno 2", 22);
+    urna2026.CadastroCandidato("Nome do aluno 3", 33);
+    urna2026.CadastroCandidato("Nome do aluno 4", 44);
+    label2.Text = "";
+}</code></pre>
+        </li>
+        <li><strong>Botões de 0 a 9:</strong> programe diretamente o evento <strong>Click</strong> de cada botão. Veja o exemplo do botão <code>1</code>:
+          <pre><code>private void button1_Click(object sender, EventArgs e)
+{
+    if (textBox1.Text == "BRANCO")
+        textBox1.Text = "1";
+    else
+        textBox1.Text += "1";
+}</code></pre>
+          <p>Repitam esse código para os outros nove botões. Em cada cópia, ajustem o nome do evento <strong>Click</strong> para o botão correspondente e substituam as duas ocorrências do texto <code>"1"</code> pelo algarismo desse botão. Por exemplo, no botão <code>2</code>, usem <code>button2_Click</code> e substituam <code>"1"</code> por <code>"2"</code>. No formulário deste exemplo, o evento do botão <code>0</code> se chama <code>button10_Click</code>; nele, substituam <code>"1"</code> por <code>"0"</code>. Assim, cada botão acrescenta seu próprio algarismo ao campo, sem repetir os dez trechos completos nesta explicação.</p>
+        </li>
+        <li><strong>Campo de número — evento TextChanged:</strong> deixe este evento atualizar o rótulo em todos os casos: se o texto for um número, mostre o retorno de <strong>GetCandidato</strong>; se for <strong>BRANCO</strong>, mostre <strong>GetCandidato(-1)</strong>; se estiver vazio, limpe o rótulo. Assim, os eventos <strong>Branco</strong>, <strong>Corrige</strong> e <strong>Confirma</strong> não precisam alterar o rótulo diretamente.
+          <pre><code>private void textBox1_TextChanged(object sender, EventArgs e)
+{
+    int numero;
+    if (int.TryParse(textBox1.Text, out numero))
+        label2.Text = urna2026.GetCandidato(numero);
+    else if (textBox1.Text == "BRANCO")
+        label2.Text = urna2026.GetCandidato(-1);
+    else
+        label2.Text = "";
+}</code></pre>
+        </li>
+        <li><strong>Branco:</strong> defina o texto do campo como <strong>BRANCO</strong>. O evento <strong>TextChanged</strong> mostrará o retorno de <strong>GetCandidato(-1)</strong> no rótulo <strong>Nome</strong>. Depois, use <strong>Confirma</strong> para registrar o voto.
+          <pre><code>private void button12_Click(object sender, EventArgs e)
+{
+    textBox1.Text = "BRANCO";
+}</code></pre>
+        </li>
+        <li><strong>Corrige:</strong> limpe o campo. O evento <strong>TextChanged</strong> também limpará o rótulo. Essa ação não desfaz votos já confirmados.
+          <pre><code>private void button11_Click(object sender, EventArgs e)
+{
+    textBox1.Text = "";
+}</code></pre>
+        </li>
+        <li><strong>Confirma:</strong> se o texto for um número, envie esse número para <strong>Votar</strong>. Caso contrário, envie <code>-1</code> para registrar voto branco. Depois, limpe o campo; o evento <strong>TextChanged</strong> limpará o rótulo.
+          <pre><code>private void button13_Click(object sender, EventArgs e)
+{
+    int numeroVoto;
+    if (int.TryParse(textBox1.Text, out numeroVoto))
+        urna2026.Votar(numeroVoto);
+    else
+        urna2026.Votar(-1);
+
+    textBox1.Text = "";
+}</code></pre>
+        </li>
+        <li><strong>Resultados:</strong> percorra os números cadastrados, consulte os nomes e votos, acrescente os totais de votos brancos e nulos e mostre tudo em uma janela.
+          <pre><code>private void button14_Click(object sender, EventArgs e)
+{
+    string msg = "";
+    int[] numeros = urna2026.GetNumCandidatos();
+
+    for (int i = 0; i &lt; numeros.Length; i++)
+    {
+        int numero = numeros[i];
+        msg += $"Nome: {urna2026.GetCandidato(numero)} n°{numero}\n";
+        msg += $"Votos: {urna2026.GetVotos(numero)}\n";
+        msg += "--\n";
+    }
+
+    msg += $"Votos Brancos: {urna2026.GetVotos(-1)}\n";
+    msg += $"Votos Nulos: {urna2026.GetVotos(0)}\n";
+    MessageBox.Show(msg);
+}</code></pre>
+        </li>
+      </ol>
+      <h4>Sequência obrigatória de teste</h4>
+      <ol>
+        <li>Digite o número escolhido para o primeiro candidato. O exemplo usa <code>11</code>; substituam esse valor pelo número que cadastraram. Confira se o rótulo mostra o nome correspondente e pressione <strong>Confirma</strong> para registrar o voto.</li>
+        <li>Digite um número que não foi cadastrado. O exemplo usa <code>12</code>; use esse valor somente se nenhum candidato tiver esse número. Confira se o rótulo mostra <strong>VOTO NULO</strong>. Pressione <strong>Corrige</strong> e confira se o campo e o rótulo foram limpos, sem registrar esse voto.</li>
+        <li>Digite novamente o número do primeiro candidato e confirme para registrar o segundo voto.</li>
+        <li>Digite o número escolhido para o segundo candidato. O exemplo usa <code>22</code>; substituam esse valor pelo número cadastrado. Confira se o rótulo mostra o nome correspondente e confirme uma vez.</li>
+        <li>Pressione <strong>Branco</strong> e depois <strong>Confirma</strong> para registrar um voto branco.</li>
+        <li>Digite um número que não foi atribuído a nenhum candidato. O exemplo usa <code>99</code>; se a turma tiver escolhido esse número, use outro número não cadastrado. Confira se o rótulo mostra <strong>VOTO NULO</strong> e pressione <strong>Confirma</strong> para registrar um voto nulo.</li>
+        <li>Pressione <strong>Resultados</strong>. Confira se o primeiro candidato recebeu <strong>2</strong> votos, o segundo recebeu <strong>1</strong> voto e os outros dois receberam <strong>0</strong> votos. Confira também <strong>1</strong> voto branco e <strong>1</strong> voto nulo. A lista deve exibir os quatro nomes e os números escolhidos pela turma.</li>
       </ol>
 
       <h3 class="lesson-subsection">12.5. Critérios de conclusão</h3>
@@ -342,7 +436,7 @@ class Urna {
       <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
     </nav>
     <section class="update-log" aria-label="Informação de atualização">
-      <p>Última atualização: 05/10/2026</p>
+      <p>Última atualização: 07/10/2026</p>
     </section>
 
   </article>
