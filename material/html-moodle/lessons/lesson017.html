@@ -3,190 +3,1126 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Módulo 17 - CRUD Básico</title>
+  <title>Aula 17 - CRUD com BDEscola</title>
   <link rel="stylesheet" href="assets/theme.css">
   <script defer src="assets/code-enhancer.js"></script>
+  <style>
+    .lesson-17 .final-screen {
+      display: block;
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      margin: 16px auto 8px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .lesson-17 figcaption {
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
 </head>
 <body class="lesson-17">
   <article class="lesson-page">
     <header class="lesson-hero">
-      <p class="hero-kicker"><strong>Módulo 17</strong></p>
-      <h1 class="hero-title">CRUD Basico</h1>
-      <p class="hero-subtitle">Objetivo: aplicar INSERT, SELECT, UPDATE e DELETE com comandos claros e parametros.</p>
+      <p class="hero-kicker"><strong>Aula 17</strong></p>
+      <h1 class="hero-title">CRUD com BDEscola</h1>
+      <p class="hero-subtitle">Objetivo: construir um sistema Windows Forms para cadastrar alunos, turmas e matrículas usando SQL Server e C#.</p>
     </header>
 
     <section class="lesson-section">
-      <h2>1. Introducao teorica</h2>
-      <p>CRUD representa as quatro operacoes principais de dados: criar, consultar, atualizar e excluir.</p>
-      <p>Essas operacoes aparecem em praticamente todo sistema com banco.</p>
+      <h2>1. Resultado esperado</h2>
+      <p>Ao concluir esta aula, você terá um sistema chamado <strong>BDEscola</strong> com três áreas: cadastro de alunos, cadastro de turmas e controle de matrículas.</p>
+      <p><strong>CRUD:</strong> significa criar, consultar, atualizar e excluir dados. Nesta atividade, você aplicará as quatro operações em alunos e turmas.</p>
+      <ol>
+        <li><strong>Passo 1:</strong> crie o banco de dados no SQL Server Express.</li>
+        <li><strong>Passo 2:</strong> crie o projeto Windows Forms e instale o pacote de conexão.</li>
+        <li><strong>Passo 3:</strong> crie as classes e os repositórios.</li>
+        <li><strong>Passo 4:</strong> monte a tela no Designer.</li>
+        <li><strong>Passo 5:</strong> programe os eventos, teste cada operação e confira o resultado.</li>
+      </ol>
+      <div class="note"><strong>Importante:</strong> execute uma etapa por vez. Só avance quando a etapa atual terminar sem erro.</div>
     </section>
 
     <section class="lesson-section">
-      <h2>2. Conceitos essenciais desta aula</h2>
+      <h2>2. Pré-requisitos</h2>
       <ul>
-        <li><strong>CREATE:</strong> inserir novo registro com INSERT.</li>
-        <li><strong>READ:</strong> consultar registros com SELECT.</li>
-        <li><strong>UPDATE:</strong> alterar dados existentes.</li>
-        <li><strong>DELETE:</strong> remover registro especifico.</li>
+        <li><strong>Visual Studio:</strong> instalado com a carga de trabalho <span class="keyword-highlight">Desenvolvimento para desktop com .NET</span>.</li>
+        <li><strong>SQL Server Express:</strong> instalado e em execução.</li>
+        <li><strong>SSMS:</strong> SQL Server Management Studio instalado para executar os scripts SQL.</li>
+        <li><strong>Conhecimento anterior:</strong> classes, propriedades, métodos, eventos de botões e conexão com banco de dados.</li>
+      </ul>
+      <p><strong>Observação:</strong> os dados e a senha usados nesta aula são somente para ambiente local de aprendizagem. Não use essa senha em um sistema real.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>3. Tela que você irá construir</h2>
+      <p>Use esta imagem como referência durante a montagem da interface. A parte superior tem três colunas. A parte inferior mostra a visão geral das matrículas.</p>
+      <figure>
+        <img class="final-screen" src="assets/mockup_17.png" alt="Tela final do sistema BDEscola com as áreas Gestão de Alunos, Gestão de Matrículas, Gestão de Turmas e Visão Geral - Matrículas por Turma.">
+        <figcaption>Referência visual da tela final do sistema BDEscola.</figcaption>
+      </figure>
+      <ol>
+        <li><strong>Passo 1:</strong> compare os títulos e os controles da imagem com os nomes indicados na seção 9.</li>
+        <li><strong>Passo 2:</strong> mantenha a mesma ordem visual. Não é necessário copiar tamanhos exatos.</li>
+      </ol>
+    </section>
+
+    <section class="lesson-section">
+      <h2>4. Criar e preencher o banco de dados</h2>
+      <h3>4.1 Abrir o SSMS</h3>
+      <ol>
+        <li><strong>Passo A:</strong> abra o <strong>SQL Server Management Studio</strong>.</li>
+        <li><strong>Passo B:</strong> conecte-se ao servidor <code>.\SQLEXPRESS</code>. Use a autenticação que funciona no seu computador.</li>
+        <li><strong>Passo C:</strong> clique em <strong>New Query</strong>.</li>
+      </ol>
+
+      <h3>4.2 Executar o script</h3>
+      <ol>
+        <li><strong>Passo A:</strong> copie todo o script abaixo.</li>
+        <li><strong>Passo B:</strong> cole o script em uma única janela de consulta.</li>
+        <li><strong>Passo C:</strong> pressione <strong>F5</strong> ou clique em <strong>Execute</strong>.</li>
+        <li><strong>Passo D:</strong> atualize a lista de bancos e confirme a existência de <strong>BDEscola</strong>.</li>
+      </ol>
+
+      <pre><code data-lang="sql">USE master;
+GO
+
+IF DB_ID('BDEscola') IS NULL
+BEGIN
+    CREATE DATABASE BDEscola;
+END;
+GO
+
+USE BDEscola;
+GO
+
+CREATE TABLE tbAluno
+(
+    MatriculaAluno INT NOT NULL,
+    NomeAluno VARCHAR(100) NOT NULL,
+    TelefoneAluno VARCHAR(20) NOT NULL,
+    CONSTRAINT PK_tbAluno PRIMARY KEY (MatriculaAluno)
+);
+
+CREATE TABLE tbTurma
+(
+    CodigoTurma VARCHAR(20) NOT NULL,
+    NomeTurma VARCHAR(100) NOT NULL,
+    AnoTurma INT NOT NULL,
+    MesTurma INT NOT NULL,
+    CapacidadeMaximaAluno INT NOT NULL,
+    CONSTRAINT PK_tbTurma PRIMARY KEY (CodigoTurma),
+    CONSTRAINT CK_tbTurma_Ano CHECK (AnoTurma &gt;= 2000),
+    CONSTRAINT CK_tbTurma_Mes CHECK (MesTurma BETWEEN 1 AND 12),
+    CONSTRAINT CK_tbTurma_Capacidade CHECK (CapacidadeMaximaAluno &gt; 0)
+);
+
+CREATE TABLE tbAlunoTurma
+(
+    MatriculaAluno INT NOT NULL,
+    CodigoTurma VARCHAR(20) NOT NULL,
+    CONSTRAINT PK_tbAlunoTurma PRIMARY KEY (MatriculaAluno, CodigoTurma),
+    CONSTRAINT FK_tbAlunoTurma_Aluno
+        FOREIGN KEY (MatriculaAluno) REFERENCES tbAluno(MatriculaAluno),
+    CONSTRAINT FK_tbAlunoTurma_Turma
+        FOREIGN KEY (CodigoTurma) REFERENCES tbTurma(CodigoTurma)
+);
+
+INSERT INTO tbAluno (MatriculaAluno, NomeAluno, TelefoneAluno) VALUES
+(1001, 'Ana Souza', '1199000-1001'),
+(1002, 'Bruno Lima', '1199000-1002'),
+(1003, 'Carla Mendes', '1199000-1003'),
+(1004, 'Diego Alves', '1199000-1004'),
+(1005, 'Elisa Rocha', '1199000-1005'),
+(1006, 'Felipe Costa', '1199000-1006'),
+(1007, 'Gabriela Martins', '1199000-1007'),
+(1008, 'Henrique Dias', '1199000-1008'),
+(1009, 'Isabela Silva', '1199000-1009'),
+(1010, 'Joao Pereira', '1199000-1010'),
+(1011, 'Karina Oliveira', '1199000-1011'),
+(1012, 'Lucas Santos', '1199000-1012'),
+(1013, 'Mariana Freitas', '1199000-1013'),
+(1014, 'Nicolas Ramos', '1199000-1014'),
+(1015, 'Olivia Barros', '1199000-1015'),
+(1016, 'Paulo Araujo', '1199000-1016'),
+(1017, 'Quezia Nunes', '1199000-1017'),
+(1018, 'Rafael Melo', '1199000-1018'),
+(1019, 'Sofia Cardoso', '1199000-1019'),
+(1020, 'Tiago Vieira', '1199000-1020');
+
+INSERT INTO tbTurma
+    (CodigoTurma, NomeTurma, AnoTurma, MesTurma, CapacidadeMaximaAluno)
+VALUES
+    ('CSP-01', 'C# Basico', 2026, 2, 15),
+    ('SQL-02', 'SQL Server', 2026, 3, 10),
+    ('WIN-03', 'Windows Forms', 2026, 4, 20);
+
+INSERT INTO tbAlunoTurma (MatriculaAluno, CodigoTurma) VALUES
+(1001, 'CSP-01'), (1002, 'CSP-01'), (1003, 'CSP-01'), (1004, 'CSP-01'),
+(1005, 'SQL-02'), (1006, 'SQL-02'), (1007, 'SQL-02'), (1008, 'SQL-02'),
+(1009, 'WIN-03'), (1010, 'WIN-03'), (1011, 'WIN-03'), (1012, 'WIN-03');
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.server_principals WHERE name = 'operadorEscola')
+BEGIN
+    CREATE LOGIN operadorEscola WITH PASSWORD = 'Escola123';
+END;
+GO
+
+USE BDEscola;
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.database_principals WHERE name = 'operadorEscola')
+BEGIN
+    CREATE USER operadorEscola FOR LOGIN operadorEscola;
+END;
+GO
+
+ALTER ROLE db_owner ADD MEMBER operadorEscola;
+GO</code></pre>
+
+      <h3>4.3 Conferir os dados</h3>
+      <p>Execute estas consultas separadamente. Cada uma deve retornar dados.</p>
+      <pre><code data-lang="sql">USE BDEscola;
+
+SELECT * FROM tbAluno;
+SELECT * FROM tbTurma;
+SELECT * FROM tbAlunoTurma;</code></pre>
+      <p><strong>Relação N:N:</strong> <code>tbAlunoTurma</code> liga alunos e turmas. A chave primária composta impede uma matrícula repetida do mesmo aluno na mesma turma.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>5. Criar o projeto Windows Forms</h2>
+      <ol>
+        <li><strong>Passo A:</strong> abra o Visual Studio.</li>
+        <li><strong>Passo B:</strong> clique em <strong>Criar um novo projeto</strong>.</li>
+        <li><strong>Passo C:</strong> escolha <strong>Aplicativo Windows Forms</strong>.</li>
+        <li><strong>Passo D:</strong> escolha uma versão atual do <strong>.NET</strong>.</li>
+        <li><strong>Passo E:</strong> use <strong>BDEscola</strong> como nome do projeto e clique em <strong>Criar</strong>.</li>
+        <li><strong>Passo F:</strong> confirme o namespace exibido nas propriedades do projeto. Nos blocos desta aula, ele é <code>BDEscola</code>.</li>
+      </ol>
+
+      <h3>5.1 Instalar o pacote de conexão</h3>
+      <ol>
+        <li><strong>Passo A:</strong> no Solution Explorer, clique com o botão direito no projeto <strong>BDEscola</strong>.</li>
+        <li><strong>Passo B:</strong> escolha <strong>Gerenciar Pacotes NuGet</strong>.</li>
+        <li><strong>Passo C:</strong> pesquise por <code>Microsoft.Data.SqlClient</code>.</li>
+        <li><strong>Passo D:</strong> instale o pacote oficial chamado <strong>Microsoft.Data.SqlClient</strong>.</li>
+        <li><strong>Passo E:</strong> aceite os termos, se o Visual Studio solicitar.</li>
+      </ol>
+      <div class="note"><strong>Regra desta aula:</strong> use <code>Microsoft.Data.SqlClient</code>. Não use <code>System.Data.SqlClient</code>.</div>
+    </section>
+
+    <section class="lesson-section">
+      <h2>6. Criar as classes de modelo</h2>
+      <p>Crie uma pasta chamada <strong>Models</strong>. Para criar cada arquivo, clique com o botão direito na pasta, escolha <strong>Adicionar</strong>, <strong>Classe</strong>, informe o nome e clique em <strong>Adicionar</strong>.</p>
+
+      <h3>6.1 Arquivo Aluno.cs</h3>
+      <ol>
+        <li><strong>Passo A:</strong> crie <code>Models/Aluno.cs</code>.</li>
+        <li><strong>Passo B:</strong> substitua o conteúdo pelo código abaixo.</li>
+        <li><strong>Passo C:</strong> salve o arquivo com <strong>Ctrl + S</strong>.</li>
+      </ol>
+      <pre><code data-lang="csharp">namespace BDEscola.Models;
+
+public class Aluno
+{
+    public int MatriculaAluno { get; set; }
+    public string NomeAluno { get; set; } = string.Empty;
+    public string TelefoneAluno { get; set; } = string.Empty;
+
+    public bool ValidarNome()
+    {
+        return !string.IsNullOrWhiteSpace(NomeAluno) &amp;&amp; NomeAluno.Trim().Length &gt; 3;
+    }
+
+    public override string ToString()
+    {
+        return $"{MatriculaAluno} - {NomeAluno}";
+    }
+}</code></pre>
+
+      <h3>6.2 Arquivo Turma.cs</h3>
+      <ol>
+        <li><strong>Passo A:</strong> crie <code>Models/Turma.cs</code>.</li>
+        <li><strong>Passo B:</strong> substitua o conteúdo pelo código abaixo.</li>
+        <li><strong>Passo C:</strong> salve o arquivo.</li>
+      </ol>
+      <pre><code data-lang="csharp">namespace BDEscola.Models;
+
+public class Turma
+{
+    public string CodigoTurma { get; set; } = string.Empty;
+    public string NomeTurma { get; set; } = string.Empty;
+    public int AnoTurma { get; set; }
+    public int MesTurma { get; set; }
+    public int CapacidadeMaximaAluno { get; set; }
+
+    public int CalcularVagasRestantes(int totalMatriculados)
+    {
+        return CapacidadeMaximaAluno - totalMatriculados;
+    }
+
+    public bool ValidarCapacidade()
+    {
+        return CapacidadeMaximaAluno &gt; 0;
+    }
+
+    public override string ToString()
+    {
+        return $"{CodigoTurma} - {NomeTurma}";
+    }
+}</code></pre>
+      <p><strong>Teste mental:</strong> para uma turma com capacidade 15 e 4 matrículas, <code>CalcularVagasRestantes(4)</code> retorna 11.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>7. Criar a conexão e os repositórios</h2>
+      <p>Crie uma pasta chamada <strong>Data</strong>. Os repositórios concentram os comandos SQL. O formulário chama seus métodos e não escreve SQL diretamente.</p>
+
+      <h3>7.1 Arquivo Database.cs</h3>
+      <ol>
+        <li><strong>Passo A:</strong> crie <code>Data/Database.cs</code>.</li>
+        <li><strong>Passo B:</strong> confirme se a instância SQL Server é <code>.\SQLEXPRESS</code>. Se for diferente, altere apenas o valor de <code>Server</code>.</li>
+        <li><strong>Passo C:</strong> cole e salve o código.</li>
+      </ol>
+      <pre><code data-lang="csharp">using Microsoft.Data.SqlClient;
+
+namespace BDEscola.Data;
+
+public static class Database
+{
+    private const string ConnectionString =
+        "Server=.\\SQLEXPRESS;Database=BDEscola;User Id=operadorEscola;Password=Escola123;Encrypt=True;TrustServerCertificate=True;";
+
+    public static SqlConnection CriarConexao()
+    {
+        return new SqlConnection(ConnectionString);
+    }
+}</code></pre>
+
+      <h3>7.2 Arquivo AlunoRepository.cs</h3>
+      <ol>
+        <li><strong>Passo A:</strong> crie <code>Data/AlunoRepository.cs</code>.</li>
+        <li><strong>Passo B:</strong> cole o código completo.</li>
+        <li><strong>Passo C:</strong> compile o projeto com <strong>Ctrl + Shift + B</strong>.</li>
+      </ol>
+      <pre><code data-lang="csharp">using BDEscola.Models;
+using Microsoft.Data.SqlClient;
+
+namespace BDEscola.Data;
+
+public class AlunoRepository
+{
+    public void Inserir(Aluno aluno)
+    {
+        const string sql = """
+            INSERT INTO tbAluno (MatriculaAluno, NomeAluno, TelefoneAluno)
+            VALUES (@MatriculaAluno, @NomeAluno, @TelefoneAluno);
+            """;
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        comando.Parameters.AddWithValue("@MatriculaAluno", aluno.MatriculaAluno);
+        comando.Parameters.AddWithValue("@NomeAluno", aluno.NomeAluno);
+        comando.Parameters.AddWithValue("@TelefoneAluno", aluno.TelefoneAluno);
+        conexao.Open();
+        comando.ExecuteNonQuery();
+    }
+
+    public List&lt;Aluno&gt; Listar()
+    {
+        const string sql = """
+            SELECT MatriculaAluno, NomeAluno, TelefoneAluno
+            FROM tbAluno
+            ORDER BY NomeAluno;
+            """;
+        List&lt;Aluno&gt; alunos = [];
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        conexao.Open();
+        using SqlDataReader leitor = comando.ExecuteReader();
+
+        while (leitor.Read())
+        {
+            alunos.Add(new Aluno
+            {
+                MatriculaAluno = leitor.GetInt32(0),
+                NomeAluno = leitor.GetString(1),
+                TelefoneAluno = leitor.GetString(2)
+            });
+        }
+
+        return alunos;
+    }
+
+    public void Atualizar(Aluno aluno)
+    {
+        const string sql = """
+            UPDATE tbAluno
+            SET NomeAluno = @NomeAluno,
+                TelefoneAluno = @TelefoneAluno
+            WHERE MatriculaAluno = @MatriculaAluno;
+            """;
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        comando.Parameters.AddWithValue("@MatriculaAluno", aluno.MatriculaAluno);
+        comando.Parameters.AddWithValue("@NomeAluno", aluno.NomeAluno);
+        comando.Parameters.AddWithValue("@TelefoneAluno", aluno.TelefoneAluno);
+        conexao.Open();
+        comando.ExecuteNonQuery();
+    }
+
+    public void Excluir(int matriculaAluno)
+    {
+        const string sql = "DELETE FROM tbAluno WHERE MatriculaAluno = @MatriculaAluno;";
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        comando.Parameters.AddWithValue("@MatriculaAluno", matriculaAluno);
+        conexao.Open();
+        comando.ExecuteNonQuery();
+    }
+}</code></pre>
+
+      <h3>7.3 Arquivo TurmaRepository.cs</h3>
+      <ol>
+        <li><strong>Passo A:</strong> crie <code>Data/TurmaRepository.cs</code>.</li>
+        <li><strong>Passo B:</strong> cole o código completo.</li>
+        <li><strong>Passo C:</strong> compile novamente. Não avance se houver erro.</li>
+      </ol>
+      <pre><code data-lang="csharp">using System.Data;
+using BDEscola.Models;
+using Microsoft.Data.SqlClient;
+
+namespace BDEscola.Data;
+
+public class TurmaRepository
+{
+    public void Inserir(Turma turma)
+    {
+        const string sql = """
+            INSERT INTO tbTurma
+                (CodigoTurma, NomeTurma, AnoTurma, MesTurma, CapacidadeMaximaAluno)
+            VALUES
+                (@CodigoTurma, @NomeTurma, @AnoTurma, @MesTurma, @CapacidadeMaximaAluno);
+            """;
+        ExecutarComandoTurma(sql, turma);
+    }
+
+    public List&lt;Turma&gt; Listar()
+    {
+        const string sql = """
+            SELECT CodigoTurma, NomeTurma, AnoTurma, MesTurma, CapacidadeMaximaAluno
+            FROM tbTurma
+            ORDER BY CodigoTurma;
+            """;
+        List&lt;Turma&gt; turmas = [];
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        conexao.Open();
+        using SqlDataReader leitor = comando.ExecuteReader();
+
+        while (leitor.Read())
+        {
+            turmas.Add(CriarTurma(leitor));
+        }
+
+        return turmas;
+    }
+
+    public void Atualizar(Turma turma)
+    {
+        const string sql = """
+            UPDATE tbTurma
+            SET NomeTurma = @NomeTurma,
+                AnoTurma = @AnoTurma,
+                MesTurma = @MesTurma,
+                CapacidadeMaximaAluno = @CapacidadeMaximaAluno
+            WHERE CodigoTurma = @CodigoTurma;
+            """;
+        ExecutarComandoTurma(sql, turma);
+    }
+
+    public void Excluir(string codigoTurma)
+    {
+        const string sql = "DELETE FROM tbTurma WHERE CodigoTurma = @CodigoTurma;";
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        comando.Parameters.AddWithValue("@CodigoTurma", codigoTurma);
+        conexao.Open();
+        comando.ExecuteNonQuery();
+    }
+
+    public void MatricularAluno(int matricula, string codigoTurma)
+    {
+        const string sql = """
+            INSERT INTO tbAlunoTurma (MatriculaAluno, CodigoTurma)
+            VALUES (@MatriculaAluno, @CodigoTurma);
+            """;
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        comando.Parameters.AddWithValue("@MatriculaAluno", matricula);
+        comando.Parameters.AddWithValue("@CodigoTurma", codigoTurma);
+        conexao.Open();
+        comando.ExecuteNonQuery();
+    }
+
+    public void DesfazerMatricula(int matricula, string codigoTurma)
+    {
+        const string sql = """
+            DELETE FROM tbAlunoTurma
+            WHERE MatriculaAluno = @MatriculaAluno
+              AND CodigoTurma = @CodigoTurma;
+            """;
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        comando.Parameters.AddWithValue("@MatriculaAluno", matricula);
+        comando.Parameters.AddWithValue("@CodigoTurma", codigoTurma);
+        conexao.Open();
+        comando.ExecuteNonQuery();
+    }
+
+    public int ObterQuantidadeMatriculados(string codigoTurma)
+    {
+        const string sql = """
+            SELECT COUNT(*)
+            FROM tbAlunoTurma
+            WHERE CodigoTurma = @CodigoTurma;
+            """;
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        comando.Parameters.AddWithValue("@CodigoTurma", codigoTurma);
+        conexao.Open();
+        return Convert.ToInt32(comando.ExecuteScalar());
+    }
+
+    public bool ExisteMatricula(int matricula, string codigoTurma)
+    {
+        const string sql = """
+            SELECT COUNT(*)
+            FROM tbAlunoTurma
+            WHERE MatriculaAluno = @MatriculaAluno
+              AND CodigoTurma = @CodigoTurma;
+            """;
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        comando.Parameters.AddWithValue("@MatriculaAluno", matricula);
+        comando.Parameters.AddWithValue("@CodigoTurma", codigoTurma);
+        conexao.Open();
+        return Convert.ToInt32(comando.ExecuteScalar()) &gt; 0;
+    }
+
+    public DataTable ListarAlunosPorTurma(string codigoTurma)
+    {
+        const string sql = """
+            SELECT a.MatriculaAluno, a.NomeAluno, a.TelefoneAluno
+            FROM tbAlunoTurma AS at
+            INNER JOIN tbAluno AS a ON a.MatriculaAluno = at.MatriculaAluno
+            WHERE at.CodigoTurma = @CodigoTurma
+            ORDER BY a.NomeAluno;
+            """;
+        return ConsultarTabela(sql, ("@CodigoTurma", codigoTurma));
+    }
+
+    public DataTable ListarVisaoGeral()
+    {
+        const string sql = """
+            SELECT t.CodigoTurma, t.NomeTurma, t.CapacidadeMaximaAluno,
+                   COUNT(at.MatriculaAluno) AS TotalMatriculados,
+                   t.CapacidadeMaximaAluno - COUNT(at.MatriculaAluno) AS VagasRestantes
+            FROM tbTurma AS t
+            LEFT JOIN tbAlunoTurma AS at ON at.CodigoTurma = t.CodigoTurma
+            GROUP BY t.CodigoTurma, t.NomeTurma, t.CapacidadeMaximaAluno
+            ORDER BY t.CodigoTurma;
+            """;
+        return ConsultarTabela(sql);
+    }
+
+    private static void ExecutarComandoTurma(string sql, Turma turma)
+    {
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        comando.Parameters.AddWithValue("@CodigoTurma", turma.CodigoTurma);
+        comando.Parameters.AddWithValue("@NomeTurma", turma.NomeTurma);
+        comando.Parameters.AddWithValue("@AnoTurma", turma.AnoTurma);
+        comando.Parameters.AddWithValue("@MesTurma", turma.MesTurma);
+        comando.Parameters.AddWithValue("@CapacidadeMaximaAluno", turma.CapacidadeMaximaAluno);
+        conexao.Open();
+        comando.ExecuteNonQuery();
+    }
+
+    private static DataTable ConsultarTabela(string sql, params (string Nome, object Valor)[] parametros)
+    {
+        DataTable tabela = new();
+
+        using SqlConnection conexao = Database.CriarConexao();
+        using SqlCommand comando = new(sql, conexao);
+        foreach ((string nome, object valor) in parametros)
+        {
+            comando.Parameters.AddWithValue(nome, valor);
+        }
+
+        using SqlDataAdapter adaptador = new(comando);
+        adaptador.Fill(tabela);
+        return tabela;
+    }
+
+    private static Turma CriarTurma(SqlDataReader leitor)
+    {
+        return new Turma
+        {
+            CodigoTurma = leitor.GetString(0),
+            NomeTurma = leitor.GetString(1),
+            AnoTurma = leitor.GetInt32(2),
+            MesTurma = leitor.GetInt32(3),
+            CapacidadeMaximaAluno = leitor.GetInt32(4)
+        };
+    }
+}</code></pre>
+      <p><strong>Por que há parâmetros?</strong> Os parâmetros, como <code>@NomeAluno</code>, enviam os valores separadamente do comando SQL e evitam a concatenação de texto insegura.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>8. Montar a tela no Designer</h2>
+      <p>Abra <strong>Form1.cs [Design]</strong>. Defina o texto do formulário como <strong>Sistema de Gestão Acadêmica - Painel de Controle Avançado</strong>. Aumente o tamanho da janela para que as três áreas superiores fiquem lado a lado.</p>
+
+      <h3>8.1 Criar os contêineres</h3>
+      <ol>
+        <li><strong>Passo A:</strong> adicione três controles <strong>GroupBox</strong> na parte superior.</li>
+        <li><strong>Passo B:</strong> defina os textos como <strong>Gestão de Alunos</strong>, <strong>Gestão de Matrículas</strong> e <strong>Gestão de Turmas</strong>.</li>
+        <li><strong>Passo C:</strong> adicione um quarto <strong>GroupBox</strong> abaixo, ocupando toda a largura, com o texto <strong>Visão Geral - Matrículas por Turma</strong>.</li>
+      </ol>
+
+      <h3>8.2 Controles da Gestão de Alunos</h3>
+      <table>
+        <thead><tr><th>Tipo</th><th>Name</th><th>Texto visível</th></tr></thead>
+        <tbody>
+          <tr><td>TextBox</td><td><code>txtMatriculaAluno</code></td><td>Sem texto</td></tr>
+          <tr><td>TextBox</td><td><code>txtNomeAluno</code></td><td>Sem texto</td></tr>
+          <tr><td>TextBox</td><td><code>txtTelefoneAluno</code></td><td>Sem texto</td></tr>
+          <tr><td>Button</td><td><code>btnSalvarAluno</code></td><td>Salvar</td></tr>
+          <tr><td>Button</td><td><code>btnAtualizarAluno</code></td><td>Atualizar</td></tr>
+          <tr><td>Button</td><td><code>btnExcluirAluno</code></td><td>Excluir</td></tr>
+          <tr><td>Button</td><td><code>btnLimparAluno</code></td><td>Limpar</td></tr>
+          <tr><td>DataGridView</td><td><code>dgvAlunos</code></td><td>Sem texto</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.3 Controles da Gestão de Matrículas</h3>
+      <table>
+        <thead><tr><th>Tipo</th><th>Name</th><th>Texto visível</th></tr></thead>
+        <tbody>
+          <tr><td>ComboBox</td><td><code>cboSelecionarAluno</code></td><td>Sem texto</td></tr>
+          <tr><td>ComboBox</td><td><code>cboSelecionarTurma</code></td><td>Sem texto</td></tr>
+          <tr><td>Button</td><td><code>btnMatricular</code></td><td>Matricular</td></tr>
+          <tr><td>Button</td><td><code>btnDesfazerMatricula</code></td><td>Desfazer Matrícula</td></tr>
+          <tr><td>DataGridView</td><td><code>dgvAlunosNaTurma</code></td><td>Sem texto</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.4 Controles da Gestão de Turmas e visão geral</h3>
+      <table>
+        <thead><tr><th>Tipo</th><th>Name</th><th>Texto visível</th></tr></thead>
+        <tbody>
+          <tr><td>TextBox</td><td><code>txtCodigoTurma</code></td><td>Sem texto</td></tr>
+          <tr><td>TextBox</td><td><code>txtNomeTurma</code></td><td>Sem texto</td></tr>
+          <tr><td>TextBox</td><td><code>txtAnoTurma</code></td><td>Sem texto</td></tr>
+          <tr><td>TextBox</td><td><code>txtMesTurma</code></td><td>Sem texto</td></tr>
+          <tr><td>TextBox</td><td><code>txtCapacidade</code></td><td>Sem texto</td></tr>
+          <tr><td>Button</td><td><code>btnSalvarTurma</code></td><td>Salvar</td></tr>
+          <tr><td>Button</td><td><code>btnAtualizarTurma</code></td><td>Atualizar</td></tr>
+          <tr><td>Button</td><td><code>btnExcluirTurma</code></td><td>Excluir</td></tr>
+          <tr><td>Button</td><td><code>btnLimparTurma</code></td><td>Limpar</td></tr>
+          <tr><td>DataGridView</td><td><code>dgvTurmas</code></td><td>Sem texto</td></tr>
+          <tr><td>DataGridView</td><td><code>dgvVisaoGeral</code></td><td>Sem texto</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.5 Configurações obrigatórias</h3>
+      <ol>
+        <li><strong>Passo A:</strong> selecione cada <strong>DataGridView</strong> e defina <code>ReadOnly</code> como <code>True</code>.</li>
+        <li><strong>Passo B:</strong> defina <code>SelectionMode</code> como <code>FullRowSelect</code>.</li>
+        <li><strong>Passo C:</strong> defina <code>MultiSelect</code> como <code>False</code>.</li>
+        <li><strong>Passo D:</strong> nos dois ComboBoxes, defina <code>DropDownStyle</code> como <code>DropDownList</code>.</li>
+      </ol>
+    </section>
+
+    <section class="lesson-section">
+      <h2>9. Programar o formulário</h2>
+      <p>Abra <strong>Form1.cs</strong>. Mantenha o arquivo <strong>Form1.Designer.cs</strong> gerado pelo Visual Studio. Substitua somente o conteúdo de <strong>Form1.cs</strong> pelo código abaixo.</p>
+      <pre><code data-lang="csharp">using BDEscola.Data;
+using BDEscola.Models;
+using Microsoft.Data.SqlClient;
+
+namespace BDEscola;
+
+public partial class Form1 : Form
+{
+    private readonly AlunoRepository alunoRepository = new();
+    private readonly TurmaRepository turmaRepository = new();
+
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+        ConfigurarGrades();
+        CarregarTudo();
+    }
+
+    private void ConfigurarGrades()
+    {
+        foreach (DataGridView grade in new[] { dgvAlunos, dgvTurmas, dgvAlunosNaTurma, dgvVisaoGeral })
+        {
+            grade.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grade.ReadOnly = true;
+            grade.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grade.MultiSelect = false;
+        }
+    }
+
+    private void CarregarTudo()
+    {
+        CarregarAlunos();
+        CarregarTurmas();
+        CarregarCombos();
+        CarregarVisaoGeral();
+        AtualizarAlunosNaTurma();
+    }
+
+    private void CarregarAlunos()
+    {
+        dgvAlunos.DataSource = alunoRepository.Listar();
+    }
+
+    private void CarregarTurmas()
+    {
+        dgvTurmas.DataSource = turmaRepository.Listar();
+    }
+
+    private void CarregarCombos()
+    {
+        List&lt;Aluno&gt; alunos = alunoRepository.Listar();
+        cboSelecionarAluno.DataSource = alunos;
+        cboSelecionarAluno.DisplayMember = nameof(Aluno.NomeAluno);
+        cboSelecionarAluno.ValueMember = nameof(Aluno.MatriculaAluno);
+
+        List&lt;Turma&gt; turmas = turmaRepository.Listar();
+        cboSelecionarTurma.DataSource = turmas;
+        cboSelecionarTurma.DisplayMember = nameof(Turma.NomeTurma);
+        cboSelecionarTurma.ValueMember = nameof(Turma.CodigoTurma);
+    }
+
+    private void CarregarVisaoGeral()
+    {
+        dgvVisaoGeral.DataSource = turmaRepository.ListarVisaoGeral();
+    }
+
+    private void AtualizarAlunosNaTurma()
+    {
+        if (cboSelecionarTurma.SelectedValue is string codigoTurma)
+        {
+            dgvAlunosNaTurma.DataSource = turmaRepository.ListarAlunosPorTurma(codigoTurma);
+        }
+        else
+        {
+            dgvAlunosNaTurma.DataSource = null;
+        }
+    }
+
+    private bool TentarLerAluno(out Aluno aluno)
+    {
+        aluno = new Aluno
+        {
+            NomeAluno = txtNomeAluno.Text.Trim(),
+            TelefoneAluno = txtTelefoneAluno.Text.Trim()
+        };
+
+        if (!int.TryParse(txtMatriculaAluno.Text, out int matricula))
+        {
+            MessageBox.Show("Informe uma matrícula numérica.", "Dados inválidos");
+            return false;
+        }
+
+        aluno.MatriculaAluno = matricula;
+
+        if (!aluno.ValidarNome())
+        {
+            MessageBox.Show("O nome deve ter mais de 3 caracteres.", "Dados inválidos");
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(aluno.TelefoneAluno))
+        {
+            MessageBox.Show("Informe o telefone.", "Dados inválidos");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool TentarLerTurma(out Turma turma)
+    {
+        turma = new Turma
+        {
+            CodigoTurma = txtCodigoTurma.Text.Trim(),
+            NomeTurma = txtNomeTurma.Text.Trim()
+        };
+
+        int ano = 0;
+        int mes = 0;
+        int capacidade = 0;
+        bool dadosNumericosValidos =
+            int.TryParse(txtAnoTurma.Text, out ano) &amp;&amp;
+            int.TryParse(txtMesTurma.Text, out mes) &amp;&amp;
+            int.TryParse(txtCapacidade.Text, out capacidade);
+
+        if (string.IsNullOrWhiteSpace(turma.CodigoTurma) ||
+            string.IsNullOrWhiteSpace(turma.NomeTurma) ||
+            !dadosNumericosValidos)
+        {
+            MessageBox.Show("Preencha código, nome, ano, mês e capacidade corretamente.", "Dados inválidos");
+            return false;
+        }
+
+        turma.AnoTurma = ano;
+        turma.MesTurma = mes;
+        turma.CapacidadeMaximaAluno = capacidade;
+
+        if (turma.MesTurma is &lt; 1 or &gt; 12)
+        {
+            MessageBox.Show("O mês deve estar entre 1 e 12.", "Dados inválidos");
+            return false;
+        }
+
+        if (!turma.ValidarCapacidade())
+        {
+            MessageBox.Show("A capacidade deve ser maior que zero.", "Dados inválidos");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void btnSalvarAluno_Click(object sender, EventArgs e)
+    {
+        if (!TentarLerAluno(out Aluno aluno))
+        {
+            return;
+        }
+
+        try
+        {
+            alunoRepository.Inserir(aluno);
+            LimparAluno();
+            CarregarTudo();
+            MessageBox.Show("Aluno cadastrado com sucesso.", "BDEscola");
+        }
+        catch (SqlException ex)
+        {
+            MessageBox.Show($"Não foi possível cadastrar o aluno. {ex.Message}", "Erro no banco");
+        }
+    }
+
+    private void btnAtualizarAluno_Click(object sender, EventArgs e)
+    {
+        if (!TentarLerAluno(out Aluno aluno))
+        {
+            return;
+        }
+
+        alunoRepository.Atualizar(aluno);
+        LimparAluno();
+        CarregarTudo();
+        MessageBox.Show("Aluno atualizado com sucesso.", "BDEscola");
+    }
+
+    private void btnExcluirAluno_Click(object sender, EventArgs e)
+    {
+        if (!int.TryParse(txtMatriculaAluno.Text, out int matricula))
+        {
+            MessageBox.Show("Selecione ou informe uma matrícula válida.", "Dados inválidos");
+            return;
+        }
+
+        if (MessageBox.Show("Deseja excluir este aluno?", "Confirmar exclusão",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+        {
+            return;
+        }
+
+        try
+        {
+            alunoRepository.Excluir(matricula);
+            LimparAluno();
+            CarregarTudo();
+            MessageBox.Show("Aluno excluído com sucesso.", "BDEscola");
+        }
+        catch (SqlException ex)
+        {
+            MessageBox.Show($"Não foi possível excluir o aluno. Remova suas matrículas antes. {ex.Message}", "Erro no banco");
+        }
+    }
+
+    private void btnLimparAluno_Click(object sender, EventArgs e)
+    {
+        LimparAluno();
+    }
+
+    private void dgvAlunos_CellClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex &lt; 0)
+        {
+            return;
+        }
+
+        DataGridViewRow linha = dgvAlunos.Rows[e.RowIndex];
+        txtMatriculaAluno.Text = linha.Cells[nameof(Aluno.MatriculaAluno)].Value?.ToString();
+        txtNomeAluno.Text = linha.Cells[nameof(Aluno.NomeAluno)].Value?.ToString();
+        txtTelefoneAluno.Text = linha.Cells[nameof(Aluno.TelefoneAluno)].Value?.ToString();
+    }
+
+    private void btnSalvarTurma_Click(object sender, EventArgs e)
+    {
+        if (!TentarLerTurma(out Turma turma))
+        {
+            return;
+        }
+
+        try
+        {
+            turmaRepository.Inserir(turma);
+            LimparTurma();
+            CarregarTudo();
+            MessageBox.Show("Turma cadastrada com sucesso.", "BDEscola");
+        }
+        catch (SqlException ex)
+        {
+            MessageBox.Show($"Não foi possível cadastrar a turma. {ex.Message}", "Erro no banco");
+        }
+    }
+
+    private void btnAtualizarTurma_Click(object sender, EventArgs e)
+    {
+        if (!TentarLerTurma(out Turma turma))
+        {
+            return;
+        }
+
+        turmaRepository.Atualizar(turma);
+        LimparTurma();
+        CarregarTudo();
+        MessageBox.Show("Turma atualizada com sucesso.", "BDEscola");
+    }
+
+    private void btnExcluirTurma_Click(object sender, EventArgs e)
+    {
+        string codigoTurma = txtCodigoTurma.Text.Trim();
+
+        if (string.IsNullOrWhiteSpace(codigoTurma))
+        {
+            MessageBox.Show("Selecione ou informe o código da turma.", "Dados inválidos");
+            return;
+        }
+
+        if (MessageBox.Show("Deseja excluir esta turma?", "Confirmar exclusão",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+        {
+            return;
+        }
+
+        try
+        {
+            turmaRepository.Excluir(codigoTurma);
+            LimparTurma();
+            CarregarTudo();
+            MessageBox.Show("Turma excluída com sucesso.", "BDEscola");
+        }
+        catch (SqlException ex)
+        {
+            MessageBox.Show($"Não foi possível excluir a turma. Remova suas matrículas antes. {ex.Message}", "Erro no banco");
+        }
+    }
+
+    private void btnLimparTurma_Click(object sender, EventArgs e)
+    {
+        LimparTurma();
+    }
+
+    private void dgvTurmas_CellClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex &lt; 0)
+        {
+            return;
+        }
+
+        DataGridViewRow linha = dgvTurmas.Rows[e.RowIndex];
+        txtCodigoTurma.Text = linha.Cells[nameof(Turma.CodigoTurma)].Value?.ToString();
+        txtNomeTurma.Text = linha.Cells[nameof(Turma.NomeTurma)].Value?.ToString();
+        txtAnoTurma.Text = linha.Cells[nameof(Turma.AnoTurma)].Value?.ToString();
+        txtMesTurma.Text = linha.Cells[nameof(Turma.MesTurma)].Value?.ToString();
+        txtCapacidade.Text = linha.Cells[nameof(Turma.CapacidadeMaximaAluno)].Value?.ToString();
+    }
+
+    private void cboSelecionarTurma_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        AtualizarAlunosNaTurma();
+    }
+
+    private void btnMatricular_Click(object sender, EventArgs e)
+    {
+        if (cboSelecionarAluno.SelectedItem is not Aluno aluno ||
+            cboSelecionarTurma.SelectedItem is not Turma turma)
+        {
+            MessageBox.Show("Selecione um aluno e uma turma.", "Dados inválidos");
+            return;
+        }
+
+        if (turmaRepository.ExisteMatricula(aluno.MatriculaAluno, turma.CodigoTurma))
+        {
+            MessageBox.Show("Este aluno já está matriculado nesta turma.", "Matrícula");
+            return;
+        }
+
+        int totalMatriculados = turmaRepository.ObterQuantidadeMatriculados(turma.CodigoTurma);
+        if (turma.CalcularVagasRestantes(totalMatriculados) &lt;= 0)
+        {
+            MessageBox.Show("A turma não possui vagas disponíveis.", "Matrícula");
+            return;
+        }
+
+        turmaRepository.MatricularAluno(aluno.MatriculaAluno, turma.CodigoTurma);
+        AtualizarAlunosNaTurma();
+        CarregarVisaoGeral();
+        MessageBox.Show("Matrícula realizada com sucesso.", "BDEscola");
+    }
+
+    private void btnDesfazerMatricula_Click(object sender, EventArgs e)
+    {
+        if (cboSelecionarTurma.SelectedItem is not Turma turma ||
+            dgvAlunosNaTurma.CurrentRow is null)
+        {
+            MessageBox.Show("Selecione uma turma e um aluno matriculado.", "Dados inválidos");
+            return;
+        }
+
+        object? valorMatricula = dgvAlunosNaTurma.CurrentRow.Cells[nameof(Aluno.MatriculaAluno)].Value;
+        if (!int.TryParse(valorMatricula?.ToString(), out int matricula))
+        {
+            MessageBox.Show("A matrícula selecionada é inválida.", "Dados inválidos");
+            return;
+        }
+
+        turmaRepository.DesfazerMatricula(matricula, turma.CodigoTurma);
+        AtualizarAlunosNaTurma();
+        CarregarVisaoGeral();
+        MessageBox.Show("Matrícula desfeita com sucesso.", "BDEscola");
+    }
+
+    private void LimparAluno()
+    {
+        txtMatriculaAluno.Clear();
+        txtNomeAluno.Clear();
+        txtTelefoneAluno.Clear();
+        txtMatriculaAluno.Focus();
+    }
+
+    private void LimparTurma()
+    {
+        txtCodigoTurma.Clear();
+        txtNomeTurma.Clear();
+        txtAnoTurma.Clear();
+        txtMesTurma.Clear();
+        txtCapacidade.Clear();
+        txtCodigoTurma.Focus();
+    }
+}</code></pre>
+
+      <h3>9.1 Associar os eventos no Designer</h3>
+      <p>Selecione cada controle, abra a janela <strong>Properties</strong>, clique no ícone de raio e associe os eventos indicados.</p>
+      <table>
+        <thead><tr><th>Controle</th><th>Evento</th><th>Método</th></tr></thead>
+        <tbody>
+          <tr><td>Form1</td><td><code>Load</code></td><td><code>Form1_Load</code></td></tr>
+          <tr><td><code>btnSalvarAluno</code></td><td><code>Click</code></td><td><code>btnSalvarAluno_Click</code></td></tr>
+          <tr><td><code>btnAtualizarAluno</code></td><td><code>Click</code></td><td><code>btnAtualizarAluno_Click</code></td></tr>
+          <tr><td><code>btnExcluirAluno</code></td><td><code>Click</code></td><td><code>btnExcluirAluno_Click</code></td></tr>
+          <tr><td><code>btnLimparAluno</code></td><td><code>Click</code></td><td><code>btnLimparAluno_Click</code></td></tr>
+          <tr><td><code>dgvAlunos</code></td><td><code>CellClick</code></td><td><code>dgvAlunos_CellClick</code></td></tr>
+          <tr><td><code>btnSalvarTurma</code></td><td><code>Click</code></td><td><code>btnSalvarTurma_Click</code></td></tr>
+          <tr><td><code>btnAtualizarTurma</code></td><td><code>Click</code></td><td><code>btnAtualizarTurma_Click</code></td></tr>
+          <tr><td><code>btnExcluirTurma</code></td><td><code>Click</code></td><td><code>btnExcluirTurma_Click</code></td></tr>
+          <tr><td><code>btnLimparTurma</code></td><td><code>Click</code></td><td><code>btnLimparTurma_Click</code></td></tr>
+          <tr><td><code>dgvTurmas</code></td><td><code>CellClick</code></td><td><code>dgvTurmas_CellClick</code></td></tr>
+          <tr><td><code>cboSelecionarTurma</code></td><td><code>SelectedIndexChanged</code></td><td><code>cboSelecionarTurma_SelectedIndexChanged</code></td></tr>
+          <tr><td><code>btnMatricular</code></td><td><code>Click</code></td><td><code>btnMatricular_Click</code></td></tr>
+          <tr><td><code>btnDesfazerMatricula</code></td><td><code>Click</code></td><td><code>btnDesfazerMatricula_Click</code></td></tr>
+        </tbody>
+      </table>
+      <p><strong>Importante:</strong> depois de associar os eventos, compile o projeto. Se um nome estiver diferente do nome desta aula, corrija o <code>Name</code> do controle no Designer.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2>10. Testar o sistema em ordem</h2>
+      <ol>
+        <li><strong>Teste 1:</strong> pressione <strong>F5</strong>. A tela deve abrir com alunos, turmas, ComboBoxes e visão geral preenchidos.</li>
+        <li><strong>Teste 2:</strong> cadastre um aluno com uma matrícula ainda não utilizada. Confirme se ele aparece em <code>dgvAlunos</code> e no ComboBox.</li>
+        <li><strong>Teste 3:</strong> selecione o aluno na grade, altere o telefone, clique em <strong>Atualizar</strong> e confira a alteração.</li>
+        <li><strong>Teste 4:</strong> cadastre uma turma com capacidade 1. Confirme se ela aparece em <code>dgvTurmas</code> e no ComboBox.</li>
+        <li><strong>Teste 5:</strong> matricule um aluno nessa turma. Confirme a linha em <code>dgvAlunosNaTurma</code> e a atualização de <code>dgvVisaoGeral</code>.</li>
+        <li><strong>Teste 6:</strong> tente matricular outro aluno na turma com capacidade 1. O sistema deve informar que não há vagas.</li>
+        <li><strong>Teste 7:</strong> selecione a linha da matrícula e clique em <strong>Desfazer Matrícula</strong>. A grade e a visão geral devem atualizar.</li>
+        <li><strong>Teste 8:</strong> tente excluir um aluno ou turma que ainda tenha matrícula. O SQL Server deve impedir a exclusão e o sistema deve mostrar uma mensagem.</li>
+      </ol>
+    </section>
+
+    <section class="lesson-section">
+      <h2>11. Erros comuns</h2>
+      <ul>
+        <li><strong>Erro de conexão:</strong> confirme o nome da instância SQL Server em <code>Database.cs</code>. O exemplo usa <code>.\SQLEXPRESS</code>.</li>
+        <li><strong>Login failed:</strong> confirme que o login <code>operadorEscola</code> foi criado e que o SQL Server aceita autenticação SQL.</li>
+        <li><strong>Controle não existe:</strong> confira o valor da propriedade <code>Name</code> no Designer. O nome deve ser idêntico ao usado no código.</li>
+        <li><strong>Evento não executa:</strong> abra a aba de eventos do controle e associe o método correto.</li>
+        <li><strong>Aluno ou turma duplicado:</strong> use uma matrícula ou um código que ainda não exista.</li>
+        <li><strong>Não é possível excluir:</strong> desfaça as matrículas ligadas ao aluno ou à turma antes de excluir.</li>
       </ul>
     </section>
 
     <section class="lesson-section">
-      <h2>3. Exemplo em C# com SQL parametrizado</h2>
-      <pre><code data-lang="csharp">using System.Data.SqlClient;
-
-// CREATE
-string insertSql = "INSERT INTO Alunos (Nome, Turma) VALUES (@Nome, @Turma)";
-
-// READ
-string selectSql = "SELECT Id, Nome, Turma FROM Alunos";
-
-// UPDATE
-string updateSql = "UPDATE Alunos SET Turma = @Turma WHERE Id = @Id";
-
-// DELETE
-string deleteSql = "DELETE FROM Alunos WHERE Id = @Id";
-
-// Exemplo de comando parametrizado
-using (SqlCommand comando = new SqlCommand(insertSql, conexao))
-{
-    comando.Parameters.AddWithValue("@Nome", "Ana");
-    comando.Parameters.AddWithValue("@Turma", "1A");
-    comando.ExecuteNonQuery();
-}</code></pre>
+      <h2>12. Checklist de entrega</h2>
+      <ul>
+        <li>O banco <strong>BDEscola</strong> contém as três tabelas e os dados iniciais.</li>
+        <li>O projeto usa o pacote <strong>Microsoft.Data.SqlClient</strong>.</li>
+        <li>As classes <code>Aluno</code>, <code>Turma</code>, <code>Database</code>, <code>AlunoRepository</code> e <code>TurmaRepository</code> existem.</li>
+        <li>Os quatro comandos do CRUD funcionam para alunos e turmas.</li>
+        <li>Uma matrícula não é duplicada.</li>
+        <li>Uma turma não recebe mais alunos do que sua capacidade.</li>
+        <li>Ao trocar a turma no ComboBox, a grade de alunos matriculados atualiza.</li>
+        <li>A visão geral mostra a quantidade de matrículas e vagas restantes.</li>
+      </ul>
+      <p><strong>Conclusão:</strong> este projeto integra modelagem de dados, POO, ADO.NET, SQL parametrizado, eventos e regras de negócio em uma aplicação CRUD completa.</p>
     </section>
 
-    <section class="lesson-section">
-      <h2>4. Leitura guiada do exemplo</h2>
-      <ol>
-        <li>Cada string SQL representa uma parte do CRUD.</li>
-        <li><strong>ExecuteNonQuery()</strong> e usado em INSERT, UPDATE e DELETE.</li>
-        <li>Parametros evitam concatenacao insegura.</li>
-        <li>Comandos com WHERE evitam alterar ou excluir todos os registros.</li>
-      </ol>
+    <nav class="lesson-navigation" aria-label="Navegação da aula">
+      <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
+    </nav>
+    <section class="update-log" aria-label="Informação de atualização">
+      <p>Última atualização: 11/11/2026</p>
     </section>
-
-    <section class="lesson-section">
-      <h2>5. Tabela comparativa rapida</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Operacao</th>
-            <th>Comando SQL</th>
-            <th>Uso principal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Create</td>
-            <td>INSERT</td>
-            <td>Cadastrar novo item</td>
-          </tr>
-          <tr>
-            <td>Read</td>
-            <td>SELECT</td>
-            <td>Listar ou buscar item</td>
-          </tr>
-          <tr>
-            <td>Update</td>
-            <td>UPDATE</td>
-            <td>Alterar dado existente</td>
-          </tr>
-          <tr>
-            <td>Delete</td>
-            <td>DELETE</td>
-            <td>Remover item</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="lesson-section">
-      <h2>6. Exercicios de fixacao</h2>
-      <ol>
-        <li>
-          <p><strong class="exercise-label">6.1 Exercicio:</strong> escreva um <strong>SELECT</strong> para listar nome e preco da tabela Produtos.</p>
-          <details>
-            <summary>Ver resposta</summary>
-            <pre><code data-lang="sql">SELECT Nome, Preco FROM Produtos;</code></pre>
-          </details>
-        </li>
-        <li>
-          <p><strong class="exercise-label">6.2 Exercicio:</strong> escreva um <strong>UPDATE</strong> para alterar turma do aluno Id 3.</p>
-          <details>
-            <summary>Ver resposta</summary>
-            <pre><code data-lang="sql">UPDATE Alunos SET Turma = '2B' WHERE Id = 3;</code></pre>
-          </details>
-        </li>
-        <li>
-          <p><strong class="exercise-label">6.3 Exercicio:</strong> explique por que comando DELETE deve usar WHERE.</p>
-          <details>
-            <summary>Ver resposta</summary>
-            <p>Sem WHERE, todos os registros da tabela podem ser removidos.</p>
-          </details>
-        </li>
-        <li>
-          <p><strong class="exercise-label">6.4 Exercicio:</strong> monte um INSERT parametrizado para cadastrar um produto.</p>
-          <details>
-            <summary>Ver resposta</summary>
-            <p>Defina SQL com <strong>@Nome</strong>, <strong>@Preco</strong> e adicione parametros no SqlCommand.</p>
-          </details>
-        </li>
-      </ol>
-    </section>
-
-    <section class="lesson-section">
-      <h2>7. Resumo da aula</h2>
-      <p>CRUD e a base operacional de sistemas com dados persistentes.</p>
-      <p>Comandos SQL e parametros corretos tornam a aplicacao mais segura e previsivel.</p>
-    </section>
-
-    <section class="lesson-section">
-      <h2>8. Atividade guiada</h2>
-      <p><strong>Passo 1:</strong> escreva os quatro comandos CRUD para a tabela <strong>Produtos</strong>.</p>
-      <p><strong>Passo 2:</strong> marque onde usar parametros no C#.</p>
-      <p><strong>Passo 3:</strong> execute mentalmente um fluxo completo: cadastrar, listar, atualizar e excluir.</p>
-    </section>
-
-<nav class="lesson-navigation" aria-label="Navegação do módulo">
-  <a target="_blank" rel="noopener noreferrer" href="dicionario.html">Dicionário do projeto</a>
-</nav>
-<section class='update-log' aria-label='Informação de atualização'>
-  <p>Última atualização: 05/10/2026</p>
-</section>
-</article>
+  </article>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

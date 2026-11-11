@@ -1,0 +1,77 @@
+================================================================================
+INSTRUÇÃO INICIAL PARA A IA: SISTEMA DE CONTROLE ESCOLAR (BDEscola)
+================================================================================
+
+Atue como um tutor de programação C# e SQL Server. Suas respostas devem ser extremamente diretas, sem textos longos de explicação, estruturadas in etapas curtas, diretas e numeradas para facilitar a leitura.
+
+Siga exatamente estas regras de entrega:
+1. Onde houver código (SQL e C#), forneça o código completo pronto.
+2. Onde houver ação do aluno no programa, divida a instrução em micropassos (exemplo: Passo A -> Passo B -> Passo C).
+3. Dados do projeto: Banco BDEscola no SQL Server Express | Namespace: <<SUBSTITUA_PELO_SEU_NAMESPACE>>.
+
+--------------------------------------------------------------------------------
+PASSO 1: CRIAR O BANCO DE DADOS (SQL)
+--------------------------------------------------------------------------------
+
+1. Forneça o script SQL para criar o banco BDEscola.
+
+2. Forneça o script das tabelas com chaves informadas manualmente (sem IDENTITY): 
+   - tbAluno (3 campos: MatriculaAluno [INT, PK], NomeAluno [VARCHAR(100)], TelefoneAluno [VARCHAR(20)]).
+   - tbTurma (5 campos: CodigoTurma [VARCHAR(20), PK], NomeTurma [VARCHAR(100)], AnoTurma [INT], MesTurma [INT], CapacidadeMaximaAluno [INT]).
+   - tbAlunoTurma (tabela intermediária para o relacionamento N:N entre alunos e turmas).
+
+3. Forneça os comandos de INSERT dentro do mesmo script para popular o banco de dados inicialmente para testes contendo exatamente:
+   - Uma população fictícia de 20 alunos com matrículas, nomes e telefones variados.
+   - 3 turmas configuradas com códigos alfanuméricos e capacidades máximas distintas.
+   - A matrícula de 12 desses alunos distribuídos entre as turmas criadas na tabela intermediária tbAlunoTurma.
+
+4. Forneça o comando para criar o usuário operadorEscola com senha Escola123 e permissão db_owner.
+
+5. Explique em 3 passos curtos e independentes onde o aluno deve colar e executar esses comandos de forma isolada no SQL Server Management Studio (SSMS).
+
+--------------------------------------------------------------------------------
+PASSO 2: CRIAR AS CLASSES NO VISUAL STUDIO (C#)
+--------------------------------------------------------------------------------
+
+Explique ao aluno a ordem exata de criação dos arquivos dentro do Visual Studio e depois entregue o código completo de cada um com o namespace <<SUBSTITUA_PELO_SEU_NAMESPACE>>:
+
+1. Como criar a classe Database.cs e o código da conexão com o banco de dados BDEscola (usando o usuário operadorEscola).
+
+2. Como criar a classe Aluno.cs com suas propriedades (MatriculaAluno, NomeAluno, TelefoneAluno) e um método próprio de validação do nome:
+   - ValidarNome() (verifica se o nome foi preenchido e possui mais de 3 caracteres).
+
+3. Como criar a classe Turma.cs com suas propriedades (CodigoTurma, NomeTurma, AnoTurma, MesTurma, CapacidadeMaximaAluno) e dois métodos próprios:
+   - CalcularVagasRestantes(int totalMatriculados) (subtrai a quantidade de alunos matriculados da CapacidadeMaximaAluno).
+   - ValidarCapacidade() (retorna falso se a capacidade máxima informada for menor ou igual a zero).
+
+4. Como criar a classe AlunoRepository.cs e o código com as funções CRUD completas usando ADO.NET puro (Inserir, Listar, Atualizar, Excluir).
+
+5. Como criar a classe TurmaRepository.cs e o código com as funções CRUD completas usando ADO.NET puro, incluindo os métodos necessários para alimentar os componentes exatos da tela:
+   - Inserir(Turma turma), Listar(), Atualizar(Turma turma), Excluir(string codigoTurma).
+   - MatricularAluno(int matricula, string codigoTurma) (insere um registro na tabela tbAlunoTurma).
+   - DesfazerMatricula(int matricula, string codigoTurma) (remove um registro específico da tabela tbAlunoTurma).
+   - ObterQuantidadeMatriculados(string codigoTurma) (método auxiliar que conta quantos alunos já estão na turma para impedir que novas matrículas passem da capacidade máxima).
+   - ListarAlunosPorTurma(string codigoTurma) (retorna a lista de alunos de uma turma específica para preencher o dgvAlunosNaTurma).
+   - ListarVisaoGeral() (executa um SELECT com JOIN trazendo os dados consolidados para o dgvVisaoGeral).
+
+Divida as instruções de criação de cada arquivo em micropassos sequenciais e independentes (Passo A -> Passo B -> Passo C) para que o aluno possa executar e testar uma classe por vez.
+
+--------------------------------------------------------------------------------
+PASSO 3: DESENHAR A TELA COM GOOGLE GEMINI E ROTEIRO DE PROGRAMAÇÃO LÓGICA
+--------------------------------------------------------------------------------
+
+1. Crie um prompt pronto, simples e direto para o aluno copiar e usar no Google Gemini para gerar a imagem de modelo (mockup) visual exata do layout desse sistema Windows Forms. O prompt deve instruir a IA a desenhar a interface com base nos componentes exatos enviados no arquivo Designer.cs:
+   - Uma estrutura principal dividida em 3 colunas superiores: "Gestão de Alunos" (com as caixas txtMatriculaAluno, txtNomeAluno, txtTelefoneAluno, os 4 botões de CRUD e o dgvAlunos), "Gestão de Matrículas" (com os ComboBoxes cboSelecionarAluno e cboSelecionarTurma, os botões btnMatricular e btnDesfazerMatricula, e o grid dgvAlunosNaTurma) e "Gestão de Turmas" (com txtCodigoTurma, txtNomeTurma, txtAnoTurma, txtMesTurma, txtCapacidade, os 4 botões de CRUD e o dgvTurmas).
+   - Uma área ampla na parte inferior ocupando toda a largura da tela chamada "Visão Geral - Matrículas por Turma" contendo o dgvVisaoGeral.
+
+2. Dê uma instrução final clara em 2 passos para o mockup:
+   - Passo A -> Copiar o prompt gerado e colar no Google Gemini.
+   - Passo B -> Olhar a imagem gerada e conferir se os controles na tela de design do Visual Studio estão organizados na mesma disposição trilinear.
+
+3. Forneça o roteiro passo a passo com as regras e comportamentos lógicos que o aluno deve implementar em C# para dar vida aos componentes da tela (sem entregar o código pronto). O roteiro deve explicar em tópicos diretos e micropassos o que deve acontecer em cada ação:
+   - Como programar o carregamento inicial do formulário (Form1_Load) para preencher as listagens, associar as fontes de dados (DataSource) aos DataGridViews e carregar os ComboBoxes com ID e Nome.
+   - Como programar os botões do painel de Alunos (Salvar, Atualizar, Excluir, Limpar), incluindo o evento de clique no dgvAlunos para devolver os dados às caixas de texto.
+   - Como programar os botões do painel de Turmas (Salvar, Atualizar, Excluir, Limpar) e o clique nas linhas do dgvTurmas.
+   - Como programar a regra de negócio do btnMatricular: ler o aluno do cboSelecionarAluno, a turma do cboSelecionarTurma, chamar o método ObterQuantidadeMatriculados para verificar se o limite do txtCapacidade já foi atingido e, caso tenha vaga, chamar o método de inserção N:N, atualizando o dgvAlunosNaTurma e o dgvVisaoGeral.
+   - Como programar o btnDesfazerMatricula para remover a linha vinculada selecionada.
+   - Como programar o evento de mudança de seleção da caixa de turmas (cboSelecionarTurma_SelectedIndexChanged) para que, sempre que o usuário trocar a turma atual selecionada no ComboBox, o grid logo abaixo (dgvAlunosNaTurma) filtre e atualize imediatamente a lista exibindo apenas os alunos matriculados na respectiva turma.
